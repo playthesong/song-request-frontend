@@ -6,7 +6,7 @@ import {
   Redirect
 } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle";
-import SongRequest from "./components/SongRequest/SongRequest";
+import SongRequest from "./components/SongRequest";
 
 function App() {
   return (
