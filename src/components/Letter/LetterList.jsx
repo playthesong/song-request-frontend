@@ -19,6 +19,12 @@ const LetterList = () => {
   );
 };
 
-const LetterListBlock = styled.ul``;
+const LetterListBlock = styled.ul`
+  width: 100%;
+  display: flex;
+  /* justify-content: space-between; */
+  flex-wrap: wrap;
+  margin-top: 3rem;
+`;
 
 export default LetterList;

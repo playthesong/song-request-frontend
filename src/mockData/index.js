@@ -47,7 +47,7 @@ export const mockLetters = [
     songStory:
       "사연입니다. 사연 내용은 다음과 같습니다. 사연은 100자까지만 보여 드릴 예정 입니다.",
     requestStatus: "WAITING",
-    createdDateTimuser: "2021-01-27 23:41",
+    createdDateTime: "2021-01-27 23:41",
     user: userData
   },
   {
@@ -78,7 +78,7 @@ export const mockLetters = [
     user: userData
   },
   {
-    id: 1,
+    id: 5,
     song: fifthSong,
     songStory:
       "사연입니다. 사연 내용은 다음과 같습니다. 사연은 100자까지만 보여 드릴 예정 입니다.",

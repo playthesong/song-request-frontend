@@ -19,7 +19,7 @@ const Header = () => {
 const HeaderBlock = styled.div`
   width: 100%;
   position: fixed;
-  box-shadow: 0px 0px 30px 5px #f1f1f1;
+  box-shadow: 0px 15px 30px 10px #f1f1f1;
 `;
 
 const HeaderInner = styled.div`

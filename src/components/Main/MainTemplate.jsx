@@ -7,7 +7,7 @@ const MainTemplate = ({ children }) => {
 
 const MainTemplateBlock = styled.div`
   width: 100%;
-  height: calc(100% - 16rem);
+  height: calc(100vh - 16rem);
   display: flex;
   justify-content: center;
   padding-top: 15rem;
