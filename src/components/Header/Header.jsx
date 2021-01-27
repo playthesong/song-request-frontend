@@ -24,11 +24,11 @@ const HeaderBlock = styled.div`
 
 const HeaderInner = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   top: 0;
   left: 0;
-  width: 1200px;
+  max-width: 1100px;
   background-color: #ffffff;
   height: 80px;
   margin: 0 auto;
