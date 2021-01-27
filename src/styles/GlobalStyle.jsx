@@ -13,6 +13,8 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Noto Sans KR', sans-serif;
     font-size: 1.2rem;
     color: #495057;
+    width: 100%;
+    height: 100%;
   }
 
   a {

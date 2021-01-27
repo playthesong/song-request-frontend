@@ -6,8 +6,7 @@ const MainTemplate = ({ children }) => {
 };
 
 const MainTemplateBlock = styled.div`
-  width: 100vw;
-  height: 100vh;
+  max-width: 1100px;
   display: flex;
   justify-content: center;
   padding-top: 80px;
