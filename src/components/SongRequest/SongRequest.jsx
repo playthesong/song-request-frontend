@@ -1,18 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import MainTemplate from "../Main/MainTemplate";
+import LetterList from "../Letter/LetterList";
 
 const SongRequest = () => {
   return (
     <MainTemplate>
-      <SongRequestBlock></SongRequestBlock>
+      <SongRequestBlock>
+        <LetterList />
+      </SongRequestBlock>
     </MainTemplate>
   );
 };
 
 const SongRequestBlock = styled.div`
-  width: 1200px;
-  background-color: black;
+  max-width: 1100px;
 `;
 
 export default SongRequest;
