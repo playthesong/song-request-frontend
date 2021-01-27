@@ -6,10 +6,11 @@ const MainTemplate = ({ children }) => {
 };
 
 const MainTemplateBlock = styled.div`
-  max-width: 1100px;
+  width: 100%;
+  height: calc(100% - 16rem);
   display: flex;
   justify-content: center;
-  padding-top: 80px;
+  padding-top: 15rem;
 `;
 
 export default MainTemplate;

@@ -7,6 +7,7 @@ import {
 } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle";
 import SongRequest from "./components/SongRequest";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/musicsheets" component={SongRequest} />
           <Redirect from="*" to="/" />
         </Switch>
+        <Footer />
       </Router>
     </>
   );
