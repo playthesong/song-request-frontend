@@ -17,6 +17,8 @@ const Header = () => {
 };
 
 const HeaderBlock = styled.div`
+  display: flex;
+  justify-content: center;
   width: 100%;
   position: fixed;
   box-shadow: 0px 15px 30px 10px #f1f1f1;
@@ -30,9 +32,9 @@ const HeaderInner = styled.div`
   top: 0;
   left: 0;
   max-width: 1100px;
+  width: 100%;
   background-color: #ffffff;
   height: 80px;
-  margin: 0 auto;
 `;
 
 export default Header;

@@ -22,7 +22,6 @@ const LetterList = () => {
 const LetterListBlock = styled.ul`
   width: 100%;
   display: flex;
-  /* justify-content: space-between; */
   flex-wrap: wrap;
   margin-top: 4.5rem;
 `;

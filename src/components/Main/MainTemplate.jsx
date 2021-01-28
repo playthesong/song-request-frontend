@@ -2,7 +2,11 @@ import React from "react";
 import styled from "styled-components";
 
 const MainTemplate = ({ children }) => {
-  return <MainTemplateBlock>{children}</MainTemplateBlock>;
+  return (
+    <MainTemplateBlock>
+      <MainTemplateInner>{children}</MainTemplateInner>
+    </MainTemplateBlock>
+  );
 };
 
 const MainTemplateBlock = styled.div`
@@ -11,6 +15,11 @@ const MainTemplateBlock = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 15rem;
+`;
+
+const MainTemplateInner = styled.div`
+  max-width: 1100px;
+  width: 100%;
 `;
 
 export default MainTemplate;

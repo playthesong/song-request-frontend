@@ -14,10 +14,7 @@ const SongRequest = () => {
   );
 };
 
-const SongRequestBlock = styled.div`
-  max-width: 1100px;
-  margin: 0 auto;
-`;
+const SongRequestBlock = styled.div``;
 
 const ListTitle = styled.h2`
   display: inline-block;
