@@ -1,12 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import Letter from "./Letter";
-import { mockLetters } from "../../mockData";
 
-const LetterList = () => {
+const LetterList = ({ letters }) => {
   return (
     <LetterListBlock>
-      {mockLetters.map(letter => (
+      {letters.map(letter => (
         <Letter
           key={letter.id}
           user={letter.user}

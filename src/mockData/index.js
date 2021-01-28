@@ -40,7 +40,7 @@ const fifthSong = {
   imageUrl: "http://i.maniadb.com/images/album/723/723527_1_f.jpg"
 };
 
-export const mockLetters = [
+const mockLetters = [
   {
     id: 1,
     song: firstSong,
@@ -87,3 +87,5 @@ export const mockLetters = [
     user: userData
   }
 ];
+
+export default mockLetters;
