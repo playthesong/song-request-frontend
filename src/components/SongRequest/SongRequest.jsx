@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import MainTemplate from "../Main/MainTemplate";
-import LetterList from "../Letter/LetterList";
+import LetterListContainer from "../../containers/LetterListContainer";
 
 const SongRequest = () => {
   return (
     <MainTemplate>
       <SongRequestBlock>
         <ListTitle>신청 대기중</ListTitle>
-        <LetterList />
+        <LetterListContainer />
       </SongRequestBlock>
     </MainTemplate>
   );
