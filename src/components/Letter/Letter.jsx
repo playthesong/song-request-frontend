@@ -72,9 +72,9 @@ const SongBlock = styled.div`
     justify-content: center;
     margin-right: auto;
     margin-left: 2rem;
-    /* margin-top: 1.5rem; */
 
     .song-about__title {
+      overflow-x: hidden;
       font-size: 1.4rem;
       font-weight: 500;
       color: #2c2c2c;

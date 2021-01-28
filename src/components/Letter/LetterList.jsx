@@ -24,7 +24,7 @@ const LetterListBlock = styled.ul`
   display: flex;
   /* justify-content: space-between; */
   flex-wrap: wrap;
-  margin-top: 3rem;
+  margin-top: 4.5rem;
 `;
 
 export default LetterList;

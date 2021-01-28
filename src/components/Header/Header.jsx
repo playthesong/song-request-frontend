@@ -20,6 +20,7 @@ const HeaderBlock = styled.div`
   width: 100%;
   position: fixed;
   box-shadow: 0px 15px 30px 10px #f1f1f1;
+  z-index: 999;
 `;
 
 const HeaderInner = styled.div`
