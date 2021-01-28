@@ -1,6 +1,6 @@
-import letters from "./mockData";
+import letters from "../mockData";
 
-const sleep = n => new Promise(resolve, setTimeout(resolve, n));
+const sleep = n => new Promise(resolve => setTimeout(resolve, n));
 
 export const getLetters = async () => {
   await sleep(500);
