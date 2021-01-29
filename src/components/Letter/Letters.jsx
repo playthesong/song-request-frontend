@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import MainTemplate from "../components/Main/MainTemplate";
-import LetterListContainer from "../containers/LetterListContainer";
+import MainTemplate from "../Main/MainTemplate";
+import LetterListContainer from "../../containers/LetterListContainer";
 
 const SongRequest = () => {
   return (
