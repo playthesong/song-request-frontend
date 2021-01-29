@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Letter from "./Letter";
+import LetterDetails from "./LetterDetails";
 
 const LetterList = ({ letters }) => {
   return (
@@ -14,6 +15,7 @@ const LetterList = ({ letters }) => {
           createdDateTime={letter.createdDateTime}
         />
       ))}
+      <LetterDetails />
     </LetterListBlock>
   );
 };

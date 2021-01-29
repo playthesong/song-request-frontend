@@ -1,4 +1,3 @@
-import Header from "./components/Header/Header";
 import {
   BrowserRouter as Router,
   Route,
@@ -6,7 +5,8 @@ import {
   Redirect
 } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyle";
-import SongRequest from "./components/SongRequest";
+import Header from "./components/Header/Header";
+import Letters from "./pages/Letters";
 import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -16,10 +16,10 @@ function App() {
       <Router>
         <Header />
         <Switch>
-          <Route path="/" exact component={SongRequest} />
-          <Route path="/ranking" component={SongRequest} />
-          <Route path="/contents" exact component={SongRequest} />
-          <Route path="/musicsheets" component={SongRequest} />
+          <Route path="/" exact component={Letters} />
+          <Route path="/ranking" component={Letters} />
+          <Route path="/contents" exact component={Letters} />
+          <Route path="/musicsheets" component={Letters} />
           <Redirect from="*" to="/" />
         </Switch>
         <Footer />
