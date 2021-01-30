@@ -1,21 +1,25 @@
 import React from "react";
 import styled from "styled-components";
+import useDetails from "../../hooks/useDetails";
 import Letter from "./Letter";
 import LetterDetails from "./LetterDetails";
 
-const LetterList = ({ letters }) => {
+const LetterList = ({ letters, activatedId, onActivate, onCancel }) => {
   return (
     <LetterListBlock>
       {letters.map(letter => (
         <Letter
           key={letter.id}
+          id={letter.id}
           user={letter.user}
           song={letter.song}
           songStory={letter.songStory}
           createdDateTime={letter.createdDateTime}
+          onActivate={onActivate}
+          onCancel={onCancel}
         />
       ))}
-      <LetterDetails />
+      <LetterDetails activatedId={activatedId} />
     </LetterListBlock>
   );
 };

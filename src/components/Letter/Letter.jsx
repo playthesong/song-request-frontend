@@ -1,12 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-const Letter = ({ user, song, songStory, createdDateTime, requestStatus }) => {
+const Letter = ({
+  user,
+  song,
+  songStory,
+  createdDateTime,
+  onActivate,
+  onCancel
+}) => {
   const { name, avatarUrl } = user;
-  const { title, artist, imageUrl } = song;
+  const { id, title, artist, imageUrl } = song;
 
   return (
-    <LetterBlock>
+    <LetterBlock onClick={() => onActivate(id)}>
       <SongBlock>
         <img src={imageUrl} alt="ALBUM IMAGE" className="album-image" />
         <div className="song-about">

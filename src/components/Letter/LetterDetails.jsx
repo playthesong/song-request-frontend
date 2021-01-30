@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import ModalTemplate from "../Modal/ModalTemplate";
 
-const LetterDetails = () => {
+const LetterDetails = ({ activatedId: isActivated }) => {
   return (
-    <ModalTemplate>
+    <ModalTemplate isActivated={isActivated}>
       <LetterDetailsBlock>Modal</LetterDetailsBlock>
     </ModalTemplate>
   );

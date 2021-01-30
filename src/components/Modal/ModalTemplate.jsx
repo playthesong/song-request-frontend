@@ -1,8 +1,10 @@
 import React from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-const ModalTemplate = ({ children, isOpen }) => {
-  return isOpen ? <ModalTemplateBlock>{children}</ModalTemplateBlock> : null;
+const ModalTemplate = ({ children, isActivated }) => {
+  return isActivated ? (
+    <ModalTemplateBlock>{children}</ModalTemplateBlock>
+  ) : null;
 };
 
 const ModalTemplateBlock = styled.div`
