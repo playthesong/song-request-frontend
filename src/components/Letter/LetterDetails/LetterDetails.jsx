@@ -36,7 +36,7 @@ const LetterDetails = ({
         <Song />
         <SongStory />
         <User />
-        <CloseButton onClick={() => onCancel()}>닫기</CloseButton>
+        <CloseButton onClick={() => onCancel()}>CLOSE</CloseButton>
       </LetterDetailsBlock>
     </ModalTemplate>
   );
@@ -127,7 +127,7 @@ const LetterDetailsBlock = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 38rem;
-  min-height: 50vh;
+  min-height: 35vh;
   box-shadow: 0px 3px 15px 1px rgba(0, 0, 0, 0.5);
   background-color: #fbfbfd;
   display: flex;

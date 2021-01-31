@@ -2,17 +2,12 @@ import React from "react";
 import styled from "styled-components";
 
 const SongStory = () => {
-  return (
-    <SongStoryBlock>
-      <p className="story">사연 입니다.</p>
-      <span className="created-time">2021-01-31 15:19</span>
-    </SongStoryBlock>
-  );
+  return <SongStoryBlock>사연 입니다.</SongStoryBlock>;
 };
 
-const SongStoryBlock = styled.div`
+const SongStoryBlock = styled.p`
   margin: 2rem 0.7rem;
-  min-height: 5rem;
+  min-height: 2.7rem;
   max-height: 12rem;
   overflow-y: auto;
 

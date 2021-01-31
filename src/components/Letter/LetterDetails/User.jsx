@@ -4,29 +4,43 @@ import styled from "styled-components";
 const User = () => {
   return (
     <UserBlock>
-      <img
-        src="https://avatars.githubusercontent.com/u/49878687?s=460&u=e739e45e9f39b5200339cca6dc293f934fa03bc0&v=4"
-        className="user-image"
-      />
-      <span className="username">Museop Kim</span>
+      <span className="created-time">2021년 2월 1일 1시 59분</span>
+      <div className="user-about">
+        <img
+          src="https://avatars.githubusercontent.com/u/49878687?s=460&u=e739e45e9f39b5200339cca6dc293f934fa03bc0&v=4"
+          className="user-about__image"
+        />
+        <span className="user-about__username">Museop Kim</span>
+      </div>
     </UserBlock>
   );
 };
 
 const UserBlock = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
-  margin-top: 1.5rem;
+  margin-top: 3.5rem;
 
-  .user-image {
+  .created-time {
+    margin-top: 1.2rem;
+    font-size: 0.8rem;
+    opacity: 0.6;
+  }
+
+  .user-about {
+    display: flex;
+    align-items: center;
+  }
+
+  .user-about__image {
     width: 4.2rem;
     height: 4.2rem;
     border-radius: 50%;
     box-shadow: 0px 3px 8px 1px rgba(0, 0, 0, 0.5);
   }
 
-  .username {
+  .user-about__username {
     margin-left: 1rem;
     font-size: 1.2rem;
     font-weight: 500;
