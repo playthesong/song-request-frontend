@@ -14,7 +14,7 @@ const ModalTemplateBlock = styled.div`
   top: 0;
   left: 0;
   z-index: 99;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
 `;
 
 export default ModalTemplate;

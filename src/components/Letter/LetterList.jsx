@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import useDetails from "../../hooks/useDetails";
 import Letter from "./Letter";
 import LetterDetails from "./LetterDetails";
 
