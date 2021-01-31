@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { MdMoreHoriz } from "react-icons/md";
+import { TiEdit, TiDeleteOutline } from "react-icons/ti";
 import ModalTemplate from "../../Modal/ModalTemplate";
 import Song from "./Song";
 import SongStory from "./SongStory";
@@ -8,40 +9,97 @@ import User from "./User";
 
 const LetterDetails = ({
   activatedId: isActivated,
+  onCancel,
   id,
   songStory,
   song,
   account
 }) => {
+  const [openMenu, setOpenMenu] = useState(false);
+
   return (
     <ModalTemplate isActivated={isActivated}>
       <LetterDetailsBlock>
-        <HiddenMenu>
-          <MenuButton />
-        </HiddenMenu>
+        <MenuButton onClick={() => setOpenMenu(!openMenu)} />
+        {openMenu && (
+          <Menu>
+            <li className="menu__item">
+              <TiEdit className="menu__icon edit" />{" "}
+              <span className="menu__name">수정</span>
+            </li>
+            <li className="menu__item">
+              <TiDeleteOutline className="menu__icon delete" />{" "}
+              <span className="menu__name">삭제</span>
+            </li>
+          </Menu>
+        )}
         <Song />
         <SongStory />
         <User />
-        <CloseButton>닫기</CloseButton>
+        <CloseButton onClick={() => onCancel()}>닫기</CloseButton>
       </LetterDetailsBlock>
     </ModalTemplate>
   );
 };
 
-const MenuButton = styled(MdMoreHoriz)``;
-
-const HiddenMenu = styled.div`
+const MenuButton = styled(MdMoreHoriz)`
   visibility: hidden;
+  opacity: 0;
   position: absolute;
-  bottom: 92%;
-  left: 90%;
+  bottom: 93%;
+  right: 3%;
   cursor: pointer;
+  font-size: 2.1rem;
+  color: gray;
+  transition: 0.7s;
+`;
 
-  ${MenuButton} {
-    font-size: 2.1rem;
-    color: gray;
-    opacity: 0;
-    transition: 0.7s;
+const Menu = styled.ul`
+  border: 1px solid rgba(0, 0, 0, 0.11);
+  border-radius: 0.35rem;
+  position: absolute;
+  bottom: 77%;
+  right: 4.5%;
+  width: 5.5rem;
+  box-shadow: 7px 5px 30px 3px rgba(0, 0, 0, 0.15);
+
+  .menu__item {
+    padding: 0.7rem 0.3rem;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &:hover {
+      &,
+      .menu__icon,
+      .menu__name {
+        opacity: 1;
+        background-color: #e64980;
+        color: #fff;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .menu__icon {
+    font-size: 1.8rem;
+    opacity: 0.5;
+  }
+
+  .menu__icon.edit {
+    color: #1098ad;
+  }
+
+  .menu__icon.delete {
+    color: #a61e4d;
+  }
+
+  .menu__name {
+    font-size: 1.25rem;
+    line-height: 1.77rem;
+    margin-left: 0.37rem;
+    opacity: 0.7;
   }
 `;
 
@@ -78,12 +136,9 @@ const LetterDetailsBlock = styled.div`
   padding: 4.5rem 4.5rem 6rem 4.5rem;
 
   &:hover {
-    ${HiddenMenu} {
+    & ${MenuButton} {
       visibility: visible;
-
-      & ${MenuButton} {
-        opacity: 1;
-      }
+      opacity: 1;
     }
     ${CloseButton} {
       opacity: 1;

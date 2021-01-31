@@ -15,10 +15,9 @@ const LetterList = ({ letters, activatedId, onActivate, onCancel }) => {
           songStory={letter.songStory}
           createdDateTime={letter.createdDateTime}
           onActivate={onActivate}
-          onCancel={onCancel}
         />
       ))}
-      <LetterDetails activatedId={activatedId} />
+      <LetterDetails activatedId={activatedId} onCancel={onCancel} />
     </LetterListBlock>
   );
 };
