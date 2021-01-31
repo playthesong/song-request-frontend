@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Letter from "./Letter";
-import LetterDetails from "./LetterDetails";
+import LetterDetails from "./LetterDetails/LetterDetails";
 
 const LetterList = ({ letters, activatedId, onActivate, onCancel }) => {
   return (
