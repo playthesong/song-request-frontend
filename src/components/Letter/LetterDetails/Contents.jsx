@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import LetterDetailsButton from "./LetterDetailsButton";
 import Song from "./Song";
 import SongStory from "./SongStory";
 import User from "./User";
@@ -15,10 +16,10 @@ const ContentsBlock = ({
 }) => {
   return (
     <>
-      <Song song={song} />
-      <SongStory songStory={songStory} />
+      <Song song={song} isEdit={isEdit} />
+      <SongStory songStory={songStory} isEdit={isEdit} />
       <User user={user} createdDateTime={createdDateTime} />
-      <CloseButton onClick={() => onCloseModal()}>CLOSE</CloseButton>
+      <LetterDetailsButton onCloseModal={onCloseModal} isEdit={isEdit} />
     </>
   );
 };
@@ -31,13 +32,14 @@ const ContentsForm = ({ children }) => {
   return <form>{children}</form>;
 };
 
-const Contents = ({ id, song, songStory, user, isEdit, onCloseModal }) => {
+const Contents = ({ id, song, songStory, user, onCloseModal, isEdit }) => {
   const contentsBlock = (
     <ContentsBlock
       id={id}
       song={song}
       songStory={songStory}
       user={user}
+      onCloseModal={onCloseModal}
       isEdit={isEdit}
     />
   );
@@ -48,23 +50,5 @@ const Contents = ({ id, song, songStory, user, isEdit, onCloseModal }) => {
     <ContentsDiv>{contentsBlock}</ContentsDiv>
   );
 };
-
-const CloseButton = styled.button`
-  visibility: hidden;
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 3.3rem;
-  bottom: 0;
-  left: 0;
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.1rem;
-  background-color: #f06595;
-  border: none;
-  cursor: pointer;
-  transition: 0.7s;
-  outline: none;
-`;
 
 export default Contents;

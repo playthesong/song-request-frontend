@@ -1,7 +1,7 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const Song = ({ song }) => {
+const Song = ({ song, isEdit }) => {
   const { title, artist, imageUrl } = song;
   return (
     <SongBlock>
@@ -9,16 +9,75 @@ const Song = ({ song }) => {
       <div className="song-about">
         <div className="song-about__column">
           <div className="song-about__column-name">TITLE</div>
-          <span className="song-about__title">{title}</span>
+          {isEdit ? (
+            <input
+              type="text"
+              className="song-about__title-input"
+              maxLength="21"
+              placeholder="노래 제목을 입력 해주세요."
+              value={title}
+              required
+            />
+          ) : (
+            <span className="song-about__title">{title}</span>
+          )}
         </div>
         <div className="song-about__column">
           <div className="song-about__column-name">ARTIST</div>
-          <span className="song-about__artist">{artist}</span>
+          {isEdit ? (
+            <input
+              type="text"
+              className="song-about__artist-input"
+              maxLength="15"
+              placeholder="가수 이름을 입력 해주세요."
+              value={artist}
+              required
+            />
+          ) : (
+            <span className="song-about__artist">{artist}</span>
+          )}
         </div>
       </div>
     </SongBlock>
   );
 };
+
+const TitleCommonStyles = css`
+  font-size: 1.2rem;
+  font-weight: 500;
+  height: 1.445rem;
+  padding: 0.38rem 0rem 0.3rem 0.1rem;
+`;
+
+const ArtistCommonStyles = css`
+  opacity: 0.8;
+  font-size: 1.2rem;
+  height: 1.445rem;
+  padding: 0.38rem 0.1rem 0.3rem 0.1rem;
+`;
+
+const InputCommonStyles = css`
+  /* box-sizing: border-box; */
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  color: #27273e;
+  opacity: 0.8;
+  padding: 0.2rem 0.09rem 0.37rem 0.1rem;
+  background-color: #fbfbfd;
+  border-bottom: 1.5px solid rgba(0, 0, 0, 0.2);
+
+  &:focus {
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+
+  &::placeholder {
+    font-size: 1.2rem;
+    opacity: 0.7;
+  }
+`;
 
 const SongBlock = styled.div`
   display: flex;
@@ -54,14 +113,20 @@ const SongBlock = styled.div`
     color: #d6336c;
   }
 
+  .song-about__title-input {
+    ${InputCommonStyles}
+  }
+
+  .song-about__artist-input {
+    ${InputCommonStyles}
+  }
+
   .song-about__title {
-    font-size: 1.3rem;
-    font-weight: 500;
+    ${TitleCommonStyles}
   }
 
   .song-about__artist {
-    opacity: 0.8;
-    font-size: 1.2rem;
+    ${ArtistCommonStyles}
   }
 `;
 

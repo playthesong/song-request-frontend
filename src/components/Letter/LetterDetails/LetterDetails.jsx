@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { MdMoreHoriz } from "react-icons/md";
 import { TiEdit, TiDeleteOutline } from "react-icons/ti";
@@ -9,6 +9,10 @@ const LetterDetails = ({ letter, isOpened, onCloseModal }) => {
   const { id, song, songStory, createdDateTime, user } = letter;
   const [openMenu, setOpenMenu] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
+
+  // useEffect(() => {
+  //   setIsEdit(false);
+  // }, [setIsEdit]);
 
   return (
     <ModalTemplate isOpened={isOpened}>
@@ -34,8 +38,8 @@ const LetterDetails = ({ letter, isOpened, onCloseModal }) => {
           songStory={songStory}
           createdDateTime={createdDateTime}
           user={user}
-          isEdit={isEdit}
           onCloseModal={onCloseModal}
+          isEdit={isEdit}
         />
       </LetterDetailsBlock>
     </ModalTemplate>

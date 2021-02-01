@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const SongStory = ({ songStory }) => {
+const SongStory = ({ songStory, isEdit }) => {
   return <SongStoryBlock>{songStory}</SongStoryBlock>;
 };
 
