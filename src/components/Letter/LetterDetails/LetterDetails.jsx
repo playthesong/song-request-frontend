@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { MdMoreHoriz } from "react-icons/md";
 import { TiEdit, TiDeleteOutline } from "react-icons/ti";
 import ModalTemplate from "../../Modal/ModalTemplate";
-import Song from "./Song";
-import SongStory from "./SongStory";
-import User from "./User";
+import Contents from "./Contents";
 
 const LetterDetails = ({ letter, isOpened, onCloseModal }) => {
+  const { id, song, songStory, createdDateTime, user } = letter;
   const [openMenu, setOpenMenu] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
 
   return (
     <ModalTemplate isOpened={isOpened}>
@@ -18,7 +18,9 @@ const LetterDetails = ({ letter, isOpened, onCloseModal }) => {
           <Menu>
             <li className="menu__item">
               <TiEdit className="menu__icon edit" />{" "}
-              <span className="menu__name">수정</span>
+              <span className="menu__name" onClick={() => setIsEdit(true)}>
+                수정
+              </span>
             </li>
             <li className="menu__item">
               <TiDeleteOutline className="menu__icon delete" />{" "}
@@ -26,10 +28,15 @@ const LetterDetails = ({ letter, isOpened, onCloseModal }) => {
             </li>
           </Menu>
         )}
-        <Song song={letter.song} />
-        <SongStory songStory={letter.songStory} />
-        <User user={letter.user} createdDateTime={letter.createdDateTime} />
-        <CloseButton onClick={() => onCloseModal()}>CLOSE</CloseButton>
+        <Contents
+          id={id}
+          song={song}
+          songStory={songStory}
+          createdDateTime={createdDateTime}
+          user={user}
+          isEdit={isEdit}
+          onCloseModal={onCloseModal}
+        />
       </LetterDetailsBlock>
     </ModalTemplate>
   );
@@ -96,24 +103,6 @@ const Menu = styled.ul`
   }
 `;
 
-const CloseButton = styled.button`
-  visibility: hidden;
-  opacity: 0;
-  position: absolute;
-  width: 100%;
-  height: 3.3rem;
-  bottom: 0;
-  left: 0;
-  color: #fff;
-  font-weight: 600;
-  font-size: 1.1rem;
-  background-color: #f06595;
-  border: none;
-  cursor: pointer;
-  transition: 0.7s;
-  outline: none;
-`;
-
 const LetterDetailsBlock = styled.div`
   position: absolute;
   top: 50%;
@@ -132,10 +121,6 @@ const LetterDetailsBlock = styled.div`
     & ${MenuButton} {
       visibility: visible;
       opacity: 1;
-    }
-    ${CloseButton} {
-      opacity: 1;
-      visibility: visible;
     }
   }
 `;
