@@ -1,20 +1,20 @@
 import React from "react";
 import styled from "styled-components";
-import MainTemplate from "../Main/MainTemplate";
-import LetterListContainer from "../../containers/LetterListContainer";
+import MainTemplate from "../components/Main/MainTemplate";
+import LetterListContainer from "../containers/LetterListContainer";
 
-const SongRequest = () => {
+const Letters = () => {
   return (
     <MainTemplate>
-      <SongRequestBlock>
+      <LettersBlock>
         <ListTitle>신청 대기중</ListTitle>
         <LetterListContainer />
-      </SongRequestBlock>
+      </LettersBlock>
     </MainTemplate>
   );
 };
 
-const SongRequestBlock = styled.div``;
+const LettersBlock = styled.div``;
 
 const ListTitle = styled.h2`
   display: inline-block;
@@ -24,4 +24,4 @@ const ListTitle = styled.h2`
   border-bottom: 2px solid #f06595;
 `;
 
-export default SongRequest;
+export default Letters;

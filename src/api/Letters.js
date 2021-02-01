@@ -8,6 +8,6 @@ export const getLetters = async () => {
 };
 
 export const getLetterById = async id => {
-  await sleep(500);
+  await sleep(100);
   return letters.find(letter => letter.id === id);
 };

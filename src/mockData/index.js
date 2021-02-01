@@ -1,6 +1,6 @@
 const userData = {
   id: 1,
-  name: "Museop Kim",
+  username: "Museop Kim",
   avatarUrl:
     "https://avatars.githubusercontent.com/u/49878687?s=460&u=e739e45e9f39b5200339cca6dc293f934fa03bc0&v=4"
 };
