@@ -66,11 +66,14 @@ const InputCommonStyles = css`
   padding: 0.2rem 0.09rem 0.37rem 0.1rem;
   background-color: #fbfbfd;
   border-bottom: 1.5px solid rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
 
   &:focus {
     &::placeholder {
       opacity: 0;
     }
+
+    border-bottom: 1.5px solid rgba(250, 162, 193, 0.5);
   }
 
   &::placeholder {

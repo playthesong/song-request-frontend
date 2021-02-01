@@ -62,10 +62,10 @@ const Menu = styled.ul`
   border: 1px solid rgba(0, 0, 0, 0.11);
   border-radius: 0.35rem;
   position: absolute;
-  bottom: 77%;
-  right: 4.5%;
+  bottom: 78.7%;
+  right: 4.9%;
   width: 5.5rem;
-  box-shadow: 7px 5px 30px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 7px 3px 30px 1px rgba(3, 3, 3, 0.1);
 
   .menu__item {
     padding: 0.7rem 0.3rem;
