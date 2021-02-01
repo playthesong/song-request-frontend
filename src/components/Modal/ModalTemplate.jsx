@@ -2,9 +2,19 @@ import React from "react";
 import styled from "styled-components";
 
 const ModalTemplate = ({ children, isActivated }) => {
-  return isActivated ? (
-    <ModalTemplateBlock>{children}</ModalTemplateBlock>
-  ) : null;
+  const activateModal = () => {
+    document.body.style.overflow = "hidden";
+    document.body.scroll = "no";
+    return <ModalTemplateBlock>{children}</ModalTemplateBlock>;
+  };
+
+  const deActivateModal = () => {
+    document.body.style.overflow = "scroll";
+    document.body.scroll = "yes";
+    return null;
+  };
+
+  return isActivated ? activateModal() : deActivateModal();
 };
 
 const ModalTemplateBlock = styled.div`
