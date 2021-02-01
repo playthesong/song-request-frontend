@@ -2,34 +2,36 @@ import React from "react";
 import styled from "styled-components";
 
 const Letter = ({
+  id,
   user,
   song,
   songStory,
   createdDateTime,
-  onActivate,
-  onCancel
+  onOpenModal
 }) => {
-  const { name, avatarUrl } = user;
-  const { id, title, artist, imageUrl } = song;
+  const { username, avatarUrl } = user;
+  const { title, artist, imageUrl } = song;
 
   return (
-    <LetterBlock onClick={() => onActivate(id)}>
-      <SongBlock>
-        <img src={imageUrl} alt="ALBUM IMAGE" className="album-image" />
-        <div className="song-about">
-          <span className="song-about__title">{title}</span>
-          <span className="song-about__artist">{artist}</span>
-        </div>
-      </SongBlock>
-      <SongStory>{songStory}</SongStory>
-      <UserBlock>
-        <div className="created-time">{createdDateTime}</div>
-        <div className="user-about">
-          <img src={avatarUrl} className="user-about__avatar" />
-          <span className="user-about__name">{name}</span>
-        </div>
-      </UserBlock>
-    </LetterBlock>
+    <>
+      <LetterBlock onClick={() => onOpenModal(id)}>
+        <SongBlock>
+          <img src={imageUrl} alt="ALBUM IMAGE" className="album-image" />
+          <div className="song-about">
+            <span className="song-about__title">{title}</span>
+            <span className="song-about__artist">{artist}</span>
+          </div>
+        </SongBlock>
+        <SongStory>{songStory}</SongStory>
+        <UserBlock>
+          <div className="created-time">{createdDateTime}</div>
+          <div className="user-about">
+            <img src={avatarUrl} className="user-about__avatar" />
+            <span className="user-about__name">{username}</span>
+          </div>
+        </UserBlock>
+      </LetterBlock>
+    </>
   );
 };
 

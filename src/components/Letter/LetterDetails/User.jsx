@@ -1,16 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 
-const User = () => {
+const User = ({ user, createdDateTime }) => {
+  const { username, avatarUrl } = user;
   return (
     <UserBlock>
-      <span className="created-time">2021년 2월 1일 1시 59분</span>
+      <span className="created-time">{createdDateTime}</span>
       <div className="user-about">
-        <img
-          src="https://avatars.githubusercontent.com/u/49878687?s=460&u=e739e45e9f39b5200339cca6dc293f934fa03bc0&v=4"
-          className="user-about__image"
-        />
-        <span className="user-about__username">Museop Kim</span>
+        <img src={avatarUrl} className="user-about__image" />
+        <span className="user-about__username">{username}</span>
       </div>
     </UserBlock>
   );

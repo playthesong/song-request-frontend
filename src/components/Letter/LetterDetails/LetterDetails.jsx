@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { MdMoreHoriz } from "react-icons/md";
 import { TiEdit, TiDeleteOutline } from "react-icons/ti";
@@ -7,18 +7,11 @@ import Song from "./Song";
 import SongStory from "./SongStory";
 import User from "./User";
 
-const LetterDetails = ({
-  activatedId: isActivated,
-  onCancel,
-  id,
-  songStory,
-  song,
-  account
-}) => {
+const LetterDetails = ({ letter, isOpened, onCloseModal }) => {
   const [openMenu, setOpenMenu] = useState(false);
 
   return (
-    <ModalTemplate isActivated={isActivated}>
+    <ModalTemplate isOpened={isOpened}>
       <LetterDetailsBlock>
         <MenuButton onClick={() => setOpenMenu(!openMenu)} />
         {openMenu && (
@@ -33,10 +26,10 @@ const LetterDetails = ({
             </li>
           </Menu>
         )}
-        <Song />
-        <SongStory />
-        <User />
-        <CloseButton onClick={() => onCancel()}>CLOSE</CloseButton>
+        <Song song={letter.song} />
+        <SongStory songStory={letter.songStory} />
+        <User user={letter.user} createdDateTime={letter.createdDateTime} />
+        <CloseButton onClick={() => onCloseModal()}>CLOSE</CloseButton>
       </LetterDetailsBlock>
     </ModalTemplate>
   );
@@ -128,7 +121,7 @@ const LetterDetailsBlock = styled.div`
   transform: translate(-50%, -50%);
   width: 38rem;
   min-height: 35vh;
-  box-shadow: 0px 3px 15px 1px rgba(0, 0, 0, 0.5);
+  box-shadow: 3px -3px 5px 1px rgba(253, 253, 253, 0.03);
   background-color: #fbfbfd;
   display: flex;
   flex-direction: column;

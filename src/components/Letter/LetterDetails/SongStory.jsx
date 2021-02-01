@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const SongStory = () => {
-  return <SongStoryBlock>사연 입니다.</SongStoryBlock>;
+const SongStory = ({ songStory }) => {
+  return <SongStoryBlock>{songStory}</SongStoryBlock>;
 };
 
 const SongStoryBlock = styled.p`

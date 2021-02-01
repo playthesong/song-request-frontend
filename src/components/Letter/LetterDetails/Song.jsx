@@ -1,21 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 
-const Song = () => {
+const Song = ({ song }) => {
+  const { title, artist, imageUrl } = song;
   return (
     <SongBlock>
-      <img
-        src="http://i.maniadb.com/images/album/742/742576_1_f.jpg"
-        className="song-image"
-      />
+      <img src={imageUrl} className="song-image" />
       <div className="song-about">
         <div className="song-about__column">
           <div className="song-about__column-name">TITLE</div>
-          <span className="song-about__title">밤편지</span>
+          <span className="song-about__title">{title}</span>
         </div>
         <div className="song-about__column">
           <div className="song-about__column-name">ARTIST</div>
-          <span className="song-about__artist">아이유</span>
+          <span className="song-about__artist">{artist}</span>
         </div>
       </div>
     </SongBlock>

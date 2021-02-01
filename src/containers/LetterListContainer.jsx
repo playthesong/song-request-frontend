@@ -2,12 +2,12 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getLetters } from "../modules/letters";
 import LetterList from "../components/Letter/LetterList";
-import useDetails from "../hooks/useDetails";
+import useModal from "../hooks/useModal";
 
 const LetterListContainer = () => {
   const { data: letters, loading, error } = useSelector(state => state.letters);
   const dispatch = useDispatch();
-  const [activatedId, onActivate, onCancel] = useDetails(null);
+  const [openedId, onOpenModal, onCloseModal] = useModal(null);
 
   useEffect(() => {
     dispatch(getLetters());
@@ -28,9 +28,9 @@ const LetterListContainer = () => {
   return (
     <LetterList
       letters={letters}
-      activatedId={activatedId}
-      onActivate={onActivate}
-      onCancel={onCancel}
+      openedId={openedId}
+      onOpenModal={onOpenModal}
+      onCloseModal={onCloseModal}
     />
   );
 };

@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import LetterDetailsContainer from "../../containers/LetterDetailsContainer";
 import Letter from "./Letter";
-import LetterDetails from "./LetterDetails/LetterDetails";
 
-const LetterList = ({ letters, activatedId, onActivate, onCancel }) => {
+const LetterList = ({ letters, openedId, onOpenModal, onCloseModal }) => {
   return (
     <LetterListBlock>
       {letters.map(letter => (
@@ -14,10 +14,10 @@ const LetterList = ({ letters, activatedId, onActivate, onCancel }) => {
           song={letter.song}
           songStory={letter.songStory}
           createdDateTime={letter.createdDateTime}
-          onActivate={onActivate}
+          onOpenModal={onOpenModal}
         />
       ))}
-      <LetterDetails activatedId={activatedId} onCancel={onCancel} />
+      <LetterDetailsContainer openedId={openedId} onCloseModal={onCloseModal} />
     </LetterListBlock>
   );
 };
