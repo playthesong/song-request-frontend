@@ -4,6 +4,7 @@ import styled, { css } from "styled-components";
 const LetterDetailsButton = ({ id, onCloseModal, isEdit }) => {
   const onEdit = event => {
     event.preventDefault();
+    onCloseModal();
   };
 
   if (isEdit) {

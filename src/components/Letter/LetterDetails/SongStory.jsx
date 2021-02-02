@@ -47,7 +47,7 @@ const Textarea = styled(TextareaAutosize)`
 
   &:focus {
     & + .bottom-line {
-      background-color: #ffdeeb;
+      background-color: rgba(230, 73, 128, 0.7);
     }
   }
 `;

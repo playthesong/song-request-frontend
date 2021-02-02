@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import useForm from "../../../hooks/useForm";
 import LetterDetailsButton from "./LetterDetailsButton";
 import Song from "./Song";
 import SongStory from "./SongStory";
@@ -13,41 +14,42 @@ const ContentsForm = ({ children }) => {
   return <form>{children}</form>;
 };
 
-const ContentsBlock = ({
+const Contents = ({
   id,
   song,
   songStory,
   user,
   createdDateTime,
-  isEdit,
-  onCloseModal
+  onCloseModal,
+  isEdit
 }) => {
-  return (
+  const { title, artist, imageUrl } = song;
+  const [form, onChange, onClear] = useForm({
+    title,
+    artist,
+    imageUrl,
+    songStory
+  });
+
+  const contentsBlock = (
     <>
-      <Song song={song} isEdit={isEdit} />
-      <SongStory songStory={songStory} isEdit={isEdit} />
+      <Song song={song} form={form} onChange={onChange} isEdit={isEdit} />
+      <SongStory
+        songStory={songStory}
+        form={form}
+        onChange={onChange}
+        isEdit={isEdit}
+      />
       <User user={user} createdDateTime={createdDateTime} />
       <LetterDetailsButton
         id={id}
         onCloseModal={onCloseModal}
+        form={form}
+        onChange={onChange}
         isEdit={isEdit}
       />
     </>
   );
-};
-
-const Contents = ({ id, song, songStory, user, onCloseModal, isEdit }) => {
-  const contentsBlock = (
-    <ContentsBlock
-      id={id}
-      song={song}
-      songStory={songStory}
-      user={user}
-      onCloseModal={onCloseModal}
-      isEdit={isEdit}
-    />
-  );
-
   return isEdit ? (
     <ContentsForm>{contentsBlock}</ContentsForm>
   ) : (

@@ -1,10 +1,12 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const Song = ({ song, isEdit }) => {
+const Song = ({ song, form, onChange, isEdit }) => {
   const { title, artist, imageUrl } = song;
+  console.log(form);
   return (
     <SongBlock>
+      {isEdit && <input type="hidden" name="imageUrl" value={imageUrl} />}
       <img src={imageUrl} className="song-image" />
       <div className="song-about">
         <div className="song-about__column">
@@ -13,9 +15,12 @@ const Song = ({ song, isEdit }) => {
             <input
               type="text"
               className="song-about__title-input"
-              maxLength="21"
+              maxLength="30"
               placeholder="노래 제목을 입력 해주세요."
-              value={title}
+              name="title"
+              onChange={onChange}
+              value={form[title]}
+              defaultValue={title}
               required
             />
           ) : (
@@ -30,7 +35,10 @@ const Song = ({ song, isEdit }) => {
               className="song-about__artist-input"
               maxLength="15"
               placeholder="가수 이름을 입력 해주세요."
-              value={artist}
+              name="artist"
+              onChange={onChange}
+              value={form[artist]}
+              defaultValue={artist}
               required
             />
           ) : (
@@ -73,7 +81,7 @@ const InputCommonStyles = css`
       opacity: 0;
     }
 
-    border-bottom: 1.5px solid rgba(250, 162, 193, 0.5);
+    border-bottom: 1.5px solid rgba(230, 73, 128, 0.7);
   }
 
   &::placeholder {
