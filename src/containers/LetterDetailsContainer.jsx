@@ -6,6 +6,7 @@ import LetterDetails from "../components/Letter/LetterDetails/LetterDetails";
 const LetterDetailsContainer = ({ openedId, onCloseModal }) => {
   const { data: letter, loading, error } = useSelector(state => state.letter);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(getLetterById(openedId));
   }, [openedId, dispatch]);

@@ -5,6 +5,14 @@ import Song from "./Song";
 import SongStory from "./SongStory";
 import User from "./User";
 
+const ContentsDiv = ({ children }) => {
+  return <div>{children}</div>;
+};
+
+const ContentsForm = ({ children }) => {
+  return <form>{children}</form>;
+};
+
 const ContentsBlock = ({
   id,
   song,
@@ -19,17 +27,13 @@ const ContentsBlock = ({
       <Song song={song} isEdit={isEdit} />
       <SongStory songStory={songStory} isEdit={isEdit} />
       <User user={user} createdDateTime={createdDateTime} />
-      <LetterDetailsButton onCloseModal={onCloseModal} isEdit={isEdit} />
+      <LetterDetailsButton
+        id={id}
+        onCloseModal={onCloseModal}
+        isEdit={isEdit}
+      />
     </>
   );
-};
-
-const ContentsDiv = ({ children }) => {
-  return <div>{children}</div>;
-};
-
-const ContentsForm = ({ children }) => {
-  return <form>{children}</form>;
 };
 
 const Contents = ({ id, song, songStory, user, onCloseModal, isEdit }) => {

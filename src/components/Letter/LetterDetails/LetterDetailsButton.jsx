@@ -1,11 +1,19 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const LetterDetailsButton = ({ onCloseModal, isEdit }) => {
+const LetterDetailsButton = ({ id, onCloseModal, isEdit }) => {
+  const onEdit = event => {
+    event.preventDefault();
+  };
+
   if (isEdit) {
-    return <SubmitButton>EDIT</SubmitButton>;
+    return (
+      <SubmitButton type="submit" onClick={onEdit}>
+        EDIT
+      </SubmitButton>
+    );
   }
-  return <CloseButton onClick={() => onCloseModal()}>CLOSE</CloseButton>;
+  return <CloseButton onClick={onCloseModal}>CLOSE</CloseButton>;
 };
 
 const CommonStyles = css`

@@ -11,7 +11,7 @@ const SongStory = ({ songStory, isEdit }) => {
       </>
     );
   }
-  return <SongStoryBlock>사연입니다.</SongStoryBlock>;
+  return <SongStoryBlock>{songStory}</SongStoryBlock>;
 };
 
 const CommonSongStoryStyles = css`

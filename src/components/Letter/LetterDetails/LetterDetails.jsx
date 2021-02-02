@@ -10,9 +10,15 @@ const LetterDetails = ({ letter, isOpened, onCloseModal }) => {
   const [openMenu, setOpenMenu] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
 
-  // useEffect(() => {
-  //   setIsEdit(false);
-  // }, [setIsEdit]);
+  const changeToEdit = () => {
+    setIsEdit(true);
+    setOpenMenu(!openMenu);
+  };
+
+  useEffect(() => {
+    setOpenMenu(false);
+    setIsEdit(false);
+  }, [setOpenMenu, setIsEdit]);
 
   return (
     <ModalTemplate isOpened={isOpened}>
@@ -22,7 +28,7 @@ const LetterDetails = ({ letter, isOpened, onCloseModal }) => {
           <Menu>
             <li className="menu__item">
               <TiEdit className="menu__icon edit" />{" "}
-              <span className="menu__name" onClick={() => setIsEdit(true)}>
+              <span className="menu__name" onClick={changeToEdit}>
                 수정
               </span>
             </li>
