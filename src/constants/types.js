@@ -1,0 +1,4 @@
+export const LETTER_FORM = {
+  WRITE: "LETTER_FORM_WRITE",
+  EDIT: "LETTER_FORM_EDIT"
+};
