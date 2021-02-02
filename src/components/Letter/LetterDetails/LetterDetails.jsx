@@ -26,11 +26,9 @@ const LetterDetails = ({ letter, isOpened, onCloseModal }) => {
         <MenuButton onClick={() => setOpenMenu(!openMenu)} />
         {openMenu && (
           <Menu>
-            <li className="menu__item">
+            <li className="menu__item" onClick={changeToEdit}>
               <TiEdit className="menu__icon edit" />{" "}
-              <span className="menu__name" onClick={changeToEdit}>
-                수정
-              </span>
+              <span className="menu__name">수정</span>
             </li>
             <li className="menu__item">
               <TiDeleteOutline className="menu__icon delete" />{" "}
@@ -68,7 +66,7 @@ const Menu = styled.ul`
   border: 1px solid rgba(0, 0, 0, 0.11);
   border-radius: 0.35rem;
   position: absolute;
-  bottom: 78.7%;
+  bottom: 77.7%;
   right: 4.9%;
   width: 5.5rem;
   box-shadow: 7px 3px 30px 1px rgba(3, 3, 3, 0.1);
