@@ -7,44 +7,19 @@ import SongArticleName from "../LetterModal/LetterModalSong/SongArticleName";
 import SongImage from "../LetterModal/LetterModalSong/SongImage";
 import SongInput from "../LetterModal/LetterModalSong/SongInput";
 
-const LetterDetailsSong = ({ song, form, onChange, isForm }) => {
+const LetterDetailsSong = ({ song }) => {
   const { title, artist, imageUrl } = song;
   return (
     <LetterModalSong>
-      {isForm && <input type="hidden" name="imageUrl" value={imageUrl} />}
       <SongImage imageUrl={imageUrl} />
       <SongAbout>
         <SongArticle>
           <SongArticleName articleName={"TITLE"} />
-          {isForm ? (
-            <SongInput
-              maxLength={"30"}
-              placeholder={"노래 제목을 입력 해주세요."}
-              name={"title"}
-              onChange={onChange}
-              value={form[title]}
-              defaultValue={title}
-              required
-            />
-          ) : (
-            <SongArticleItem articleName={"TITLE"} itemName={title} />
-          )}
+          <SongArticleItem articleName={"TITLE"} item={title} />
         </SongArticle>
         <SongArticle>
           <SongArticleName articleName={"ARTIST"} />
-          {isForm ? (
-            <SongInput
-              maxLength={"15"}
-              placeholder={"가수 이름을 입력 해주세요."}
-              name={"artist"}
-              onChange={onChange}
-              value={form[artist]}
-              defaultValue={artist}
-              required
-            />
-          ) : (
-            <SongArticleItem articleName={"ARTIST"} itemName={artist} />
-          )}
+          <SongArticleItem articleName={"ARTIST"} item={artist} />
         </SongArticle>
       </SongAbout>
     </LetterModalSong>

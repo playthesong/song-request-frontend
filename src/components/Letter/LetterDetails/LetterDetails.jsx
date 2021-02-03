@@ -9,64 +9,33 @@ import LetterModalTemplate from "../LetterModal/LetterModalTemplate";
 import LetterDetailsUser from "./LetterDetailsUser";
 import LetterModalDiv from "../LetterModal/LetterModalContents/LetterModalDiv";
 import LetterDetailsHiddenMenuButton from "./LetterDetailsHiddenMenuButton";
+import LetterDetailsButton from "./LetterDetailsButton";
 
-const LetterDetails = ({ letter, isOpened, onCloseModal }) => {
+const LetterDetails = ({
+  letter,
+  isOpened,
+  onCloseModal,
+  changeToForm,
+  changeToRead,
+  openMenu,
+  toggleMenu,
+  visible,
+  onVisible,
+  onInvisible
+}) => {
   const { id, song, songStory, createdDateTime, user } = letter;
-  const { title, artist, imageUrl } = song;
-  const [openMenu, setOpenMenu] = useState(false);
-  const [isForm, setIsForm] = useState(false);
-  const [visible, setVisible] = useState(false);
-
-  const [form, onChange, onClear] = useForm({
-    title,
-    artist,
-    imageUrl
-  });
-
-  const changeToForm = () => {
-    setIsForm(true);
-    setOpenMenu(!openMenu);
-  };
-
-  useEffect(() => {
-    setOpenMenu(false);
-    setIsForm(false);
-  }, [setOpenMenu, setIsForm]);
 
   return (
     <ModalTemplate isOpened={isOpened}>
-      <LetterModalTemplate
-        onMouseEnter={() => setVisible(true)}
-        onMouseLeave={() => setVisible(false)}
-      >
-        <LetterDetailsHiddenMenuButton
-          visible={visible}
-          onClick={() => setOpenMenu(!openMenu)}
-        />
+      <LetterModalTemplate onMouseEnter={onVisible} onMouseLeave={onInvisible}>
+        <LetterDetailsHiddenMenuButton visible={visible} onClick={toggleMenu} />
         {openMenu && <LetterDetailsHiddenMenu changeToForm={changeToForm} />}
-        {isForm ? (
-          <LetterModalForm>
-            <LetterDetailsSong
-              song={song}
-              onChange={onChange}
-              form={form}
-              isForm={isForm}
-            />
-            <LetterDetailsSongStory songStory={songStory} isForm={isForm} />
-            <LetterDetailsUser user={user} createdDateTime={createdDateTime} />
-          </LetterModalForm>
-        ) : (
-          <LetterModalDiv>
-            <LetterDetailsSong
-              song={song}
-              onChange={onChange}
-              form={form}
-              isForm={isForm}
-            />
-            <LetterDetailsSongStory songStory={songStory} isForm={isForm} />
-            <LetterDetailsUser user={user} createdDateTime={createdDateTime} />
-          </LetterModalDiv>
-        )}
+        <LetterModalDiv>
+          <LetterDetailsSong song={song} />
+          <LetterDetailsSongStory songStory={songStory} />
+          <LetterDetailsUser user={user} createdDateTime={createdDateTime} />
+          <LetterDetailsButton onClick={onCloseModal} />
+        </LetterModalDiv>
       </LetterModalTemplate>
     </ModalTemplate>
   );
