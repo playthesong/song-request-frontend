@@ -4,8 +4,10 @@ const useForm = (initialForm = {}) => {
   const [form, setForm] = useState(initialForm);
 
   const onChange = event => {
-    form[event.target.name] = event.target.value;
-    console.log(form);
+    setForm({
+      ...form,
+      [event.target.name]: event.target.value
+    });
   };
 
   const onClear = () => {

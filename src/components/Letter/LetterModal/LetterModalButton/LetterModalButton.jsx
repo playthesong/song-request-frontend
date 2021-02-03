@@ -1,12 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
-const LetterModalButton = ({ buttonType, buttonText, onClick }) => {
-  return (
-    <StyledButton type={buttonType} onClick={onClick}>
-      {buttonTexT}
-    </StyledButton>
-  );
+const LetterModalButton = ({ children, onClick }) => {
+  return <StyledButton onClick={onClick}>{children}</StyledButton>;
 };
 
 const StyledButton = styled.button`

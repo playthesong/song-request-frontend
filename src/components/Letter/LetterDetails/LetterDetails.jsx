@@ -1,35 +1,28 @@
 import React, { useEffect, useState } from "react";
 import ModalTemplate from "../../Modal/ModalTemplate";
-import LetterDetailsHiddenMenu from "./LetterDetailsHiddenMenu";
-import LetterModalForm from "../LetterModal/LetterModalContents/LetterModalForm";
 import LetterDetailsSong from "./LetterDetailsSong";
 import LetterDetailsSongStory from "./LetterDetailsSongStory";
-import useForm from "../../../hooks/useForm";
 import LetterModalTemplate from "../LetterModal/LetterModalTemplate";
 import LetterDetailsUser from "./LetterDetailsUser";
 import LetterModalDiv from "../LetterModal/LetterModalContents/LetterModalDiv";
-import LetterDetailsHiddenMenuButton from "./LetterDetailsHiddenMenuButton";
 import LetterDetailsButton from "./LetterDetailsButton";
+import LetterDetailsHiddenMenu from "./LetterDetailsHiddenMenu";
+import useMouseEnter from "../../../hooks/useMouseOver";
 
-const LetterDetails = ({
-  letter,
-  isOpened,
-  onCloseModal,
-  changeToForm,
-  changeToRead,
-  openMenu,
-  toggleMenu,
-  visible,
-  onVisible,
-  onInvisible
-}) => {
-  const { id, song, songStory, createdDateTime, user } = letter;
+const LetterDetails = ({ letter, isOpened, onCloseModal, changeToForm }) => {
+  const { song, songStory, createdDateTime, user } = letter;
+  const [mouseEnter, onMouseEnter, onMouseLeave] = useMouseEnter();
 
   return (
     <ModalTemplate isOpened={isOpened}>
-      <LetterModalTemplate onMouseEnter={onVisible} onMouseLeave={onInvisible}>
-        <LetterDetailsHiddenMenuButton visible={visible} onClick={toggleMenu} />
-        {openMenu && <LetterDetailsHiddenMenu changeToForm={changeToForm} />}
+      <LetterModalTemplate
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        <LetterDetailsHiddenMenu
+          mouseEnter={mouseEnter}
+          changeToForm={changeToForm}
+        />
         <LetterModalDiv>
           <LetterDetailsSong song={song} />
           <LetterDetailsSongStory songStory={songStory} />

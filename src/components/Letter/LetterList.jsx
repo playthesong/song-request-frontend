@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import LetterDetailsContainer from "../../containers/LetterDetailsContainer";
+import LetterModalContainer from "../../containers/LetterModalContainer";
 import Letter from "./Letter";
 
 const LetterList = ({ letters, openedId, onOpenModal, onCloseModal }) => {
@@ -17,7 +17,7 @@ const LetterList = ({ letters, openedId, onOpenModal, onCloseModal }) => {
           onOpenModal={onOpenModal}
         />
       ))}
-      <LetterDetailsContainer openedId={openedId} onCloseModal={onCloseModal} />
+      <LetterModalContainer openedId={openedId} onCloseModal={onCloseModal} />
     </LetterListBlock>
   );
 };

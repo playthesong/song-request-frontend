@@ -1,10 +1,10 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const SongArticleItem = ({ articleName, itemName }) => {
+const SongArticleItem = ({ articleName, item }) => {
   return (
     <SongArticleItemBlock articleName={articleName}>
-      {itemName}
+      {item}
     </SongArticleItemBlock>
   );
 };

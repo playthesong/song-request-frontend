@@ -5,7 +5,6 @@ import SongArticle from "../LetterModal/LetterModalSong/SongArticle";
 import SongArticleItem from "../LetterModal/LetterModalSong/SongArticleItem";
 import SongArticleName from "../LetterModal/LetterModalSong/SongArticleName";
 import SongImage from "../LetterModal/LetterModalSong/SongImage";
-import SongInput from "../LetterModal/LetterModalSong/SongInput";
 
 const LetterDetailsSong = ({ song }) => {
   const { title, artist, imageUrl } = song;

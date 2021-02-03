@@ -1,11 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import SongStoryTextarea from "./SongStoryTextarea";
 
-const LetterModalSongStory = ({ songStory, isForm }) => {
-  if (isForm) {
-    return <SongStoryTextarea />;
-  }
+const LetterModalSongStory = ({ songStory }) => {
   return <SongStoryBlock>{songStory}</SongStoryBlock>;
 };
 
