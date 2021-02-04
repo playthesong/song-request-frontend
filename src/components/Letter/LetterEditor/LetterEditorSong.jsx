@@ -6,6 +6,7 @@ import SongArticle from "../LetterModal/LetterModalSong/SongArticle";
 import SongArticleName from "../LetterModal/LetterModalSong/SongArticleName";
 import SongImage from "../LetterModal/LetterModalSong/SongImage";
 import SongInput from "../LetterModal/LetterModalSong/SongInput";
+import LetterEditorSearchButton from "./LetterEditorSearchButton";
 
 const LetterEditorSong = ({ form, onChange }) => {
   const { title, artist, imageUrl } = form;
@@ -16,6 +17,7 @@ const LetterEditorSong = ({ form, onChange }) => {
       <SongImage imageUrl={imageUrl} />
       <SongAbout>
         <SongArticle>
+          <LetterEditorSearchButton />
           <SongArticleName articleName={"TITLE"} />
           <SongInput
             type={"text"}
