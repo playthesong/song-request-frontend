@@ -1,7 +1,10 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
-const ModalTemplate = ({ children, isOpened }) => {
+const ModalTemplate = ({ children }) => {
+  const { isOpened } = useSelector(state => state.letterModal);
+
   const openModal = () => {
     document.body.style.overflow = "hidden";
     document.body.scroll = "no";

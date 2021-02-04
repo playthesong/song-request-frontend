@@ -7,14 +7,14 @@ const Letter = ({
   song,
   songStory,
   createdDateTime,
-  onOpenModal
+  onReadLetter
 }) => {
   const { username, avatarUrl } = user;
   const { title, artist, imageUrl } = song;
 
   return (
     <>
-      <LetterBlock onClick={() => onOpenModal(id)}>
+      <LetterBlock onClick={() => onReadLetter(id)}>
         <SongBlock>
           <img src={imageUrl} alt="ALBUM IMAGE" className="album-image" />
           <div className="song-about">

@@ -7,7 +7,6 @@ import useModal from "../hooks/useModal";
 const LetterListContainer = () => {
   const { data: letters, loading, error } = useSelector(state => state.letters);
   const dispatch = useDispatch();
-  const [openedId, onOpenModal, onCloseModal] = useModal(null);
 
   useEffect(() => {
     dispatch(getLetters());
@@ -25,14 +24,7 @@ const LetterListContainer = () => {
     return <div>아직 등록된 신청곡이 없습니다. 신청곡을 등록 해주세요.</div>;
   }
 
-  return (
-    <LetterList
-      letters={letters}
-      openedId={openedId}
-      onOpenModal={onOpenModal}
-      onCloseModal={onCloseModal}
-    />
-  );
+  return <LetterList letters={letters} />;
 };
 
 export default LetterListContainer;

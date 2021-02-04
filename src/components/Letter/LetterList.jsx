@@ -1,23 +1,22 @@
 import React from "react";
 import styled from "styled-components";
-import LetterDetailsContainer from "../../containers/LetterDetailsContainer";
-import Letter from "./Letter";
+import LetterContainer from "../../containers/LetterContainer";
+import LetterModalContainer from "../../containers/LetterModalContainer";
 
-const LetterList = ({ letters, openedId, onOpenModal, onCloseModal }) => {
+const LetterList = ({ letters }) => {
   return (
     <LetterListBlock>
       {letters.map(letter => (
-        <Letter
+        <LetterContainer
           key={letter.id}
           id={letter.id}
           user={letter.user}
           song={letter.song}
           songStory={letter.songStory}
           createdDateTime={letter.createdDateTime}
-          onOpenModal={onOpenModal}
         />
       ))}
-      <LetterDetailsContainer openedId={openedId} onCloseModal={onCloseModal} />
+      <LetterModalContainer />
     </LetterListBlock>
   );
 };
