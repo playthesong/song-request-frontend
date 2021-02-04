@@ -18,8 +18,8 @@ const LetterEditor = ({ form, onChange, onClear, user }) => {
           <LetterEditorSong form={form} onChange={onChange} />
           <LetterEditorSongStory form={form} onChange={onChange} />
           <LetterEditorUser user={user} />
+          <LetterModalButtonContainer />
         </LetterModalForm>
-        <LetterModalButtonContainer />
       </LetterModalTemplate>
     </ModalTemplate>
   );

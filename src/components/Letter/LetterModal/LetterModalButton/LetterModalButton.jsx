@@ -1,9 +1,9 @@
 import React from "react";
 import styled, { css } from "styled-components";
 
-const LetterModalButton = ({ children, onClick, isMouseEnter }) => {
+const LetterModalButton = ({ children, type, onClick, isMouseEnter }) => {
   return (
-    <StyledButton onClick={onClick} isMouseEnter={isMouseEnter}>
+    <StyledButton type={type} onClick={onClick} isMouseEnter={isMouseEnter}>
       {children}
     </StyledButton>
   );
