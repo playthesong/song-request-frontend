@@ -5,40 +5,21 @@ import LetterModalTemplate from "../LetterModal/LetterModalTemplate";
 import LetterEditorSong from "./LetterEditorSong";
 import LetterEditorSongStory from "./LetterEditorSongStory";
 import LetterEditorUser from "./LetterEditorUser";
-import useMouseEnter from "../../../hooks/useMouseOver";
-import { LETTER_MODAL } from "../../../constants/types";
-import LetterDetailsHiddenMenu from "../LetterDetails/LetterDetailsHiddenMenu";
+import LetterModalHiddenButtonContainer from "../../../containers/LetterModalHiddenButtonContainer";
+import LetterModalButton from "../LetterModal/LetterModalButton/LetterModalButton";
+import LetterModalButtonContainer from "../../../containers/LetterModalButtonContainer";
 
-const LetterEditor = ({
-  type,
-  form,
-  onChange,
-  onClear,
-  user,
-  isOpened,
-  onCloseModal,
-  changeToForm,
-  changeToRead
-}) => {
-  const [mouseEnter, onMouseEnter, onMouseLeave] = useMouseEnter();
-
+const LetterEditor = ({ form, onChange, onClear, user }) => {
   return (
-    <ModalTemplate isOpened={isOpened}>
-      <LetterModalTemplate
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-      >
-        {type === LETTER_MODAL.EDIT && (
-          <LetterDetailsHiddenMenu
-            mouseEnter={mouseEnter}
-            changeToForm={changeToForm}
-          />
-        )}
+    <ModalTemplate>
+      <LetterModalTemplate>
+        <LetterModalHiddenButtonContainer />
         <LetterModalForm>
           <LetterEditorSong form={form} onChange={onChange} />
           <LetterEditorSongStory form={form} onChange={onChange} />
           <LetterEditorUser user={user} />
         </LetterModalForm>
+        <LetterModalButtonContainer />
       </LetterModalTemplate>
     </ModalTemplate>
   );

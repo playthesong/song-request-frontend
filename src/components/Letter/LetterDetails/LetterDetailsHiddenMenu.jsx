@@ -1,9 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MdMoreHoriz } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
 import styled, { css } from "styled-components";
-import { LETTER_MODAL } from "../../../constants/types";
-import { changeModalType, toggleMenu } from "../../../modules/letterModal";
 import LetterDetailsHiddenMenuButton from "./LetterDetailsHiddenMenuButton";
 
 const LetterDetailsHiddenMenu = ({
@@ -13,13 +10,10 @@ const LetterDetailsHiddenMenu = ({
   changeToEdit
 }) => {
   return (
-    <ButtonBlock isMouseEnter={isMouseEnter} onToggle={onToggle}>
+    <ButtonBlock isMouseEnter={isMouseEnter} onClick={onToggle}>
       <HiddenMenu />
       {isMenuOpen && (
-        <LetterDetailsHiddenMenuButton
-          changeToEdit={changeToEdit}
-          onToggle={onToggle}
-        />
+        <LetterDetailsHiddenMenuButton changeToEdit={changeToEdit} />
       )}
     </ButtonBlock>
   );
@@ -27,7 +21,7 @@ const LetterDetailsHiddenMenu = ({
 
 const ButtonBlock = styled.div`
   ${props =>
-    props.mouseEnter
+    props.isMouseEnter
       ? css`
           visibility: visible;
           opacity: 1;

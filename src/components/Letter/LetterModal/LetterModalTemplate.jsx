@@ -5,8 +5,8 @@ import { mouseEnter, mouseLeave } from "../../../modules/letterModal";
 
 const LetterModalTemplate = ({ children }) => {
   const dispatch = useDispatch();
-  const onMouseEnter = () => dispatch(mouseEnter);
-  const onMouseLeave = () => dispatch(mouseLeave);
+  const onMouseEnter = () => dispatch(mouseEnter());
+  const onMouseLeave = () => dispatch(mouseLeave());
 
   return (
     <LetterModalTemplateBlock
