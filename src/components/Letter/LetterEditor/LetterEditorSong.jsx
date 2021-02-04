@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import useModal from "../../../hooks/useModal";
 import LetterModalSong from "../LetterModal/LetterModalSong/LetterModalSong";
 import SongAbout from "../LetterModal/LetterModalSong/SongAbout";
 import SongArticle from "../LetterModal/LetterModalSong/SongArticle";
@@ -7,6 +8,7 @@ import SongArticleName from "../LetterModal/LetterModalSong/SongArticleName";
 import SongImage from "../LetterModal/LetterModalSong/SongImage";
 import SongInput from "../LetterModal/LetterModalSong/SongInput";
 import LetterEditorSearchButton from "./LetterEditorSearchButton";
+import LetterEditorSearchModal from "./LetterEditorSearchModal";
 
 const LetterEditorSong = ({ form, onChange }) => {
   const { title, artist, imageUrl } = form;

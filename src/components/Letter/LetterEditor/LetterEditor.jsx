@@ -7,6 +7,7 @@ import LetterEditorSongStory from "./LetterEditorSongStory";
 import LetterEditorUser from "./LetterEditorUser";
 import LetterModalHiddenButtonContainer from "../../../containers/LetterModalHiddenButtonContainer";
 import LetterModalButtonContainer from "../../../containers/LetterModalButtonContainer";
+import useModal from "../../../hooks/useModal";
 
 const LetterEditor = ({ form, onChange, onClear, user }) => {
   return (

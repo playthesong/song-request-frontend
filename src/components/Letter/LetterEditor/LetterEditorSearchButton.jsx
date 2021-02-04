@@ -1,13 +1,23 @@
 import React from "react";
 import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
+import LetterEditorSearchModal from "./LetterEditorSearchModal";
+import useModal from "../../../hooks/useModal";
 
 const LetterEditorSearchButton = () => {
+  const [isOpened, onOpenModal, onCloseModal] = useModal();
+
   return (
-    <StyledButton>
-      <SearchIcon />
-      신청곡 검색
-    </StyledButton>
+    <>
+      <StyledButton onClick={onOpenModal}>
+        <SearchIcon />
+        신청곡 검색
+      </StyledButton>
+      <LetterEditorSearchModal
+        isOpened={isOpened}
+        onCloseModal={onCloseModal}
+      />
+    </>
   );
 };
 
