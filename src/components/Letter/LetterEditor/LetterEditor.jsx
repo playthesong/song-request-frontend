@@ -6,7 +6,7 @@ import LetterEditorSong from "./LetterEditorSong";
 import LetterEditorSongStory from "./LetterEditorSongStory";
 import LetterEditorUser from "./LetterEditorUser";
 import useMouseEnter from "../../../hooks/useMouseOver";
-import { LETTER_EDITOR } from "../../../constants/types";
+import { LETTER_MODAL } from "../../../constants/types";
 import LetterDetailsHiddenMenu from "../LetterDetails/LetterDetailsHiddenMenu";
 
 const LetterEditor = ({
@@ -28,7 +28,7 @@ const LetterEditor = ({
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        {type === LETTER_EDITOR.EDIT && (
+        {type === LETTER_MODAL.EDIT && (
           <LetterDetailsHiddenMenu
             mouseEnter={mouseEnter}
             changeToForm={changeToForm}

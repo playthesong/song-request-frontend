@@ -5,29 +5,21 @@ import LetterDetailsSongStory from "./LetterDetailsSongStory";
 import LetterModalTemplate from "../LetterModal/LetterModalTemplate";
 import LetterDetailsUser from "./LetterDetailsUser";
 import LetterModalDiv from "../LetterModal/LetterModalContents/LetterModalDiv";
-import LetterDetailsButton from "./LetterDetailsButton";
-import LetterDetailsHiddenMenu from "./LetterDetailsHiddenMenu";
-import useMouseEnter from "../../../hooks/useMouseOver";
+import LetterModalHiddenButtonContainer from "../../../containers/LetterModalHiddenButtonContainer";
+import LetterModalButtonContainer from "../../../containers/LetterModalButtonContainer";
 
-const LetterDetails = ({ letter, isOpened, onCloseModal, changeToForm }) => {
+const LetterDetails = ({ letter }) => {
   const { song, songStory, createdDateTime, user } = letter;
-  const [mouseEnter, onMouseEnter, onMouseLeave] = useMouseEnter();
 
   return (
-    <ModalTemplate isOpened={isOpened}>
-      <LetterModalTemplate
-        onMouseEnter={onMouseEnter}
-        onMouseLeave={onMouseLeave}
-      >
-        <LetterDetailsHiddenMenu
-          mouseEnter={mouseEnter}
-          changeToForm={changeToForm}
-        />
+    <ModalTemplate>
+      <LetterModalTemplate>
+        <LetterModalHiddenButtonContainer />
         <LetterModalDiv>
           <LetterDetailsSong song={song} />
           <LetterDetailsSongStory songStory={songStory} />
           <LetterDetailsUser user={user} createdDateTime={createdDateTime} />
-          <LetterDetailsButton onClick={onCloseModal} />
+          <LetterModalButtonContainer />
         </LetterModalDiv>
       </LetterModalTemplate>
     </ModalTemplate>

@@ -2,13 +2,13 @@ import React from "react";
 import styled from "styled-components";
 import { TiEdit, TiDeleteOutline } from "react-icons/ti";
 
-const LetterDetailsHiddenMenuButton = ({ changeToForm, toggleMenu }) => {
+const LetterDetailsHiddenMenuButton = ({ changeToEdit, toggleMenu }) => {
   return (
     <Menu>
       <li
         className="menu__item"
         onClick={() => {
-          changeToForm();
+          changeToEdit();
           toggleMenu();
         }}
       >

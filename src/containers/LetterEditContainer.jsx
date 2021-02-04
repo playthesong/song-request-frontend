@@ -1,6 +1,6 @@
 import React from "react";
 import LetterEditor from "../components/Letter/LetterEditor/LetterEditor";
-import { LETTER_EDITOR } from "../constants/types";
+import { LETTER_MODAL } from "../constants/types";
 import useForm from "../hooks/useForm";
 
 const LetterEditContainer = ({
@@ -24,7 +24,7 @@ const LetterEditContainer = ({
 
   return (
     <LetterEditor
-      type={LETTER_EDITOR.EDIT}
+      type={LETTER_MODAL.EDIT}
       form={form}
       onChange={onChange}
       onClear={onClear}

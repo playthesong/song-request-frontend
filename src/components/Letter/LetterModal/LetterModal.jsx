@@ -1,27 +1,18 @@
 import React from "react";
+import { LETTER_MODAL } from "../../../constants/types";
 import LetterEditContainer from "../../../containers/LetterEditContainer";
-import useToggle from "../../../hooks/useToggle";
 import LetterDetails from "../LetterDetails/LetterDetails";
 
-const LetterModal = ({ letter, openedId, onCloseModal }) => {
-  const { isForm, changeToForm, changeToRead } = useToggle();
+const LetterModal = ({ letter, modalType }) => {
+  if (modalType === LETTER_MODAL.READ) {
+    return <LetterDetails letter={letter} />;
+  }
 
-  return isForm ? (
-    <LetterEditContainer
-      letter={letter}
-      isOpened={openedId}
-      onCloseModal={onCloseModal}
-      changeToForm={changeToForm}
-      changeToRead={changeToRead}
-    />
-  ) : (
-    <LetterDetails
-      letter={letter}
-      isOpened={openedId}
-      onCloseModal={onCloseModal}
-      changeToForm={changeToForm}
-    />
-  );
+  if (modalType === LETTER_MODAL.EDIT) {
+    return <LetterEditContainer letter={letter} />;
+  }
+
+  return null;
 };
 
 export default LetterModal;

@@ -2,21 +2,27 @@ const OPEN_MODAL = "letterModal/OPEN_MODAL";
 const CLOSE_MODAL = "letterModal/CLOSE_MODAL";
 const CHANGE_MODAL_TYPE = "letterModal/CHANGE_MODAL_TYPE";
 const LOAD_LETTER = "letterModal/LOAD_LETTER";
-const ON_MOUSE_ENTER = "letterModal/ON_MOUSE_ENTER";
-const ON_MOUSE_LEAVE = "letterModal/ON_MOUSE_LEAVE";
+const MOUSE_ENTER = "letterModal/MOUSE_ENTER";
+const MOUSE_LEAVE = "letterModal/MOUSE_LEAVE";
+const TOGGLE_MENU = "letterModal/TOGGLE_MENU";
 
 export const openModal = () => ({ type: OPEN_MODAL });
 export const closeModal = () => ({ type: CLOSE_MODAL });
-export const changeModalType = () => ({ type: CHANGE_MODAL_TYPE, modalType });
-export const loadLetter = () => ({ type: LOAD_LETTER, letterId });
-export const onMouseEnter = () => ({ type: ON_MOUSE_ENTER });
-export const onMouseLeave = () => ({ type: ON_MOUSE_LEAVE });
+export const changeModalType = modalType => ({
+  type: CHANGE_MODAL_TYPE,
+  modalType
+});
+export const loadLetter = letterId => ({ type: LOAD_LETTER, letterId });
+export const mouseEnter = () => ({ type: MOUSE_ENTER });
+export const mouseLeave = () => ({ type: MOUSE_LEAVE });
+export const toggleMenu = () => ({ type: TOGGLE_MENU });
 
-const intialState = {
-  isOpenModal: false,
+const initialState = {
+  isOpened: false,
   modalType: null,
   letterId: null,
-  mouseEnter: false
+  isMouseEnter: false,
+  isMenuOpen: false
 };
 
 function letterModal(state = initialState, action) {
@@ -24,7 +30,7 @@ function letterModal(state = initialState, action) {
     case OPEN_MODAL:
       return {
         ...state,
-        isOpenModal: true
+        isOpened: true
       };
     case CLOSE_MODAL:
       return initialState;
@@ -38,15 +44,20 @@ function letterModal(state = initialState, action) {
         ...state,
         letterId: action.letterId
       };
-    case ON_MOUSE_ENTER:
+    case MOUSE_ENTER:
       return {
         ...state,
-        mouseEnter: true
+        isMouseEnter: true
       };
-    case ON_MOUSE_LEAVE:
+    case MOUSE_LEAVE:
       return {
         ...state,
-        mouseEnter: false
+        isMouseEnter: false
+      };
+    case TOGGLE_MENU:
+      return {
+        ...state,
+        isMenuOpen: !state.isMenuOpen
       };
     default:
       return state;

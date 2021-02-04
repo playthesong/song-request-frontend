@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from "react-redux";
 import LetterModal from "../components/Letter/LetterModal/LetterModal";
 import { getLetterById } from "../modules/letter";
 
-const LetterModalContainer = ({ openedId, onCloseModal }) => {
+const LetterModalContainer = () => {
+  const { modalType, letterId } = useSelector(state => state.letterModal);
   const { data: letter, loading, error } = useSelector(state => state.letter);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getLetterById(openedId));
-  }, [openedId, dispatch]);
+    dispatch(getLetterById(letterId));
+  }, [letterId, dispatch]);
 
   if (error) {
     return <div>ERROR!</div>;
@@ -19,13 +20,7 @@ const LetterModalContainer = ({ openedId, onCloseModal }) => {
     return null;
   }
 
-  return (
-    <LetterModal
-      letter={letter}
-      openedId={openedId}
-      onCloseModal={onCloseModal}
-    />
-  );
+  return <LetterModal letter={letter} modalType={modalType} />;
 };
 
 export default LetterModalContainer;

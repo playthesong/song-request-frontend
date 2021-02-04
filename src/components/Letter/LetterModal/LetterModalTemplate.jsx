@@ -1,7 +1,13 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
+import { mouseEnter, mouseLeave } from "../../../modules/letterModal";
 
-const LetterModalTemplate = ({ children, onMouseEnter, onMouseLeave }) => {
+const LetterModalTemplate = ({ children }) => {
+  const dispatch = useDispatch();
+  const onMouseEnter = () => dispatch(mouseEnter);
+  const onMouseLeave = () => dispatch(mouseLeave);
+
   return (
     <LetterModalTemplateBlock
       onMouseEnter={onMouseEnter}

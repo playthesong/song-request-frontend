@@ -1,19 +1,24 @@
 import React from "react";
 import { MdMoreHoriz } from "react-icons/md";
+import { useDispatch, useSelector } from "react-redux";
 import styled, { css } from "styled-components";
-import useToggle from "../../../hooks/useToggle";
+import { LETTER_MODAL } from "../../../constants/types";
+import { changeModalType, toggleMenu } from "../../../modules/letterModal";
 import LetterDetailsHiddenMenuButton from "./LetterDetailsHiddenMenuButton";
 
-const LetterDetailsHiddenMenu = ({ mouseEnter, changeToForm }) => {
-  const { openMenu, toggleMenu } = useToggle();
-
+const LetterDetailsHiddenMenu = ({
+  isMouseEnter,
+  isMenuOpen,
+  onToggle,
+  changeToEdit
+}) => {
   return (
-    <ButtonBlock mouseEnter={mouseEnter} onClick={toggleMenu}>
+    <ButtonBlock isMouseEnter={isMouseEnter} onToggle={onToggle}>
       <HiddenMenu />
-      {openMenu && (
+      {isMenuOpen && (
         <LetterDetailsHiddenMenuButton
-          changeToForm={changeToForm}
-          toggleMenu={toggleMenu}
+          changeToEdit={changeToEdit}
+          onToggle={onToggle}
         />
       )}
     </ButtonBlock>
