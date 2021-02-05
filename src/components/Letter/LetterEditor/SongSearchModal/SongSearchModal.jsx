@@ -3,18 +3,18 @@ import styled from "styled-components";
 import SearchForm from "./SearchForm";
 import ArticleNames from "./ArticleNames";
 
-const LetterSearchModal = ({ isOpened, onCloseModal }) => {
+const SongSearchModal = ({ isOpened, onCloseModal }) => {
   return (
-    <SearchModalBlock isOpened={isOpened}>
+    <SongSearchModalBlock isOpened={isOpened}>
       <SearchForm onCloseModal={onCloseModal} />
       <SearchResultWrap>
         <ArticleNames />
       </SearchResultWrap>
-    </SearchModalBlock>
+    </SongSearchModalBlock>
   );
 };
 
-const SearchModalBlock = styled.div`
+const SongSearchModalBlock = styled.div`
   box-sizing: border-box;
   display: ${props => (props.isOpened ? "block" : "none")};
   width: 100%;
@@ -35,4 +35,4 @@ const SearchResultWrap = styled.div`
   padding: 0rem 0.5rem;
 `;
 
-export default LetterSearchModal;
+export default SongSearchModal;
