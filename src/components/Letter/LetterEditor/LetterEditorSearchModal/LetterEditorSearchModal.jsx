@@ -6,8 +6,8 @@ import ArticleNames from "./ArticleNames";
 const LetterEditorSearchModal = ({ isOpened, onCloseModal }) => {
   return (
     <SearchModalBlock isOpened={isOpened}>
+      <SearchForm onCloseModal={onCloseModal} />
       <SearchResultWrap>
-        <SearchForm onCloseModal={onCloseModal} />
         <ArticleNames />
       </SearchResultWrap>
     </SearchModalBlock>
