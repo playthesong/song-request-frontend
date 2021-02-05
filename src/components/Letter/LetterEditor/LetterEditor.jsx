@@ -7,12 +7,14 @@ import LetterEditorSongStory from "./LetterEditorSongStory";
 import LetterEditorUser from "./LetterEditorUser";
 import LetterModalHiddenButtonContainer from "../../../containers/LetterModalHiddenButtonContainer";
 import LetterModalButtonContainer from "../../../containers/LetterModalButtonContainer";
+import LetterEditorSearchButton from "./LetterEditorSearchButton";
 
 const LetterEditor = ({ form, onChange, onClear, user }) => {
   return (
     <ModalTemplate>
       <LetterModalTemplate>
         <LetterModalHiddenButtonContainer />
+        <LetterEditorSearchButton />
         <LetterModalForm>
           <LetterEditorSong form={form} onChange={onChange} />
           <LetterEditorSongStory form={form} onChange={onChange} />

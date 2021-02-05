@@ -18,7 +18,6 @@ const LetterEditorSong = ({ form, onChange }) => {
       <SongImage imageUrl={imageUrl} />
       <SongAbout>
         <SongArticle>
-          <LetterEditorSearchButton />
           <SongArticleName articleName={"TITLE"} />
           <SongInput
             type={"text"}
