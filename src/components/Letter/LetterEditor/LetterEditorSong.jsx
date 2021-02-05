@@ -8,7 +8,6 @@ import SongArticleName from "../LetterModal/LetterModalSong/SongArticleName";
 import SongImage from "../LetterModal/LetterModalSong/SongImage";
 import SongInput from "../LetterModal/LetterModalSong/SongInput";
 import LetterEditorSearchButton from "./LetterEditorSearchButton";
-import LetterEditorSearchModal from "./LetterEditorSearchModal";
 
 const LetterEditorSong = ({ form, onChange }) => {
   const { title, artist, imageUrl } = form;
