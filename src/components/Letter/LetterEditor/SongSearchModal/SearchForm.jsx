@@ -1,8 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
+import { useDispatch } from "react-redux";
+import { searchSong } from "../../../../modules/song";
 
 const SearchForm = ({ onCloseModal }) => {
+  const dispatch = useDispatch();
+
+  const onSearchSong = event => {
+    event.preventDefault();
+    dispatch(searchSong());
+  };
+
   return (
     <Form>
       <SearchInputWrap>
@@ -13,7 +22,7 @@ const SearchForm = ({ onCloseModal }) => {
         <SearchLabel>TITLE</SearchLabel>
         <SearchInput />
       </SearchInputWrap>
-      <SearchButton type="button" onClick={onCloseModal}>
+      <SearchButton type="submit" onClick={onSearchSong}>
         <SearchIcon />
       </SearchButton>
     </Form>
@@ -68,7 +77,7 @@ const SearchInputWrap = styled.div`
   &:nth-child(2) {
     & > ${SearchLabel} {
       border-radius: 0.2rem;
-      margin-left: -0.21rem;
+      margin-left: -0.25rem;
     }
 
     & > ${SearchInput} {

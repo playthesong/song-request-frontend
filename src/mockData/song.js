@@ -1,4 +1,4 @@
-const searchResult = [
+const song = [
   {
     title: "감사",
     artist: "김동률",
@@ -51,4 +51,4 @@ const searchResult = [
   }
 ];
 
-export default searchResult;
+export default song;

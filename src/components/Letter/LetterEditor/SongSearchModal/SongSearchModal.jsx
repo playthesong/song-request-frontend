@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import SearchForm from "./SearchForm";
 import ArticleNames from "./ArticleNames";
+import SongSearchResultContainer from "../../../../containers/SongSearchResultContainer";
+import { useDispatch, useSelector } from "react-redux";
 
 const SongSearchModal = ({ isOpened, onCloseModal }) => {
   return (
@@ -9,6 +11,7 @@ const SongSearchModal = ({ isOpened, onCloseModal }) => {
       <SearchForm onCloseModal={onCloseModal} />
       <SearchResultWrap>
         <ArticleNames />
+        <SongSearchResultContainer />
       </SearchResultWrap>
     </SongSearchModalBlock>
   );
