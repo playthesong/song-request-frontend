@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
-import LetterEditorSearchModal from "./LetterEditorSearchModal/LetterEditorSearchModal";
+import LetterSearchModal from "./LetterSearchModal/LetterSearchModal";
 import useModal from "../../../hooks/useModal";
 
 const LetterEditorSearchButton = () => {
@@ -13,10 +13,7 @@ const LetterEditorSearchButton = () => {
         <SearchIcon />
         신청곡 검색
       </StyledButton>
-      <LetterEditorSearchModal
-        isOpened={isOpened}
-        onCloseModal={onCloseModal}
-      />
+      <LetterSearchModal isOpened={isOpened} onCloseModal={onCloseModal} />
     </>
   );
 };

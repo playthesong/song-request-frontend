@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SearchForm from "./SearchForm";
 import ArticleNames from "./ArticleNames";
 
-const LetterEditorSearchModal = ({ isOpened, onCloseModal }) => {
+const LetterSearchModal = ({ isOpened, onCloseModal }) => {
   return (
     <SearchModalBlock isOpened={isOpened}>
       <SearchForm onCloseModal={onCloseModal} />
@@ -35,4 +35,4 @@ const SearchResultWrap = styled.div`
   padding: 0rem 0.5rem;
 `;
 
-export default LetterEditorSearchModal;
+export default LetterSearchModal;
