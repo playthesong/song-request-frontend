@@ -16,11 +16,11 @@ const SearchForm = ({ onCloseModal }) => {
     <Form>
       <SearchInputWrap>
         <SearchLabel>아티스트</SearchLabel>
-        <SearchInput />
+        <SearchInput type="text" name="artist" />
       </SearchInputWrap>
       <SearchInputWrap>
         <SearchLabel>제목</SearchLabel>
-        <SearchInput />
+        <SearchInput type="text" name="title" />
       </SearchInputWrap>
       <SearchButton type="submit" onClick={onSearchSong}>
         <SearchIcon />
@@ -34,8 +34,7 @@ const Form = styled.form`
   width: 95%;
   display: flex;
   justify-content: center;
-  margin-bottom: 3.5rem;
-  margin-left: 0.2rem;
+  margin: 0rem auto 3.5rem auto;
 `;
 
 const SearchLabel = styled.span`
@@ -44,7 +43,7 @@ const SearchLabel = styled.span`
   position: absolute;
   top: 0rem;
   left: 0rem;
-  height: 2.35rem;
+  height: 2.37rem;
   font-size: 1rem;
   background-color: #727272;
   padding: 0rem 0.7rem;
@@ -61,6 +60,7 @@ const SearchInput = styled.input`
   width: 100%;
   margin: 0rem 0.5rem 0rem 5.5rem;
   font-size: 1.2rem;
+  background-color: #fbfbfd;
 `;
 
 const SearchInputWrap = styled.div`
@@ -92,6 +92,8 @@ const SearchButton = styled.button`
   justify-content: center;
   align-items: center;
   border: none;
+  outline: none;
+  cursor: pointer;
   background-color: #e1999c;
   border-radius: 0rem 0.5rem 0.5rem 0rem;
   flex: 1;

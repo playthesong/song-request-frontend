@@ -11,7 +11,7 @@ const SongSearchResultItem = ({ song }) => {
         <SongTitle>{title}</SongTitle>
         <SongArtist>{artist}</SongArtist>
       </SongDetails>
-      <SelectButton />
+      <SelectButton className="select-button" />
     </Song>
   );
 };
@@ -19,6 +19,17 @@ const SongSearchResultItem = ({ song }) => {
 const Song = styled.li`
   display: flex;
   margin-bottom: 3rem;
+  margin-left: 0.8rem;
+
+  &:hover {
+    & .select-button {
+      color: #f06595;
+    }
+  }
+
+  &:nth-child(1) {
+    margin-top: 0.3rem;
+  }
 `;
 
 const SongImage = styled.img`
@@ -30,8 +41,8 @@ const SongImage = styled.img`
 const SongDetails = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 0.7rem;
-  margin-left: 23.2%;
+  margin-top: 1.1rem;
+  margin-left: 24.5%;
 `;
 
 const SongTitle = styled.span`
@@ -49,8 +60,9 @@ const SelectButton = styled(HiCheck)`
   font-size: 2.5rem;
   margin-top: 0.7rem;
   margin-left: auto;
-  margin-right: 5.8%;
+  margin-right: 3.5%;
   cursor: pointer;
+  transition: 0.25s;
 `;
 
 export default SongSearchResultItem;

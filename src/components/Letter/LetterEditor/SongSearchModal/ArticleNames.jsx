@@ -30,7 +30,7 @@ const ArticleName = styled.span`
     flex: 8;
   }
   &:nth-child(3) {
-    flex: 3;
+    flex: 2;
     text-align: center;
   }
 `;

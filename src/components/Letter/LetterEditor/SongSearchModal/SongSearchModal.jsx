@@ -23,21 +23,24 @@ const SongSearchModalBlock = styled.div`
   display: ${props => (props.isOpened ? "block" : "none")};
   width: 100%;
   position: absolute;
-  top: -40%;
+  top: -21%;
   left: 50%;
   transform: translateX(-50%);
   width: 145%;
-  min-height: 140%;
+  min-height: 147%;
   max-height: 180%;
   background-color: #fbfbfd;
   box-shadow: 1px 1px 15px 1px rgba(253, 253, 253, 0.3);
   border-radius: 0.3rem;
-  padding: 5rem 5rem 8rem 5rem;
+  padding: 5rem;
   z-index: 99;
 `;
 
 const SearchResultWrap = styled.div`
-  padding: 0rem 0.5rem;
+  margin-left: 0.1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 `;
 
 export default SongSearchModal;

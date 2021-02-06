@@ -14,6 +14,7 @@ const SongSearchResult = ({ songs }) => {
 
 const SongSearchResultList = styled.ul`
   margin-top: 1.5rem;
+  /* margin-left: 0.8rem; */
   height: 50vh;
   overflow-y: scroll;
 `;
