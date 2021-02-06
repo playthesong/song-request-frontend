@@ -3,7 +3,7 @@ import styled from "styled-components";
 import SearchForm from "./SearchForm";
 import ArticleNames from "./ArticleNames";
 import SongSearchResultContainer from "../../../../containers/SongSearchResultContainer";
-import { useDispatch, useSelector } from "react-redux";
+import SearchBy from "./SearchBy";
 
 const SongSearchModal = ({ isOpened, onCloseModal }) => {
   return (
@@ -13,6 +13,7 @@ const SongSearchModal = ({ isOpened, onCloseModal }) => {
         <ArticleNames />
         <SongSearchResultContainer />
       </SearchResultWrap>
+      <SearchBy />
     </SongSearchModalBlock>
   );
 };
@@ -22,15 +23,16 @@ const SongSearchModalBlock = styled.div`
   display: ${props => (props.isOpened ? "block" : "none")};
   width: 100%;
   position: absolute;
-  top: -15%;
+  top: -40%;
   left: 50%;
   transform: translateX(-50%);
-  width: 125%;
-  min-height: 120%;
+  width: 145%;
+  min-height: 140%;
+  max-height: 180%;
   background-color: #fbfbfd;
   box-shadow: 1px 1px 15px 1px rgba(253, 253, 253, 0.3);
   border-radius: 0.3rem;
-  padding: 5rem;
+  padding: 5rem 5rem 8rem 5rem;
   z-index: 99;
 `;
 

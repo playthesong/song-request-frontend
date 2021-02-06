@@ -14,7 +14,8 @@ const SongSearchResult = ({ songs }) => {
 
 const SongSearchResultList = styled.ul`
   margin-top: 1.5rem;
-  border: 1px solid black;
+  height: 50vh;
+  overflow-y: scroll;
 `;
 
 export default SongSearchResult;

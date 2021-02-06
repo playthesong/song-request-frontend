@@ -23,13 +23,14 @@ const ArticleName = styled.span`
   color: #adb5bd;
 
   &:nth-child(1) {
-    flex: 4;
+    flex: 6;
+    margin-left: 1rem;
   }
   &:nth-child(2) {
-    flex: 5;
+    flex: 8;
   }
   &:nth-child(3) {
-    flex: 2;
+    flex: 3;
     text-align: center;
   }
 `;
