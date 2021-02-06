@@ -22,7 +22,7 @@ const LetterEditorSongStory = ({ songStory, onChange }) => {
 const BottomLine = styled.div`
   height: 1.5px;
   background-color: rgba(0, 0, 0, 0.15);
-  margin-top: 0.3rem;
+  margin-top: 0.35rem;
   margin-right: 0.7rem;
   margin-left: 0.5rem;
   transition: 0.3s;
@@ -36,7 +36,7 @@ const Textarea = styled(TextareaAutosize)`
   font-family: inherit;
   box-sizing: border-box;
   min-height: 3.6rem;
-  width: 100%;
+  width: 98%;
   border: none;
   outline: none;
   resize: none;

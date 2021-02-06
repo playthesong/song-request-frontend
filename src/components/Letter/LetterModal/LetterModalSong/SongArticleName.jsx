@@ -10,7 +10,7 @@ const StyledSongArticleName = styled.div`
   opacity: 0.7;
   font-weight: 800;
   font-size: 1rem;
-  margin-bottom: 0.1rem;
+  margin-bottom: 0.07rem;
   color: #d6336c;
 `;
 
