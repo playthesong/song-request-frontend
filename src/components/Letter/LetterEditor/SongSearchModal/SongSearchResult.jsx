@@ -2,11 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import SongSearchResultItem from "./SongSearchResultItem";
 
-const SongSearchResult = ({ songs }) => {
+const SongSearchResult = ({ songs, mapSongToForm, onCloseModal }) => {
   return (
     <SongSearchResultList>
       {songs.map((song, index) => (
-        <SongSearchResultItem key={index} song={song} />
+        <SongSearchResultItem
+          key={index}
+          song={song}
+          mapSongToForm={mapSongToForm}
+          onCloseModal={onCloseModal}
+        />
       ))}
     </SongSearchResultList>
   );

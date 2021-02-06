@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { HiCheck } from "react-icons/hi";
 
-const SongSearchResultItem = ({ song }) => {
+const SongSearchResultItem = ({ song, mapSongToForm, onCloseModal }) => {
   const { title, artist, imageUrl } = song;
   return (
     <Song>
@@ -11,7 +11,13 @@ const SongSearchResultItem = ({ song }) => {
         <SongTitle>{title}</SongTitle>
         <SongArtist>{artist}</SongArtist>
       </SongDetails>
-      <SelectButton className="select-button" />
+      <SelectButton
+        onClick={() => {
+          mapSongToForm(song);
+          onCloseModal();
+        }}
+        className="select-button"
+      />
     </Song>
   );
 };

@@ -11,7 +11,7 @@ const SongSearchModal = ({ isOpened, onCloseModal }) => {
       <SearchForm onCloseModal={onCloseModal} />
       <SearchResultWrap>
         <ArticleNames />
-        <SongSearchResultContainer />
+        <SongSearchResultContainer onCloseModal={onCloseModal} />
       </SearchResultWrap>
       <SearchBy />
     </SongSearchModalBlock>

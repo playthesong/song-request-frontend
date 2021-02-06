@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import LetterEditor from "../components/Letter/LetterEditor/LetterEditor";
 import { initializeForm, updateForm } from "../modules/letterForm";
 
 const LetterEditContainer = ({ letter }) => {
+  const { letterForm } = useSelector(state => state);
   const dispatch = useDispatch();
   const user = letter.user;
 
@@ -14,9 +15,11 @@ const LetterEditContainer = ({ letter }) => {
 
   useEffect(() => {
     dispatch(initializeForm(letter));
-  }, [dispatch, letter]);
+  }, [dispatch]);
 
-  return <LetterEditor user={user} onChange={onChange} />;
+  return (
+    <LetterEditor letterForm={letterForm} user={user} onChange={onChange} />
+  );
 };
 
 export default LetterEditContainer;

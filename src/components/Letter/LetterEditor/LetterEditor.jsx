@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ModalTemplate from "../../Modal/ModalTemplate";
 import LetterModalForm from "../LetterModal/LetterModalContents/LetterModalForm";
 import LetterModalTemplate from "../LetterModal/LetterModalTemplate";
@@ -8,13 +8,9 @@ import LetterEditorUser from "./LetterEditorUser";
 import LetterModalHiddenButtonContainer from "../../../containers/LetterModalHiddenButtonContainer";
 import LetterModalButtonContainer from "../../../containers/LetterModalButtonContainer";
 import LetterEditorSearchButton from "./LetterEditorSearchButton";
-import { useSelector } from "react-redux";
 
-const LetterEditor = ({ user, onChange }) => {
-  const { title, artist, imageUrl, songStory } = useSelector(
-    state => state.letterForm
-  );
-  console.log(title, artist, imageUrl, songStory);
+const LetterEditor = ({ letterForm, user, onChange }) => {
+  const { title, artist, imageUrl, songStory } = letterForm;
 
   return (
     <ModalTemplate>
