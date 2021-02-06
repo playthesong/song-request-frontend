@@ -2,9 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import TextareaAutosize from "react-autosize-textarea";
 
-const LetterEditorSongStory = ({ form, onChange }) => {
-  const { songStory } = form;
-
+const LetterEditorSongStory = ({ songStory, onChange }) => {
   return (
     <>
       <Textarea

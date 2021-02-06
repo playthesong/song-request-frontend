@@ -1,24 +1,27 @@
 import React from "react";
+import { useDispatch, useSelector } from "react-redux";
 import LetterEditor from "../components/Letter/LetterEditor/LetterEditor";
-import { LETTER_MODAL } from "../constants/types";
-import useForm from "../hooks/useForm";
+import { initiateForm, updateForm } from "../modules/letterForm";
 
 const LetterEditContainer = ({ letter }) => {
+  const dispatch = useDispatch();
+
   const { title, artist, imageUrl } = letter.song;
   const songStory = letter.songStory;
   const user = letter.user;
-  const [form, onChange, onClear] = useForm({
-    title,
-    artist,
-    imageUrl,
-    songStory
-  });
+
+  dispatch(initiateForm({ title, artist, imageUrl, songStory }));
+
+  const onChange = event =>
+    dispatch(updateForm(event.target.name, event.target.value));
 
   return (
     <LetterEditor
-      form={form}
+      title={title}
+      artist={artist}
+      imageUrl={imageUrl}
+      songStory={songStory}
       onChange={onChange}
-      onClear={onClear}
       user={user}
     />
   );
