@@ -30,7 +30,9 @@ function letterForm(state = initialState, action) {
         [action.name]: action.value
       };
     case CLEAR_FORM:
-      return initialState;
+      return {
+        ...initialState
+      };
     default:
       return state;
   }

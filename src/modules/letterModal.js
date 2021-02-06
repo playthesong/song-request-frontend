@@ -33,7 +33,9 @@ function letterModal(state = initialState, action) {
         isOpened: true
       };
     case CLOSE_MODAL:
-      return initialState;
+      return {
+        ...initialState
+      };
     case CHANGE_MODAL_TYPE:
       return {
         ...state,

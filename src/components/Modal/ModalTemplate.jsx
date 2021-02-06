@@ -1,23 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const ModalTemplate = ({ children }) => {
   const { isOpened } = useSelector(state => state.letterModal);
-
   const openModal = () => {
     document.body.style.overflow = "hidden";
     document.body.scroll = "no";
     return <ModalTemplateBlock>{children}</ModalTemplateBlock>;
   };
 
-  const closeModal = () => {
-    document.body.style.overflow = "scroll";
-    document.body.scroll = "yes";
-    return null;
-  };
-
-  return isOpened ? openModal() : closeModal();
+  return isOpened ? openModal() : null;
 };
 
 const ModalTemplateBlock = styled.div`

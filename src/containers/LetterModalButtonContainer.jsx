@@ -7,7 +7,11 @@ import { closeModal } from "../modules/letterModal";
 const LetterModalButtonContainer = () => {
   const { modalType, isMouseEnter } = useSelector(state => state.letterModal);
   const dispatch = useDispatch();
-  const close = () => dispatch(closeModal());
+  const close = () => {
+    dispatch(closeModal());
+    document.body.style.overflow = "scroll";
+    document.body.scroll = "yes";
+  };
 
   if (modalType === LETTER_MODAL.READ) {
     return (

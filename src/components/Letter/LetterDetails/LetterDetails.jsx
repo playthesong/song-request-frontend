@@ -7,6 +7,7 @@ import LetterDetailsUser from "./LetterDetailsUser";
 import LetterModalDiv from "../LetterModal/LetterModalContents/LetterModalDiv";
 import LetterModalHiddenButtonContainer from "../../../containers/LetterModalHiddenButtonContainer";
 import LetterModalButtonContainer from "../../../containers/LetterModalButtonContainer";
+import { useSelector } from "react-redux";
 
 const LetterDetails = ({ letter }) => {
   const { song, songStory, createdDateTime, user } = letter;
