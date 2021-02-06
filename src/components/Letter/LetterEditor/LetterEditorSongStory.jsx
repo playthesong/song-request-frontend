@@ -6,11 +6,13 @@ const LetterEditorSongStory = ({ songStory, onChange }) => {
   return (
     <>
       <Textarea
+        name="songStory"
         rows={2}
         maxRows={5}
         defaultValue={songStory}
         onChange={onChange}
         placeholder="사연을 입력 해주세요."
+        maxLength="1000"
       />
       <BottomLine />
     </>

@@ -1,5 +1,3 @@
-import letter from "./letter";
-
 const INITIALIZE_FORM = "letterForm/INITIALIZE_FORM";
 const UPDATE_FORM = "letterForm/UPDATE_FORM";
 const CLEAR_FORM = "letterForm/CLEAR_FORM";
