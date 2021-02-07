@@ -1,14 +1,35 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 import LetterModalButton from "../components/Letter/LetterModal/LetterModalButton/LetterModalButton";
 import { LETTER_MODAL } from "../constants/types";
-import { closeModal } from "../modules/letterModal";
+import { updateLetter } from "../modules/letter";
+import { clearForm } from "../modules/letterForm";
+import { changeModalType, closeModal } from "../modules/letterModal";
+import { getLetters } from "../modules/letters";
 
-const LetterModalButtonContainer = () => {
-  const { modalType, isMouseEnter } = useSelector(state => state.letterModal);
+const LetterModalButtonContainer = ({ user }) => {
+  const { modalType, letterId, isMouseEnter } = useSelector(
+    state => state.letterModal
+  );
+  const { letterForm } = useSelector(state => state);
   const dispatch = useDispatch();
+
   const close = () => {
     dispatch(closeModal());
+  };
+
+  const update = () => {
+    dispatch(
+      updateLetter(letterId, {
+        letterId,
+        user,
+        ...letterForm
+      })
+    );
+    dispatch(clearForm());
+    dispatch(changeModalType(LETTER_MODAL.READ));
+    dispatch(getLetters());
   };
 
   if (modalType === LETTER_MODAL.READ) {
@@ -27,7 +48,7 @@ const LetterModalButtonContainer = () => {
     return (
       <LetterModalButton
         type={"submit"}
-        onClick={close}
+        onClick={update}
         isMouseEnter={isMouseEnter}
       >
         EDIT

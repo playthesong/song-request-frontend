@@ -26,7 +26,7 @@ const LetterEditor = ({ letterForm, user, onChange }) => {
           />
           <LetterEditorSongStory songStory={songStory} onChange={onChange} />
           <LetterEditorUser user={user} />
-          <LetterModalButtonContainer />
+          <LetterModalButtonContainer user={user} />
         </LetterModalForm>
       </LetterModalTemplate>
     </ModalTemplate>

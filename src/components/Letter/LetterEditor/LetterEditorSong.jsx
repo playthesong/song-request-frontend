@@ -21,7 +21,6 @@ const LetterEditorSong = ({ title, artist, imageUrl, onChange }) => {
             name={"title"}
             onChange={onChange}
             value={title}
-            required
           />
         </SongArticle>
         <SongArticle>
@@ -33,7 +32,6 @@ const LetterEditorSong = ({ title, artist, imageUrl, onChange }) => {
             name={"artist"}
             onChange={onChange}
             value={artist}
-            required
           />
         </SongArticle>
       </SongAbout>

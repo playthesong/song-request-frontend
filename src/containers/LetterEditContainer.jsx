@@ -15,7 +15,7 @@ const LetterEditContainer = ({ letter }) => {
 
   useEffect(() => {
     dispatch(initializeForm(letter));
-  }, [dispatch]);
+  }, [dispatch, letter]);
 
   return (
     <LetterEditor letterForm={letterForm} user={user} onChange={onChange} />

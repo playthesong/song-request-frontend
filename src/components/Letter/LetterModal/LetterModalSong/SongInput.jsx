@@ -1,15 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-const SongInput = ({
-  type,
-  maxLength,
-  placeholder,
-  name,
-  onChange,
-  value,
-  required
-}) => {
+const SongInput = ({ type, maxLength, placeholder, name, onChange, value }) => {
   return (
     <StyledInput
       type={type}
@@ -18,7 +10,7 @@ const SongInput = ({
       name={name}
       onChange={onChange}
       value={value}
-      required={required}
+      required
     />
   );
 };
