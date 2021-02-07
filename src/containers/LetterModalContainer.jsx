@@ -8,8 +8,22 @@ const LetterModalContainer = () => {
   const { data: letter, loading, error } = useSelector(state => state.letter);
   const dispatch = useDispatch();
 
+  const openModal = () => {
+    document.body.style.overflow = "hidden";
+    document.body.scroll = "no";
+  };
+
+  const closeModal = () => {
+    document.body.style.overflow = "scroll";
+    document.body.scroll = "yes";
+  };
+
   useEffect(() => {
     dispatch(getLetterById(letterId));
+
+    return () => {
+      closeModal();
+    };
   }, [letterId, dispatch]);
 
   if (error) {
@@ -19,6 +33,8 @@ const LetterModalContainer = () => {
   if (!letter) {
     return null;
   }
+
+  openModal();
 
   return <LetterModal letter={letter} modalType={modalType} />;
 };
