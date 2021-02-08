@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import LetterModalButton from "../components/Letter/LetterModal/LetterModalButton/LetterModalButton";
@@ -19,7 +19,8 @@ const LetterModalButtonContainer = ({ user }) => {
     dispatch(closeModal());
   };
 
-  const update = () => {
+  const update = event => {
+    event.preventDefault();
     dispatch(
       updateLetter(letterId, {
         letterId,

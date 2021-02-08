@@ -18,7 +18,6 @@ export const updateLetter = async (id, payload) => {
   const songStory = payload.songStory;
 
   const foundLetter = letters.find(letter => letter.id === id);
-  console.log(foundLetter);
 
   const updatedLetter = {
     ...foundLetter,
@@ -28,8 +27,7 @@ export const updateLetter = async (id, payload) => {
 
   const index = letters.indexOf(foundLetter);
   letters.splice(index, 1);
-
   letters.push(updatedLetter);
-  console.log(letters);
+
   return updatedLetter;
 };

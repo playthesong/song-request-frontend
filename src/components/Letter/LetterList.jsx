@@ -16,7 +16,6 @@ const LetterList = ({ letters }) => {
           createdDateTime={letter.createdDateTime}
         />
       ))}
-      <LetterModalContainer />
     </LetterListBlock>
   );
 };
