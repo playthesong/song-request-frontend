@@ -100,13 +100,14 @@ const SongBlock = styled.div`
 `;
 
 const SongStory = styled.p`
+  width: 100%;
   max-height: 8rem;
   line-break: anywhere;
   margin-top: -0.3rem;
   font-size: 1.2rem;
   line-height: 1.9rem;
   opacity: 0.9;
-  padding: 0 5px;
+  padding: 0rem 0.5rem;
 `;
 
 const UserBlock = styled.div`
