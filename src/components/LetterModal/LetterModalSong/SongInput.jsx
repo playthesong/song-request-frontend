@@ -21,7 +21,7 @@ const StyledInput = styled.input`
   font-size: 1.2rem;
   color: #27273e;
   opacity: 0.8;
-  padding: 0.2rem 0.09rem 0.38rem 0.1rem;
+  padding: 0.25rem 0.09rem 0.32rem 0.1rem;
   background-color: #fbfbfd;
   border-bottom: 1.5px solid rgba(0, 0, 0, 0.2);
   transition: 0.3s;
