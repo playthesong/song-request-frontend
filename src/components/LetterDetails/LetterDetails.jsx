@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ModalTemplate from "../Layout/Modal/ModalTemplate";
+import ModalTemplate from "../Template/Modal/ModalTemplate";
 import LetterDetailsSong from "./LetterDetailsSong";
 import LetterDetailsSongStory from "./LetterDetailsSongStory";
-import LetterModalTemplate from "../Layout/LetterModal/LetterModalTemplate";
+import LetterModalTemplate from "../Template/LetterModal/LetterModalTemplate";
 import LetterDetailsUser from "./LetterDetailsUser";
 import LetterModalDiv from "../LetterModal/LetterModalContents/LetterModalDiv";
 import LetterModalHiddenButtonContainer from "../../containers/LetterModal/LetterModalHiddenButtonContainer";

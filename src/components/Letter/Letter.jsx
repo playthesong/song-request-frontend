@@ -22,7 +22,11 @@ const Letter = ({
             <span className="song-about__artist">{artist}</span>
           </div>
         </SongBlock>
-        <SongStory>{songStory}</SongStory>
+        <SongStory>
+          {songStory.length > 100
+            ? `${songStory.slice(0, 100)} ...`
+            : songStory}
+        </SongStory>
         <UserBlock>
           <div className="created-time">{createdDateTime}</div>
           <div className="user-about">
@@ -43,7 +47,6 @@ const LetterBlock = styled.li`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   padding: 0.7rem;
   border: #ffdeeb;
   border-radius: 0.5rem;
@@ -97,9 +100,11 @@ const SongBlock = styled.div`
 `;
 
 const SongStory = styled.p`
-  height: 100%;
+  max-height: 8rem;
+  line-break: anywhere;
+  margin-top: -0.3rem;
   font-size: 1.2rem;
-  line-height: 1.5rem;
+  line-height: 1.9rem;
   opacity: 0.9;
   padding: 0 5px;
 `;
@@ -108,7 +113,7 @@ const UserBlock = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0px 5px 3px 5px;
+  margin: auto 5px 3px 5px;
 
   .created-time {
     font-size: 1.1rem;
@@ -125,6 +130,7 @@ const UserBlock = styled.div`
     max-width: 2.5rem;
     max-height: 2.5rem;
     border-radius: 50%;
+    box-shadow: 3px 2px 10px 1px rgba(0, 0, 0, 0.3);
   }
 
   .user-about__name {

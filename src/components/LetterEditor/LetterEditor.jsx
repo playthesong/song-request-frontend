@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import ModalTemplate from "../Layout/Modal/ModalTemplate";
+import ModalTemplate from "../Template/Modal/ModalTemplate";
 import LetterModalForm from "../LetterModal/LetterModalContents/LetterModalForm";
-import LetterModalTemplate from "../Layout/LetterModal/LetterModalTemplate";
+import LetterModalTemplate from "../Template/LetterModal/LetterModalTemplate";
 import LetterEditorSong from "./LetterEditorSong";
 import LetterEditorSongStory from "./LetterEditorSongStory";
 import LetterEditorUser from "./LetterEditorUser";
