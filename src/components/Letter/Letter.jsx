@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+const MAX_LENGTH = 100;
+
 const Letter = ({
   id,
   user,
@@ -23,8 +25,8 @@ const Letter = ({
           </div>
         </SongBlock>
         <SongStory>
-          {songStory.length > 100
-            ? `${songStory.slice(0, 100)} ...`
+          {songStory.length > MAX_LENGTH
+            ? `${songStory.slice(0, MAX_LENGTH)} ...`
             : songStory}
         </SongStory>
         <UserBlock>
