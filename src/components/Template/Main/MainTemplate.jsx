@@ -20,6 +20,7 @@ const MainTemplateBlock = styled.div`
 const MainTemplateInner = styled.div`
   max-width: 1100px;
   width: 100%;
+  padding: 0rem 5rem;
 `;
 
 export default MainTemplate;

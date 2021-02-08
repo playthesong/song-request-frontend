@@ -26,6 +26,7 @@ const HeaderBlock = styled.div`
 `;
 
 const HeaderInner = styled.div`
+  padding: 0rem 5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
