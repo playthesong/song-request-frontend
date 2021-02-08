@@ -16,7 +16,7 @@ const FooterBlock = styled.div`
   width: 100%;
   height: 8rem;
   margin-top: 6rem;
-  background-color: #fff9db;
+  background-color: #f5f5f7;
   font-weight: 500;
   box-shadow: 0px -10px 35px 5px #f1f1f1;
 `;

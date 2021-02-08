@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import MainTemplate from "../components/Main/MainTemplate";
-import LetterListContainer from "../containers/LetterListContainer";
+import MainTemplate from "../components/Template/Main/MainTemplate";
+import LetterListContainer from "../containers/Letter/LetterListContainer";
+import LetterModalContainer from "../containers/LetterModal/LetterModalContainer";
 
 const Letters = () => {
   return (
@@ -10,6 +11,7 @@ const Letters = () => {
         <ListTitle>신청 대기중</ListTitle>
         <LetterListContainer />
       </LettersBlock>
+      <LetterModalContainer />
     </MainTemplate>
   );
 };

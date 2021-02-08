@@ -1,18 +1,18 @@
 const OPEN_MODAL = "letterModal/OPEN_MODAL";
 const CLOSE_MODAL = "letterModal/CLOSE_MODAL";
-const CHANGE_MODAL_TYPE = "letterModal/CHANGE_MODAL_TYPE";
 const LOAD_LETTER = "letterModal/LOAD_LETTER";
+const CHANGE_MODAL_TYPE = "letterModal/CHANGE_MODAL_TYPE";
 const MOUSE_ENTER = "letterModal/MOUSE_ENTER";
 const MOUSE_LEAVE = "letterModal/MOUSE_LEAVE";
 const TOGGLE_MENU = "letterModal/TOGGLE_MENU";
 
 export const openModal = () => ({ type: OPEN_MODAL });
 export const closeModal = () => ({ type: CLOSE_MODAL });
+export const loadLetter = letterId => ({ type: LOAD_LETTER, letterId });
 export const changeModalType = modalType => ({
   type: CHANGE_MODAL_TYPE,
   modalType
 });
-export const loadLetter = letterId => ({ type: LOAD_LETTER, letterId });
 export const mouseEnter = () => ({ type: MOUSE_ENTER });
 export const mouseLeave = () => ({ type: MOUSE_LEAVE });
 export const toggleMenu = () => ({ type: TOGGLE_MENU });
@@ -33,7 +33,9 @@ function letterModal(state = initialState, action) {
         isOpened: true
       };
     case CLOSE_MODAL:
-      return initialState;
+      return {
+        ...initialState
+      };
     case CHANGE_MODAL_TYPE:
       return {
         ...state,
