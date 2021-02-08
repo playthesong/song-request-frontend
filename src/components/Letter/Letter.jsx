@@ -57,8 +57,6 @@ const LetterBlock = styled.li`
   }
 
   .album-image {
-    /* max-width: 11rem; */
-    /* max-height: 11rem; */
     width: 10rem;
     height: 10rem;
   }

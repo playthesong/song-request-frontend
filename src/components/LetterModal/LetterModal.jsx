@@ -1,6 +1,6 @@
 import React from "react";
-import { LETTER_MODAL } from "../../../constants/types";
-import LetterEditContainer from "../../../containers/LetterEditContainer";
+import { LETTER_MODAL } from "../../constants/types";
+import LetterEditContainer from "../../containers/LetterEditor/LetterEditContainer";
 import LetterDetails from "../LetterDetails/LetterDetails";
 
 const LetterModal = ({ letter, modalType }) => {

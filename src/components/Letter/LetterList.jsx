@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import LetterContainer from "../../containers/LetterContainer";
-import LetterModalContainer from "../../containers/LetterModalContainer";
+import LetterContainer from "../../containers/Letter/LetterContainer";
 
 const LetterList = ({ letters }) => {
   return (

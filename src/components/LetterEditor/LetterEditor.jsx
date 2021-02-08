@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import ModalTemplate from "../../Modal/ModalTemplate";
+import ModalTemplate from "../Layout/Modal/ModalTemplate";
 import LetterModalForm from "../LetterModal/LetterModalContents/LetterModalForm";
-import LetterModalTemplate from "../LetterModal/LetterModalTemplate";
+import LetterModalTemplate from "../Layout/LetterModal/LetterModalTemplate";
 import LetterEditorSong from "./LetterEditorSong";
 import LetterEditorSongStory from "./LetterEditorSongStory";
 import LetterEditorUser from "./LetterEditorUser";
-import LetterModalHiddenButtonContainer from "../../../containers/LetterModalHiddenButtonContainer";
-import LetterModalButtonContainer from "../../../containers/LetterModalButtonContainer";
+import LetterModalHiddenButtonContainer from "../../containers/LetterModal/LetterModalHiddenButtonContainer";
+import LetterModalButtonContainer from "../../containers/LetterModal/LetterModalButtonContainer";
 import LetterEditorSearchButton from "./LetterEditorSearchButton";
 
 const LetterEditor = ({ letterForm, user, onChange }) => {

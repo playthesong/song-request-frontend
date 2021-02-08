@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import SearchForm from "./SearchForm";
 import ArticleNames from "./ArticleNames";
-import SongSearchResultContainer from "../../../../containers/SongSearchResultContainer";
+import SongSearchResultContainer from "../../../containers/LetterEditor/SongSearchModal/SongSearchResultContainer";
 import SearchBy from "./SearchBy";
 
 const SongSearchModal = ({ isOpened, onCloseModal }) => {

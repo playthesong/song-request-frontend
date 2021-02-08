@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getLetters } from "../modules/letters";
-import LetterList from "../components/Letter/LetterList";
+import { getLetters } from "../../modules/letters";
+import LetterList from "../../components/Letter/LetterList";
 
 const LetterListContainer = () => {
   const { data: letters, loading, error } = useSelector(state => state.letters);

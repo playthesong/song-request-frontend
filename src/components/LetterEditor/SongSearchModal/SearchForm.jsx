@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
 import { useDispatch } from "react-redux";
-import { searchSong } from "../../../../modules/song";
+import { searchSong } from "../../../modules/song";
 
 const SearchForm = ({ onCloseModal }) => {
   const dispatch = useDispatch();

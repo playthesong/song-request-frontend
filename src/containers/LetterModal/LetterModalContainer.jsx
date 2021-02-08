@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LetterModal from "../components/Letter/LetterModal/LetterModal";
-import { getLetterById } from "../modules/letter";
+import LetterModal from "../../components/LetterModal/LetterModal";
+import { getLetterById } from "../../modules/letter";
 
 const LetterModalContainer = () => {
   const { modalType, letterId } = useSelector(state => state.letterModal);

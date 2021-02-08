@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
-import useModal from "../../../hooks/useModal";
+import useModal from "../../hooks/useModal";
 import SongSearchModal from "./SongSearchModal/SongSearchModal";
 
 const LetterEditorSearchButton = () => {

@@ -1,12 +1,8 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LetterDetailsHiddenMenu from "../components/Letter/LetterDetails/LetterDetailsHiddenMenu";
-import { LETTER_MODAL } from "../constants/types";
-import {
-  toggleMenu,
-  changeModalType,
-  mouseEnter
-} from "../modules/letterModal";
+import LetterDetailsHiddenMenu from "../../components/LetterDetails/LetterDetailsHiddenMenu";
+import { LETTER_MODAL } from "../../constants/types";
+import { toggleMenu, changeModalType } from "../../modules/letterModal";
 
 const LetterModalHiddenButtonContainer = () => {
   const { modalType, isMouseEnter, isMenuOpen } = useSelector(

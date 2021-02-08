@@ -1,12 +1,11 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
-import LetterModalButton from "../components/Letter/LetterModal/LetterModalButton/LetterModalButton";
-import { LETTER_MODAL } from "../constants/types";
-import { updateLetter } from "../modules/letter";
-import { clearForm } from "../modules/letterForm";
-import { changeModalType, closeModal } from "../modules/letterModal";
-import { getLetters } from "../modules/letters";
+import LetterModalButton from "../../components/LetterModal/LetterModalButton/LetterModalButton";
+import { LETTER_MODAL } from "../../constants/types";
+import { changeModalType, closeModal } from "../../modules/letterModal";
+import { clearForm } from "../../modules/letterForm";
+import { updateLetter } from "../../modules/letter";
+import { getLetters } from "../../modules/letters";
 
 const LetterModalButtonContainer = ({ user }) => {
   const { modalType, letterId, isMouseEnter } = useSelector(

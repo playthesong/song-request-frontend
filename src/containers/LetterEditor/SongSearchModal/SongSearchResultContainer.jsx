@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import SongSearchResult from "../components/Letter/LetterEditor/SongSearchModal/SongSearchResult";
-import { updateForm } from "../modules/letterForm";
+import SongSearchResult from "../../../components/LetterEditor/SongSearchModal/SongSearchResult";
+import { updateForm } from "../../../modules/letterForm";
 
 const SongSearchResultContainer = ({ onCloseModal }) => {
   const { data: songs, loading, error } = useSelector(state => state.song);

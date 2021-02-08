@@ -1,8 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import Letter from "../components/Letter/Letter";
-import { changeModalType, loadLetter, openModal } from "../modules/letterModal";
-import { LETTER_MODAL } from "../constants/types";
+import Letter from "../../components/Letter/Letter";
+import {
+  changeModalType,
+  loadLetter,
+  openModal
+} from "../../modules/letterModal";
+import { LETTER_MODAL } from "../../constants/types";
 
 const LetterContainer = ({ id, user, song, songStory, createdDateTime }) => {
   const dispatch = useDispatch();
