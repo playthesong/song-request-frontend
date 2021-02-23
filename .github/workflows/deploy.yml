@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
       - name: Checkout main source code
-        uses: actions/checkout@main
+        uses: actions/checkout@v2
 
       - name: Cache node modules
-        uses: use actions/cache@main
+        uses: use actions/cache@v2
         with:
           path: node_modules
           key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
