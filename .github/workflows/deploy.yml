@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: NPM build
-        run: npm build
+        run: npm run build
 
       - name: S3 deployment
         env:
