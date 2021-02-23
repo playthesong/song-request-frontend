@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
 
 jobs:
   build:
@@ -15,7 +12,7 @@ jobs:
         uses: actions/checkout@main
 
       - name: Cache node modules
-        uses: use actions/cache@v1
+        uses: use actions/cache@main
         with:
           path: node_modules
           key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
