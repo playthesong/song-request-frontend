@@ -4,7 +4,7 @@ import SongSearchResult from "../../../components/LetterEditor/SongSearchModal/S
 import { updateForm } from "../../../modules/letterForm";
 
 const SongSearchResultContainer = ({ onCloseModal }) => {
-  const { data: songs, loading, error } = useSelector(state => state.song);
+  const { data: songs, error } = useSelector(state => state.song);
   const dispatch = useDispatch();
   const mapSongToForm = song => {
     for (const property in song) {

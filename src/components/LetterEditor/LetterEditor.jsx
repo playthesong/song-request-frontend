@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import ModalTemplate from "../Template/Modal/ModalTemplate";
 import LetterModalForm from "../LetterModal/LetterModalContents/LetterModalForm";
 import LetterModalTemplate from "../Template/LetterModal/LetterModalTemplate";

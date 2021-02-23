@@ -5,7 +5,7 @@ import { getLetterById } from "../../modules/letter";
 
 const LetterModalContainer = () => {
   const { modalType, letterId } = useSelector(state => state.letterModal);
-  const { data: letter, loading, error } = useSelector(state => state.letter);
+  const { data: letter, error } = useSelector(state => state.letter);
   const dispatch = useDispatch();
 
   const openModal = () => {

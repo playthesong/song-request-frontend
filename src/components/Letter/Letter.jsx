@@ -18,7 +18,7 @@ const Letter = ({
     <>
       <LetterBlock onClick={() => onReadLetter(id)}>
         <SongBlock>
-          <img src={imageUrl} alt="ALBUM IMAGE" className="album-image" />
+          <img src={imageUrl} alt="ALBUM COVER" className="album-image" />
           <div className="song-about">
             <span className="song-about__title">{title}</span>
             <span className="song-about__artist">{artist}</span>
@@ -32,7 +32,11 @@ const Letter = ({
         <UserBlock>
           <div className="created-time">{createdDateTime}</div>
           <div className="user-about">
-            <img src={avatarUrl} className="user-about__avatar" />
+            <img
+              src={avatarUrl}
+              alt="USER PROFILE"
+              className="user-about__avatar"
+            />
             <span className="user-about__name">{username}</span>
           </div>
         </UserBlock>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { MdMoreHoriz } from "react-icons/md";
 import styled, { css } from "styled-components";
 import LetterDetailsHiddenMenuButton from "./LetterDetailsHiddenMenuButton";

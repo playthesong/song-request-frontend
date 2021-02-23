@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LetterDetailsHiddenMenu from "../../components/LetterDetails/LetterDetailsHiddenMenu";
 import { LETTER_MODAL } from "../../constants/types";

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ModalTemplate from "../Template/Modal/ModalTemplate";
 import LetterDetailsSong from "./LetterDetailsSong";
 import LetterDetailsSongStory from "./LetterDetailsSongStory";
@@ -7,7 +7,6 @@ import LetterDetailsUser from "./LetterDetailsUser";
 import LetterModalDiv from "../LetterModal/LetterModalContents/LetterModalDiv";
 import LetterModalHiddenButtonContainer from "../../containers/LetterModal/LetterModalHiddenButtonContainer";
 import LetterModalButtonContainer from "../../containers/LetterModal/LetterModalButtonContainer";
-import { useSelector } from "react-redux";
 
 const LetterDetails = ({ letter }) => {
   const { song, songStory, createdDateTime, user } = letter;

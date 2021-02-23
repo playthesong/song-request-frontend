@@ -8,12 +8,14 @@ import GlobalStyle from "./styles/GlobalStyle";
 import Header from "./components/Header/Header";
 import Letters from "./pages/Letters";
 import Footer from "./components/Footer/Footer";
+import ReactHelmet from "./common/ReactHelmet";
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <Router>
+        <ReactHelmet />
         <Header />
         <Switch>
           <Route path="/" exact component={Letters} />
