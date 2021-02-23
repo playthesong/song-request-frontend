@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@main
 
       - name: Cache node modules
-        uses: use actions/cache@main
+        uses: actions/cache@main
         with:
           path: node_modules
           key: ${{ runner.OS }}-build-${{ hashFiles('**/package-lock.json') }}
