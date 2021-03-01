@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import HeaderTitle from "./HeaderTitle";
 import Navigation from "./Navigation";
-import UserProfile from "./UserProfile";
+import LoginButton from "./LoginButton";
 
 const Header = () => {
   return (
@@ -10,7 +10,7 @@ const Header = () => {
       <HeaderInner>
         <HeaderTitle />
         <Navigation />
-        <UserProfile />
+        <LoginButton />
       </HeaderInner>
     </HeaderBlock>
   );
