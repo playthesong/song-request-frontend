@@ -23,10 +23,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: create env file
+        run: |
+          touch .env
+          echo REACT_APP_API_BASE_URL=${{ secrets.REACT_APP_API_BASE_URL }} >> .env
+          echo REACT_APP_API_LOGIN_URL=${{ secrets.REACT_APP_API_LOGIN_URL }} >> .env
+
       - name: NPM build
-        env:
-          env.REACT_APP_API_BASE_URL: ${{ secrets.REACT_APP_API_BASE_URL }}
-          env.REACT_APP_API_LOGIN_URL: ${{ secrets.REACT_APP_API_LOGIN_URL }}
         run: npm run build
 
       - name: S3 deployment
