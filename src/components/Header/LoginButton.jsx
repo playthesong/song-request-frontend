@@ -4,8 +4,6 @@ import { IoLogoGoogleplus } from "react-icons/io";
 import { useDispatch } from "react-redux";
 
 const LoginButton = () => {
-  const dispatch = useDispatch();
-
   return (
     <LoginButtonBlock href={process.env.REACT_APP_API_LOGIN_URL}>
       <GoogleIcon />
