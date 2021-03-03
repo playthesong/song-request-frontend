@@ -24,6 +24,9 @@ jobs:
         run: npm install
 
       - name: NPM build
+        env:
+          env.REACT_APP_API_BASE_URL: ${{ secrets.REACT_APP_API_BASE_URL }}
+          env.REACT_APP_API_LOGIN_URL: ${{ screts.REACT_APP_API_LOGIN_URL }}
         run: npm run build
 
       - name: S3 deployment
@@ -34,4 +37,4 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-            build s3://songrequest-frontend
+            build s3://www.realpianolive.com
