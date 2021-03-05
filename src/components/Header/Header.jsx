@@ -5,15 +5,17 @@ import Navigation from "./Navigation";
 import LoginButton from "./LoginButton";
 
 const Header = () => {
-  console.log("reload");
   return (
-    <HeaderBlock>
-      <HeaderInner>
-        <HeaderTitle />
-        <Navigation />
-        <LoginButton />
-      </HeaderInner>
-    </HeaderBlock>
+    <>
+      <HeaderBlock>
+        <HeaderInner>
+          <HeaderTitle />
+          <Navigation />
+          <LoginButton />
+        </HeaderInner>
+      </HeaderBlock>
+      <HeaderSpacer />
+    </>
   );
 };
 
@@ -36,6 +38,10 @@ const HeaderInner = styled.div`
   max-width: 1100px;
   width: 100%;
   background-color: #ffffff;
+  height: 80px;
+`;
+
+const HeaderSpacer = styled.div`
   height: 80px;
 `;
 

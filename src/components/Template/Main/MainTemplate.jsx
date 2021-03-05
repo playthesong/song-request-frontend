@@ -14,7 +14,7 @@ const MainTemplateBlock = styled.div`
   height: calc(100vh - 16rem);
   display: flex;
   justify-content: center;
-  padding-top: 15rem;
+  padding-top: 7rem;
 `;
 
 const MainTemplateInner = styled.div`
