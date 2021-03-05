@@ -5,6 +5,7 @@ import Navigation from "./Navigation";
 import LoginButton from "./LoginButton";
 
 const Header = () => {
+  console.log("reload");
   return (
     <HeaderBlock>
       <HeaderInner>
