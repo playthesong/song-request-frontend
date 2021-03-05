@@ -10,6 +10,7 @@ export const login = async generationKey => {
     } = await client.get(process.env.REACT_APP_API_TOKEN_URL, {
       headers: { Authorization: HEADER_PREFIX + generationKey }
     });
+
     return authorization.substring(tokenBeginIndex);
   } catch (error) {
     console.log(error);
