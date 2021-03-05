@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken";
 
 const LOGIN = "auth/LOGIN";
 const LOGIN_SUCCESS = "auth/LOGIN_SUCCESS";
-const LOGIN_ERROR = "auth/LOGIN_FAILURE";
+const LOGIN_ERROR = "auth/LOGIN_ERROR";
 
 export const login = generationKey => async dispatch => {
   dispatch({ type: LOGIN });
