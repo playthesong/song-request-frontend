@@ -26,7 +26,7 @@ function App() {
           <Route path="/ranking" component={Ranking} />
           <Route path="/contents" exact component={Contents} />
           <Route path="/musicsheets" component={MusicSheets} />
-          <Route path="/auth/token" component={OAuth} />
+          <Route path="/auth/token" exact component={OAuth} />
           <Redirect from="*" to="/" />
         </Switch>
         <Footer />

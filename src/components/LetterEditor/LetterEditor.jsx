@@ -6,10 +6,10 @@ import LetterEditorSong from "./LetterEditorSong";
 import LetterEditorSongStory from "./LetterEditorSongStory";
 import LetterEditorUser from "./LetterEditorUser";
 import LetterModalHiddenButtonContainer from "../../containers/LetterModal/LetterModalHiddenButtonContainer";
-import LetterModalButtonContainer from "../../containers/LetterModal/LetterModalButtonContainer";
 import LetterEditorSearchButton from "./LetterEditorSearchButton";
+import LetterModalButton from "../LetterModal/LetterModalButton/LetterModalButton";
 
-const LetterEditor = ({ letterForm, user, onChange }) => {
+const LetterEditor = ({ letterForm, user, onChange, onUpdate }) => {
   const { title, artist, imageUrl, songStory } = letterForm;
 
   return (
@@ -26,7 +26,9 @@ const LetterEditor = ({ letterForm, user, onChange }) => {
           />
           <LetterEditorSongStory songStory={songStory} onChange={onChange} />
           <LetterEditorUser user={user} />
-          <LetterModalButtonContainer user={user} />
+          <LetterModalButton type={"submit"} onClick={onUpdate}>
+            EDIT
+          </LetterModalButton>
         </LetterModalForm>
       </LetterModalTemplate>
     </ModalTemplate>

@@ -1,19 +1,25 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LetterModal from "../../components/LetterModal/LetterModal";
+import LetterDetails from "../../components/LetterDetails/LetterDetails";
+import { LETTER_MODAL } from "../../constants/types";
 import { getLetterById } from "../../modules/letter";
+import { closeModal } from "../../modules/letterModal";
+import LetterEditContainer from "../LetterEditor/LetterEditContainer";
 
 const LetterModalContainer = () => {
   const { modalType, letterId } = useSelector(state => state.letterModal);
   const { data: letter, error } = useSelector(state => state.letter);
   const dispatch = useDispatch();
+  const onCloseModal = () => {
+    dispatch(closeModal());
+  };
 
-  const openModal = () => {
+  const inActivateScroll = () => {
     document.body.style.overflow = "hidden";
     document.body.scroll = "no";
   };
 
-  const closeModal = () => {
+  const activateScroll = () => {
     document.body.style.overflow = "scroll";
     document.body.scroll = "yes";
   };
@@ -22,7 +28,7 @@ const LetterModalContainer = () => {
     dispatch(getLetterById(letterId));
 
     return () => {
-      closeModal();
+      activateScroll();
     };
   }, [letterId, dispatch]);
 
@@ -34,9 +40,17 @@ const LetterModalContainer = () => {
     return null;
   }
 
-  openModal();
+  inActivateScroll();
 
-  return <LetterModal letter={letter} modalType={modalType} />;
+  if (modalType === LETTER_MODAL.READ) {
+    return <LetterDetails letter={letter} onCloseModal={onCloseModal} />;
+  }
+
+  if (modalType === LETTER_MODAL.EDIT) {
+    return <LetterEditContainer letter={letter} onCloseModal={onCloseModal} />;
+  }
+
+  return null;
 };
 
 export default LetterModalContainer;
