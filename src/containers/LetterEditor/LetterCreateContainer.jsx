@@ -15,7 +15,7 @@ import {
 import { changeModalType } from "../../modules/letterModal";
 import { getLetters } from "../../modules/letters";
 
-const LetterCreateContainer = ({ onCloseModal }) => {
+const LetterCreateContainer = ({ onCloseModal, modalType }) => {
   const { letterForm } = useSelector(state => state);
   const {
     title,
@@ -60,39 +60,39 @@ const LetterCreateContainer = ({ onCloseModal }) => {
       default:
         break;
     }
-
-    const onCreate = event => {
-      event.preventDefault();
-      validateValues();
-
-      if (titleError || artistError || imageUrlError || songStoryError) {
-        return;
-      }
-
-      const song = { title, artist, imageUrl };
-      const newLetter = { song, songStory };
-
-      dispatch(createLetter(newLetter));
-      dispatch(clearForm());
-      dispatch(changeModalType(LETTER_MODAL.READ));
-      dispatch(getLetters());
-    };
-
-    useEffect(() => {
-      return () => {
-        dispatch(clearForm());
-      };
-    }, [dispatch]);
-
-    return (
-      <LetterEditor
-        letterForm={letterForm}
-        onChange={onChange}
-        onSubmit={onCreate}
-        onCloseModal={onCloseModal}
-      />
-    );
   };
+
+  const onCreate = event => {
+    event.preventDefault();
+    validateValues();
+
+    if (titleError || artistError || imageUrlError || songStoryError) {
+      return;
+    }
+
+    const song = { title, artist, imageUrl };
+    const newLetter = { song, songStory };
+
+    dispatch(createLetter(newLetter));
+    dispatch(clearForm());
+    dispatch(changeModalType(LETTER_MODAL.READ));
+    dispatch(getLetters());
+  };
+
+  useEffect(() => {
+    return () => {
+      dispatch(clearForm());
+    };
+  }, [dispatch]);
+
+  return (
+    <LetterEditor
+      letterForm={letterForm}
+      onChange={onChange}
+      onSubmit={onCreate}
+      onCloseModal={onCloseModal}
+    />
+  );
 };
 
 export default LetterCreateContainer;

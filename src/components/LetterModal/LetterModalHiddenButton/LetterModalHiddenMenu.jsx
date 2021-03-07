@@ -1,7 +1,7 @@
 import React from "react";
 import { MdMoreHoriz } from "react-icons/md";
 import styled, { css } from "styled-components";
-import LetterDetailsHiddenMenuButton from "./LetterDetailsHiddenMenuButton";
+import LetterDetailsHiddenMenuButton from "./LetterModalHiddenMenuButton";
 
 const LetterDetailsHiddenMenu = ({
   isMouseEnter,
@@ -35,7 +35,7 @@ const ButtonBlock = styled.div`
 
 const HiddenMenu = styled(MdMoreHoriz)`
   position: absolute;
-  bottom: 93%;
+  bottom: 92.5%;
   right: 3%;
   cursor: pointer;
   font-size: 2.1rem;

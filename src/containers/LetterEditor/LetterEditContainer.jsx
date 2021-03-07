@@ -20,7 +20,6 @@ const LetterEditContainer = ({ letter, onCloseModal }) => {
   const { letterForm } = useSelector(state => state);
   const { titleError, artistError, imageUrlError, songStoryError } = letterForm;
 
-  console.log(titleError);
   const dispatch = useDispatch();
   const user = letter.user;
   const letterId = letter.id;

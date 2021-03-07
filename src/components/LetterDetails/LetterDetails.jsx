@@ -14,7 +14,7 @@ const LetterDetails = ({ letter, onCloseModal }) => {
   return (
     <ModalTemplate>
       <LetterModalTemplate>
-        <LetterModalHiddenButtonContainer />
+        <LetterModalHiddenButtonContainer onCloseModal={onCloseModal} />
         <LetterModalDiv>
           <LetterDetailsSong song={song} />
           <LetterDetailsSongStory songStory={songStory} />

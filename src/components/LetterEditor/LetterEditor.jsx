@@ -9,13 +9,19 @@ import LetterModalHiddenButtonContainer from "../../containers/LetterModal/Lette
 import LetterEditorSearchButton from "./LetterEditorSearchButton";
 import LetterModalButton from "../LetterModal/LetterModalButton/LetterModalButton";
 
-const LetterEditor = ({ letterForm, user, onChange, onSubmit }) => {
+const LetterEditor = ({
+  letterForm,
+  user,
+  onChange,
+  onSubmit,
+  onCloseModal
+}) => {
   const { title, artist, imageUrl, songStory } = letterForm;
 
   return (
     <ModalTemplate>
       <LetterModalTemplate>
-        <LetterModalHiddenButtonContainer />
+        <LetterModalHiddenButtonContainer onCloseModal={onCloseModal} />
         <LetterEditorSearchButton />
         <LetterModalForm>
           <LetterEditorSong
