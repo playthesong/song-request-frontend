@@ -12,6 +12,13 @@ export const getLetterById = async id => {
   return letters.find(letter => letter.id === id);
 };
 
+export const createLetter = async payload => {
+  await sleep(100);
+  payload.id = letters.length + 1;
+  letters.concat(payload);
+  return payload;
+};
+
 export const updateLetter = async (id, payload) => {
   await sleep(100);
   const { title, artist, imageUrl } = payload;

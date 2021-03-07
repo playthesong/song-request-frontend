@@ -4,6 +4,10 @@ const GET_LETTER = "letter/GET_LETTER";
 const GET_LETTER_SUCCESS = "letter/GET_LETTER_SUCCESS";
 const GET_LETTER_ERROR = "letter/GET_LETTER_ERROR";
 
+const CREATE_LETTER = "letter/CREATE_LETTER";
+const CREATE_LETTER_SUCCESS = "letter/CREATE_LETTER_SUCCESS";
+const CREATE_LETTER_ERROR = "letter/CREATE_LETTER_ERROR";
+
 const UPDATE_LETTER = "letter/UPDATE_LETTER";
 const UPDATE_LETTER_SUCCESS = "letter/UPDATE_LETTER_SUCCESS";
 const UPDATE_LETTER_ERROR = "letter/UPDATE_LETTER_ERROR";
@@ -16,6 +20,17 @@ export const getLetterById = id => async dispatch => {
     dispatch({ type: GET_LETTER_SUCCESS, letter });
   } catch (error) {
     dispatch({ type: GET_LETTER_ERROR, error });
+  }
+};
+
+export const createLetter = payload => async dispatch => {
+  dispatch({ type: CREATE_LETTER });
+
+  try {
+    const letter = await lettersAPI.createLetter(payload);
+    dispatch({ type: CREATE_LETTER_SUCCESS, letter });
+  } catch (error) {
+    dispatch({ type: CREATE_LETTER_ERROR, error });
   }
 };
 
@@ -51,6 +66,24 @@ function letter(state = initialState, action) {
         error: null
       };
     case GET_LETTER_ERROR:
+      return {
+        data: null,
+        loading: false,
+        error: action.error
+      };
+    case CREATE_LETTER:
+      return {
+        data: null,
+        loading: true,
+        error: null
+      };
+    case CREATE_LETTER_SUCCESS:
+      return {
+        data: action.letter,
+        loading: false,
+        error: null
+      };
+    case CREATE_LETTER_ERROR:
       return {
         data: null,
         loading: false,
