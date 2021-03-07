@@ -18,16 +18,7 @@ import { getLetters } from "../../modules/letters";
 
 const LetterEditContainer = ({ letter, onCloseModal }) => {
   const { letterForm } = useSelector(state => state);
-  const {
-    title,
-    artist,
-    imageUrl,
-    songStory,
-    titleError,
-    artistError,
-    imageUrlError,
-    songStoryError
-  } = letterForm;
+  const { titleError, artistError, imageUrlError, songStoryError } = letterForm;
 
   console.log(titleError);
   const dispatch = useDispatch();
@@ -36,26 +27,35 @@ const LetterEditContainer = ({ letter, onCloseModal }) => {
 
   const onChange = event => {
     const { name, value } = event.target;
-
+    validateValues(name, value);
     dispatch(updateForm(name, value));
   };
 
-  const validateValues = () => {
-    title.length > FORM.TITLE_MAX || title.length < FORM.TITLE_MIN
-      ? dispatch(setErrorTitle(true))
-      : dispatch(setErrorTitle(false));
-
-    artist.length > FORM.ARTIST_MAX || artist.length < FORM.ARTIST_MIN
-      ? dispatch(setErrorArtist(true))
-      : dispatch(setErrorArtist(false));
-
-    imageUrl.length > FORM.IMAGE_URL_MAX
-      ? dispatch(setErrorImageUrl(true))
-      : dispatch(setErrorImageUrl(false));
-
-    songStory.length > FORM.SONG_STORY_MAX
-      ? dispatch(setErrorSongStory(true))
-      : dispatch(setErrorSongStory(false));
+  const validateValues = (name, value) => {
+    switch (name) {
+      case FORM.TITLE:
+        value.length > FORM.TITLE_MAX || value.length < FORM.TITLE_MIN
+          ? dispatch(setErrorTitle(true))
+          : dispatch(setErrorTitle(false));
+        break;
+      case FORM.ARTIST:
+        value.length > FORM.ARTIST_MAX || value.length < FORM.ARTIST_MIN
+          ? dispatch(setErrorArtist(true))
+          : dispatch(setErrorArtist(false));
+        break;
+      case FORM.IMAGE_URL:
+        value.length > FORM.IMAGE_URL_MAX
+          ? dispatch(setErrorImageUrl(true))
+          : dispatch(setErrorImageUrl(false));
+        break;
+      case FORM.SONG_STORY:
+        value.length > FORM.SONG_STORY_MAX
+          ? dispatch(setErrorSongStory(true))
+          : dispatch(setErrorSongStory(false));
+        break;
+      default:
+        break;
+    }
   };
 
   const onUpdate = event => {
@@ -81,15 +81,6 @@ const LetterEditContainer = ({ letter, onCloseModal }) => {
   useEffect(() => {
     dispatch(initializeForm(letter));
   }, [dispatch, letter]);
-
-  useEffect(() => {}, [
-    dispatch,
-    letter,
-    titleError,
-    artistError,
-    imageUrlError,
-    songStoryError
-  ]);
 
   return (
     <LetterEditor

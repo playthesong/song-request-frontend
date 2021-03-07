@@ -10,12 +10,7 @@ export const client = axios.create({
   }
 });
 
-const authClient = axios.create({
+export const authClient = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
   withCredentials: true
 });
-
-export default {
-  client,
-  authClient
-};
