@@ -1,9 +1,11 @@
 import React from "react";
+import { IoMdClose } from "react-icons/io";
 import styled from "styled-components";
 import SearchForm from "./SearchForm";
 import ArticleNames from "./ArticleNames";
 import SongSearchResultContainer from "../../../containers/LetterEditor/SongSearchModal/SongSearchResultContainer";
 import SearchBy from "./SearchBy";
+import CloseButton from "./CloseButton";
 
 const SongSearchModal = ({ isOpened, onCloseModal }) => {
   return (
@@ -13,6 +15,7 @@ const SongSearchModal = ({ isOpened, onCloseModal }) => {
         <ArticleNames />
         <SongSearchResultContainer onCloseModal={onCloseModal} />
       </SearchResultWrap>
+      <CloseButton onCloseModal={onCloseModal} />
       <SearchBy />
     </SongSearchModalBlock>
   );
@@ -23,16 +26,16 @@ const SongSearchModalBlock = styled.div`
   display: ${props => (props.isOpened ? "block" : "none")};
   width: 100%;
   position: absolute;
-  top: -21%;
+  top: -15%;
   left: 50%;
   transform: translateX(-50%);
   width: 145%;
-  min-height: 147%;
+  min-height: 115%;
   max-height: 180%;
   background-color: #fbfbfd;
   box-shadow: 1px 1px 15px 1px rgba(253, 253, 253, 0.3);
   border-radius: 0.3rem;
-  padding: 5rem;
+  padding: 3rem 5rem 6rem 5rem;
   z-index: 99;
 `;
 
