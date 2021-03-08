@@ -1,5 +1,4 @@
 import React from "react";
-import { IoMdClose } from "react-icons/io";
 import styled from "styled-components";
 import SearchForm from "./SearchForm";
 import ArticleNames from "./ArticleNames";
