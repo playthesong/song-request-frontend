@@ -10,6 +10,7 @@ const OAuth = ({ location: { search } }) => {
   const { user, jwtToken, loading, error } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
+  console.log(jwtToken, user);
   useEffect(() => {
     if (key) {
       dispatch(login(key));

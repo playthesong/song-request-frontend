@@ -10,7 +10,11 @@ export const login = generationKey => async dispatch => {
 
   try {
     const jwtToken = await authAPI.login(generationKey);
-    const { user } = jwt.decode(jwtToken, process.env.REACT_APP_JWT_SECRET_KEY);
+    const { id, email, name, avatarUrl, role } = jwt.decode(
+      jwtToken,
+      process.env.REACT_APP_JWT_SECRET_KEY
+    );
+    const user = { id, email, name, avatarUrl, role };
     dispatch({ type: LOGIN_SUCCESS, jwtToken, user });
   } catch (error) {
     dispatch({ type: LOGIN_ERROR, error });

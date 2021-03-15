@@ -4,6 +4,8 @@ export const login = async generationKey => {
   const HEADER_PREFIX = "Bearer ";
   const tokenBeginIndex = HEADER_PREFIX.length;
 
+  console.log(generationKey);
+
   try {
     const {
       headers: { authorization }
