@@ -1,3 +1,5 @@
+import { LETTER_STATUS } from "../constants/letterStatus";
+
 const userData = {
   id: 1,
   username: "Museop Kim",
@@ -88,7 +90,7 @@ const mockLetters = [
     song: firstSong,
     songStory:
       "사연입니다. 사연 내용은 다음과 같습니다. 사연은 100자까지만 보여 드릴 예정 입니다.",
-    requestStatus: "WAITING",
+    requestStatus: LETTER_STATUS.WAITING,
     createdDateTime: "2021-01-27 23:41",
     user: userData
   },
@@ -97,7 +99,7 @@ const mockLetters = [
     song: secondSong,
     songStory:
       "사연입니다. 사연 내용은 다음과 같습니다. 사연은 100자까지만 보여 드릴 예정 입니다.",
-    requestStatus: "WAITING",
+    requestStatus: LETTER_STATUS.WAITING,
     createdDateTime: "2021-01-27 23:41",
     user: userData
   },
@@ -106,7 +108,7 @@ const mockLetters = [
     song: thirdSong,
     songStory:
       "사연입니다. 사연 내용은 다음과 같습니다. 사연은 100자까지만 보여 드릴 예정 입니다.",
-    requestStatus: "WAITING",
+    requestStatus: LETTER_STATUS.WAITING,
     createdDateTime: "2021-01-27 23:41",
     user: userData
   },
@@ -115,7 +117,7 @@ const mockLetters = [
     song: fourthSong,
     songStory:
       "사연입니다. 사연 내용은 다음과 같습니다. 사연은 100자까지만 보여 드릴 예정 입니다.",
-    requestStatus: "WAITING",
+    requestStatus: LETTER_STATUS.WAITING,
     createdDateTime: "2021-01-27 23:41",
     user: userData
   },
@@ -124,7 +126,7 @@ const mockLetters = [
     song: fifthSong,
     songStory:
       "사연입니다. 사연 내용은 다음과 같습니다. 사연은 100자까지만 보여 드릴 예정 입니다.",
-    requestStatus: "WAITING",
+    requestStatus: LETTER_STATUS.WAITING,
     createdDateTime: "2021-01-27 23:41",
     user: userData
   },
@@ -133,7 +135,7 @@ const mockLetters = [
     song: sixthSong,
     songStory:
       "사연입니다. 사연 내용은 다음과 같습니다. 사연은 100자까지만 보여 드릴 예정 입니다.",
-    requestStatus: "WAITING",
+    requestStatus: LETTER_STATUS.PENDING,
     createdDateTime: "2021-01-27 23:41",
     user: userData
   },
@@ -142,7 +144,7 @@ const mockLetters = [
     song: seventhSong,
     songStory:
       "사연입니다. 사연 내용은 다음과 같습니다. 사연은 100자까지만 보여 드릴 예정 입니다.",
-    requestStatus: "WAITING",
+    requestStatus: LETTER_STATUS.DONE,
     createdDateTime: "2021-01-27 23:41",
     user: userData
   },
@@ -151,7 +153,7 @@ const mockLetters = [
     song: eighthSong,
     songStory:
       "사연입니다. 사연 내용은 다음과 같습니다. 사연은 100자까지만 보여 드릴 예정 입니다.",
-    requestStatus: "WAITING",
+    requestStatus: LETTER_STATUS.PENDING,
     createdDateTime: "2021-01-27 23:41",
     user: userData
   },
@@ -160,7 +162,7 @@ const mockLetters = [
     song: ninthSong,
     songStory:
       "사연입니다. 사연 내용은 다음과 같습니다. 사연은 100자까지만 보여 드릴 예정 입니다.",
-    requestStatus: "WAITING",
+    requestStatus: LETTER_STATUS.DONE,
     createdDateTime: "2021-01-27 23:41",
     user: userData
   },
@@ -169,7 +171,7 @@ const mockLetters = [
     song: tenthSong,
     songStory:
       "사연입니다. 사연 내용은 다음과 같습니다. 사연은 100자까지만 보여 드릴 예정 입니다.",
-    requestStatus: "WAITING",
+    requestStatus: LETTER_STATUS.WAITING,
     createdDateTime: "2021-01-27 23:41",
     user: userData
   },

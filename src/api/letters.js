@@ -2,9 +2,9 @@ import letters from "../mockData";
 
 const sleep = n => new Promise(resolve => setTimeout(resolve, n));
 
-export const getLetters = async () => {
+export const getLetters = async status => {
   await sleep(500);
-  return letters;
+  return letters.filter(letter => letter.requestStatus === status);
 };
 
 export const getLetterById = async id => {
