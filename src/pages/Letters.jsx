@@ -23,7 +23,7 @@ const Letters = () => {
     <MainTemplate>
       <LettersButtonBlock>
         <ListTitle status={status} />
-        <StatusButtons />
+        <StatusButtons status={status} />
         <CreateButton />
       </LettersButtonBlock>
       <LetterList
@@ -37,6 +37,8 @@ const Letters = () => {
   );
 };
 
-const LettersButtonBlock = styled.div``;
+const LettersButtonBlock = styled.div`
+  margin-top: 3rem;
+`;
 
 export default Letters;
