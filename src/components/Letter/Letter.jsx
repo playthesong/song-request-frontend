@@ -145,6 +145,7 @@ const UserBlock = styled.div`
     margin-top: 0.5rem;
     margin-left: 0.5rem;
     opacity: 0.8;
+    font-weight: 700;
   }
 `;
 
