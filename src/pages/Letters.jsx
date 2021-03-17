@@ -8,6 +8,7 @@ import StatusButtons from "../components/LetterList/StatusButtons";
 import CreateButton from "../components/LetterList/CreateButton";
 import { useDispatch, useSelector } from "react-redux";
 import { getLetters } from "../modules/letters";
+import { LETTER_STATUS } from "../constants/letterStatus";
 
 const Letters = () => {
   const { data: letters, status, loading, error } = useSelector(
@@ -16,8 +17,8 @@ const Letters = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getLetters(status));
-  }, [dispatch, status]);
+    dispatch(getLetters(LETTER_STATUS.WAITING));
+  }, [dispatch]);
 
   return (
     <MainTemplate>
@@ -38,7 +39,11 @@ const Letters = () => {
 };
 
 const LettersButtonBlock = styled.div`
-  margin-top: 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 7rem;
+  margin: 0rem 1.2rem 1rem 1.2rem;
 `;
 
 export default Letters;

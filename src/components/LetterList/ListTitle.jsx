@@ -17,10 +17,19 @@ const ListTitle = ({ status }) => {
     titleText = LIST_TITLE.PENDING;
   }
 
-  return <Title>{titleText}</Title>;
+  return (
+    <TitleBlock>
+      <Title>{titleText}</Title>
+    </TitleBlock>
+  );
 };
 
-const Title = styled.h2`
+const TitleBlock = styled.div`
+  flex-basis: 8rem;
+  flex-shrink: 0;
+`;
+
+const Title = styled.h3`
   display: inline-block;
   font-size: 1.6rem;
   font-weight: 500;
