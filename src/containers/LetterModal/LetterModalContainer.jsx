@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LetterDetails from "../../components/LetterDetails/LetterDetails";
 import { LETTER_MODAL } from "../../constants/types";
 import { getLetterById } from "../../modules/letter";
+import { clearForm } from "../../modules/letterForm";
 import { closeModal } from "../../modules/letterModal";
 import LetterCreateContainer from "../LetterEditor/LetterCreateContainer";
 import LetterEditContainer from "../LetterEditor/LetterEditContainer";
@@ -13,6 +14,7 @@ const LetterModalContainer = () => {
   const dispatch = useDispatch();
   const onCloseModal = () => {
     console.log("Click");
+    dispatch(clearForm());
     dispatch(closeModal());
   };
 
