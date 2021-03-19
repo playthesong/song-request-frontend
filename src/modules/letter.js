@@ -12,6 +12,10 @@ const UPDATE_LETTER = "letter/UPDATE_LETTER";
 const UPDATE_LETTER_SUCCESS = "letter/UPDATE_LETTER_SUCCESS";
 const UPDATE_LETTER_ERROR = "letter/UPDATE_LETTER_ERROR";
 
+const DELETE_LETTER = "letter/DELETE_LETTER";
+const DELETE_LETTER_SUCCESS = "letter/DELETE_LETTER_SUCCESS";
+const DELETE_LETTER_ERROR = "letter/DELETE_LETTER_ERROR";
+
 export const getLetterById = id => async dispatch => {
   dispatch({ type: GET_LETTER });
 
@@ -42,6 +46,17 @@ export const updateLetter = (id, payload) => async dispatch => {
     dispatch({ type: UPDATE_LETTER_SUCCESS, letter });
   } catch (error) {
     dispatch({ type: UPDATE_LETTER_ERROR, error });
+  }
+};
+
+export const deleteLetter = id => async dispatch => {
+  dispatch({ type: DELETE_LETTER });
+
+  try {
+    await lettersAPI.deleteLetter(id);
+    dispatch({ type: DELETE_LETTER_SUCCESS });
+  } catch (error) {
+    dispatch({ type: DELETE_LETTER_ERROR, error });
   }
 };
 
@@ -107,7 +122,24 @@ function letter(state = initialState, action) {
         loading: false,
         error: action.error
       };
-
+    case DELETE_LETTER:
+      return {
+        data: null,
+        loading: true,
+        error: null
+      };
+    case DELETE_LETTER_SUCCESS:
+      return {
+        data: null,
+        loading: false,
+        error: null
+      };
+    case DELETE_LETTER_ERROR:
+      return {
+        data: null,
+        loading: false,
+        error: action.error
+      };
     default:
       return state;
   }

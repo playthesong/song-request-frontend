@@ -22,8 +22,7 @@ const LetterEditContainer = ({ letter, onCloseModal }) => {
 
   const { titleError, artistError, imageUrlError, songStoryError } = letterForm;
 
-  const user = letter.user;
-  const letterId = letter.id;
+  const { user, id: letterId } = letter;
 
   const onChange = event => {
     const { name, value } = event.target;
@@ -84,6 +83,7 @@ const LetterEditContainer = ({ letter, onCloseModal }) => {
 
   return (
     <LetterEditor
+      letterId={letterId}
       letterForm={letterForm}
       user={user}
       onChange={onChange}

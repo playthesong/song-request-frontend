@@ -44,3 +44,8 @@ export const updateLetter = async (id, payload) => {
 
   return updatedLetter;
 };
+
+export const deleteLetter = async id => {
+  await sleep(100);
+  return letters.filter(letter => letter.id !== id);
+};

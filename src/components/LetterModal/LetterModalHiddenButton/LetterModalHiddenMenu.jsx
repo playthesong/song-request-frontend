@@ -1,6 +1,8 @@
 import React from "react";
 import { MdMoreHoriz } from "react-icons/md";
 import styled, { css } from "styled-components";
+import useModal from "../../../hooks/useModal";
+import LetterDeleteModal from "./LetterDeleteModal";
 import LetterDetailsHiddenMenuButton from "./LetterModalHiddenMenuButton";
 
 const LetterDetailsHiddenMenu = ({
@@ -9,13 +11,24 @@ const LetterDetailsHiddenMenu = ({
   onToggle,
   changeToEdit
 }) => {
+  const [isOpened, openDeleteModal, closeDeleteModal] = useModal();
+
   return (
-    <ButtonBlock isMouseEnter={isMouseEnter} onClick={onToggle}>
-      <HiddenMenu />
-      {isMenuOpen && (
-        <LetterDetailsHiddenMenuButton changeToEdit={changeToEdit} />
-      )}
-    </ButtonBlock>
+    <>
+      <ButtonBlock isMouseEnter={isMouseEnter} onClick={onToggle}>
+        <HiddenMenu />
+        {isMenuOpen && (
+          <LetterDetailsHiddenMenuButton
+            changeToEdit={changeToEdit}
+            openDeleteModal={openDeleteModal}
+          />
+        )}
+      </ButtonBlock>
+      <LetterDeleteModal
+        isOpened={isOpened}
+        closeDeleteModal={closeDeleteModal}
+      />
+    </>
   );
 };
 
