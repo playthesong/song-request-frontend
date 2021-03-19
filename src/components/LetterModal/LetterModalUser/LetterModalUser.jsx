@@ -4,7 +4,7 @@ import UserAbout from "./UserAbout";
 
 const LetterModalUser = ({ user, createdDateTime }) => {
   const { name, avatarUrl } = user;
-  console.log(name);
+
   return (
     <LetterUserModalBlock>
       <CreatedDateTime>{createdDateTime}</CreatedDateTime>

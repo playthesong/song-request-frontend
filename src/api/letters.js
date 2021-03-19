@@ -8,7 +8,7 @@ export const getLetters = async status => {
 };
 
 export const getLetterById = async id => {
-  await sleep(100);
+  await sleep(500);
   return letters.find(letter => letter.id === id);
 };
 
