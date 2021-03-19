@@ -15,7 +15,7 @@ import {
 import { changeModalType } from "../../modules/letterModal";
 import { getLetters } from "../../modules/letters";
 
-const LetterCreateContainer = ({ onCloseModal, modalType }) => {
+const LetterCreateContainer = ({ onCloseModal }) => {
   const { letterForm } = useSelector(state => state);
   const {
     title,
@@ -66,7 +66,14 @@ const LetterCreateContainer = ({ onCloseModal, modalType }) => {
     event.preventDefault();
     validateValues();
 
-    if (titleError || artistError || imageUrlError || songStoryError) {
+    if (
+      title.length === 0 ||
+      artist.length === 0 ||
+      titleError ||
+      artistError ||
+      imageUrlError ||
+      songStoryError
+    ) {
       return;
     }
 

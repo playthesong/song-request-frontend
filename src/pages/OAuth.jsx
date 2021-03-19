@@ -3,7 +3,7 @@ import queryString from "query-string";
 import { login } from "../modules/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router";
-import { Auth } from "../constants/auth";
+import { AUTH } from "../constants/auth";
 
 const OAuth = ({ location: { search } }) => {
   const { key } = queryString.parse(search);
@@ -29,8 +29,8 @@ const OAuth = ({ location: { search } }) => {
     return null;
   }
 
-  localStorage.setItem(Auth.JWT_TOKEN, jwtToken);
-  localStorage.setItem(Auth.USER, JSON.stringify(user));
+  localStorage.setItem(AUTH.JWT_TOKEN, jwtToken);
+  localStorage.setItem(AUTH.USER, JSON.stringify(user));
 
   return <Redirect to="/" />;
 };

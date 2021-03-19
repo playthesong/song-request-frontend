@@ -1,11 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import { FiSend } from "react-icons/fi";
+import { useDispatch } from "react-redux";
+import { changeModalType, openModal } from "../../modules/letterModal";
+import { LETTER_MODAL } from "../../constants/types";
 
 const CreateButton = () => {
+  const dispatch = useDispatch();
+  const openCreateModal = () => {
+    dispatch(openModal());
+    dispatch(changeModalType(LETTER_MODAL.CREATE));
+  };
+
   return (
     <CreateButtonBlock>
-      <Button>
+      <Button onClick={openCreateModal}>
         <ButtonIcon />
         <ButtonText>신청곡 등록</ButtonText>
       </Button>

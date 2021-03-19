@@ -3,11 +3,12 @@ import styled from "styled-components";
 import UserAbout from "./UserAbout";
 
 const LetterModalUser = ({ user, createdDateTime }) => {
-  const { username, avatarUrl } = user;
+  const { name, avatarUrl } = user;
+  console.log(name);
   return (
     <LetterUserModalBlock>
       <CreatedDateTime>{createdDateTime}</CreatedDateTime>
-      <UserAbout username={username} avatarUrl={avatarUrl} />
+      <UserAbout name={name} avatarUrl={avatarUrl} />
     </LetterUserModalBlock>
   );
 };

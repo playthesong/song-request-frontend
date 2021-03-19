@@ -18,9 +18,10 @@ import { getLetters } from "../../modules/letters";
 
 const LetterEditContainer = ({ letter, onCloseModal }) => {
   const { letterForm } = useSelector(state => state);
+  const dispatch = useDispatch();
+
   const { titleError, artistError, imageUrlError, songStoryError } = letterForm;
 
-  const dispatch = useDispatch();
   const user = letter.user;
   const letterId = letter.id;
 

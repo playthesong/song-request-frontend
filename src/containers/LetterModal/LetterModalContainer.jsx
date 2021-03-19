@@ -16,6 +16,9 @@ const LetterModalContainer = () => {
     dispatch(closeModal());
   };
 
+  console.log(letterId);
+  console.log(modalType);
+
   const inActivateScroll = () => {
     document.body.style.overflow = "hidden";
     document.body.scroll = "no";
@@ -38,21 +41,18 @@ const LetterModalContainer = () => {
     return <div>ERROR!</div>;
   }
 
-  if (!letter) {
-    return null;
-  }
-
-  inActivateScroll();
-
-  if (modalType === LETTER_MODAL.READ) {
+  if (letter && modalType === LETTER_MODAL.READ) {
+    inActivateScroll();
     return <LetterDetails letter={letter} onCloseModal={onCloseModal} />;
   }
 
-  if (modalType === LETTER_MODAL.EDIT) {
+  if (letter && modalType === LETTER_MODAL.EDIT) {
+    inActivateScroll();
     return <LetterEditContainer letter={letter} onCloseModal={onCloseModal} />;
   }
 
   if (modalType === LETTER_MODAL.CREATE) {
+    inActivateScroll();
     return <LetterCreateContainer onCloseModal={onCloseModal} />;
   }
 

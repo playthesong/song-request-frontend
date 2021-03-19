@@ -11,7 +11,7 @@ const Letter = ({
   createdDateTime,
   onReadLetter
 }) => {
-  const { username, avatarUrl } = user;
+  const { name, avatarUrl } = user;
   const { title, artist, imageUrl } = song;
 
   return (
@@ -37,7 +37,7 @@ const Letter = ({
               alt="USER PROFILE"
               className="user-about__avatar"
             />
-            <span className="user-about__name">{username}</span>
+            <span className="user-about__name">{name}</span>
           </div>
         </UserBlock>
       </LetterBlock>

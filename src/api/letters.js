@@ -15,7 +15,13 @@ export const getLetterById = async id => {
 export const createLetter = async payload => {
   await sleep(100);
   payload.id = letters.length + 1;
+  payload.user = {
+    name: "Museop Kim",
+    avatarUrl:
+      "https://avatars.githubusercontent.com/u/49878687?s=460&u=e739e45e9f39b5200339cca6dc293f934fa03bc0&v=4"
+  };
   letters.concat(payload);
+  console.log(payload);
   return payload;
 };
 

@@ -8,15 +8,23 @@ import LetterEditorUser from "./LetterEditorUser";
 import LetterModalHiddenButtonContainer from "../../containers/LetterModal/LetterModalHiddenButtonContainer";
 import LetterEditorSearchButton from "./LetterEditorSearchButton";
 import LetterModalButton from "../LetterModal/LetterModalButton/LetterModalButton";
+import { AUTH } from "../../constants/auth";
+import { useSelector } from "react-redux";
+import { LETTER_MODAL } from "../../constants/types";
 
-const LetterEditor = ({
-  letterForm,
-  user,
-  onChange,
-  onSubmit,
-  onCloseModal
-}) => {
+const LetterEditor = ({ letterForm, onChange, onSubmit, onCloseModal }) => {
+  const { modalType } = useSelector(state => state.letterModal);
+  const user = JSON.parse(localStorage.getItem(AUTH.USER));
   const { title, artist, imageUrl, songStory } = letterForm;
+  let buttonName;
+
+  if (modalType === LETTER_MODAL.CREATE) {
+    buttonName = "등록";
+  }
+
+  if (modalType === LETTER_MODAL.EDIT) {
+    buttonName = "수정";
+  }
 
   return (
     <ModalTemplate>
@@ -33,7 +41,7 @@ const LetterEditor = ({
           <LetterEditorSongStory songStory={songStory} onChange={onChange} />
           <LetterEditorUser user={user} />
           <LetterModalButton type={"submit"} onClick={onSubmit}>
-            EDIT
+            {buttonName}
           </LetterModalButton>
         </LetterModalForm>
       </LetterModalTemplate>
