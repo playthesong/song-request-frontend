@@ -3,15 +3,20 @@ import styled from "styled-components";
 import HeaderTitle from "./HeaderTitle";
 import Navigation from "./Navigation";
 import LoginButton from "./LoginButton";
+import { useSelector } from "react-redux";
+import UserProfile from "./UserProfile";
 
 const Header = () => {
+  const { user, error } = useSelector(({ auth }) => auth);
+
   return (
     <>
       <HeaderBlock>
         <HeaderInner>
           <HeaderTitle />
           <Navigation />
-          <LoginButton />
+          {user && <UserProfile user={user} />}
+          {!user && <LoginButton />}
         </HeaderInner>
       </HeaderBlock>
       <HeaderSpacer />
