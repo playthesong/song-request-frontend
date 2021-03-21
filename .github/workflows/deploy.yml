@@ -28,6 +28,8 @@ jobs:
           touch .env
           echo REACT_APP_API_BASE_URL=${{ secrets.REACT_APP_API_BASE_URL }} >> .env
           echo REACT_APP_API_LOGIN_URL=${{ secrets.REACT_APP_API_LOGIN_URL }} >> .env
+          echo REACT_APP_API_TOKEN_URL=${{ secrets.REACT_APP_API_TOKEN_URL}} >> .env
+          echo REACT_APP_JWT_SECRET_KEY=${{ secrets.REACT_APP_JWT_SECRET_KEY }} >> .env
 
       - name: NPM build
         run: npm run build
