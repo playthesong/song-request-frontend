@@ -14,8 +14,9 @@ import { LETTER_MODAL } from "../../constants/types";
 
 const LetterEditor = ({ letterForm, onChange, onSubmit, onCloseModal }) => {
   const { modalType } = useSelector(state => state.letterModal);
-  const user = JSON.parse(localStorage.getItem(AUTH.USER));
   const { title, artist, imageUrl, songStory } = letterForm;
+  const user = JSON.parse(localStorage.getItem(AUTH.USER));
+
   let buttonName;
 
   if (modalType === LETTER_MODAL.CREATE) {
@@ -24,6 +25,10 @@ const LetterEditor = ({ letterForm, onChange, onSubmit, onCloseModal }) => {
 
   if (modalType === LETTER_MODAL.EDIT) {
     buttonName = "수정";
+  }
+
+  if (!user) {
+    return null;
   }
 
   return (

@@ -8,21 +8,28 @@ import LetterModalDiv from "../LetterModal/LetterModalContents/LetterModalDiv";
 import LetterModalHiddenButtonContainer from "../../containers/LetterModal/LetterModalHiddenButtonContainer";
 import LetterModalButton from "../LetterModal/LetterModalButton/LetterModalButton";
 
-const LetterDetails = ({ letter, onCloseModal }) => {
-  const { song, songStory, createdDateTime, user } = letter;
-
+const LetterDetails = ({ letter, loading, error, onCloseModal }) => {
   return (
     <ModalTemplate>
       <LetterModalTemplate>
-        <LetterModalHiddenButtonContainer onCloseModal={onCloseModal} />
-        <LetterModalDiv>
-          <LetterDetailsSong song={song} />
-          <LetterDetailsSongStory songStory={songStory} />
-          <LetterDetailsUser user={user} createdDateTime={createdDateTime} />
-          <LetterModalButton type={"button"} onClick={onCloseModal}>
-            CLOSE
-          </LetterModalButton>
-        </LetterModalDiv>
+        {loading && <div>LOADING!</div>}
+        {error && <div>ERROR!</div>}
+        {letter && (
+          <>
+            <LetterModalHiddenButtonContainer onCloseModal={onCloseModal} />
+            <LetterModalDiv>
+              <LetterDetailsSong song={letter.song} />
+              <LetterDetailsSongStory songStory={letter.songStory} />
+              <LetterDetailsUser
+                user={letter.user}
+                createdDateTime={letter.createdDateTime}
+              />
+              <LetterModalButton type={"button"} onClick={onCloseModal}>
+                CLOSE
+              </LetterModalButton>
+            </LetterModalDiv>
+          </>
+        )}
       </LetterModalTemplate>
     </ModalTemplate>
   );

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LetterEditor from "../../components/LetterEditor/LetterEditor";
 import { FORM } from "../../constants/form";
+import { LETTER_STATUS } from "../../constants/letterStatus";
 import { LETTER_MODAL } from "../../constants/types";
 import { updateLetter } from "../../modules/letter";
 import {
@@ -74,7 +75,7 @@ const LetterEditContainer = ({ letter, onCloseModal }) => {
     );
     dispatch(clearForm());
     dispatch(changeModalType(LETTER_MODAL.READ));
-    dispatch(getLetters());
+    dispatch(getLetters(LETTER_STATUS.WAITING));
   };
 
   useEffect(() => {

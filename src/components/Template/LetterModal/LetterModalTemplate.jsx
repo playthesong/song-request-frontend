@@ -24,7 +24,7 @@ const LetterModalTemplateBlock = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   width: 38rem;
-  min-height: 35vh;
+  min-height: 54vh;
   box-shadow: 3px -3px 5px 1px rgba(253, 253, 253, 0.03);
   background-color: #fbfbfd;
   display: flex;

@@ -11,6 +11,7 @@ const LetterModalContainer = () => {
   const { modalType } = useSelector(state => state.letterModal);
   const { data: letter, loading, error } = useSelector(state => state.letter);
   const dispatch = useDispatch();
+
   const onCloseModal = () => {
     dispatch(clearForm());
     dispatch(closeModal());
@@ -32,22 +33,28 @@ const LetterModalContainer = () => {
     };
   });
 
-  if (loading) {
-    return <div>Loading!</div>;
-  }
-
-  if (error) {
-    return <div>ERROR!</div>;
-  }
-
-  if (letter && modalType === LETTER_MODAL.READ) {
+  if (modalType === LETTER_MODAL.READ) {
     inActivateScroll();
-    return <LetterDetails letter={letter} onCloseModal={onCloseModal} />;
+    return (
+      <LetterDetails
+        letter={letter}
+        loading={loading}
+        error={error}
+        onCloseModal={onCloseModal}
+      />
+    );
   }
 
-  if (letter && modalType === LETTER_MODAL.EDIT) {
+  if (modalType === LETTER_MODAL.EDIT) {
     inActivateScroll();
-    return <LetterEditContainer letter={letter} onCloseModal={onCloseModal} />;
+    return (
+      <LetterEditContainer
+        letter={letter}
+        loading={loading}
+        error={error}
+        onCloseModal={onCloseModal}
+      />
+    );
   }
 
   if (modalType === LETTER_MODAL.CREATE) {

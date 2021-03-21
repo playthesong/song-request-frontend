@@ -7,13 +7,14 @@ import {
   openModal
 } from "../../modules/letterModal";
 import { LETTER_MODAL } from "../../constants/types";
+import { getLetterById } from "../../modules/letter";
 
 const LetterContainer = ({ id, user, song, songStory, createdDateTime }) => {
   const dispatch = useDispatch();
   const onReadLetter = letterId => {
     dispatch(openModal());
     dispatch(changeModalType(LETTER_MODAL.READ));
-    dispatch(loadLetter(letterId));
+    dispatch(getLetterById(letterId));
   };
 
   return (
