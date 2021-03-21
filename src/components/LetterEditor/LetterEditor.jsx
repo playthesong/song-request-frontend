@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ModalTemplate from "../Template/Modal/ModalTemplate";
 import LetterModalForm from "../LetterModal/LetterModalContents/LetterModalForm";
 import LetterModalTemplate from "../Template/LetterModal/LetterModalTemplate";
@@ -12,10 +12,20 @@ import { AUTH } from "../../constants/auth";
 import { useSelector } from "react-redux";
 import { LETTER_MODAL } from "../../constants/types";
 
-const LetterEditor = ({ letterForm, onChange, onSubmit, onCloseModal }) => {
+const LetterEditor = ({
+  letterForm,
+  onChange,
+  onSubmit,
+  inActivateScroll,
+  onCloseModal
+}) => {
   const { modalType } = useSelector(state => state.letterModal);
   const { title, artist, imageUrl, songStory } = letterForm;
   const user = JSON.parse(localStorage.getItem(AUTH.USER));
+
+  useEffect(() => {
+    inActivateScroll();
+  });
 
   let buttonName;
 

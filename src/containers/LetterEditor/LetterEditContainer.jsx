@@ -17,7 +17,7 @@ import {
 import { changeModalType } from "../../modules/letterModal";
 import { getLetters } from "../../modules/letters";
 
-const LetterEditContainer = ({ letter, onCloseModal }) => {
+const LetterEditContainer = ({ letter, inActivateScroll, onCloseModal }) => {
   const { letterForm } = useSelector(state => state);
   const dispatch = useDispatch();
 
@@ -89,6 +89,7 @@ const LetterEditContainer = ({ letter, onCloseModal }) => {
       user={user}
       onChange={onChange}
       onSubmit={onUpdate}
+      inActivateScroll={inActivateScroll}
       onCloseModal={onCloseModal}
     />
   );

@@ -34,32 +34,36 @@ const LetterModalContainer = () => {
   });
 
   if (modalType === LETTER_MODAL.READ) {
-    inActivateScroll();
     return (
       <LetterDetails
         letter={letter}
         loading={loading}
         error={error}
+        inActivateScroll={inActivateScroll}
         onCloseModal={onCloseModal}
       />
     );
   }
 
   if (modalType === LETTER_MODAL.EDIT) {
-    inActivateScroll();
     return (
       <LetterEditContainer
         letter={letter}
         loading={loading}
         error={error}
+        inActivateScroll={inActivateScroll}
         onCloseModal={onCloseModal}
       />
     );
   }
 
   if (modalType === LETTER_MODAL.CREATE) {
-    inActivateScroll();
-    return <LetterCreateContainer onCloseModal={onCloseModal} />;
+    return (
+      <LetterCreateContainer
+        inActivateScroll={inActivateScroll}
+        onCloseModal={onCloseModal}
+      />
+    );
   }
 
   return null;

@@ -15,7 +15,7 @@ import {
 import { changeModalType } from "../../modules/letterModal";
 import { getLetters } from "../../modules/letters";
 
-const LetterCreateContainer = ({ onCloseModal }) => {
+const LetterCreateContainer = ({ inActivateScroll, onCloseModal }) => {
   const { letterForm } = useSelector(state => state);
   const {
     title,
@@ -97,6 +97,7 @@ const LetterCreateContainer = ({ onCloseModal }) => {
       letterForm={letterForm}
       onChange={onChange}
       onSubmit={onCreate}
+      inActivateScroll={inActivateScroll}
       onCloseModal={onCloseModal}
     />
   );
