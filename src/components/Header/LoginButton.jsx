@@ -28,7 +28,7 @@ const LoginButtonBlock = styled.a`
   @media ${({ theme }) => theme.device.mobile} {
     order: 1;
     align-self: flex-end;
-    margin-right: 1.2rem;
+    margin-right: 1rem;
     margin-top: 1rem;
     padding: 0.5rem 1rem;
     border-radius: 0.7rem;
