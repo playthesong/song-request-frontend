@@ -1,7 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
-const MAX_LENGTH = 100;
+const TITLE_MAX_LENGTH = 20;
+const ARTIST_MAX_LENGTH = 10;
+const SONG_STORY_MAX_LENGTH = 100;
 
 const Letter = ({
   id,
@@ -20,13 +22,21 @@ const Letter = ({
         <SongBlock>
           <img src={imageUrl} alt="ALBUM COVER" className="album-image" />
           <div className="song-about">
-            <span className="song-about__title">{title}</span>
-            <span className="song-about__artist">{artist}</span>
+            <span className="song-about__title">
+              {title.length > TITLE_MAX_LENGTH
+                ? `${title.slice(0, TITLE_MAX_LENGTH)} ...`
+                : title}
+            </span>
+            <span className="song-about__artist">
+              {artist.length > ARTIST_MAX_LENGTH
+                ? `${artist.slice(0, ARTIST_MAX_LENGTH)} ...`
+                : artist}
+            </span>
           </div>
         </SongBlock>
         <SongStory>
-          {songStory.length > MAX_LENGTH
-            ? `${songStory.slice(0, MAX_LENGTH)} ...`
+          {songStory.length > SONG_STORY_MAX_LENGTH
+            ? `${songStory.slice(0, SONG_STORY_MAX_LENGTH)} ...`
             : songStory}
         </SongStory>
         <UserBlock>
@@ -94,8 +104,9 @@ const SongBlock = styled.div`
     margin-left: 2rem;
 
     .song-about__title {
-      overflow-x: hidden;
-      font-size: 1.4rem;
+      max-width: 17rem;
+      overflow-y: hidden;
+      font-size: 1.32rem;
       font-weight: 500;
       color: #2c2c2c;
       opacity: 0.9;
@@ -111,8 +122,10 @@ const SongBlock = styled.div`
 
 const SongStory = styled.p`
   width: 100%;
+  max-width: 24.2rem;
   max-height: 8rem;
   line-break: anywhere;
+  overflow-y: hidden;
   margin-top: -0.3rem;
   font-size: 1.2rem;
   line-height: 1.9rem;

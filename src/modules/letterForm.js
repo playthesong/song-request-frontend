@@ -10,21 +10,25 @@ const SET_ERROR_SONG_STORY = "letterForm/SET_ERROR_SONG_STORY";
 export const initializeForm = letter => ({ type: INITIALIZE_FORM, letter });
 export const updateForm = (name, value) => ({ type: UPDATE_FORM, name, value });
 export const clearForm = () => ({ type: CLEAR_FORM });
-export const setErrorTitle = valid => ({
+export const setErrorTitle = (valid, message) => ({
   type: SET_ERROR_TITLE,
-  valid
+  valid,
+  message
 });
-export const setErrorArtist = valid => ({
+export const setErrorArtist = (valid, message) => ({
   type: SET_ERROR_ARTIST,
-  valid
+  valid,
+  message
 });
-export const setErrorImageUrl = valid => ({
+export const setErrorImageUrl = (valid, message) => ({
   type: SET_ERROR_IMAGE_URL,
-  valid
+  valid,
+  message
 });
-export const setErrorSongStory = valid => ({
+export const setErrorSongStory = (valid, message) => ({
   type: SET_ERROR_SONG_STORY,
-  valid
+  valid,
+  message
 });
 
 const initialState = {
@@ -35,7 +39,8 @@ const initialState = {
   titleError: false,
   artistError: false,
   imageUrlError: false,
-  songStoryError: false
+  songStoryError: false,
+  errorMessage: null
 };
 
 function letterForm(state = initialState, action) {
@@ -51,7 +56,8 @@ function letterForm(state = initialState, action) {
         titleError: false,
         artistError: false,
         imageUrlError: false,
-        songStoryError: false
+        songStoryError: false,
+        errorMessage: null
       };
     case UPDATE_FORM:
       return {
@@ -65,22 +71,26 @@ function letterForm(state = initialState, action) {
     case SET_ERROR_TITLE:
       return {
         ...state,
-        titleError: action.valid
+        titleError: action.valid,
+        errorMessage: action.message
       };
     case SET_ERROR_ARTIST:
       return {
         ...state,
-        artistError: action.valid
+        artistError: action.valid,
+        errorMessage: action.message
       };
     case SET_ERROR_IMAGE_URL:
       return {
         ...state,
-        imageUrlError: action.valid
+        imageUrlError: action.valid,
+        errorMessage: action.message
       };
     case SET_ERROR_SONG_STORY:
       return {
         ...state,
-        songStoryError: action.valid
+        songStoryError: action.valid,
+        errorMessage: action.message
       };
     default:
       return state;

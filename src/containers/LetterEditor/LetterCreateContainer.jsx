@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LetterEditor from "../../components/LetterEditor/LetterEditor";
+import { FORM_ERROR_MESSAGE } from "../../constants/errorMessage";
 import { FORM } from "../../constants/form";
 import { LETTER_MODAL } from "../../constants/types";
 import { createLetter } from "../../modules/letter";
@@ -25,9 +26,12 @@ const LetterCreateContainer = ({ inActivateScroll, onCloseModal }) => {
     titleError,
     artistError,
     imageUrlError,
-    songStoryError
+    songStoryError,
+    errorMessage
   } = letterForm;
   const dispatch = useDispatch();
+
+  console.log(errorMessage);
 
   const onChange = event => {
     const { name, value } = event.target;
@@ -39,23 +43,23 @@ const LetterCreateContainer = ({ inActivateScroll, onCloseModal }) => {
     switch (name) {
       case FORM.TITLE:
         value.length > FORM.TITLE_MAX || value.length < FORM.TITLE_MIN
-          ? dispatch(setErrorTitle(true))
-          : dispatch(setErrorTitle(false));
+          ? dispatch(setErrorTitle(true, null))
+          : dispatch(setErrorTitle(false, null));
         break;
       case FORM.ARTIST:
         value.length > FORM.ARTIST_MAX || value.length < FORM.ARTIST_MIN
-          ? dispatch(setErrorArtist(true))
-          : dispatch(setErrorArtist(false));
+          ? dispatch(setErrorArtist(true, null))
+          : dispatch(setErrorArtist(false, null));
         break;
       case FORM.IMAGE_URL:
         value.length > FORM.IMAGE_URL_MAX
-          ? dispatch(setErrorImageUrl(true))
-          : dispatch(setErrorImageUrl(false));
+          ? dispatch(setErrorImageUrl(true, null))
+          : dispatch(setErrorImageUrl(false, null));
         break;
       case FORM.SONG_STORY:
         value.length > FORM.SONG_STORY_MAX
-          ? dispatch(setErrorSongStory(true))
-          : dispatch(setErrorSongStory(false));
+          ? dispatch(setErrorSongStory(true, null))
+          : dispatch(setErrorSongStory(false, null));
         break;
       default:
         break;
@@ -64,16 +68,24 @@ const LetterCreateContainer = ({ inActivateScroll, onCloseModal }) => {
 
   const onCreate = event => {
     event.preventDefault();
-    validateValues();
 
-    if (
-      title.length === 0 ||
-      artist.length === 0 ||
-      titleError ||
-      artistError ||
-      imageUrlError ||
-      songStoryError
-    ) {
+    if (title.length === 0 || titleError) {
+      dispatch(setErrorTitle(true, FORM_ERROR_MESSAGE.TITLE));
+      return;
+    }
+
+    if (artist.length === 0 || artistError) {
+      dispatch(setErrorArtist(true, FORM_ERROR_MESSAGE.ARTIST));
+      return;
+    }
+
+    if (imageUrlError) {
+      dispatch(setErrorImageUrl(true, FORM_ERROR_MESSAGE.IMAGE_URL));
+      return;
+    }
+
+    if (songStoryError) {
+      dispatch(setErrorSongStory(true, FORM_ERROR_MESSAGE.SONG_STORY));
       return;
     }
 
@@ -97,6 +109,7 @@ const LetterCreateContainer = ({ inActivateScroll, onCloseModal }) => {
       letterForm={letterForm}
       onChange={onChange}
       onSubmit={onCreate}
+      errorMessage={errorMessage}
       inActivateScroll={inActivateScroll}
       onCloseModal={onCloseModal}
     />

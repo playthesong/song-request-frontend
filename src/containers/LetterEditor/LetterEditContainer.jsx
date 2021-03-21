@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LetterEditor from "../../components/LetterEditor/LetterEditor";
+import { FORM_ERROR_MESSAGE } from "../../constants/errorMessage";
 import { FORM } from "../../constants/form";
 import { LETTER_STATUS } from "../../constants/letterStatus";
 import { LETTER_MODAL } from "../../constants/types";
@@ -20,8 +21,13 @@ import { getLetters } from "../../modules/letters";
 const LetterEditContainer = ({ letter, inActivateScroll, onCloseModal }) => {
   const { letterForm } = useSelector(state => state);
   const dispatch = useDispatch();
-
-  const { titleError, artistError, imageUrlError, songStoryError } = letterForm;
+  const {
+    titleError,
+    artistError,
+    imageUrlError,
+    songStoryError,
+    errorMessage
+  } = letterForm;
 
   const { user, id: letterId } = letter;
 
@@ -34,24 +40,28 @@ const LetterEditContainer = ({ letter, inActivateScroll, onCloseModal }) => {
   const validateValues = (name, value) => {
     switch (name) {
       case FORM.TITLE:
-        value.length > FORM.TITLE_MAX || value.length < FORM.TITLE_MIN
-          ? dispatch(setErrorTitle(true))
-          : dispatch(setErrorTitle(false));
+        value.replaceAll(" ", "").length < FORM.TITLE_MIN ||
+        value.length < FORM.TITLE_MIN ||
+        value.length > FORM.TITLE_MAX
+          ? dispatch(setErrorTitle(true, FORM_ERROR_MESSAGE.TITLE))
+          : dispatch(setErrorTitle(false, null));
         break;
       case FORM.ARTIST:
-        value.length > FORM.ARTIST_MAX || value.length < FORM.ARTIST_MIN
-          ? dispatch(setErrorArtist(true))
-          : dispatch(setErrorArtist(false));
+        value.replaceAll(" ", "").length < FORM.ARTIST_MIN ||
+        value.length < FORM.ARTIST_MIN ||
+        value.length > FORM.ARTIST_MAX
+          ? dispatch(setErrorArtist(true, FORM_ERROR_MESSAGE.ARTIST))
+          : dispatch(setErrorArtist(false, null));
         break;
       case FORM.IMAGE_URL:
         value.length > FORM.IMAGE_URL_MAX
-          ? dispatch(setErrorImageUrl(true))
-          : dispatch(setErrorImageUrl(false));
+          ? dispatch(setErrorImageUrl(true, FORM_ERROR_MESSAGE.IMAGE_URL))
+          : dispatch(setErrorImageUrl(false, null));
         break;
       case FORM.SONG_STORY:
         value.length > FORM.SONG_STORY_MAX
-          ? dispatch(setErrorSongStory(true))
-          : dispatch(setErrorSongStory(false));
+          ? dispatch(setErrorSongStory(true, FORM_ERROR_MESSAGE.SONG_STORY))
+          : dispatch(setErrorSongStory(false, null));
         break;
       default:
         break;
@@ -60,9 +70,26 @@ const LetterEditContainer = ({ letter, inActivateScroll, onCloseModal }) => {
 
   const onUpdate = event => {
     event.preventDefault();
+
     validateValues();
 
-    if (titleError || artistError || imageUrlError || songStoryError) {
+    if (titleError) {
+      dispatch(setErrorTitle(true, FORM_ERROR_MESSAGE.TITLE));
+      return;
+    }
+
+    if (artistError) {
+      dispatch(setErrorArtist(true, FORM_ERROR_MESSAGE.ARTIST));
+      return;
+    }
+
+    if (imageUrlError) {
+      dispatch(setErrorImageUrl(true, FORM_ERROR_MESSAGE.IMAGE_URL));
+      return;
+    }
+
+    if (songStoryError) {
+      dispatch(setErrorSongStory(true, FORM_ERROR_MESSAGE.SONG_STORY));
       return;
     }
 
@@ -89,6 +116,7 @@ const LetterEditContainer = ({ letter, inActivateScroll, onCloseModal }) => {
       user={user}
       onChange={onChange}
       onSubmit={onUpdate}
+      errorMessage={errorMessage}
       inActivateScroll={inActivateScroll}
       onCloseModal={onCloseModal}
     />

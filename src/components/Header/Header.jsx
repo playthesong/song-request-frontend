@@ -9,6 +9,10 @@ import UserProfile from "./UserProfile";
 const Header = () => {
   const { user, error } = useSelector(({ auth }) => auth);
 
+  if (error) {
+    return <div>ERROR!</div>;
+  }
+
   return (
     <>
       <HeaderBlock>
