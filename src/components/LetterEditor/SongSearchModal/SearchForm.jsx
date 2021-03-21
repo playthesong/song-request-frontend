@@ -45,6 +45,10 @@ const Form = styled.form`
   display: flex;
   justify-content: center;
   margin: 0rem auto 2rem auto;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 98%;
+  }
 `;
 
 const SearchLabel = styled.span`
