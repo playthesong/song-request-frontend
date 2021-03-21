@@ -105,8 +105,7 @@ const SongBlock = styled.div`
 
     .song-about__title {
       max-width: 17rem;
-      overflow-y: hidden;
-      font-size: 1.32rem;
+      font-size: 1.35rem;
       font-weight: 500;
       color: #2c2c2c;
       opacity: 0.9;
@@ -125,7 +124,6 @@ const SongStory = styled.p`
   max-width: 24.2rem;
   max-height: 8rem;
   line-break: anywhere;
-  overflow-y: hidden;
   margin-top: -0.3rem;
   font-size: 1.2rem;
   line-height: 1.9rem;
