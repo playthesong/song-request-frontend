@@ -69,6 +69,10 @@ const LetterBlock = styled.li`
     width: 10rem;
     height: 10rem;
   }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    margin: 1.2rem 0rem 4.1rem 0rem;
+  }
 `;
 
 const SongBlock = styled.div`
