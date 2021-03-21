@@ -110,9 +110,9 @@ const SongBlock = styled.div`
 
     .song-about__title {
       max-width: 17rem;
-      font-size: 1.35rem;
-      font-weight: 500;
-      color: #2c2c2c;
+      font-size: 1.37rem;
+      font-weight: 600;
+      color: #232323;
       opacity: 0.9;
     }
 
