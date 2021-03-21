@@ -17,7 +17,6 @@ const HeaderTitle = () => {
 const StyledLink = styled(Link)`
   @media ${({ theme }) => theme.device.mobile} {
     order: 2;
-    /* margin-top: 1rem; */
   }
 `;
 

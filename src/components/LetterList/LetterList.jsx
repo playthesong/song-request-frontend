@@ -36,6 +36,12 @@ const LetterListBlock = styled.ul`
   display: flex;
   flex-wrap: wrap;
   margin-top: 4.5rem;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4.1rem;
+  }
 `;
 
 export default LetterList;

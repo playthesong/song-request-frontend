@@ -44,6 +44,12 @@ const LettersButtonBlock = styled.div`
   align-items: center;
   height: 7rem;
   margin: 0rem 1.2rem 1rem 1.2rem;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    position: relative;
+    flex-direction: column;
+    height: unset;
+  }
 `;
 
 export default Letters;

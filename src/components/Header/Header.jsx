@@ -49,6 +49,10 @@ const HeaderInner = styled.div`
 
 const HeaderSpacer = styled.div`
   height: 80px;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    height: 130px;
+  }
 `;
 
 export default Header;

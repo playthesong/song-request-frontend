@@ -52,11 +52,11 @@ const NavigationItem = styled(Link)`
     font-size: 1.1rem;
 
     &:first-child {
-      margin-left: 3rem;
+      margin-left: 2.3rem;
     }
 
     &:last-child {
-      margin-right: 3rem;
+      margin-right: 2.3rem;
     }
   }
 `;

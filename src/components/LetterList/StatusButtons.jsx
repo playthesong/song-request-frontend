@@ -51,6 +51,10 @@ const ButtonList = styled.ul`
   height: 3.2rem;
   border-radius: 5rem;
   box-shadow: 0px 1px 15px 0px rgba(5, 5, 5, 0.1);
+
+  @media ${({ theme }) => theme.device.mobile} {
+    order: 2;
+  }
 `;
 
 const Button = styled.li`
