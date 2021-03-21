@@ -2,7 +2,19 @@ import React from "react";
 import styled from "styled-components";
 import LetterContainer from "../../containers/Letter/LetterContainer";
 
-const LetterList = ({ letters }) => {
+const LetterList = ({ letters, status, loading, error }) => {
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>ERROR!</div>;
+  }
+
+  if (!letters) {
+    return null;
+  }
+
   return (
     <LetterListBlock>
       {letters.map(letter => (

@@ -1,42 +1,68 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import LetterModal from "../../components/LetterModal/LetterModal";
-import { getLetterById } from "../../modules/letter";
+import LetterDetails from "../../components/LetterDetails/LetterDetails";
+import { LETTER_MODAL } from "../../constants/types";
+import { clearForm } from "../../modules/letterForm";
+import { closeModal } from "../../modules/letterModal";
+import LetterCreateContainer from "../LetterEditor/LetterCreateContainer";
+import LetterEditContainer from "../LetterEditor/LetterEditContainer";
 
 const LetterModalContainer = () => {
-  const { modalType, letterId } = useSelector(state => state.letterModal);
-  const { data: letter, error } = useSelector(state => state.letter);
+  const { modalType } = useSelector(state => state.letterModal);
+  const { data: letter, loading, error } = useSelector(state => state.letter);
   const dispatch = useDispatch();
 
-  const openModal = () => {
+  const onCloseModal = () => {
+    dispatch(clearForm());
+    dispatch(closeModal());
+  };
+
+  const inActivateScroll = () => {
     document.body.style.overflow = "hidden";
     document.body.scroll = "no";
   };
 
-  const closeModal = () => {
+  const activateScroll = () => {
     document.body.style.overflow = "scroll";
     document.body.scroll = "yes";
   };
 
   useEffect(() => {
-    dispatch(getLetterById(letterId));
-
     return () => {
-      closeModal();
+      activateScroll();
     };
-  }, [letterId, dispatch]);
+  });
 
-  if (error) {
-    return <div>ERROR!</div>;
+  if (modalType === LETTER_MODAL.READ) {
+    inActivateScroll();
+    return (
+      <LetterDetails
+        letter={letter}
+        loading={loading}
+        error={error}
+        onCloseModal={onCloseModal}
+      />
+    );
   }
 
-  if (!letter) {
-    return null;
+  if (modalType === LETTER_MODAL.EDIT) {
+    inActivateScroll();
+    return (
+      <LetterEditContainer
+        letter={letter}
+        loading={loading}
+        error={error}
+        onCloseModal={onCloseModal}
+      />
+    );
   }
 
-  openModal();
+  if (modalType === LETTER_MODAL.CREATE) {
+    inActivateScroll();
+    return <LetterCreateContainer onCloseModal={onCloseModal} />;
+  }
 
-  return <LetterModal letter={letter} modalType={modalType} />;
+  return null;
 };
 
 export default LetterModalContainer;

@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 
-const UserAbout = ({ username, avatarUrl }) => {
+const UserAbout = ({ name, avatarUrl }) => {
   return (
     <UserAboutBlock>
       <UserImage src={avatarUrl} />
-      <Username>{username}</Username>
+      <Username>{name}</Username>
     </UserAboutBlock>
   );
 };

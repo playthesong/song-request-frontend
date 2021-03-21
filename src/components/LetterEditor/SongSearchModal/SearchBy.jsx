@@ -15,7 +15,7 @@ const SearchBy = () => {
 const SearchByBlock = styled.a`
   position: absolute;
   bottom: 8%;
-  right: 15%;
+  right: 11%;
   display: flex;
   flex-direction: column;
   opacity: 0.7;

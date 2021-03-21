@@ -2,12 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import LetterEditor from "../../components/LetterEditor/LetterEditor";
 import { FORM } from "../../constants/form";
-import { LETTER_STATUS } from "../../constants/letterStatus";
 import { LETTER_MODAL } from "../../constants/types";
-import { updateLetter } from "../../modules/letter";
+import { createLetter } from "../../modules/letter";
 import {
   clearForm,
-  initializeForm,
   setErrorArtist,
   setErrorImageUrl,
   setErrorSongStory,
@@ -17,13 +15,19 @@ import {
 import { changeModalType } from "../../modules/letterModal";
 import { getLetters } from "../../modules/letters";
 
-const LetterEditContainer = ({ letter, onCloseModal }) => {
+const LetterCreateContainer = ({ onCloseModal }) => {
   const { letterForm } = useSelector(state => state);
+  const {
+    title,
+    artist,
+    imageUrl,
+    songStory,
+    titleError,
+    artistError,
+    imageUrlError,
+    songStoryError
+  } = letterForm;
   const dispatch = useDispatch();
-
-  const { titleError, artistError, imageUrlError, songStoryError } = letterForm;
-
-  const { user, id: letterId } = letter;
 
   const onChange = event => {
     const { name, value } = event.target;
@@ -58,40 +62,44 @@ const LetterEditContainer = ({ letter, onCloseModal }) => {
     }
   };
 
-  const onUpdate = event => {
+  const onCreate = event => {
     event.preventDefault();
     validateValues();
 
-    if (titleError || artistError || imageUrlError || songStoryError) {
+    if (
+      title.length === 0 ||
+      artist.length === 0 ||
+      titleError ||
+      artistError ||
+      imageUrlError ||
+      songStoryError
+    ) {
       return;
     }
 
-    dispatch(
-      updateLetter(letterId, {
-        letterId,
-        user,
-        ...letterForm
-      })
-    );
+    const song = { title, artist, imageUrl };
+    const newLetter = { song, songStory };
+
+    dispatch(createLetter(newLetter));
     dispatch(clearForm());
     dispatch(changeModalType(LETTER_MODAL.READ));
-    dispatch(getLetters(LETTER_STATUS.WAITING));
+    dispatch(getLetters());
   };
 
   useEffect(() => {
-    dispatch(initializeForm(letter));
-  }, [dispatch, letter]);
+    return () => {
+      dispatch(clearForm());
+    };
+  }, [dispatch]);
 
   return (
     <LetterEditor
-      letterId={letterId}
       letterForm={letterForm}
-      user={user}
       onChange={onChange}
-      onSubmit={onUpdate}
+      onSubmit={onCreate}
       onCloseModal={onCloseModal}
     />
   );
 };
 
-export default LetterEditContainer;
+export default LetterCreateContainer;

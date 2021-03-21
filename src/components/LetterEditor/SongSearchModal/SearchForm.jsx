@@ -4,7 +4,7 @@ import { BiSearch } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { searchSong } from "../../../modules/song";
 
-const SearchForm = ({ onCloseModal }) => {
+const SearchForm = () => {
   const dispatch = useDispatch();
 
   const onSearchSong = event => {
@@ -16,11 +16,21 @@ const SearchForm = ({ onCloseModal }) => {
     <Form>
       <SearchInputWrap>
         <SearchLabel>아티스트</SearchLabel>
-        <SearchInput type="text" name="artist" />
+        <SearchInput
+          type="text"
+          name="artist"
+          maxLength="25"
+          placeholder="검색할 아티스트를 입력 해주세요."
+        />
       </SearchInputWrap>
       <SearchInputWrap>
         <SearchLabel>제목</SearchLabel>
-        <SearchInput type="text" name="title" />
+        <SearchInput
+          type="text"
+          name="title"
+          maxLength="25"
+          placeholder="검색할 제목을 입력 해주세요."
+        />
       </SearchInputWrap>
       <SearchButton type="submit" onClick={onSearchSong}>
         <SearchIcon />
@@ -34,7 +44,7 @@ const Form = styled.form`
   width: 95%;
   display: flex;
   justify-content: center;
-  margin: 0rem auto 3.5rem auto;
+  margin: 0rem auto 2rem auto;
 `;
 
 const SearchLabel = styled.span`
@@ -61,6 +71,17 @@ const SearchInput = styled.input`
   margin: 0rem 0.5rem 0rem 5.5rem;
   font-size: 1.2rem;
   background-color: #fbfbfd;
+
+  &:focus {
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+
+  &::placeholder {
+    font-size: 1rem;
+    opacity: 0.3;
+  }
 `;
 
 const SearchInputWrap = styled.div`

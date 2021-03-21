@@ -1,9 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import styled, { css } from "styled-components";
 
-const LetterModalButton = ({ children, type, onClick, isMouseEnter }) => {
+const LetterModalButton = ({ children, onClick }) => {
+  const { isMouseEnter } = useSelector(state => state.letterModal);
+
   return (
-    <StyledButton type={type} onClick={onClick} isMouseEnter={isMouseEnter}>
+    <StyledButton onClick={onClick} isMouseEnter={isMouseEnter}>
       {children}
     </StyledButton>
   );
