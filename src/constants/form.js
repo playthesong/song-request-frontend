@@ -1,6 +1,6 @@
 export const FORM = {
   TITLE: "title",
-  TITLE_MAX: 30,
+  TITLE_MAX: 50,
   TITLE_MIN: 1,
   ARTIST: "artist",
   ARTIST_MAX: 30,

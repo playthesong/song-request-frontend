@@ -1,10 +1,11 @@
 import React from "react";
 import styled, { css } from "styled-components";
+import parse from "html-react-parser";
 
 const SongArticleItem = ({ articleName, item }) => {
   return (
     <SongArticleItemBlock articleName={articleName}>
-      {item}
+      {parse(item)}
     </SongArticleItemBlock>
   );
 };

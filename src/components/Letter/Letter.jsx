@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import parse from "html-react-parser";
 
-const TITLE_MAX_LENGTH = 20;
+const TITLE_MAX_LENGTH = 30;
 const ARTIST_MAX_LENGTH = 10;
 const SONG_STORY_MAX_LENGTH = 100;
 
@@ -23,14 +24,18 @@ const Letter = ({
           <img src={imageUrl} alt="ALBUM COVER" className="album-image" />
           <div className="song-about">
             <span className="song-about__title">
-              {title.length > TITLE_MAX_LENGTH
-                ? `${title.slice(0, TITLE_MAX_LENGTH)} ...`
-                : title}
+              {parse(
+                title.length > TITLE_MAX_LENGTH
+                  ? `${title.slice(0, TITLE_MAX_LENGTH)} ...`
+                  : title
+              )}
             </span>
             <span className="song-about__artist">
-              {artist.length > ARTIST_MAX_LENGTH
-                ? `${artist.slice(0, ARTIST_MAX_LENGTH)} ...`
-                : artist}
+              {parse(
+                artist.length > ARTIST_MAX_LENGTH
+                  ? `${artist.slice(0, ARTIST_MAX_LENGTH)} ...`
+                  : artist
+              )}
             </span>
           </div>
         </SongBlock>
