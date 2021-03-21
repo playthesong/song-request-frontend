@@ -31,7 +31,7 @@ const TitleBlock = styled.div`
   @media ${({ theme }) => theme.device.mobile} {
     order: 3;
     align-self: flex-start;
-    margin-top: 4.5rem;
+    margin-top: 3.5rem;
     margin-left: 2rem;
     flex-basis: 100%;
   }
