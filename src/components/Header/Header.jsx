@@ -42,6 +42,7 @@ const HeaderInner = styled.div`
 
   @media ${({ theme }) => theme.device.mobile} {
     flex-direction: column;
+    padding: 0rem;
     height: 100%;
   }
 `;

@@ -5,14 +5,21 @@ import realpiano_logo from "../../assets/realpiano_logo_white.jpg";
 
 const HeaderTitle = () => {
   return (
-    <Link to="/">
+    <StyledLink to="/">
       <HeaderTitleBlock>
         <img src={realpiano_logo} alt="REALPIANO" className="logo" />
         <h2 className="title">REALPIANO</h2>
       </HeaderTitleBlock>
-    </Link>
+    </StyledLink>
   );
 };
+
+const StyledLink = styled(Link)`
+  @media ${({ theme }) => theme.device.mobile} {
+    order: 2;
+    /* margin-top: 1rem; */
+  }
+`;
 
 const HeaderTitleBlock = styled.div`
   height: 100%;
@@ -33,10 +40,6 @@ const HeaderTitleBlock = styled.div`
     font-weight: 500;
     margin-left: 5px;
     margin-top: 10px;
-  }
-
-  @media ${({ theme }) => theme.device.mobile} {
-    margin-top: 2.5rem;
   }
 `;
 
