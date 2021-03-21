@@ -39,6 +39,11 @@ const HeaderInner = styled.div`
   width: 100%;
   background-color: #ffffff;
   height: 80px;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    flex-direction: column;
+    height: 100%;
+  }
 `;
 
 const HeaderSpacer = styled.div`

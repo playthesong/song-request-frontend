@@ -34,6 +34,10 @@ const HeaderTitleBlock = styled.div`
     margin-left: 5px;
     margin-top: 10px;
   }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    margin-top: 2.5rem;
+  }
 `;
 
 export default HeaderTitle;
