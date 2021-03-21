@@ -117,7 +117,7 @@ const SongStory = styled.p`
   font-size: 1.2rem;
   line-height: 1.9rem;
   opacity: 0.9;
-  padding: 0rem 0.5rem;
+  padding: 0rem 0.35rem;
 `;
 
 const UserBlock = styled.div`
@@ -146,7 +146,7 @@ const UserBlock = styled.div`
 
   .user-about__name {
     font-size: 1.1rem;
-    margin-top: 0.5rem;
+    margin-top: 0.2rem;
     margin-left: 0.5rem;
     opacity: 0.8;
     font-weight: 700;
