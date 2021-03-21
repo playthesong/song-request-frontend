@@ -15,12 +15,21 @@ const MainTemplateBlock = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 7rem;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    padding-top: 3.5rem;
+    min-height: calc(100vh - 21rem);
+  }
 `;
 
 const MainTemplateInner = styled.div`
   max-width: 1100px;
   width: 100%;
   padding: 0rem 5rem;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    padding: 0rem 1rem;
+  }
 `;
 
 export default MainTemplate;

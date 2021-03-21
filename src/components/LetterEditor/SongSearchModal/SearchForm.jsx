@@ -41,10 +41,14 @@ const SearchForm = () => {
 
 const Form = styled.form`
   box-sizing: border-box;
-  width: 95%;
+  width: 98%;
   display: flex;
   justify-content: center;
   margin: 0rem auto 2rem auto;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 98%;
+  }
 `;
 
 const SearchLabel = styled.span`
@@ -72,15 +76,21 @@ const SearchInput = styled.input`
   font-size: 1.2rem;
   background-color: #fbfbfd;
 
+  &::placeholder {
+    font-size: 1rem;
+    opacity: 0.3;
+  }
+
   &:focus {
     &::placeholder {
       opacity: 0;
     }
   }
 
-  &::placeholder {
-    font-size: 1rem;
-    opacity: 0.3;
+  @media ${({ theme }) => theme.device.mobile} {
+    &::placeholder {
+      opacity: 0;
+    }
   }
 `;
 

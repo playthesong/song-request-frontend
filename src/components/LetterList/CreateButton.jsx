@@ -31,6 +31,13 @@ const CreateButtonBlock = styled.div`
   height: 5rem;
   position: relative;
   top: 0.35rem;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    top: 60%;
+    right: 1%;
+    position: absolute;
+    order: 3;
+  }
 `;
 
 const Button = styled.button`
@@ -59,12 +66,20 @@ const Button = styled.button`
 const ButtonIcon = styled(FiSend)`
   font-size: 1.2rem;
   vertical-align: middle;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1rem;
+  }
 `;
 
 const ButtonText = styled.span`
   font-size: 1.1rem;
   margin-left: 0.5rem;
   vertical-align: middle;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1rem;
+  }
 `;
 
 export default CreateButton;

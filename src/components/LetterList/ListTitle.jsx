@@ -27,6 +27,14 @@ const ListTitle = ({ status }) => {
 const TitleBlock = styled.div`
   flex-basis: 8rem;
   flex-shrink: 0;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    order: 3;
+    align-self: flex-start;
+    margin-top: 3.5rem;
+    margin-left: 2rem;
+    flex-basis: 100%;
+  }
 `;
 
 const Title = styled.h3`
@@ -35,6 +43,10 @@ const Title = styled.h3`
   font-weight: 500;
   padding: 0 0 1rem 0;
   border-bottom: 2px solid #f06595;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1.4rem;
+  }
 `;
 
 export default ListTitle;

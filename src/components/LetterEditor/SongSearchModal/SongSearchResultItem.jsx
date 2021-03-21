@@ -54,11 +54,19 @@ const SongDetails = styled.div`
 const SongTitle = styled.span`
   font-size: 1.4rem;
   font-weight: 600;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1.31rem;
+  }
 `;
 
 const SongArtist = styled.span`
   margin-top: 0.7rem;
   color: #868e96;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1.2rem;
+  }
 `;
 
 const SelectButton = styled(HiCheck)`

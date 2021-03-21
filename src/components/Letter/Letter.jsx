@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import parse from "html-react-parser";
 
-const MAX_LENGTH = 100;
+const TITLE_MAX_LENGTH = 30;
+const ARTIST_MAX_LENGTH = 10;
+const SONG_STORY_MAX_LENGTH = 100;
 
 const Letter = ({
   id,
@@ -20,13 +23,25 @@ const Letter = ({
         <SongBlock>
           <img src={imageUrl} alt="ALBUM COVER" className="album-image" />
           <div className="song-about">
-            <span className="song-about__title">{title}</span>
-            <span className="song-about__artist">{artist}</span>
+            <span className="song-about__title">
+              {parse(
+                title.length > TITLE_MAX_LENGTH
+                  ? `${title.slice(0, TITLE_MAX_LENGTH)} ...`
+                  : title
+              )}
+            </span>
+            <span className="song-about__artist">
+              {parse(
+                artist.length > ARTIST_MAX_LENGTH
+                  ? `${artist.slice(0, ARTIST_MAX_LENGTH)} ...`
+                  : artist
+              )}
+            </span>
           </div>
         </SongBlock>
         <SongStory>
-          {songStory.length > MAX_LENGTH
-            ? `${songStory.slice(0, MAX_LENGTH)} ...`
+          {songStory.length > SONG_STORY_MAX_LENGTH
+            ? `${songStory.slice(0, SONG_STORY_MAX_LENGTH)} ...`
             : songStory}
         </SongStory>
         <UserBlock>
@@ -69,6 +84,10 @@ const LetterBlock = styled.li`
     width: 10rem;
     height: 10rem;
   }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    margin: 1.2rem 0rem 4.1rem 0rem;
+  }
 `;
 
 const SongBlock = styled.div`
@@ -90,10 +109,10 @@ const SongBlock = styled.div`
     margin-left: 2rem;
 
     .song-about__title {
-      overflow-x: hidden;
-      font-size: 1.4rem;
-      font-weight: 500;
-      color: #2c2c2c;
+      max-width: 17rem;
+      font-size: 1.37rem;
+      font-weight: 600;
+      color: #232323;
       opacity: 0.9;
     }
 
@@ -107,13 +126,14 @@ const SongBlock = styled.div`
 
 const SongStory = styled.p`
   width: 100%;
+  max-width: 24.2rem;
   max-height: 8rem;
   line-break: anywhere;
   margin-top: -0.3rem;
   font-size: 1.2rem;
   line-height: 1.9rem;
   opacity: 0.9;
-  padding: 0rem 0.5rem;
+  padding: 0rem 0.35rem;
 `;
 
 const UserBlock = styled.div`
@@ -142,7 +162,7 @@ const UserBlock = styled.div`
 
   .user-about__name {
     font-size: 1.1rem;
-    margin-top: 0.5rem;
+    margin-top: 0.2rem;
     margin-left: 0.5rem;
     opacity: 0.8;
     font-weight: 700;

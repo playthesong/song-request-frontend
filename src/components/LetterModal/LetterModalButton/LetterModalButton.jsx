@@ -36,6 +36,11 @@ const StyledButton = styled.button`
   cursor: pointer;
   transition: 0.7s;
   outline: none;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    visibility: visible;
+    opacity: 1;
+  }
 `;
 
 export default LetterModalButton;

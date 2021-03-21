@@ -22,6 +22,11 @@ const ButtonBlock = styled.div`
           opacity: 0;
         `}
   transition: 0.7s;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    visibility: visible;
+    opacity: 1;
+  }
 `;
 
 const HiddenCloseButton = styled(IoMdArrowBack)`

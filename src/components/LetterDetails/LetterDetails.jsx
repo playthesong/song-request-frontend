@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ModalTemplate from "../Template/Modal/ModalTemplate";
 import LetterDetailsSong from "./LetterDetailsSong";
 import LetterDetailsSongStory from "./LetterDetailsSongStory";
@@ -8,7 +8,17 @@ import LetterModalDiv from "../LetterModal/LetterModalContents/LetterModalDiv";
 import LetterModalHiddenButtonContainer from "../../containers/LetterModal/LetterModalHiddenButtonContainer";
 import LetterModalButton from "../LetterModal/LetterModalButton/LetterModalButton";
 
-const LetterDetails = ({ letter, loading, error, onCloseModal }) => {
+const LetterDetails = ({
+  letter,
+  loading,
+  error,
+  inActivateScroll,
+  onCloseModal
+}) => {
+  useEffect(() => {
+    inActivateScroll();
+  });
+
   return (
     <ModalTemplate>
       <LetterModalTemplate>

@@ -2,15 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import { MdKeyboardArrowDown } from "react-icons/md";
 
-const avatarUrl =
-  "https://avatars.githubusercontent.com/u/49878687?s=460&u=e739e45e9f39b5200339cca6dc293f934fa03bc0&v=4";
+const UserProfile = ({ user }) => {
+  const { name, avatarUrl } = user;
 
-const UserProfile = () => {
   return (
     <UserProfileBlock>
-      <img src={avatarUrl} alt="프로필 사진" className="user-avatar" />
-      <span className="username">Museop Kim</span>
-      <MdKeyboardArrowDown className="reversed-triangle" />
+      <UserImage src={avatarUrl} alt="프로필 사진" />
+      <Username>{name}</Username>
+      <MenuIcon />
     </UserProfileBlock>
   );
 };
@@ -21,24 +20,47 @@ const UserProfileBlock = styled.div`
   margin-top: 3px;
   cursor: pointer;
 
-  .username {
-    padding: 0px 9px;
-    margin-top: 3px;
-    opacity: 0.8;
-    font-size: 1.2rem;
-    font-weight: 500;
+  @media ${({ theme }) => theme.device.mobile} {
+    order: 1;
+    align-self: flex-end;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding: 0.5rem 1rem;
   }
+`;
 
-  .user-avatar {
-    max-width: 32px;
-    max-height: 32px;
-    border-radius: 50%;
-    margin-right: 1px;
+const UserImage = styled.img`
+  max-width: 3.2rem;
+  max-height: 3.2rem;
+  border-radius: 50%;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    max-width: 2.5rem;
+    max-height: 2.5rem;
   }
+`;
 
-  .reversed-triangle {
-    font-size: 1.6rem;
-    opacity: 0.8;
+const Username = styled.span`
+  padding: 0rem 0.9rem;
+  margin-top: 0.3rem;
+  opacity: 0.8;
+  font-size: 1.2rem;
+  font-weight: 500;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1rem;
+    padding: 0rem;
+    margin-left: 0.5rem;
+  }
+`;
+
+const MenuIcon = styled(MdKeyboardArrowDown)`
+  font-size: 1.6rem;
+  opacity: 0.8;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1.4rem;
+    margin-top: 0.25rem;
   }
 `;
 

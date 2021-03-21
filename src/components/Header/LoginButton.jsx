@@ -24,18 +24,36 @@ const LoginButtonBlock = styled.a`
   &:hover {
     opacity: 0.9;
   }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    order: 1;
+    align-self: flex-end;
+    margin-right: 1rem;
+    margin-top: 1.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.7rem;
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 `;
 
 const GoogleIcon = styled(IoLogoGoogleplus)`
   color: #fff;
   font-size: 1.4rem;
   margin-right: 0.5rem;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1.1rem;
+  }
 `;
 
 const LoginText = styled.span`
   color: #fff;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 600;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1rem;
+  }
 `;
 
 export default LoginButton;

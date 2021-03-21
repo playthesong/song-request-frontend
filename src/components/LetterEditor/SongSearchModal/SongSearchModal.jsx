@@ -36,6 +36,11 @@ const SongSearchModalBlock = styled.div`
   border-radius: 0.3rem;
   padding: 3rem 5rem 6rem 5rem;
   z-index: 99;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 100%;
+    padding: 3rem 1rem 5rem 1rem;
+  }
 `;
 
 const SearchResultWrap = styled.div`

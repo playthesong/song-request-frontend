@@ -3,15 +3,24 @@ import styled from "styled-components";
 import HeaderTitle from "./HeaderTitle";
 import Navigation from "./Navigation";
 import LoginButton from "./LoginButton";
+import { useSelector } from "react-redux";
+import UserProfile from "./UserProfile";
 
 const Header = () => {
+  const { user, error } = useSelector(({ auth }) => auth);
+
+  if (error) {
+    return <div>ERROR!</div>;
+  }
+
   return (
     <>
       <HeaderBlock>
         <HeaderInner>
           <HeaderTitle />
           <Navigation />
-          <LoginButton />
+          {user && <UserProfile user={user} />}
+          {!user && <LoginButton />}
         </HeaderInner>
       </HeaderBlock>
       <HeaderSpacer />
@@ -39,10 +48,20 @@ const HeaderInner = styled.div`
   width: 100%;
   background-color: #ffffff;
   height: 80px;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    flex-direction: column;
+    padding: 0rem;
+    height: 100%;
+  }
 `;
 
 const HeaderSpacer = styled.div`
   height: 80px;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    height: 130px;
+  }
 `;
 
 export default Header;

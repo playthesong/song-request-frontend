@@ -49,6 +49,14 @@ const Textarea = styled(TextareaAutosize)`
     & + div {
       background-color: rgba(230, 73, 128, 0.7);
     }
+
+    &::placeholder {
+      opacity: 0;
+    }
+  }
+
+  &::placeholder {
+    color: rgba(0, 0, 0, 0.3);
   }
 `;
 

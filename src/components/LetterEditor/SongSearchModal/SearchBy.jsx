@@ -19,6 +19,10 @@ const SearchByBlock = styled.a`
   display: flex;
   flex-direction: column;
   opacity: 0.7;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    right: 7%;
+  }
 `;
 
 const APINameWrap = styled.div`

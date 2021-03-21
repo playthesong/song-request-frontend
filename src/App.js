@@ -13,10 +13,12 @@ import OAuth from "./pages/OAuth";
 import Ranking from "./pages/Ranking";
 import Contents from "./pages/Contents";
 import MusicSheets from "./pages/MusicSheets";
+import { ThemeProvider } from "styled-components";
+import theme from "./styles/theme";
 
 function App() {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Router>
         <ReactHelmet />
@@ -31,7 +33,7 @@ function App() {
         </Switch>
         <Footer />
       </Router>
-    </>
+    </ThemeProvider>
   );
 }
 
