@@ -43,6 +43,10 @@ const ActiveEffect = css`
 
 const HoverEffect = css`
   background: #e64980;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    background: #f06595;
+  }
 `;
 
 const ButtonList = styled.ul`
@@ -54,6 +58,8 @@ const ButtonList = styled.ul`
 
   @media ${({ theme }) => theme.device.mobile} {
     order: 2;
+    margin-top: 1.5rem;
+    height: 2.7rem;
   }
 `;
 
@@ -62,7 +68,7 @@ const Button = styled.li`
   display: flex;
   align-items: center;
   cursor: pointer;
-  padding: 0rem 1.5rem;
+  padding: 0rem 1rem;
   opacity: 0.3;
   font-size: 1rem;
   font-weight: 500;

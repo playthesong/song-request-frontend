@@ -29,7 +29,7 @@ const LoginButtonBlock = styled.a`
     order: 1;
     align-self: flex-end;
     margin-right: 1rem;
-    margin-top: 1rem;
+    margin-top: 1.5rem;
     padding: 0.5rem 1rem;
     border-radius: 0.7rem;
     background-color: rgba(0, 0, 0, 0.7);
