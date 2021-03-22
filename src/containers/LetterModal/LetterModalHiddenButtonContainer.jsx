@@ -29,18 +29,16 @@ const LetterModalHiddenButtonContainer = ({
           onCloseModal={onCloseModal}
         />
       )}
-      {!currentUser
-        ? null
-        : (modalType === LETTER_MODAL.READ ||
-            modalType === LETTER_MODAL.EDIT) &&
-          currentUser.id === user.id && (
-            <LetterModalHiddenMenu
-              isMouseEnter={isMouseEnter}
-              isMenuOpen={isMenuOpen}
-              onToggle={onToggle}
-              changeToEdit={changeToEdit}
-            />
-          )}
+      {(modalType === LETTER_MODAL.READ || modalType === LETTER_MODAL.EDIT) &&
+        currentUser &&
+        currentUser.id === user.id && (
+          <LetterModalHiddenMenu
+            isMouseEnter={isMouseEnter}
+            isMenuOpen={isMenuOpen}
+            onToggle={onToggle}
+            changeToEdit={changeToEdit}
+          />
+        )}
     </>
   );
 };
