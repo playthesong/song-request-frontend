@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import parse from "html-react-parser";
+import realpianoLogo from "../../assets/realpiano_logo_alt.png";
 
 const TITLE_MAX_LENGTH = 30;
 const ARTIST_MAX_LENGTH = 10;
@@ -16,6 +17,10 @@ const Letter = ({
 }) => {
   const { name, avatarUrl } = user;
   const { title, artist, imageUrl } = song;
+
+  if (!imageUrl) {
+    imageUrl = realpianoLogo;
+  }
 
   return (
     <>
