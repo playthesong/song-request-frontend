@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import LetterContainer from "../../containers/Letter/LetterContainer";
+import Letter from "../Letter/Letter";
 import Loading from "../Loading/Loading";
 
 const LetterList = ({ letters, loading, error }) => {
@@ -13,7 +13,7 @@ const LetterList = ({ letters, loading, error }) => {
       {loading && <Loading position={60} />}
       {letters &&
         letters.map(letter => (
-          <LetterContainer
+          <Letter
             key={letter.id}
             id={letter.id}
             user={letter.user}

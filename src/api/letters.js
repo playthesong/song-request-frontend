@@ -9,8 +9,7 @@ export const getLetters = async status => {
 
 export const getLetterById = async id => {
   await sleep(500);
-  // return letters.find(letter => letter.id === id);
-  throw new Error();
+  return letters.find(letter => letter.id === id);
 };
 
 export const createLetter = async payload => {

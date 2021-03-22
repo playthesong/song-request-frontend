@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { changeModalType, openModal } from "../../modules/letterModal";
 import { LETTER_MODAL } from "../../constants/types";
 
-const CreateButton = () => {
+const ActionButtons = ({ currentUser }) => {
   const dispatch = useDispatch();
   const openCreateModal = () => {
     dispatch(openModal());
@@ -13,16 +13,18 @@ const CreateButton = () => {
   };
 
   return (
-    <CreateButtonBlock>
-      <Button onClick={openCreateModal}>
-        <ButtonIcon />
-        <ButtonText>신청곡 등록</ButtonText>
-      </Button>
-    </CreateButtonBlock>
+    <ActionsButtonsBlock>
+      {currentUser && (
+        <CreateButton onClick={openCreateModal}>
+          <CreateButtonIcon />
+          <CreateButtonText>신청곡 등록</CreateButtonText>
+        </CreateButton>
+      )}
+    </ActionsButtonsBlock>
   );
 };
 
-const CreateButtonBlock = styled.div`
+const ActionsButtonsBlock = styled.div`
   flex-basis: 12rem;
   flex-shrink: 0;
   display: flex;
@@ -40,7 +42,7 @@ const CreateButtonBlock = styled.div`
   }
 `;
 
-const Button = styled.button`
+const CreateButton = styled.button`
   box-sizing: border-box;
   border: none;
   background-color: #fff;
@@ -63,7 +65,7 @@ const Button = styled.button`
   }
 `;
 
-const ButtonIcon = styled(FiSend)`
+const CreateButtonIcon = styled(FiSend)`
   font-size: 1.2rem;
   vertical-align: middle;
 
@@ -72,7 +74,7 @@ const ButtonIcon = styled(FiSend)`
   }
 `;
 
-const ButtonText = styled.span`
+const CreateButtonText = styled.span`
   font-size: 1.1rem;
   margin-left: 0.5rem;
   vertical-align: middle;
@@ -82,4 +84,4 @@ const ButtonText = styled.span`
   }
 `;
 
-export default CreateButton;
+export default ActionButtons;

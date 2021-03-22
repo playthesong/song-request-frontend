@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 import UserProfile from "./UserProfile";
 
 const Header = () => {
-  const { user, error } = useSelector(({ auth }) => auth);
+  const { currentUser, error } = useSelector(({ auth }) => auth);
 
   if (error) {
     return <div>ERROR!</div>;
@@ -19,8 +19,7 @@ const Header = () => {
         <HeaderInner>
           <HeaderTitle />
           <Navigation />
-          {user && <UserProfile user={user} />}
-          {!user && <LoginButton />}
+          {currentUser ? <UserProfile user={currentUser} /> : <LoginButton />}
         </HeaderInner>
       </HeaderBlock>
       <HeaderSpacer />

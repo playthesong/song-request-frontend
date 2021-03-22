@@ -5,7 +5,7 @@ import LetterList from "../components/LetterList/LetterList";
 import LetterModalContainer from "../containers/LetterModal/LetterModalContainer";
 import ListTitle from "../components/LetterList/ListTitle";
 import StatusButtons from "../components/LetterList/StatusButtons";
-import CreateButton from "../components/LetterList/CreateButton";
+import ActionButtons from "../components/LetterList/ActionButtons";
 import { useDispatch, useSelector } from "react-redux";
 import { getLetters } from "../modules/letters";
 import { LETTER_STATUS } from "../constants/letterStatus";
@@ -14,6 +14,7 @@ const Letters = () => {
   const { data: letters, status, loading, error } = useSelector(
     state => state.letters
   );
+  const { currentUser } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const Letters = () => {
       <LettersButtonBlock>
         <ListTitle status={status} />
         <StatusButtons status={status} />
-        <CreateButton />
+        <ActionButtons currentUser={currentUser} />
       </LettersButtonBlock>
       <LetterList
         letters={letters}

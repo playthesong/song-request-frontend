@@ -2,19 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import parse from "html-react-parser";
 import realpianoLogo from "../../assets/realpiano_logo_alt.png";
+import { useDispatch } from "react-redux";
+import { changeModalType, openModal } from "../../modules/letterModal";
+import { getLetterById } from "../../modules/letter";
+import { LETTER_MODAL } from "../../constants/types";
 
 const TITLE_MAX_LENGTH = 30;
 const ARTIST_MAX_LENGTH = 10;
 const SONG_STORY_MAX_LENGTH = 100;
 
-const Letter = ({
-  id,
-  user,
-  song,
-  songStory,
-  createdDateTime,
-  onReadLetter
-}) => {
+const Letter = ({ id, user, song, songStory, createdDateTime }) => {
+  const dispatch = useDispatch();
+  const onReadLetter = letterId => {
+    dispatch(openModal());
+    dispatch(changeModalType(LETTER_MODAL.READ));
+    dispatch(getLetterById(letterId));
+  };
   const { name, avatarUrl } = user;
   const { title, artist, imageUrl } = song;
 

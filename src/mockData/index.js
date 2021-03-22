@@ -92,7 +92,10 @@ const mockLetters = [
       "사연입니다. 사연 내용은 다음과 같습니다. 사연은 100자까지만 보여 드릴 예정 입니다.",
     requestStatus: LETTER_STATUS.WAITING,
     createdDateTime: "2021-01-27 23:41",
-    user: userData
+    user: {
+      ...userData,
+      id: 8
+    }
   },
   {
     id: 2,
