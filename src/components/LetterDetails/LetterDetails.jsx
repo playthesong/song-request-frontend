@@ -7,6 +7,7 @@ import LetterDetailsUser from "./LetterDetailsUser";
 import LetterModalDiv from "../LetterModal/LetterModalContents/LetterModalDiv";
 import LetterModalHiddenButtonContainer from "../../containers/LetterModal/LetterModalHiddenButtonContainer";
 import LetterModalButton from "../LetterModal/LetterModalButton/LetterModalButton";
+import Loading from "../Loading/Loading";
 
 const LetterDetails = ({
   letter,
@@ -22,7 +23,7 @@ const LetterDetails = ({
   return (
     <ModalTemplate>
       <LetterModalTemplate>
-        {loading && <div>LOADING!</div>}
+        {loading && <Loading />}
         {error && <div>ERROR!</div>}
         {letter && (
           <>
