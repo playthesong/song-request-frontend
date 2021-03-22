@@ -18,8 +18,12 @@ const LoadingBlock = styled.div`
 `;
 
 const LoadingImg = styled.img`
-  max-width: 3rem;
+  max-width: 5rem;
   opacity: 0.3;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    max-width: 3.5rem;
+  }
 `;
 
 export default Loading;
