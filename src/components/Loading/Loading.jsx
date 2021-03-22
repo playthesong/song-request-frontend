@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import realpianoLogo from "../../assets/realpiano_logo_white.jpg";
 
-const Loading = () => {
+const Loading = ({ position }) => {
   return (
-    <LoadingBlock>
+    <LoadingBlock position={position}>
       <LoadingImg src={realpianoLogo} />
     </LoadingBlock>
   );
@@ -12,7 +12,7 @@ const Loading = () => {
 
 const LoadingBlock = styled.div`
   position: absolute;
-  top: 50%;
+  top: ${props => `${props.position}%`};
   left: 50%;
   transform: translate(-50%, -50%);
 `;

@@ -23,7 +23,7 @@ const LetterDetails = ({
   return (
     <ModalTemplate>
       <LetterModalTemplate>
-        {loading && <Loading />}
+        {loading && <Loading position={50} />}
         {error && <div>ERROR!</div>}
         {letter && (
           <>
