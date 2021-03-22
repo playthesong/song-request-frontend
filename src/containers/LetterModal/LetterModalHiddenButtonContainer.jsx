@@ -5,7 +5,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { LETTER_MODAL } from "../../constants/types";
 import { toggleMenu, changeModalType } from "../../modules/letterModal";
 
-const LetterModalHiddenButtonContainer = ({ onCloseModal }) => {
+const LetterModalHiddenButtonContainer = ({
+  user,
+  currentUser,
+  onCloseModal
+}) => {
   const { modalType, isMouseEnter, isMenuOpen } = useSelector(
     state => state.letterModal
   );
@@ -25,14 +29,16 @@ const LetterModalHiddenButtonContainer = ({ onCloseModal }) => {
           onCloseModal={onCloseModal}
         />
       )}
-      {(modalType === LETTER_MODAL.READ || modalType === LETTER_MODAL.EDIT) && (
-        <LetterModalHiddenMenu
-          isMouseEnter={isMouseEnter}
-          isMenuOpen={isMenuOpen}
-          onToggle={onToggle}
-          changeToEdit={changeToEdit}
-        />
-      )}
+      {(modalType === LETTER_MODAL.READ || modalType === LETTER_MODAL.EDIT) &&
+        currentUser &&
+        currentUser.id === user.id && (
+          <LetterModalHiddenMenu
+            isMouseEnter={isMouseEnter}
+            isMenuOpen={isMenuOpen}
+            onToggle={onToggle}
+            changeToEdit={changeToEdit}
+          />
+        )}
     </>
   );
 };

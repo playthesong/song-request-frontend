@@ -58,7 +58,7 @@ const ButtonList = styled.ul`
 
   @media ${({ theme }) => theme.device.mobile} {
     order: 2;
-    margin-top: 1.5rem;
+    margin-top: 2rem;
     height: 2.7rem;
   }
 `;

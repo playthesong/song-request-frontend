@@ -8,13 +8,16 @@ import LetterEditorUser from "./LetterEditorUser";
 import LetterModalHiddenButtonContainer from "../../containers/LetterModal/LetterModalHiddenButtonContainer";
 import LetterEditorSearchButton from "./LetterEditorSearchButton";
 import LetterModalButton from "../LetterModal/LetterModalButton/LetterModalButton";
-import { AUTH } from "../../constants/auth";
 import { useSelector } from "react-redux";
 import { LETTER_MODAL } from "../../constants/types";
 import FormError from "../Error/FormError";
+import GlobalError from "../Error/GlobalError";
+import { GLOBAL_ERROR_MESSAGE } from "../../constants/errorMessage";
 
 const LetterEditor = ({
   letterForm,
+  user,
+  currentUser,
   onChange,
   onSubmit,
   errorMessage,
@@ -23,8 +26,6 @@ const LetterEditor = ({
 }) => {
   const { modalType } = useSelector(state => state.letterModal);
   const { title, artist, imageUrl, songStory } = letterForm;
-  const user = JSON.parse(localStorage.getItem(AUTH.USER));
-  console.log(errorMessage);
 
   useEffect(() => {
     inActivateScroll();
@@ -40,29 +41,39 @@ const LetterEditor = ({
     buttonName = "수정";
   }
 
-  if (!user) {
-    return null;
-  }
-
   return (
     <ModalTemplate>
       <LetterModalTemplate>
-        <LetterModalHiddenButtonContainer onCloseModal={onCloseModal} />
-        <LetterEditorSearchButton />
-        <LetterModalForm>
-          <LetterEditorSong
-            title={title}
-            artist={artist}
-            imageUrl={imageUrl}
-            onChange={onChange}
-          />
-          <LetterEditorSongStory songStory={songStory} onChange={onChange} />
-          {errorMessage && <FormError errorMessage={errorMessage} />}
-          <LetterEditorUser user={user} />
-          <LetterModalButton type={"submit"} onClick={onSubmit}>
-            {buttonName}
-          </LetterModalButton>
-        </LetterModalForm>
+        {!currentUser && (
+          <GlobalError errorMessage={GLOBAL_ERROR_MESSAGE.UNAUTHORIZED} />
+        )}
+        {currentUser && (
+          <>
+            <LetterModalHiddenButtonContainer
+              user={user}
+              currentUser={currentUser}
+              onCloseModal={onCloseModal}
+            />
+            <LetterEditorSearchButton />
+            <LetterModalForm>
+              <LetterEditorSong
+                title={title}
+                artist={artist}
+                imageUrl={imageUrl}
+                onChange={onChange}
+              />
+              <LetterEditorSongStory
+                songStory={songStory}
+                onChange={onChange}
+              />
+              {errorMessage && <FormError errorMessage={errorMessage} />}
+              <LetterEditorUser user={currentUser} />
+              <LetterModalButton type={"submit"} onClick={onSubmit}>
+                {buttonName}
+              </LetterModalButton>
+            </LetterModalForm>
+          </>
+        )}
       </LetterModalTemplate>
     </ModalTemplate>
   );

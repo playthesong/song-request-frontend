@@ -10,6 +10,8 @@ import LetterEditContainer from "../LetterEditor/LetterEditContainer";
 const LetterModalContainer = () => {
   const { modalType } = useSelector(state => state.letterModal);
   const { data: letter, loading, error } = useSelector(state => state.letter);
+  const { currentUser } = useSelector(state => state.auth);
+
   const dispatch = useDispatch();
 
   const onCloseModal = () => {
@@ -39,6 +41,7 @@ const LetterModalContainer = () => {
         letter={letter}
         loading={loading}
         error={error}
+        currentUser={currentUser}
         inActivateScroll={inActivateScroll}
         onCloseModal={onCloseModal}
       />
@@ -49,8 +52,7 @@ const LetterModalContainer = () => {
     return (
       <LetterEditContainer
         letter={letter}
-        loading={loading}
-        error={error}
+        currentUser={currentUser}
         inActivateScroll={inActivateScroll}
         onCloseModal={onCloseModal}
       />
@@ -60,6 +62,7 @@ const LetterModalContainer = () => {
   if (modalType === LETTER_MODAL.CREATE) {
     return (
       <LetterCreateContainer
+        currentUser={currentUser}
         inActivateScroll={inActivateScroll}
         onCloseModal={onCloseModal}
       />

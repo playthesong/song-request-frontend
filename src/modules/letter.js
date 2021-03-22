@@ -17,7 +17,6 @@ const DELETE_LETTER_SUCCESS = "letter/DELETE_LETTER_SUCCESS";
 const DELETE_LETTER_ERROR = "letter/DELETE_LETTER_ERROR";
 
 export const getLetterById = id => async dispatch => {
-  console.log("done");
   dispatch({ type: GET_LETTER });
 
   try {

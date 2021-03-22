@@ -7,10 +7,12 @@ import { AUTH } from "../constants/auth";
 
 const OAuth = ({ location: { search } }) => {
   const { key } = queryString.parse(search);
-  const { user, jwtToken, loading, error } = useSelector(state => state.auth);
+  const { currentUser, jwtToken, loading, error } = useSelector(
+    state => state.auth
+  );
   const dispatch = useDispatch();
 
-  console.log(jwtToken, user);
+  console.log(jwtToken, currentUser);
   useEffect(() => {
     if (key) {
       dispatch(login(key));
@@ -25,12 +27,11 @@ const OAuth = ({ location: { search } }) => {
     return <div>Error!</div>;
   }
 
-  if (!user || !jwtToken) {
+  if (!currentUser || !jwtToken) {
     return null;
   }
 
   localStorage.setItem(AUTH.JWT_TOKEN, jwtToken);
-  localStorage.setItem(AUTH.USER, JSON.stringify(user));
 
   return <Redirect to="/" />;
 };

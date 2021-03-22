@@ -7,11 +7,14 @@ import LetterDetailsUser from "./LetterDetailsUser";
 import LetterModalDiv from "../LetterModal/LetterModalContents/LetterModalDiv";
 import LetterModalHiddenButtonContainer from "../../containers/LetterModal/LetterModalHiddenButtonContainer";
 import LetterModalButton from "../LetterModal/LetterModalButton/LetterModalButton";
+import Loading from "../Loading/Loading";
+import GlobalErrorHandler from "../Error/GlobalErrorHandler";
 
 const LetterDetails = ({
   letter,
   loading,
   error,
+  currentUser,
   inActivateScroll,
   onCloseModal
 }) => {
@@ -22,11 +25,15 @@ const LetterDetails = ({
   return (
     <ModalTemplate>
       <LetterModalTemplate>
-        {loading && <div>LOADING!</div>}
-        {error && <div>ERROR!</div>}
+        {loading && <Loading position={50} />}
+        {error && <GlobalErrorHandler error={error} />}
         {letter && (
           <>
-            <LetterModalHiddenButtonContainer onCloseModal={onCloseModal} />
+            <LetterModalHiddenButtonContainer
+              user={letter.user}
+              currentUser={currentUser}
+              onCloseModal={onCloseModal}
+            />
             <LetterModalDiv>
               <LetterDetailsSong song={letter.song} />
               <LetterDetailsSongStory songStory={letter.songStory} />
@@ -35,7 +42,7 @@ const LetterDetails = ({
                 createdDateTime={letter.createdDateTime}
               />
               <LetterModalButton type={"button"} onClick={onCloseModal}>
-                CLOSE
+                닫기
               </LetterModalButton>
             </LetterModalDiv>
           </>

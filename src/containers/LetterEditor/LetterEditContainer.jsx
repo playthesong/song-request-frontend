@@ -18,7 +18,12 @@ import {
 import { changeModalType } from "../../modules/letterModal";
 import { getLetters } from "../../modules/letters";
 
-const LetterEditContainer = ({ letter, inActivateScroll, onCloseModal }) => {
+const LetterEditContainer = ({
+  letter,
+  currentUser,
+  inActivateScroll,
+  onCloseModal
+}) => {
   const { letterForm } = useSelector(state => state);
   const dispatch = useDispatch();
   const {
@@ -71,8 +76,6 @@ const LetterEditContainer = ({ letter, inActivateScroll, onCloseModal }) => {
   const onUpdate = event => {
     event.preventDefault();
 
-    validateValues();
-
     if (titleError) {
       dispatch(setErrorTitle(true, FORM_ERROR_MESSAGE.TITLE));
       return;
@@ -111,9 +114,9 @@ const LetterEditContainer = ({ letter, inActivateScroll, onCloseModal }) => {
 
   return (
     <LetterEditor
-      letterId={letterId}
       letterForm={letterForm}
       user={user}
+      currentUser={currentUser}
       onChange={onChange}
       onSubmit={onUpdate}
       errorMessage={errorMessage}

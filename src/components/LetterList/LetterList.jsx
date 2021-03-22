@@ -1,32 +1,29 @@
 import React from "react";
 import styled from "styled-components";
-import LetterContainer from "../../containers/Letter/LetterContainer";
+import Letter from "../Letter/Letter";
+import Loading from "../Loading/Loading";
+import EmptyList from "./EmptyList";
 
-const LetterList = ({ letters, status, loading, error }) => {
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
+const LetterList = ({ letters, loading, error }) => {
   if (error) {
     return <div>ERROR!</div>;
   }
 
-  if (!letters) {
-    return null;
-  }
-
   return (
     <LetterListBlock>
-      {letters.map(letter => (
-        <LetterContainer
-          key={letter.id}
-          id={letter.id}
-          user={letter.user}
-          song={letter.song}
-          songStory={letter.songStory}
-          createdDateTime={letter.createdDateTime}
-        />
-      ))}
+      {loading && <Loading position={50} />}
+      {letters && letters.length === 0 && <EmptyList />}
+      {letters &&
+        letters.map(letter => (
+          <Letter
+            key={letter.id}
+            id={letter.id}
+            user={letter.user}
+            song={letter.song}
+            songStory={letter.songStory}
+            createdDateTime={letter.createdDateTime}
+          />
+        ))}
     </LetterListBlock>
   );
 };
