@@ -8,6 +8,7 @@ import LetterModalDiv from "../LetterModal/LetterModalContents/LetterModalDiv";
 import LetterModalHiddenButtonContainer from "../../containers/LetterModal/LetterModalHiddenButtonContainer";
 import LetterModalButton from "../LetterModal/LetterModalButton/LetterModalButton";
 import Loading from "../Loading/Loading";
+import GlobalErrorHandler from "../Error/GlobalErrorHandler";
 
 const LetterDetails = ({
   letter,
@@ -24,7 +25,7 @@ const LetterDetails = ({
     <ModalTemplate>
       <LetterModalTemplate>
         {loading && <Loading position={50} />}
-        {error && <div>ERROR!</div>}
+        {error && <GlobalErrorHandler error={error} />}
         {letter && (
           <>
             <LetterModalHiddenButtonContainer onCloseModal={onCloseModal} />
