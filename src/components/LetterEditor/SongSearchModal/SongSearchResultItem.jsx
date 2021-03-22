@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { HiCheck } from "react-icons/hi";
+import realpianoLogo from "../../../assets/realpiano_logo_alt.png";
 
 const SongSearchResultItem = ({ song, mapSongToForm, onCloseModal }) => {
   const { title, artist, imageUrl } = song;
+
   return (
     <Song>
-      <SongImage src={imageUrl} />
+      <SongImage src={imageUrl ? imageUrl : realpianoLogo} />
       <SongDetails>
         <SongTitle>{title}</SongTitle>
         <SongArtist>{artist}</SongArtist>

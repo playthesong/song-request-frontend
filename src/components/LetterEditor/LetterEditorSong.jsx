@@ -10,7 +10,7 @@ const LetterEditorSong = ({ title, artist, imageUrl, onChange }) => {
   return (
     <LetterModalSong>
       <input type="hidden" name="imageUrl" value={imageUrl} />
-      <SongImage imageUrl={imageUrl} />
+      <SongImage imageUrl={imageUrl ? imageUrl : undefined} />
       <SongAbout>
         <SongArticle>
           <SongArticleName articleName={"TITLE"} />

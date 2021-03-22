@@ -18,15 +18,15 @@ const Letter = ({
   const { name, avatarUrl } = user;
   const { title, artist, imageUrl } = song;
 
-  if (!imageUrl) {
-    imageUrl = realpianoLogo;
-  }
-
   return (
     <>
       <LetterBlock onClick={() => onReadLetter(id)}>
         <SongBlock>
-          <img src={imageUrl} alt="ALBUM COVER" className="album-image" />
+          <img
+            src={imageUrl ? imageUrl : realpianoLogo}
+            alt="ALBUM COVER"
+            className="album-image"
+          />
           <div className="song-about">
             <span className="song-about__title">
               {parse(
