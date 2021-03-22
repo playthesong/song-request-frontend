@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Letter from "../Letter/Letter";
 import Loading from "../Loading/Loading";
+import EmptyList from "./EmptyList";
 
 const LetterList = ({ letters, loading, error }) => {
   if (error) {
@@ -10,7 +11,8 @@ const LetterList = ({ letters, loading, error }) => {
 
   return (
     <LetterListBlock>
-      {loading && <Loading position={60} />}
+      {loading && <Loading position={50} />}
+      {letters && letters.length === 0 && <EmptyList />}
       {letters &&
         letters.map(letter => (
           <Letter

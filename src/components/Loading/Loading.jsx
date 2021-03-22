@@ -15,6 +15,10 @@ const LoadingBlock = styled.div`
   top: ${props => `${props.position}%`};
   left: 50%;
   transform: translate(-50%, -50%);
+
+  @media ${({ theme }) => theme.device.mobile} {
+    top: 57%;
+  }
 `;
 
 const LoadingImg = styled.img`
