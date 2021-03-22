@@ -48,6 +48,10 @@ const MoveButton = styled.a`
   font-size: 1.2rem;
   line-height: 1.2rem;
   box-shadow: 0px 2px 10px 1px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 export default GlobalError;
