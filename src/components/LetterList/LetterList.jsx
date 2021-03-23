@@ -3,7 +3,7 @@ import styled from "styled-components";
 import GlobalErrorHandler from "../Error/GlobalErrorHandler";
 import Letter from "../Letter/Letter";
 import Loading from "../Loading/Loading";
-import EmptyList from "./EmptyList";
+import EmptyResult from "../EmptyResult/EmptyResult";
 
 const LetterList = ({ letters, loading, error }) => {
   return (
@@ -11,7 +11,7 @@ const LetterList = ({ letters, loading, error }) => {
       {loading && <Loading position={50} />}
       {error && <GlobalErrorHandler error={error} />}
       {letters && letters.length === 0 && (
-        <EmptyList
+        <EmptyResult
           message={"리얼피아노는 여러분의 신청곡과 사연을 기다립니다."}
           opacity={0.7}
         />

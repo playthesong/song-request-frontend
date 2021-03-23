@@ -4,7 +4,7 @@ import styled from "styled-components";
 import SongSearchResultItem from "./SongSearchResultItem";
 import { updateForm } from "../../../modules/letterForm";
 import Loading from "../../Loading/Loading";
-import EmptyList from "../../LetterList/EmptyList";
+import EmptyResult from "../../EmptyResult/EmptyResult";
 import GlobalErrorHandler from "../../Error/GlobalErrorHandler";
 
 const SongSearchResult = ({ onCloseModal }) => {
@@ -22,7 +22,7 @@ const SongSearchResult = ({ onCloseModal }) => {
       {loading && <Loading position={50} />}
       {error && <GlobalErrorHandler error={error} />}
       {songs && songs.length === 0 && (
-        <EmptyList message={"검색 결과가 존재하지 않습니다!"} opacity={0.3} />
+        <EmptyResult message={"검색 결과가 존재하지 않습니다!"} opacity={0.3} />
       )}
       {songs &&
         songs.map((song, index) => (
@@ -34,7 +34,7 @@ const SongSearchResult = ({ onCloseModal }) => {
           />
         ))}
       {!songs && !loading && !error && (
-        <EmptyList
+        <EmptyResult
           message={"신청하고 싶은 곡을 검색 해주세요!"}
           opacity={0.3}
         />

@@ -2,16 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import realpianoLogo from "../../assets/realpiano_logo_alt.png";
 
-const EmptyList = ({ message, opacity }) => {
+const EmptyResult = ({ message, opacity }) => {
   return (
-    <EmptyListBlock>
+    <EmptyResultBlock>
       <Logo src={realpianoLogo} opacity={opacity} />
       <Message>{message}</Message>
-    </EmptyListBlock>
+    </EmptyResultBlock>
   );
 };
 
-const EmptyListBlock = styled.div`
+const EmptyResultBlock = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -48,4 +48,4 @@ const Logo = styled.img`
   }
 `;
 
-export default EmptyList;
+export default EmptyResult;
