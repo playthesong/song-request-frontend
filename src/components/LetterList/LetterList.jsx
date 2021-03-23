@@ -1,17 +1,15 @@
 import React from "react";
 import styled from "styled-components";
+import GlobalErrorHandler from "../Error/GlobalErrorHandler";
 import Letter from "../Letter/Letter";
 import Loading from "../Loading/Loading";
 import EmptyList from "./EmptyList";
 
 const LetterList = ({ letters, loading, error }) => {
-  if (error) {
-    return <div>ERROR!</div>;
-  }
-
   return (
     <LetterListBlock>
       {loading && <Loading position={50} />}
+      {error && <GlobalErrorHandler error={error} />}
       {letters && letters.length === 0 && <EmptyList />}
       {letters &&
         letters.map(letter => (
