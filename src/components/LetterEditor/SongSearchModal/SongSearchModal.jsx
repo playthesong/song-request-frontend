@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import SearchForm from "./SearchForm";
 import ArticleNames from "./ArticleNames";
-import SongSearchResultContainer from "../../../containers/LetterEditor/SongSearchModal/SongSearchResultContainer";
 import SearchBy from "./SearchBy";
 import CloseButton from "./CloseButton";
+import SongSearchResult from "./SongSearchResult";
 
 const SongSearchModal = ({ isOpened, onCloseModal }) => {
   return (
@@ -12,7 +12,7 @@ const SongSearchModal = ({ isOpened, onCloseModal }) => {
       <SearchForm onCloseModal={onCloseModal} />
       <SearchResultWrap>
         <ArticleNames />
-        <SongSearchResultContainer onCloseModal={onCloseModal} />
+        <SongSearchResult onCloseModal={onCloseModal} />
       </SearchResultWrap>
       <CloseButton onCloseModal={onCloseModal} />
       <SearchBy />

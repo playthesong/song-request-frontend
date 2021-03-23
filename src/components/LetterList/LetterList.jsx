@@ -10,7 +10,12 @@ const LetterList = ({ letters, loading, error }) => {
     <LetterListBlock>
       {loading && <Loading position={50} />}
       {error && <GlobalErrorHandler error={error} />}
-      {letters && letters.length === 0 && <EmptyList />}
+      {letters && letters.length === 0 && (
+        <EmptyList
+          message={"리얼피아노는 여러분의 신청곡과 사연을 기다립니다."}
+          opacity={0.7}
+        />
+      )}
       {letters &&
         letters.map(letter => (
           <Letter
