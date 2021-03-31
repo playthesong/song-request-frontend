@@ -32,9 +32,8 @@
 
 ### 배포
 
-- Github Actions (Frontend)
+- Github Actions
 - AWS Codedeploy
-- AWS RDS
 - AWS S3
 - AWS CloudFront
 
