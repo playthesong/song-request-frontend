@@ -8,10 +8,10 @@ export const searchSong = (artist, title) => async dispatch => {
   dispatch({ type: SEARCH_SONG });
 
   try {
-    const song = await songAPI.searchSong(artist, title);
-    dispatch({ type: SEARCH_SONG_SUCCESS, song });
+    const songs = await songAPI.searchSong(artist, title);
+    dispatch({ type: SEARCH_SONG_SUCCESS, songs });
   } catch (error) {
-    dispatch({ type: SEARCH_SONG_ERROR });
+    dispatch({ type: SEARCH_SONG_ERROR, error });
   }
 };
 
@@ -31,7 +31,7 @@ function song(state = initialState, action) {
       };
     case SEARCH_SONG_SUCCESS:
       return {
-        data: action.song,
+        data: action.songs,
         loading: false,
         error: null
       };

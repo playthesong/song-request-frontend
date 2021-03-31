@@ -2,18 +2,16 @@ import React from "react";
 import styled from "styled-components";
 import realpianoLogo from "../../assets/realpiano_logo_alt.png";
 
-const EMPTY_LIST_MESSAGE = "리얼피아노는 여러분의 신청곡과 사연을 기다립니다.";
-
-const EmptyList = () => {
+const EmptyResult = ({ message, opacity }) => {
   return (
-    <EmptyListBlock>
-      <Logo src={realpianoLogo} />
-      <Message>{EMPTY_LIST_MESSAGE}</Message>
-    </EmptyListBlock>
+    <EmptyResultBlock>
+      <Logo src={realpianoLogo} opacity={opacity} />
+      <Message>{message}</Message>
+    </EmptyResultBlock>
   );
 };
 
-const EmptyListBlock = styled.div`
+const EmptyResultBlock = styled.div`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -43,11 +41,11 @@ const Message = styled.p`
 
 const Logo = styled.img`
   max-width: 15rem;
-  opacity: 0.7;
+  opacity: ${props => props.opacity};
 
   @media ${({ theme }) => theme.device.mobile} {
     max-width: 11rem;
   }
 `;
 
-export default EmptyList;
+export default EmptyResult;

@@ -3,13 +3,16 @@ import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { searchSong } from "../../../modules/song";
+import useForm from "../../../hooks/useForm";
 
 const SearchForm = () => {
+  const [form, onChange, onClear] = useForm({ title: "", artist: "" });
   const dispatch = useDispatch();
 
   const onSearchSong = event => {
     event.preventDefault();
-    dispatch(searchSong());
+    dispatch(searchSong(form.title, form.artist));
+    onClear();
   };
 
   return (
@@ -21,6 +24,7 @@ const SearchForm = () => {
           name="artist"
           maxLength="25"
           placeholder="검색할 아티스트를 입력 해주세요."
+          onChange={onChange}
         />
       </SearchInputWrap>
       <SearchInputWrap>
@@ -30,6 +34,7 @@ const SearchForm = () => {
           name="title"
           maxLength="25"
           placeholder="검색할 제목을 입력 해주세요."
+          onChange={onChange}
         />
       </SearchInputWrap>
       <SearchButton type="submit" onClick={onSearchSong}>
