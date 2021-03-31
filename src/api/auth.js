@@ -1,10 +1,9 @@
 import { client } from "./client";
 
-export const login = async generationKey => {
-  const HEADER_PREFIX = "Bearer ";
-  const tokenBeginIndex = HEADER_PREFIX.length;
+const HEADER_PREFIX = "Bearer ";
 
-  console.log(generationKey);
+export const login = async generationKey => {
+  const tokenBeginIndex = HEADER_PREFIX.length;
 
   try {
     const {
@@ -17,4 +16,10 @@ export const login = async generationKey => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const validate = async jwtToken => {
+  await client.get(process.env.REACT_APP_API_VALIDATION_URL, {
+    headers: { Authorization: HEADER_PREFIX + jwtToken }
+  });
 };
