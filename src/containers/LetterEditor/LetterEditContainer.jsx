@@ -35,7 +35,7 @@ const LetterEditContainer = ({
     errorMessage
   } = letterForm;
 
-  const { user: account, id: letterId } = letter;
+  const { account, id: letterId } = letter;
 
   const onChange = event => {
     const { name, value } = event.target;

@@ -33,7 +33,7 @@ const LetterModalContainer = ({ onUpdateLetters }) => {
     return () => {
       activateScroll();
     };
-  });
+  }, [modalType]);
 
   if (modalType === LETTER_MODAL.READ) {
     return (

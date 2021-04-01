@@ -22,6 +22,8 @@ const LetterDetails = ({
     inActivateScroll();
   });
 
+  console.log(">>>>>>>>>>>>>>>>>> Details", letter);
+
   return (
     <ModalTemplate>
       <LetterModalTemplate>
