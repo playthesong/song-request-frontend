@@ -10,8 +10,6 @@ export const getLetters = status => async dispatch => {
   try {
     const letters = await lettersAPI.getLetters(status);
     dispatch({ type: GET_LETTERS_SUCCESS, letters, status });
-    console.log(letters.length);
-    console.log(">>>>>>>>>>>>>>>>>>>>");
   } catch (error) {
     console.log(error.response);
     dispatch({ type: GET_LETTERS_ERROR, error });

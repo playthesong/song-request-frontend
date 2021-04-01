@@ -21,7 +21,9 @@ export const getLetters = async status => {
 };
 
 export const getLetterById = async id => {
-  return;
+  const { data: response } = await client.get(LETTER_API + id);
+  const { data: letter } = response;
+  return letter;
 };
 
 export const createLetter = async payload => {
