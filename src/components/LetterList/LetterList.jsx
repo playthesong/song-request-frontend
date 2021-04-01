@@ -13,7 +13,7 @@ const LetterList = ({ letters, loading, error }) => {
       {letters && letters.length === 0 && (
         <EmptyResult
           message={"리얼피아노는 여러분의 신청곡과 사연을 기다립니다."}
-          opacity={0.7}
+          opacity={0.3}
         />
       )}
       {letters &&
