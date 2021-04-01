@@ -16,7 +16,11 @@ import {
 import { changeModalType } from "../../modules/letterModal";
 import { getLetters } from "../../modules/letters";
 
-const LetterCreateContainer = ({ inActivateScroll, onCloseModal }) => {
+const LetterCreateContainer = ({
+  currentUser,
+  inActivateScroll,
+  onCloseModal
+}) => {
   const { letterForm } = useSelector(state => state);
   const {
     title,
@@ -107,6 +111,7 @@ const LetterCreateContainer = ({ inActivateScroll, onCloseModal }) => {
   return (
     <LetterEditor
       letterForm={letterForm}
+      currentUser={currentUser}
       onChange={onChange}
       onSubmit={onCreate}
       errorMessage={errorMessage}
