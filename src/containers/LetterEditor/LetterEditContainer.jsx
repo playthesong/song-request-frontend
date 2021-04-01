@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LetterEditor from "../../components/LetterEditor/LetterEditor";
 import { FORM_ERROR_MESSAGE } from "../../constants/errorMessage";
 import { FORM } from "../../constants/form";
+import { LETTER_STATUS } from "../../constants/letterStatus";
 import { LETTER_MODAL } from "../../constants/types";
 import { updateLetter } from "../../modules/letter";
 import {
@@ -15,12 +16,14 @@ import {
   updateForm
 } from "../../modules/letterForm";
 import { changeModalType } from "../../modules/letterModal";
+import { getLetters } from "../../modules/letters";
 
 const LetterEditContainer = ({
   letter,
   currentUser,
   inActivateScroll,
-  onCloseModal
+  onCloseModal,
+  onUpdateLetters
 }) => {
   const { letterForm } = useSelector(state => state);
   const dispatch = useDispatch();
@@ -103,6 +106,8 @@ const LetterEditContainer = ({
     );
     dispatch(clearForm());
     dispatch(changeModalType(LETTER_MODAL.READ));
+    dispatch(getLetters(LETTER_STATUS.WAITING));
+    onUpdateLetters();
   };
 
   useEffect(() => {

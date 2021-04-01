@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useReducer } from "react";
 import styled from "styled-components";
 import MainTemplate from "../components/Template/Main/MainTemplate";
 import LetterList from "../components/LetterList/LetterList";
@@ -14,13 +14,18 @@ const Letters = () => {
   const { data: letters, status, loading, error } = useSelector(
     state => state.letters
   );
+  const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
   const { currentUser } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
+  const onUpdateLetters = () => {
+    forceUpdate();
+  };
+
   useEffect(() => {
     dispatch(getLetters(LETTER_STATUS.WAITING));
-  }, [dispatch]);
+  }, [dispatch, ignored]);
 
   return (
     <MainTemplate>
@@ -35,7 +40,7 @@ const Letters = () => {
         loading={loading}
         error={error}
       />
-      <LetterModalContainer />
+      <LetterModalContainer onUpdateLetters={onUpdateLetters} />
     </MainTemplate>
   );
 };
