@@ -42,7 +42,7 @@ const ActiveEffect = css`
 `;
 
 const HoverEffect = css`
-  background: #e64980;
+  opacity: 0.9;
 
   @media ${({ theme }) => theme.device.mobile} {
     background: #f06595;
