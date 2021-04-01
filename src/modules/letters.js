@@ -12,6 +12,7 @@ export const getLetters = status => async dispatch => {
     const letters = await lettersAPI.getLetters(status);
     dispatch({ type: GET_LETTERS_SUCCESS, letters, status });
   } catch (error) {
+    console.log(error.response);
     dispatch({ type: GET_LETTERS_ERROR, error });
   }
 };

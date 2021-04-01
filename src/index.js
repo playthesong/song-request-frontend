@@ -17,6 +17,7 @@ const loadUser = () => {
     if (!jwtToken) return;
 
     store.dispatch(validate(jwtToken));
+    throw new Error();
   } catch (error) {
     console.error(error);
   }

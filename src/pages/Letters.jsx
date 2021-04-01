@@ -14,6 +14,7 @@ const Letters = () => {
   const { data: letters, status, loading, error } = useSelector(
     state => state.letters
   );
+
   const { currentUser } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 

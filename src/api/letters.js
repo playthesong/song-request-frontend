@@ -1,10 +1,26 @@
 import letters from "../mockData";
+import { client } from "./client";
+
+const GET_LETTERS_API = process.env.REACT_APP_API_LETTERS;
 
 const sleep = n => new Promise(resolve => setTimeout(resolve, n));
 
 export const getLetters = async status => {
-  await sleep(500);
-  return letters.filter(letter => letter.requestStatus === status);
+  const params = {
+    page: 1,
+    size: 20
+  };
+
+  const { data: response } = await client.get(
+    GET_LETTERS_API + `status/${status}`,
+    {
+      params
+    }
+  );
+  const {
+    data: { letters }
+  } = response;
+  return letters;
 };
 
 export const getLetterById = async id => {

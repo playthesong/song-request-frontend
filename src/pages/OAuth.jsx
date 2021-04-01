@@ -12,7 +12,6 @@ const OAuth = ({ location: { search } }) => {
   );
   const dispatch = useDispatch();
 
-  console.log(jwtToken, currentUser);
   useEffect(() => {
     if (key) {
       dispatch(login(key));
