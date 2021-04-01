@@ -18,6 +18,11 @@ const Letter = ({ id, user, song, songStory, createdDateTime }) => {
     dispatch(changeModalType(LETTER_MODAL.READ));
     dispatch(getLetterById(letterId));
   };
+
+  if (!user || !song) {
+    return null;
+  }
+
   const { name, avatarUrl } = user;
   const { title, artist, imageUrl } = song;
 

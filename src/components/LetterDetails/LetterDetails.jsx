@@ -30,7 +30,7 @@ const LetterDetails = ({
         {letter && (
           <>
             <LetterModalHiddenButtonContainer
-              user={letter.user}
+              user={letter.account}
               currentUser={currentUser}
               onCloseModal={onCloseModal}
             />
@@ -38,7 +38,7 @@ const LetterDetails = ({
               <LetterDetailsSong song={letter.song} />
               <LetterDetailsSongStory songStory={letter.songStory} />
               <LetterDetailsUser
-                user={letter.user}
+                user={letter.account}
                 createdDateTime={letter.createdDateTime}
               />
               <LetterModalButton type={"button"} onClick={onCloseModal}>

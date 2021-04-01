@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import LetterEditor from "../../components/LetterEditor/LetterEditor";
 import { FORM_ERROR_MESSAGE } from "../../constants/errorMessage";
 import { FORM } from "../../constants/form";
-import { LETTER_STATUS } from "../../constants/letterStatus";
 import { LETTER_MODAL } from "../../constants/types";
 import { updateLetter } from "../../modules/letter";
 import {
@@ -16,7 +15,6 @@ import {
   updateForm
 } from "../../modules/letterForm";
 import { changeModalType } from "../../modules/letterModal";
-import { getLetters } from "../../modules/letters";
 
 const LetterEditContainer = ({
   letter,
@@ -34,7 +32,7 @@ const LetterEditContainer = ({
     errorMessage
   } = letterForm;
 
-  const { user, id: letterId } = letter;
+  const { user: account, id: letterId } = letter;
 
   const onChange = event => {
     const { name, value } = event.target;
@@ -99,13 +97,12 @@ const LetterEditContainer = ({
     dispatch(
       updateLetter(letterId, {
         letterId,
-        user,
+        user: account,
         ...letterForm
       })
     );
     dispatch(clearForm());
     dispatch(changeModalType(LETTER_MODAL.READ));
-    dispatch(getLetters(LETTER_STATUS.WAITING));
   };
 
   useEffect(() => {
@@ -115,7 +112,7 @@ const LetterEditContainer = ({
   return (
     <LetterEditor
       letterForm={letterForm}
-      user={user}
+      user={account}
       currentUser={currentUser}
       onChange={onChange}
       onSubmit={onUpdate}

@@ -21,7 +21,7 @@ const LetterList = ({ letters, loading, error }) => {
           <Letter
             key={letter.id}
             id={letter.id}
-            user={letter.user}
+            user={letter.account}
             song={letter.song}
             songStory={letter.songStory}
             createdDateTime={letter.createdDateTime}

@@ -21,6 +21,7 @@ export const getLetterById = id => async dispatch => {
 
   try {
     const letter = await lettersAPI.getLetterById(id);
+    console.log(letter);
     dispatch({ type: GET_LETTER_SUCCESS, letter });
   } catch (error) {
     dispatch({ type: GET_LETTER_ERROR, error });

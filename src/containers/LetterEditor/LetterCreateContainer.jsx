@@ -14,7 +14,6 @@ import {
   updateForm
 } from "../../modules/letterForm";
 import { changeModalType } from "../../modules/letterModal";
-import { getLetters } from "../../modules/letters";
 
 const LetterCreateContainer = ({
   currentUser,
@@ -34,8 +33,6 @@ const LetterCreateContainer = ({
     errorMessage
   } = letterForm;
   const dispatch = useDispatch();
-
-  console.log(errorMessage);
 
   const onChange = event => {
     const { name, value } = event.target;
@@ -99,7 +96,6 @@ const LetterCreateContainer = ({
     dispatch(createLetter(newLetter));
     dispatch(clearForm());
     dispatch(changeModalType(LETTER_MODAL.READ));
-    dispatch(getLetters());
   };
 
   useEffect(() => {
