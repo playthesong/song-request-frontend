@@ -1,15 +1,14 @@
+import { AUTH } from "../constants/auth";
 import { client } from "./client";
 
-const HEADER_PREFIX = "Bearer ";
-
 export const login = async generationKey => {
-  const tokenBeginIndex = HEADER_PREFIX.length;
+  const tokenBeginIndex = AUTH.BEARER.length;
 
   try {
     const {
       headers: { authorization }
     } = await client.get(process.env.REACT_APP_API_TOKEN_URL, {
-      headers: { Authorization: HEADER_PREFIX + generationKey }
+      headers: { Authorization: AUTH.BEARER + generationKey }
     });
 
     return authorization.substring(tokenBeginIndex);
@@ -20,6 +19,6 @@ export const login = async generationKey => {
 
 export const validate = async jwtToken => {
   await client.get(process.env.REACT_APP_API_VALIDATION_URL, {
-    headers: { Authorization: HEADER_PREFIX + jwtToken }
+    headers: { Authorization: AUTH.BEARER + jwtToken }
   });
 };
