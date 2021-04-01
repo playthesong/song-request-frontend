@@ -47,7 +47,7 @@ const GlobalErrorHandler = ({ error }) => {
       <GlobalError
         url={LOGIN_URL}
         buttonName={LOGIN_BUTTON}
-        errorMessage={response.data.message}
+        errorMessage={GLOBAL_ERROR_MESSAGE.UNAUTHORIZED}
       />
     );
   }

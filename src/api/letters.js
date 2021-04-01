@@ -11,12 +11,9 @@ export const getLetters = async status => {
     size: 20
   };
 
-  const { data: response } = await client.get(
-    GET_LETTERS_API + `status/${status}`,
-    {
-      params
-    }
-  );
+  const { data: response } = await client.get(GET_LETTERS_API + status, {
+    params
+  });
   const {
     data: { letters }
   } = response;
