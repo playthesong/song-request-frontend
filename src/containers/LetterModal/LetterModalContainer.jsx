@@ -41,9 +41,11 @@ const LetterModalContainer = ({ onUpdateLetters }) => {
         letter={letter}
         loading={loading}
         error={error}
+        jwtToken={jwtToken}
         currentUser={currentUser}
         inActivateScroll={inActivateScroll}
         onCloseModal={onCloseModal}
+        onUpdateLetters={onUpdateLetters}
       />
     );
   }

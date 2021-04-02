@@ -21,7 +21,6 @@ export const getLetterById = id => async dispatch => {
 
   try {
     const letter = await lettersAPI.getLetterById(id);
-    console.log(letter);
     dispatch({ type: GET_LETTER_SUCCESS, letter });
   } catch (error) {
     dispatch({ type: GET_LETTER_ERROR, error });
@@ -50,13 +49,15 @@ export const updateLetter = (jwtToken, id, payload) => async dispatch => {
   }
 };
 
-export const deleteLetter = id => async dispatch => {
+export const deleteLetter = (jwtToken, id) => async dispatch => {
   dispatch({ type: DELETE_LETTER });
 
   try {
-    await lettersAPI.deleteLetter(id);
+    await lettersAPI.deleteLetter(jwtToken, id);
     dispatch({ type: DELETE_LETTER_SUCCESS });
+    throw new Error();
   } catch (error) {
+    console.error(error);
     dispatch({ type: DELETE_LETTER_ERROR, error });
   }
 };

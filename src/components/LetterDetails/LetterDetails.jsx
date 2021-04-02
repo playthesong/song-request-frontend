@@ -14,15 +14,15 @@ const LetterDetails = ({
   letter,
   loading,
   error,
+  jwtToken,
   currentUser,
   inActivateScroll,
-  onCloseModal
+  onCloseModal,
+  onUpdateLetters
 }) => {
   useEffect(() => {
     inActivateScroll();
   });
-
-  console.log(">>>>>>>>>>>>>>>>>> Details", letter);
 
   return (
     <ModalTemplate>
@@ -32,9 +32,13 @@ const LetterDetails = ({
         {letter && (
           <>
             <LetterModalHiddenButtonContainer
+              letter={letter}
+              error={error}
               user={letter.account}
+              jwtToken={jwtToken}
               currentUser={currentUser}
               onCloseModal={onCloseModal}
+              onUpdateLetters={onUpdateLetters}
             />
             <LetterModalDiv>
               <LetterDetailsSong song={letter.song} />

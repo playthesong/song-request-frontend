@@ -7,14 +7,23 @@ import { LETTER_STATUS } from "../../../constants/letterStatus";
 import { getLetters } from "../../../modules/letters";
 import { closeModal } from "../../../modules/letterModal";
 
-const LetterDeleteModal = ({ isOpened, closeDeleteModal }) => {
-  const { letterId } = useSelector(state => state.letterModal);
+const LetterDeleteModal = ({
+  letter,
+  error,
+  jwtToken,
+  isOpened,
+  closeDeleteModal,
+  onUpdateLetters
+}) => {
   const dispatch = useDispatch();
 
   const onDeleteLetter = () => {
-    dispatch(deleteLetter(letterId));
-    dispatch(closeModal());
-    dispatch(getLetters(LETTER_STATUS.WAITING));
+    dispatch(deleteLetter(jwtToken, letter.id));
+    if (!error) {
+      onUpdateLetters();
+      dispatch(getLetters(LETTER_STATUS.WAITING));
+      dispatch(closeModal());
+    }
   };
 
   return (

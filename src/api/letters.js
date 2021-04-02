@@ -38,7 +38,6 @@ export const createLetter = async (jwtToken, payload) => {
 };
 
 export const updateLetter = async (jwtToken, id, payload) => {
-  console.log(payload);
   const { songStory, title, artist, imageUrl } = payload;
   const requestBody = { songStory, song: { title, artist, imageUrl } };
   const { data: response } = await authClient.put(
@@ -54,7 +53,10 @@ export const updateLetter = async (jwtToken, id, payload) => {
   return letter;
 };
 
-export const deleteLetter = async id => {
-  await sleep(100);
-  // return letters.filter(letter => letter.id !== id);
+export const deleteLetter = async (jwtToken, id) => {
+  await authClient.delete(LETTER_API + id, {
+    headers: {
+      Authorization: AUTH.BEARER + jwtToken
+    }
+  });
 };
