@@ -6,10 +6,10 @@ import SearchBy from "./SearchBy";
 import CloseButton from "./CloseButton";
 import SongSearchResult from "./SongSearchResult";
 
-const SongSearchModal = ({ isOpened, onCloseModal }) => {
+const SongSearchModal = ({ jwtToken, isOpened, onCloseModal }) => {
   return (
     <SongSearchModalBlock isOpened={isOpened}>
-      <SearchForm onCloseModal={onCloseModal} />
+      <SearchForm jwtToken={jwtToken} />
       <SearchResultWrap>
         <ArticleNames />
         <SongSearchResult onCloseModal={onCloseModal} />

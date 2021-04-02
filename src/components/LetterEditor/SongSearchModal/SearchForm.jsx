@@ -5,14 +5,15 @@ import { useDispatch } from "react-redux";
 import { searchSong } from "../../../modules/song";
 import useForm from "../../../hooks/useForm";
 
-const SearchForm = () => {
+const SearchForm = ({ jwtToken }) => {
   const [form, onChange, onClear] = useForm({ title: "", artist: "" });
   const dispatch = useDispatch();
+  console.log(">>>>>>>>>>>>>>>>>>>>", form);
 
   const onSearchSong = event => {
     event.preventDefault();
-    dispatch(searchSong(form.title, form.artist));
-    onClear();
+    dispatch(searchSong(jwtToken, form.artist, form.title));
+    // onClear();
   };
 
   return (

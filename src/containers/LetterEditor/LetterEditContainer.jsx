@@ -119,6 +119,7 @@ const LetterEditContainer = ({
     <LetterEditor
       letterForm={letterForm}
       user={account}
+      jwtToken={jwtToken}
       currentUser={currentUser}
       onChange={onChange}
       onSubmit={onUpdate}

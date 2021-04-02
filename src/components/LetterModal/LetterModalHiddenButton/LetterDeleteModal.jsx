@@ -1,7 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteLetter } from "../../../modules/letter";
 import { LETTER_STATUS } from "../../../constants/letterStatus";
 import { getLetters } from "../../../modules/letters";

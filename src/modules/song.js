@@ -4,11 +4,11 @@ const SEARCH_SONG = "song/SEARCH_SONG";
 const SEARCH_SONG_SUCCESS = "song/SEARCH_SONG_SUCCESS";
 const SEARCH_SONG_ERROR = "song/SEARCH_SONG_ERROR";
 
-export const searchSong = (artist, title) => async dispatch => {
+export const searchSong = (jwtToken, artist, title) => async dispatch => {
   dispatch({ type: SEARCH_SONG });
 
   try {
-    const songs = await songAPI.searchSong(artist, title);
+    const songs = await songAPI.searchSong(jwtToken, artist, title);
     dispatch({ type: SEARCH_SONG_SUCCESS, songs });
   } catch (error) {
     dispatch({ type: SEARCH_SONG_ERROR, error });

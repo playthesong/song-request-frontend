@@ -4,8 +4,6 @@ import { authClient, client } from "./client";
 const LETTERS_STATUS_API = process.env.REACT_APP_API_LETTERS_STATUS;
 const LETTER_API = process.env.REACT_APP_API_LETTER;
 
-const sleep = n => new Promise(resolve => setTimeout(resolve, n));
-
 export const getLetters = async status => {
   const params = {
     page: 1,
