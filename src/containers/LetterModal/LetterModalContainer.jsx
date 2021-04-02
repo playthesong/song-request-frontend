@@ -10,7 +10,7 @@ import LetterEditContainer from "../LetterEditor/LetterEditContainer";
 const LetterModalContainer = ({ onUpdateLetters }) => {
   const { modalType } = useSelector(state => state.letterModal);
   const { data: letter, loading, error } = useSelector(state => state.letter);
-  const { currentUser } = useSelector(state => state.auth);
+  const { currentUser, jwtToken } = useSelector(state => state.auth);
 
   const dispatch = useDispatch();
 
@@ -53,6 +53,7 @@ const LetterModalContainer = ({ onUpdateLetters }) => {
       <LetterEditContainer
         letter={letter}
         currentUser={currentUser}
+        jwtToken={jwtToken}
         inActivateScroll={inActivateScroll}
         onCloseModal={onCloseModal}
         onUpdateLetters={onUpdateLetters}
@@ -64,6 +65,7 @@ const LetterModalContainer = ({ onUpdateLetters }) => {
     return (
       <LetterCreateContainer
         currentUser={currentUser}
+        jwtToken={jwtToken}
         inActivateScroll={inActivateScroll}
         onCloseModal={onCloseModal}
         onUpdateLetters={onUpdateLetters}

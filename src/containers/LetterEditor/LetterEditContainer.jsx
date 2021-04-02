@@ -21,6 +21,7 @@ import { getLetters } from "../../modules/letters";
 const LetterEditContainer = ({
   letter,
   currentUser,
+  jwtToken,
   inActivateScroll,
   onCloseModal,
   onUpdateLetters
@@ -98,7 +99,7 @@ const LetterEditContainer = ({
     }
 
     dispatch(
-      updateLetter(letterId, {
+      updateLetter(jwtToken, letterId, {
         letterId,
         user: account,
         ...letterForm

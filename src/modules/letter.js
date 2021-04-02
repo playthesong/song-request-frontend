@@ -28,22 +28,22 @@ export const getLetterById = id => async dispatch => {
   }
 };
 
-export const createLetter = payload => async dispatch => {
+export const createLetter = (jwtToken, payload) => async dispatch => {
   dispatch({ type: CREATE_LETTER });
 
   try {
-    const letter = await lettersAPI.createLetter(payload);
+    const letter = await lettersAPI.createLetter(jwtToken, payload);
     dispatch({ type: CREATE_LETTER_SUCCESS, letter });
   } catch (error) {
     dispatch({ type: CREATE_LETTER_ERROR, error });
   }
 };
 
-export const updateLetter = (id, payload) => async dispatch => {
+export const updateLetter = (jwtToken, id, payload) => async dispatch => {
   dispatch({ type: UPDATE_LETTER });
 
   try {
-    const letter = await lettersAPI.updateLetter(id, payload);
+    const letter = await lettersAPI.updateLetter(jwtToken, id, payload);
     dispatch({ type: UPDATE_LETTER_SUCCESS, letter });
   } catch (error) {
     dispatch({ type: UPDATE_LETTER_ERROR, error });

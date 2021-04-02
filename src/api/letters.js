@@ -1,3 +1,4 @@
+import { AUTH } from "../constants/auth";
 import { authClient, client } from "./client";
 
 const LETTERS_STATUS_API = process.env.REACT_APP_API_LETTERS_STATUS;
@@ -26,14 +27,18 @@ export const getLetterById = async id => {
   return letter;
 };
 
-export const createLetter = async payload => {
-  const { data: response } = await authClient.post(LETTER_API, payload);
+export const createLetter = async (jwtToken, payload) => {
+  const { data: response } = await authClient.post(LETTER_API, payload, {
+    headers: {
+      Authorization: AUTH.BEARER + jwtToken
+    }
+  });
   const { data: letter } = response;
   console.log(letter);
   return letter;
 };
 
-export const updateLetter = async (id, payload) => {
+export const updateLetter = async (jwtToken, id, payload) => {
   // await sleep(100);
   // const { title, artist, imageUrl } = payload;
   // const songStory = payload.songStory;

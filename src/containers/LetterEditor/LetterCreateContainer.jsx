@@ -19,6 +19,7 @@ import { getLetters } from "../../modules/letters";
 
 const LetterCreateContainer = ({
   currentUser,
+  jwtToken,
   inActivateScroll,
   onCloseModal,
   onUpdateLetters
@@ -96,7 +97,7 @@ const LetterCreateContainer = ({
     const song = { title, artist, imageUrl };
     const newLetter = { song, songStory };
 
-    dispatch(createLetter(newLetter));
+    dispatch(createLetter(jwtToken, newLetter));
     dispatch(clearForm());
     dispatch(changeModalType(LETTER_MODAL.READ));
     dispatch(getLetters(LETTER_STATUS.WAITING));
