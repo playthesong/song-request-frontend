@@ -34,24 +34,24 @@ export const createLetter = async (jwtToken, payload) => {
     }
   });
   const { data: letter } = response;
-  console.log(letter);
   return letter;
 };
 
 export const updateLetter = async (jwtToken, id, payload) => {
-  // await sleep(100);
-  // const { title, artist, imageUrl } = payload;
-  // const songStory = payload.songStory;
-  // const foundLetter = letters.find(letter => letter.id === id);
-  // const updatedLetter = {
-  //   ...foundLetter,
-  //   song: { title, artist, imageUrl },
-  //   songStory
-  // };
-  // const index = letters.indexOf(foundLetter);
-  // letters.splice(index, 1);
-  // letters.push(updatedLetter);
-  // return updatedLetter;
+  console.log(payload);
+  const { songStory, title, artist, imageUrl } = payload;
+  const requestBody = { songStory, song: { title, artist, imageUrl } };
+  const { data: response } = await authClient.put(
+    LETTER_API + id,
+    requestBody,
+    {
+      headers: {
+        Authorization: AUTH.BEARER + jwtToken
+      }
+    }
+  );
+  const { data: letter } = response;
+  return letter;
 };
 
 export const deleteLetter = async id => {
