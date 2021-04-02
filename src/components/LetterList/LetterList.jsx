@@ -5,7 +5,7 @@ import Letter from "../Letter/Letter";
 import Loading from "../Loading/Loading";
 import EmptyResult from "../EmptyResult/EmptyResult";
 
-const LetterList = ({ letters, loading, error }) => {
+const LetterList = ({ letters, currentUser, loading, error }) => {
   return (
     <LetterListBlock>
       {loading && <Loading position={50} />}
@@ -21,6 +21,7 @@ const LetterList = ({ letters, loading, error }) => {
           <Letter
             key={letter.id}
             id={letter.id}
+            currentUser={currentUser}
             user={letter.account}
             song={letter.song}
             songStory={letter.songStory}

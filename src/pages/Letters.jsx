@@ -36,7 +36,7 @@ const Letters = () => {
       </LettersButtonBlock>
       <LetterList
         letters={letters}
-        status={status}
+        currentUser={currentUser}
         loading={loading}
         error={error}
       />

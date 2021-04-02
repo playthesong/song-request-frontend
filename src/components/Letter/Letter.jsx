@@ -6,12 +6,22 @@ import { useDispatch } from "react-redux";
 import { changeModalType, openModal } from "../../modules/letterModal";
 import { getLetterById } from "../../modules/letter";
 import { LETTER_MODAL } from "../../constants/types";
+import AdminHiddenButtons from "./AdminHiddenMenu";
+import useMouseEnter from "../../hooks/useMouseEnter";
 
 const TITLE_MAX_LENGTH = 30;
 const ARTIST_MAX_LENGTH = 10;
 const SONG_STORY_MAX_LENGTH = 100;
 
-const Letter = ({ id, user, song, songStory, createdDateTime }) => {
+const Letter = ({
+  id,
+  currentUser,
+  user,
+  song,
+  songStory,
+  createdDateTime
+}) => {
+  const [isMouseEnter, onMouseEnter, onMouseLeave] = useMouseEnter();
   const dispatch = useDispatch();
   const onReadLetter = letterId => {
     dispatch(openModal());
@@ -28,7 +38,12 @@ const Letter = ({ id, user, song, songStory, createdDateTime }) => {
 
   return (
     <>
-      <LetterBlock onClick={() => onReadLetter(id)}>
+      <LetterBlock
+        onClick={() => onReadLetter(id)}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        <AdminHiddenButtons isMouseEnter={isMouseEnter} />
         <SongBlock>
           <img
             src={imageUrl ? imageUrl : realpianoLogo}
@@ -81,6 +96,7 @@ const LetterBlock = styled.li`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  position: relative;
   padding: 0.7rem;
   border: #ffdeeb;
   border-radius: 0.5rem;
