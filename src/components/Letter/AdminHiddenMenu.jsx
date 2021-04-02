@@ -1,4 +1,5 @@
 import React from "react";
+import { MdMoreHoriz } from "react-icons/md";
 import styled, { css } from "styled-components";
 import useModal from "../../hooks/useModal";
 import HiddenButtons from "./HiddenButtons";
@@ -8,6 +9,7 @@ const AdminHiddenMenu = ({ isMouseEnter }) => {
 
   return (
     <AdminHiddenMenuBlock isMouseEnter={isMouseEnter}>
+      <HiddenMenu />
       <HiddenButtons />
     </AdminHiddenMenuBlock>
   );
@@ -15,8 +17,8 @@ const AdminHiddenMenu = ({ isMouseEnter }) => {
 
 const AdminHiddenMenuBlock = styled.div`
   position: absolute;
-  top: 3.5%;
-  right: 1.8%;
+  top: 9%;
+  right: 3%;
   ${props =>
     props.isMouseEnter
       ? css`
@@ -24,8 +26,8 @@ const AdminHiddenMenuBlock = styled.div`
           opacity: 1;
         `
       : css`
-          /* visibility: hidden;
-          opacity: 0; */
+          visibility: hidden;
+          opacity: 0;
         `}
   transition: 0.35s;
 
@@ -33,6 +35,15 @@ const AdminHiddenMenuBlock = styled.div`
     visibility: visible;
     opacity: 1;
   }
+`;
+
+const HiddenMenu = styled(MdMoreHoriz)`
+  position: absolute;
+  bottom: 92.5%;
+  right: 5%;
+  cursor: pointer;
+  font-size: 2.1rem;
+  color: rgba(0, 0, 0, 0.5);
 `;
 
 export default AdminHiddenMenu;
