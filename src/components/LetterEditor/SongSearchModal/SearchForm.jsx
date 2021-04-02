@@ -6,14 +6,12 @@ import { searchSong } from "../../../modules/song";
 import useForm from "../../../hooks/useForm";
 
 const SearchForm = ({ jwtToken }) => {
-  const [form, onChange, onClear] = useForm({ title: "", artist: "" });
+  const [form, onChangeForm] = useForm({ title: "", artist: "" });
   const dispatch = useDispatch();
-  console.log(">>>>>>>>>>>>>>>>>>>>", form);
 
   const onSearchSong = event => {
     event.preventDefault();
     dispatch(searchSong(jwtToken, form.artist, form.title));
-    // onClear();
   };
 
   return (
@@ -25,7 +23,7 @@ const SearchForm = ({ jwtToken }) => {
           name="artist"
           maxLength="25"
           placeholder="검색할 아티스트를 입력 해주세요."
-          onChange={onChange}
+          onChange={onChangeForm}
         />
       </SearchInputWrap>
       <SearchInputWrap>
@@ -35,7 +33,7 @@ const SearchForm = ({ jwtToken }) => {
           name="title"
           maxLength="25"
           placeholder="검색할 제목을 입력 해주세요."
-          onChange={onChange}
+          onChange={onChangeForm}
         />
       </SearchInputWrap>
       <SearchButton type="submit" onClick={onSearchSong}>

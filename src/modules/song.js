@@ -4,6 +4,8 @@ const SEARCH_SONG = "song/SEARCH_SONG";
 const SEARCH_SONG_SUCCESS = "song/SEARCH_SONG_SUCCESS";
 const SEARCH_SONG_ERROR = "song/SEARCH_SONG_ERROR";
 
+const INITIALIZE_SONG = "song/INITIALIZE_SONG";
+
 export const searchSong = (jwtToken, artist, title) => async dispatch => {
   dispatch({ type: SEARCH_SONG });
 
@@ -13,6 +15,10 @@ export const searchSong = (jwtToken, artist, title) => async dispatch => {
   } catch (error) {
     dispatch({ type: SEARCH_SONG_ERROR, error });
   }
+};
+
+export const initializeSong = () => async dispatch => {
+  dispatch({ type: INITIALIZE_SONG });
 };
 
 const initialState = {
@@ -40,6 +46,10 @@ function song(state = initialState, action) {
         data: null,
         loading: false,
         error: action.error
+      };
+    case INITIALIZE_SONG:
+      return {
+        ...initialState
       };
     default:
       return state;

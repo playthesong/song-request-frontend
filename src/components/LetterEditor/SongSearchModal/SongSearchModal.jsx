@@ -5,16 +5,23 @@ import ArticleNames from "./ArticleNames";
 import SearchBy from "./SearchBy";
 import CloseButton from "./CloseButton";
 import SongSearchResult from "./SongSearchResult";
+import { useDispatch } from "react-redux";
+import { initializeSong } from "../../../modules/song";
 
 const SongSearchModal = ({ jwtToken, isOpened, onCloseModal }) => {
+  const dispatch = useDispatch();
+  const clearSong = () => {
+    dispatch(initializeSong());
+  };
+
   return (
     <SongSearchModalBlock isOpened={isOpened}>
       <SearchForm jwtToken={jwtToken} />
       <SearchResultWrap>
         <ArticleNames />
-        <SongSearchResult onCloseModal={onCloseModal} />
+        <SongSearchResult onCloseModal={onCloseModal} clearSong={clearSong} />
       </SearchResultWrap>
-      <CloseButton onCloseModal={onCloseModal} />
+      <CloseButton onCloseModal={onCloseModal} clearSong={clearSong} />
       <SearchBy />
     </SongSearchModalBlock>
   );

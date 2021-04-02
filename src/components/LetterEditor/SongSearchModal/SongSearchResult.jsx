@@ -7,7 +7,7 @@ import Loading from "../../Loading/Loading";
 import EmptyResult from "../../EmptyResult/EmptyResult";
 import GlobalErrorHandler from "../../Error/GlobalErrorHandler";
 
-const SongSearchResult = ({ onCloseModal }) => {
+const SongSearchResult = ({ onCloseModal, clearSong }) => {
   const { data: songs, loading, error } = useSelector(state => state.song);
   const dispatch = useDispatch();
 
@@ -15,6 +15,7 @@ const SongSearchResult = ({ onCloseModal }) => {
     for (const property in song) {
       dispatch(updateForm(property, song[property]));
     }
+    clearSong();
   };
 
   return (
