@@ -119,7 +119,7 @@ const SongBlock = styled.div`
     flex-direction: column;
     justify-content: center;
     margin-right: auto;
-    margin-left: 2rem;
+    margin-left: 1.5rem;
 
     .song-about__title {
       max-width: 17rem;

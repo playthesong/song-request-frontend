@@ -27,7 +27,7 @@ const ArticleName = styled.span`
     margin-left: 1rem;
   }
   &:nth-child(2) {
-    flex: 8;
+    flex: 12;
   }
   &:nth-child(3) {
     flex: 2;

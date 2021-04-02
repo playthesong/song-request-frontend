@@ -55,7 +55,6 @@ export const deleteLetter = (jwtToken, id) => async dispatch => {
   try {
     await lettersAPI.deleteLetter(jwtToken, id);
     dispatch({ type: DELETE_LETTER_SUCCESS });
-    throw new Error();
   } catch (error) {
     console.error(error);
     dispatch({ type: DELETE_LETTER_ERROR, error });

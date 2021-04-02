@@ -1,7 +1,10 @@
 import React from "react";
+import parse from "html-react-parser";
 import styled from "styled-components";
 import { HiCheck } from "react-icons/hi";
 import realpianoLogo from "../../../assets/realpiano_logo_alt.png";
+
+const TITLE_MAX_LENGTH = 30;
 
 const SongSearchResultItem = ({ song, mapSongToForm, onCloseModal }) => {
   const { title, artist, imageUrl } = song;
@@ -10,8 +13,14 @@ const SongSearchResultItem = ({ song, mapSongToForm, onCloseModal }) => {
     <Song>
       <SongImage src={imageUrl ? imageUrl : realpianoLogo} />
       <SongDetails>
-        <SongTitle>{title}</SongTitle>
-        <SongArtist>{artist}</SongArtist>
+        <SongTitle>
+          {parse(
+            title.length > TITLE_MAX_LENGTH
+              ? `${title.slice(0, TITLE_MAX_LENGTH)}...`
+              : title
+          )}
+        </SongTitle>
+        <SongArtist>{parse(artist)}</SongArtist>
       </SongDetails>
       <SelectButton
         onClick={() => {
@@ -49,8 +58,8 @@ const SongImage = styled.img`
 const SongDetails = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 1.1rem;
-  margin-left: 24.5%;
+  margin-top: 1rem;
+  margin-left: 17.5%;
 `;
 
 const SongTitle = styled.span`
@@ -76,7 +85,7 @@ const SelectButton = styled(HiCheck)`
   font-size: 2.5rem;
   margin-top: 0.7rem;
   margin-left: auto;
-  margin-right: 3.5%;
+  margin-right: 2%;
   cursor: pointer;
   transition: 0.25s;
 `;

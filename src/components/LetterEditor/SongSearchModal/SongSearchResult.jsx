@@ -44,7 +44,7 @@ const SongSearchResult = ({ onCloseModal }) => {
 };
 
 const SongSearchResultList = styled.ul`
-  margin-top: 1.5rem;
+  margin-top: 1.2rem;
   height: 50vh;
   overflow-y: scroll;
 `;
