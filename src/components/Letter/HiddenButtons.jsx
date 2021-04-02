@@ -2,29 +2,57 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { FiCheck } from "react-icons/fi";
 import { BiGitCompare } from "react-icons/bi";
-import { AiFillDelete } from "react-icons/ai";
+import { AiTwotoneDelete } from "react-icons/ai";
+import { useDispatch } from "react-redux";
+import { deleteLetter, changeLetterStatus } from "../../modules/letter";
+import { LETTER_STATUS } from "../../constants/letterStatus";
 
-const HiddenButtons = () => {
+const HiddenButtons = ({ letterId, jwtToken, openMenu, onUpdateLetters }) => {
+  const dispatch = useDispatch();
+
+  const onChangeStatus = (event, status) => {
+    event.stopPropagation();
+    dispatch(changeLetterStatus(jwtToken, letterId, status));
+    onUpdateLetters();
+  };
+
+  const onDeleteLetter = event => {
+    event.stopPropagation();
+    dispatch(deleteLetter(jwtToken, letterId));
+    onUpdateLetters();
+  };
+
   return (
-    <HiddenButtonsBlock>
-      <CheckIcon />
-      <PendingIcon />
-      <DeleteIcon />
+    <HiddenButtonsBlock openMenu={openMenu}>
+      <CheckIcon onClick={event => onChangeStatus(event, LETTER_STATUS.DONE)} />
+      <PendingIcon
+        onClick={event => onChangeStatus(event, LETTER_STATUS.PENDING)}
+      />
+      <DeleteIcon onClick={event => onDeleteLetter(event)} />
     </HiddenButtonsBlock>
   );
 };
 
 const HiddenButtonsBlock = styled.div`
   border: none;
-  display: flex;
+  position: relative;
   flex-direction: column;
-  margin-right: 0.35rem;
-  margin-top: 0.7rem;
+  margin-top: 2.1rem;
+  margin-left: 0.25rem;
   z-index: 9;
+  ${props =>
+    props.openMenu
+      ? css`
+          display: none;
+        `
+      : css`
+          display: flex;
+        `}
 `;
 
 const IconCommonStyles = css`
   margin: 0.65rem 0rem;
+  margin-right: 1rem;
   border-radius: 50%;
   color: #fff;
   box-shadow: 7px 3px 16px 3px rgba(50, 50, 50, 0.2);
@@ -32,6 +60,7 @@ const IconCommonStyles = css`
   transition: 0.2s;
 
   &:hover {
+    padding: 0.6rem 0.6rem;
     opacity: 1;
   }
 `;
@@ -50,10 +79,10 @@ const PendingIcon = styled(BiGitCompare)`
   ${IconCommonStyles}
 `;
 
-const DeleteIcon = styled(AiFillDelete)`
+const DeleteIcon = styled(AiTwotoneDelete)`
   margin: 0rem 0.3rem;
-  margin-top: -0.1rem;
-  padding: 0.42rem 0.42rem;
+  margin-bottom: 3rem;
+  padding: 0.43rem 0.42rem;
   font-size: 1.5rem;
   background-color: #c2255c;
   ${IconCommonStyles}

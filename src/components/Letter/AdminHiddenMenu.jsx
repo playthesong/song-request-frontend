@@ -1,24 +1,41 @@
 import React from "react";
 import { MdMoreHoriz } from "react-icons/md";
 import styled, { css } from "styled-components";
-import useModal from "../../hooks/useModal";
+import useToggle from "../../hooks/useToggle";
 import HiddenButtons from "./HiddenButtons";
 
-const AdminHiddenMenu = ({ isMouseEnter }) => {
-  const [isMenuOpened, openHiddenMenu, closeHiddenMenu] = useModal();
+const AdminHiddenMenu = ({
+  letterId,
+  jwtToken,
+  currentUser,
+  isMouseEnter,
+  onUpdateLetters
+}) => {
+  const { openMenu, toggleMenu } = useToggle();
+
+  const onToggleMenu = event => {
+    event.stopPropagation();
+    toggleMenu();
+  };
 
   return (
     <AdminHiddenMenuBlock isMouseEnter={isMouseEnter}>
-      <HiddenMenu />
-      <HiddenButtons />
+      <HiddenMenu onClick={onToggleMenu} />
+      <HiddenButtons
+        letterId={letterId}
+        jwtToken={jwtToken}
+        openMenu={openMenu}
+        onUpdateLetters={onUpdateLetters}
+      />
     </AdminHiddenMenuBlock>
   );
 };
 
 const AdminHiddenMenuBlock = styled.div`
   position: absolute;
-  top: 9%;
-  right: 3%;
+  width: 3rem;
+  top: 2%;
+  right: 3.5%;
   ${props =>
     props.isMouseEnter
       ? css`
@@ -26,8 +43,8 @@ const AdminHiddenMenuBlock = styled.div`
           opacity: 1;
         `
       : css`
-          visibility: hidden;
-          opacity: 0;
+          /* visibility: hidden;
+          opacity: 0; */
         `}
   transition: 0.35s;
 
@@ -39,7 +56,6 @@ const AdminHiddenMenuBlock = styled.div`
 
 const HiddenMenu = styled(MdMoreHoriz)`
   position: absolute;
-  bottom: 92.5%;
   right: 5%;
   cursor: pointer;
   font-size: 2.1rem;

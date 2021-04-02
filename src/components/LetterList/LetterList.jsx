@@ -5,7 +5,14 @@ import Letter from "../Letter/Letter";
 import Loading from "../Loading/Loading";
 import EmptyResult from "../EmptyResult/EmptyResult";
 
-const LetterList = ({ letters, currentUser, loading, error }) => {
+const LetterList = ({
+  letters,
+  jwtToken,
+  currentUser,
+  loading,
+  error,
+  onUpdateLetters
+}) => {
   return (
     <LetterListBlock>
       {loading && <Loading position={50} />}
@@ -21,11 +28,13 @@ const LetterList = ({ letters, currentUser, loading, error }) => {
           <Letter
             key={letter.id}
             id={letter.id}
+            jwtToken={jwtToken}
             currentUser={currentUser}
             user={letter.account}
             song={letter.song}
             songStory={letter.songStory}
             createdDateTime={letter.createdDateTime}
+            onUpdateLetters={onUpdateLetters}
           />
         ))}
     </LetterListBlock>

@@ -58,3 +58,11 @@ export const deleteLetter = async (jwtToken, id) => {
     }
   });
 };
+
+export const changeLetterStatus = async (jwtToken, id, payload) => {
+  await authClient.put(LETTER_API + `${id}/status`, payload, {
+    headers: {
+      Authorization: AUTH.BEARER + jwtToken
+    }
+  });
+};

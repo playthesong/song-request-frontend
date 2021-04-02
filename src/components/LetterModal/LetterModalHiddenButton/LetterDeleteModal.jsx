@@ -17,12 +17,11 @@ const LetterDeleteModal = ({
 }) => {
   const dispatch = useDispatch();
 
-  const onDeleteLetter = () => {
+  const onDeleteLetter = async () => {
     dispatch(deleteLetter(jwtToken, letter.id));
     if (!error) {
-      onUpdateLetters();
-      dispatch(getLetters(LETTER_STATUS.WAITING));
       dispatch(closeModal());
+      onUpdateLetters();
     }
   };
 

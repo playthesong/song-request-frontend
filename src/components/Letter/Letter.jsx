@@ -2,10 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import parse from "html-react-parser";
 import realpianoLogo from "../../assets/realpiano_logo_alt.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeModalType, openModal } from "../../modules/letterModal";
 import { getLetterById } from "../../modules/letter";
 import { LETTER_MODAL } from "../../constants/types";
+import GlobalErrorHandler from "../../components/Error/GlobalErrorHandler";
 import AdminHiddenButtons from "./AdminHiddenMenu";
 import useMouseEnter from "../../hooks/useMouseEnter";
 
@@ -15,13 +16,16 @@ const SONG_STORY_MAX_LENGTH = 100;
 
 const Letter = ({
   id,
+  jwtToken,
   currentUser,
   user,
   song,
   songStory,
-  createdDateTime
+  createdDateTime,
+  onUpdateLetters
 }) => {
   const [isMouseEnter, onMouseEnter, onMouseLeave] = useMouseEnter();
+  const { error } = useSelector(state => state.letter);
   const dispatch = useDispatch();
   const onReadLetter = letterId => {
     dispatch(openModal());
@@ -29,8 +33,8 @@ const Letter = ({
     dispatch(getLetterById(letterId));
   };
 
-  if (!user || !song) {
-    return null;
+  if (error) {
+    return <GlobalErrorHandler error={error} />;
   }
 
   const { name, avatarUrl } = user;
@@ -43,7 +47,13 @@ const Letter = ({
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <AdminHiddenButtons isMouseEnter={isMouseEnter} />
+        <AdminHiddenButtons
+          letterId={id}
+          jwtToken={jwtToken}
+          currentUser={currentUser}
+          isMouseEnter={isMouseEnter}
+          onUpdateLetters={onUpdateLetters}
+        />
         <SongBlock>
           <img
             src={imageUrl ? imageUrl : realpianoLogo}

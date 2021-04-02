@@ -35,7 +35,7 @@ const GlobalErrorHandler = ({ error }) => {
       <GlobalError
         url={HOME_URL}
         buttonName={HOME_BUTTON}
-        errorMessage={GLOBAL_ERROR_MESSAGE.BAD_REQUEST}
+        errorMessage={response.data.message}
       />
     );
   }

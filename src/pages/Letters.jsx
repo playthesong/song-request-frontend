@@ -7,6 +7,7 @@ import ListTitle from "../components/LetterList/ListTitle";
 import StatusButtons from "../components/LetterList/StatusButtons";
 import ActionButtons from "../components/LetterList/ActionButtons";
 import { useDispatch, useSelector } from "react-redux";
+import * as letterAPI from "../api/letters";
 import { getLetters } from "../modules/letters";
 import { LETTER_STATUS } from "../constants/letterStatus";
 
@@ -16,10 +17,13 @@ const Letters = () => {
   );
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
 
-  const { currentUser } = useSelector(state => state.auth);
+  const { currentUser, jwtToken } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
-  const onUpdateLetters = () => {
+  console.log(ignored);
+
+  const onUpdateLetters = async () => {
+    await letterAPI.getLetters(LETTER_STATUS.WAITING);
     forceUpdate();
   };
 
@@ -36,9 +40,11 @@ const Letters = () => {
       </LettersButtonBlock>
       <LetterList
         letters={letters}
+        jwtToken={jwtToken}
         currentUser={currentUser}
         loading={loading}
         error={error}
+        onUpdateLetters={onUpdateLetters}
       />
       <LetterModalContainer onUpdateLetters={onUpdateLetters} />
     </MainTemplate>

@@ -8,8 +8,12 @@ const GlobalError = ({ errorMessage, url, buttonName }) => {
   return (
     <GlobalErrorBlock>
       <ErrorIcon />
-      <ErrorMessage>{`${messages[0]}.`}</ErrorMessage>
-      <ErrorMessage>{`${messages[1]}.`}</ErrorMessage>
+      <ErrorMessage>
+        {messages ? `${messages[0]}.` : "요청을 처리하지 못했습니다."}
+      </ErrorMessage>
+      <ErrorMessage>
+        {messages && messages[1] ? `${messages[1]}.` : null}
+      </ErrorMessage>
       <MoveButton href={url}>{buttonName}</MoveButton>
     </GlobalErrorBlock>
   );

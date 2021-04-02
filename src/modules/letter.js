@@ -16,6 +16,9 @@ const DELETE_LETTER = "letter/DELETE_LETTER";
 const DELETE_LETTER_SUCCESS = "letter/DELETE_LETTER_SUCCESS";
 const DELETE_LETTER_ERROR = "letter/DELETE_LETTER_ERROR";
 
+const CHANGE_STATUS = "letter/CHANGE_STATUS";
+const CHANGE_STATUS_ERROR = "letter/CHANGE_STATUS_ERROR";
+
 export const getLetterById = id => async dispatch => {
   dispatch({ type: GET_LETTER });
 
@@ -56,8 +59,18 @@ export const deleteLetter = (jwtToken, id) => async dispatch => {
     await lettersAPI.deleteLetter(jwtToken, id);
     dispatch({ type: DELETE_LETTER_SUCCESS });
   } catch (error) {
-    console.error(error);
     dispatch({ type: DELETE_LETTER_ERROR, error });
+  }
+};
+
+export const changeLetterStatus = (jwtToken, id, status) => async dispatch => {
+  dispatch({ type: CHANGE_STATUS });
+
+  try {
+    const payload = { requestStatus: status };
+    await lettersAPI.changeLetterStatus(jwtToken, id, payload);
+  } catch (error) {
+    dispatch({ type: CHANGE_STATUS_ERROR, error });
   }
 };
 
@@ -136,6 +149,18 @@ function letter(state = initialState, action) {
         error: null
       };
     case DELETE_LETTER_ERROR:
+      return {
+        data: null,
+        loading: false,
+        error: action.error
+      };
+    case CHANGE_STATUS:
+      return {
+        data: null,
+        loading: true,
+        error: null
+      };
+    case CHANGE_STATUS_ERROR:
       return {
         data: null,
         loading: false,
