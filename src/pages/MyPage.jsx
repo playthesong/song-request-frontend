@@ -40,7 +40,7 @@ const MyPageBlock = styled.div`
 
 const Title = styled.h2`
   font-size: 2rem;
-  color: rgba(0, 0, 0, 0.35);
+  color: rgba(0, 0, 0, 0.5);
   padding: 0rem 3rem 1.5rem 3rem;
 `;
 
@@ -51,6 +51,10 @@ const UserAvatarWrap = styled.div`
   align-items: center;
   width: 65%;
   padding: 3rem 0rem;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 100%;
+  }
 `;
 
 const UserImage = styled.img`
@@ -81,6 +85,12 @@ const UserDetailsWrap = styled.div`
   margin-top: 1rem;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  @media ${({ theme }) => theme.device.mobile} {
+    justify-content: space-around;
+    padding: 5rem 0rem;
+    width: 95%;
+  }
 `;
 
 const UserDetails = styled.div`
@@ -92,12 +102,20 @@ const UserDetails = styled.div`
 const DetailsValue = styled.span`
   font-weight: 600;
   font-size: 1.5rem;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1.2rem;
+  }
 `;
 
 const DetailsName = styled.span`
   margin-top: 0.8rem;
   color: rgba(0, 0, 0, 0.3);
   font-weight: 700;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1.1rem;
+  }
 `;
 
 export default MyPage;
