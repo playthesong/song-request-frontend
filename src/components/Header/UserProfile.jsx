@@ -20,6 +20,7 @@ const UserProfile = ({ user }) => {
 
 const UserProfileBlock = styled.div`
   display: flex;
+  position: relative;
   align-items: center;
   margin-top: 3px;
   cursor: pointer;

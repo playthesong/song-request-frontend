@@ -1,15 +1,22 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { CgProfile, CgLogOut } from "react-icons/cg";
+import { useDispatch } from "react-redux";
+import { logout } from "../../modules/auth";
 
 const UserMenu = ({ openMenu }) => {
+  const dispatch = useDispatch();
+  const onLogout = () => {
+    dispatch(logout());
+  };
+
   return (
     <UserMenuBlock openMenu={openMenu}>
       <UserMenuButton>
         <ProfileIcon />
         My Page
       </UserMenuButton>
-      <UserMenuButton>
+      <UserMenuButton onClick={onLogout}>
         <LogoutIcon />
         Logout
       </UserMenuButton>
@@ -20,8 +27,8 @@ const UserMenu = ({ openMenu }) => {
 const UserMenuBlock = styled.ul`
   display: ${props => (props.openMenu ? "block" : "none")};
   position: absolute;
-  top: 75%;
-  right: 5%;
+  top: 100%;
+  right: 3%;
   box-shadow: 5px 3px 30px 1px rgba(0, 0, 0, 0.1);
   background: #fff;
   z-index: 999;
@@ -30,8 +37,7 @@ const UserMenuBlock = styled.ul`
   border-radius: 0.3rem;
 
   @media ${({ theme }) => theme.device.mobile} {
-    top: 27%;
-    right: 2.8%;
+    right: 10%;
   }
 `;
 
