@@ -1,11 +1,12 @@
 import * as lettersAPI from "../api/letters";
+import ActionButtons from "../components/LetterList/ActionButtons";
 
 const GET_LETTERS = "letters/GET_LETTERS";
 const GET_LETTERS_SUCCESS = "letters/GET_LETTERS_SUCCESS";
 const GET_LETTERS_ERROR = "letters/GET_LETTERS_ERROR";
 
 export const getLetters = status => async dispatch => {
-  dispatch({ type: GET_LETTERS });
+  dispatch({ type: GET_LETTERS, status });
 
   try {
     const letters = await lettersAPI.getLetters(status);
@@ -29,7 +30,7 @@ function letters(state = initialState, action) {
     case GET_LETTERS:
       return {
         data: null,
-        status: null,
+        status: action.status,
         loading: true,
         error: null
       };
