@@ -3,8 +3,6 @@ import styled, { css } from "styled-components";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { useDispatch } from "react-redux";
 import { deleteLetter } from "../../../modules/letter";
-import { LETTER_STATUS } from "../../../constants/letterStatus";
-import { getLetters } from "../../../modules/letters";
 import { closeModal } from "../../../modules/letterModal";
 
 const LetterDeleteModal = ({

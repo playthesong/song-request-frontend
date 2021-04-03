@@ -1,5 +1,4 @@
 import * as lettersAPI from "../api/letters";
-import ActionButtons from "../components/LetterList/ActionButtons";
 
 const GET_LETTERS = "letters/GET_LETTERS";
 const GET_LETTERS_SUCCESS = "letters/GET_LETTERS_SUCCESS";
@@ -10,7 +9,6 @@ export const getLetters = status => async dispatch => {
 
   try {
     const letters = await lettersAPI.getLetters(status);
-    console.log(letters);
     dispatch({ type: GET_LETTERS_SUCCESS, letters, status });
   } catch (error) {
     console.log(error.response);

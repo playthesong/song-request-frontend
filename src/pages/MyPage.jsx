@@ -1,33 +1,63 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import GlobalErrorHandler from "../components/Error/GlobalErrorHandler";
+import Loading from "../components/Loading/Loading";
 import MainTemplate from "../components/Template/Main/MainTemplate";
-import realpianoLogo from "../assets/realpiano_logo_white.jpg";
+import { ROLE } from "../constants/role";
+import { getMyPage } from "../modules/user";
 
 const MyPage = () => {
+  const { jwtToken } = useSelector(state => state.auth);
+  const { data: user, loading, error } = useSelector(state => state.user);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMyPage(jwtToken));
+  }, [dispatch, jwtToken]);
+
+  const findUserRole = role => {
+    if (role === ROLE.ADMIN) {
+      return "리얼피아노 운영자";
+    }
+
+    if (role === ROLE.MEMBER) {
+      return "리얼피아노 회원";
+    }
+
+    if (role === ROLE.GUEST) {
+      return "리얼피아노 손님";
+    }
+  };
+
   return (
     <MainTemplate>
-      <MyPageBlock>
-        <Title>My Page</Title>
-        <UserAvatarWrap>
-          <UserImage src="https://lh3.googleusercontent.com/a-/AOh14Gg8e-WQ9VozjRLI8MkCbH_8Ocw6bbbdR3av_W8f-Z4=s96-c" />
-          <Name>Museop Kim</Name>
-          <Email>museopkim0214@gmail.com</Email>
-        </UserAvatarWrap>
-        <UserDetailsWrap>
-          <UserDetails>
-            <DetailsValue>2021 / 01 / 15</DetailsValue>
-            <DetailsName>가입일</DetailsName>
-          </UserDetails>
-          <UserDetails>
-            <DetailsValue>리얼피아노 운영자</DetailsValue>
-            <DetailsName>등급</DetailsName>
-          </UserDetails>
-          <UserDetails>
-            <DetailsValue>777</DetailsValue>
-            <DetailsName>신청곡 등록 수</DetailsName>
-          </UserDetails>
-        </UserDetailsWrap>
-      </MyPageBlock>
+      {loading && <Loading position={50} />}
+      {error && <GlobalErrorHandler error={error} />}
+      {user && (
+        <MyPageBlock>
+          <Title>My Page</Title>
+          <UserAvatarWrap>
+            <UserImage src={user.avatarUrl} />
+            <Name>{user.name}</Name>
+            <Email>{user.email}</Email>
+          </UserAvatarWrap>
+          <UserDetailsWrap>
+            <UserDetails>
+              <DetailsValue>{user.createdDateTime}</DetailsValue>
+              <DetailsName>가입일</DetailsName>
+            </UserDetails>
+            <UserDetails>
+              <DetailsValue>{findUserRole(user.role)}</DetailsValue>
+              <DetailsName>등급</DetailsName>
+            </UserDetails>
+            <UserDetails>
+              <DetailsValue>{user.requestCount}</DetailsValue>
+              <DetailsName>신청곡 등록 수</DetailsName>
+            </UserDetails>
+          </UserDetailsWrap>
+        </MyPageBlock>
+      )}
     </MainTemplate>
   );
 };

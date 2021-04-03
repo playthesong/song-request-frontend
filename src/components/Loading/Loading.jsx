@@ -17,13 +17,13 @@ const LoadingBlock = styled.div`
   transform: translate(-50%, -50%);
 
   @media ${({ theme }) => theme.device.mobile} {
-    top: 57%;
+    top: 53%;
   }
 `;
 
 const LoadingImg = styled.img`
   max-width: 5rem;
-  opacity: 0.3;
+  opacity: 0.1;
 
   @media ${({ theme }) => theme.device.mobile} {
     max-width: 3.5rem;

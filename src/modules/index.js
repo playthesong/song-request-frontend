@@ -5,6 +5,7 @@ import letterModal from "./letterModal";
 import song from "./song";
 import letterForm from "./letterForm";
 import auth from "./auth";
+import user from "./user";
 
 const rootReducer = combineReducers({
   letters,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
   letterModal,
   song,
   letterForm,
-  auth
+  auth,
+  user
 });
 
 export default rootReducer;
