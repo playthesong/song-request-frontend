@@ -1,8 +1,15 @@
 import React from "react";
 import { MdMoreHoriz } from "react-icons/md";
+import { useDispatch } from "react-redux";
 import styled, { css } from "styled-components";
+import useModal from "../../hooks/useModal";
 import useToggle from "../../hooks/useToggle";
+import { changeLetterStatus, deleteLetter } from "../../modules/letter";
+import AdminActionsModal from "./AdminActionsModal";
 import HiddenButtons from "./HiddenButtons";
+
+const DELETE_MESSAGE = "정말 삭제 할까요?";
+const DELETE_BUTTON_NAME = "삭제";
 
 const AdminHiddenMenu = ({
   letterId,
@@ -12,22 +19,56 @@ const AdminHiddenMenu = ({
   onUpdateLetters
 }) => {
   const { openMenu, toggleMenu } = useToggle();
+  const [isModalOpened, openModal, closeModal] = useModal();
+  const dispatch = useDispatch();
 
   const onToggleMenu = event => {
     event.stopPropagation();
     toggleMenu();
   };
 
+  const onChangeStatus = (event, status) => {
+    event.stopPropagation();
+    dispatch(changeLetterStatus(jwtToken, letterId, status));
+    onUpdateLetters();
+  };
+
+  const onOpenDeleteModal = event => {
+    event.stopPropagation();
+    openModal();
+  };
+
+  const onDeleteLetter = event => {
+    event.stopPropagation();
+    dispatch(deleteLetter(jwtToken, letterId));
+    onUpdateLetters();
+  };
+
+  const onCancel = event => {
+    event.stopPropagation();
+    closeModal();
+  };
+
   return (
-    <AdminHiddenMenuBlock isMouseEnter={isMouseEnter}>
-      <HiddenMenu onClick={onToggleMenu} />
-      <HiddenButtons
-        letterId={letterId}
-        jwtToken={jwtToken}
-        openMenu={openMenu}
-        onUpdateLetters={onUpdateLetters}
+    <>
+      <AdminHiddenMenuBlock isMouseEnter={isMouseEnter}>
+        <HiddenMenu onClick={onToggleMenu} />
+        <HiddenButtons
+          letterId={letterId}
+          jwtToken={jwtToken}
+          openMenu={openMenu}
+          onOpenDeleteModal={onOpenDeleteModal}
+          onChangeStatus={onChangeStatus}
+        />
+      </AdminHiddenMenuBlock>
+      <AdminActionsModal
+        isModalOpened={isModalOpened}
+        message={DELETE_MESSAGE}
+        actionButtonName={DELETE_BUTTON_NAME}
+        onAction={onDeleteLetter}
+        onCancel={onCancel}
       />
-    </AdminHiddenMenuBlock>
+    </>
   );
 };
 
@@ -43,8 +84,8 @@ const AdminHiddenMenuBlock = styled.div`
           opacity: 1;
         `
       : css`
-          /* visibility: hidden;
-          opacity: 0; */
+          visibility: hidden;
+          opacity: 0;
         `}
   transition: 0.35s;
 

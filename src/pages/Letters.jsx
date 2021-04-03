@@ -20,8 +20,6 @@ const Letters = () => {
   const { currentUser, jwtToken } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
-  console.log(ignored);
-
   const onUpdateLetters = async () => {
     await letterAPI.getLetters(LETTER_STATUS.WAITING);
     forceUpdate();

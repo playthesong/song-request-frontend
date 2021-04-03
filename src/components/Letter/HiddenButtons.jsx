@@ -3,33 +3,27 @@ import styled, { css } from "styled-components";
 import { FiCheck } from "react-icons/fi";
 import { BiGitCompare } from "react-icons/bi";
 import { AiTwotoneDelete } from "react-icons/ai";
-import { useDispatch } from "react-redux";
-import { deleteLetter, changeLetterStatus } from "../../modules/letter";
 import { LETTER_STATUS } from "../../constants/letterStatus";
 
-const HiddenButtons = ({ letterId, jwtToken, openMenu, onUpdateLetters }) => {
-  const dispatch = useDispatch();
-
-  const onChangeStatus = (event, status) => {
-    event.stopPropagation();
-    dispatch(changeLetterStatus(jwtToken, letterId, status));
-    onUpdateLetters();
-  };
-
-  const onDeleteLetter = event => {
-    event.stopPropagation();
-    dispatch(deleteLetter(jwtToken, letterId));
-    onUpdateLetters();
-  };
-
+const HiddenButtons = ({
+  letterId,
+  jwtToken,
+  openMenu,
+  onOpenDeleteModal,
+  onChangeStatus
+}) => {
   return (
-    <HiddenButtonsBlock openMenu={openMenu}>
-      <CheckIcon onClick={event => onChangeStatus(event, LETTER_STATUS.DONE)} />
-      <PendingIcon
-        onClick={event => onChangeStatus(event, LETTER_STATUS.PENDING)}
-      />
-      <DeleteIcon onClick={event => onDeleteLetter(event)} />
-    </HiddenButtonsBlock>
+    <>
+      <HiddenButtonsBlock openMenu={openMenu}>
+        <CheckIcon
+          onClick={event => onChangeStatus(event, LETTER_STATUS.DONE)}
+        />
+        <PendingIcon
+          onClick={event => onChangeStatus(event, LETTER_STATUS.PENDING)}
+        />
+        <DeleteIcon onClick={onOpenDeleteModal} />
+      </HiddenButtonsBlock>
+    </>
   );
 };
 

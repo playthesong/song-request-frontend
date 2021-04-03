@@ -27,6 +27,7 @@ const Letter = ({
   const [isMouseEnter, onMouseEnter, onMouseLeave] = useMouseEnter();
   const { error } = useSelector(state => state.letter);
   const dispatch = useDispatch();
+
   const onReadLetter = letterId => {
     dispatch(openModal());
     dispatch(changeModalType(LETTER_MODAL.READ));
