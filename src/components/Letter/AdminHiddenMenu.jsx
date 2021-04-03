@@ -14,7 +14,6 @@ const DELETE_BUTTON_NAME = "삭제";
 const AdminHiddenMenu = ({
   letterId,
   jwtToken,
-  currentUser,
   isMouseEnter,
   onUpdateLetters
 }) => {
@@ -54,8 +53,6 @@ const AdminHiddenMenu = ({
       <AdminHiddenMenuBlock isMouseEnter={isMouseEnter}>
         <HiddenMenu onClick={onToggleMenu} />
         <HiddenButtons
-          letterId={letterId}
-          jwtToken={jwtToken}
           openMenu={openMenu}
           onOpenDeleteModal={onOpenDeleteModal}
           onChangeStatus={onChangeStatus}
@@ -75,7 +72,7 @@ const AdminHiddenMenu = ({
 const AdminHiddenMenuBlock = styled.div`
   position: absolute;
   width: 3rem;
-  top: 2%;
+  top: 3%;
   right: 3.5%;
   ${props =>
     props.isMouseEnter

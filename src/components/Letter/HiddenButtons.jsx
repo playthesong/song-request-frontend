@@ -5,13 +5,7 @@ import { BiGitCompare } from "react-icons/bi";
 import { AiTwotoneDelete } from "react-icons/ai";
 import { LETTER_STATUS } from "../../constants/letterStatus";
 
-const HiddenButtons = ({
-  letterId,
-  jwtToken,
-  openMenu,
-  onOpenDeleteModal,
-  onChangeStatus
-}) => {
+const HiddenButtons = ({ openMenu, onOpenDeleteModal, onChangeStatus }) => {
   return (
     <>
       <HiddenButtonsBlock openMenu={openMenu}>
@@ -37,10 +31,10 @@ const HiddenButtonsBlock = styled.div`
   ${props =>
     props.openMenu
       ? css`
-          display: none;
+          display: flex;
         `
       : css`
-          display: flex;
+          display: none;
         `}
 `;
 

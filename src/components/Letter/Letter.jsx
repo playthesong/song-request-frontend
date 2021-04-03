@@ -9,6 +9,7 @@ import { LETTER_MODAL } from "../../constants/types";
 import GlobalErrorHandler from "../../components/Error/GlobalErrorHandler";
 import AdminHiddenButtons from "./AdminHiddenMenu";
 import useMouseEnter from "../../hooks/useMouseEnter";
+import { ROLE } from "../../constants/role";
 
 const TITLE_MAX_LENGTH = 30;
 const ARTIST_MAX_LENGTH = 10;
@@ -48,13 +49,15 @@ const Letter = ({
         onMouseEnter={onMouseEnter}
         onMouseLeave={onMouseLeave}
       >
-        <AdminHiddenButtons
-          letterId={id}
-          jwtToken={jwtToken}
-          currentUser={currentUser}
-          isMouseEnter={isMouseEnter}
-          onUpdateLetters={onUpdateLetters}
-        />
+        {currentUser && currentUser.role === ROLE.ADMIN && (
+          <AdminHiddenButtons
+            letterId={id}
+            jwtToken={jwtToken}
+            currentUser={currentUser}
+            isMouseEnter={isMouseEnter}
+            onUpdateLetters={onUpdateLetters}
+          />
+        )}
         <SongBlock>
           <img
             src={imageUrl ? imageUrl : realpianoLogo}
