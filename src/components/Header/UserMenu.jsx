@@ -3,19 +3,23 @@ import styled, { css } from "styled-components";
 import { CgProfile, CgLogOut } from "react-icons/cg";
 import { useDispatch } from "react-redux";
 import { logout } from "../../modules/auth";
+import { Link } from "react-router-dom";
 
 const UserMenu = ({ openMenu }) => {
   const dispatch = useDispatch();
+
   const onLogout = () => {
     dispatch(logout());
   };
 
   return (
     <UserMenuBlock openMenu={openMenu}>
-      <UserMenuButton>
-        <ProfileIcon />
-        My Page
-      </UserMenuButton>
+      <Link to="/mypage">
+        <UserMenuButton>
+          <ProfileIcon />
+          My Page
+        </UserMenuButton>
+      </Link>
       <UserMenuButton onClick={onLogout}>
         <LogoutIcon />
         Logout

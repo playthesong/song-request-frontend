@@ -15,6 +15,7 @@ import Contents from "./pages/Contents";
 import MusicSheets from "./pages/MusicSheets";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
+import MyPage from "./pages/MyPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/ranking" component={Ranking} />
           <Route path="/contents" exact component={Contents} />
           <Route path="/musicsheets" component={MusicSheets} />
+          <Route path="/mypage" component={MyPage} />
           <Route path="/auth/token" exact component={OAuth} />
           <Redirect from="*" to="/" />
         </Switch>

@@ -17,7 +17,7 @@ const MainTemplateBlock = styled.div`
   padding-top: 7rem;
 
   @media ${({ theme }) => theme.device.mobile} {
-    padding-top: 3.5rem;
+    padding-top: 7rem;
     min-height: calc(100vh - 21rem);
   }
 `;
