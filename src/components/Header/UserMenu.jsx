@@ -28,6 +28,11 @@ const UserMenuBlock = styled.ul`
   color: rgba(0, 0, 0, 0.6);
   transition: 0.2s;
   border-radius: 0.3rem;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    top: 27%;
+    right: 2.8%;
+  }
 `;
 
 const UserMenuButton = styled.li`
