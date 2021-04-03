@@ -21,8 +21,10 @@ import { getLetters } from "../../modules/letters";
 const LetterEditContainer = ({
   letter,
   currentUser,
+  jwtToken,
   inActivateScroll,
-  onCloseModal
+  onCloseModal,
+  onUpdateLetters
 }) => {
   const { letterForm } = useSelector(state => state);
   const dispatch = useDispatch();
@@ -34,7 +36,7 @@ const LetterEditContainer = ({
     errorMessage
   } = letterForm;
 
-  const { user, id: letterId } = letter;
+  const { account, id: letterId } = letter;
 
   const onChange = event => {
     const { name, value } = event.target;
@@ -97,15 +99,16 @@ const LetterEditContainer = ({
     }
 
     dispatch(
-      updateLetter(letterId, {
+      updateLetter(jwtToken, letterId, {
         letterId,
-        user,
+        user: account,
         ...letterForm
       })
     );
     dispatch(clearForm());
     dispatch(changeModalType(LETTER_MODAL.READ));
     dispatch(getLetters(LETTER_STATUS.WAITING));
+    onUpdateLetters();
   };
 
   useEffect(() => {
@@ -115,7 +118,8 @@ const LetterEditContainer = ({
   return (
     <LetterEditor
       letterForm={letterForm}
-      user={user}
+      user={account}
+      jwtToken={jwtToken}
       currentUser={currentUser}
       onChange={onChange}
       onSubmit={onUpdate}

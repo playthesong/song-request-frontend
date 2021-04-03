@@ -1,8 +1,17 @@
 import React from "react";
 import styled from "styled-components";
 
-const CloseButton = ({ onCloseModal }) => {
-  return <Button onClick={onCloseModal}>닫기</Button>;
+const CloseButton = ({ onCloseModal, clearSong }) => {
+  return (
+    <Button
+      onClick={() => {
+        clearSong();
+        onCloseModal();
+      }}
+    >
+      닫기
+    </Button>
+  );
 };
 
 const Button = styled.button`

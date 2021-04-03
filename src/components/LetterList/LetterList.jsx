@@ -5,7 +5,14 @@ import Letter from "../Letter/Letter";
 import Loading from "../Loading/Loading";
 import EmptyResult from "../EmptyResult/EmptyResult";
 
-const LetterList = ({ letters, loading, error }) => {
+const LetterList = ({
+  letters,
+  jwtToken,
+  currentUser,
+  loading,
+  error,
+  onUpdateLetters
+}) => {
   return (
     <LetterListBlock>
       {loading && <Loading position={50} />}
@@ -13,7 +20,7 @@ const LetterList = ({ letters, loading, error }) => {
       {letters && letters.length === 0 && (
         <EmptyResult
           message={"리얼피아노는 여러분의 신청곡과 사연을 기다립니다."}
-          opacity={0.7}
+          opacity={0.3}
         />
       )}
       {letters &&
@@ -21,10 +28,13 @@ const LetterList = ({ letters, loading, error }) => {
           <Letter
             key={letter.id}
             id={letter.id}
-            user={letter.user}
+            jwtToken={jwtToken}
+            currentUser={currentUser}
+            user={letter.account}
             song={letter.song}
             songStory={letter.songStory}
             createdDateTime={letter.createdDateTime}
+            onUpdateLetters={onUpdateLetters}
           />
         ))}
     </LetterListBlock>

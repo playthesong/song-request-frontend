@@ -17,6 +17,7 @@ import { GLOBAL_ERROR_MESSAGE } from "../../constants/errorMessage";
 const LetterEditor = ({
   letterForm,
   user,
+  jwtToken,
   currentUser,
   onChange,
   onSubmit,
@@ -54,7 +55,7 @@ const LetterEditor = ({
               currentUser={currentUser}
               onCloseModal={onCloseModal}
             />
-            <LetterEditorSearchButton />
+            <LetterEditorSearchButton jwtToken={jwtToken} />
             <LetterModalForm>
               <LetterEditorSong
                 title={title}

@@ -29,7 +29,12 @@ jobs:
           echo REACT_APP_API_BASE_URL=${{ secrets.REACT_APP_API_BASE_URL }} >> .env
           echo REACT_APP_API_LOGIN_URL=${{ secrets.REACT_APP_API_LOGIN_URL }} >> .env
           echo REACT_APP_API_TOKEN_URL=${{ secrets.REACT_APP_API_TOKEN_URL}} >> .env
+          echo REACT_APP_API_VALIDATION_URL=${{ secrets.REACT_APP_API_VALIDATION_URL}} >> .env
           echo REACT_APP_JWT_SECRET_KEY=${{ secrets.REACT_APP_JWT_SECRET_KEY }} >> .env
+          echo REACT_APP_API_LETTERS_STATUS=${{ secrets.REACT_APP_API_LETTERS_STATUS }} >> .env
+          echo REACT_APP_API_LETTER=${{ secrets.REACT_APP_API_LETTER }} >> .env
+          echo REACT_APP_API_SEARCH_SONG=${{ secrets.REACT_APP_API_SEARCH_SONG }} >> .env
+          echo REACT_APP_API_MY_PAGE=${{ secrets.REACT_APP_API_MY_PAGE }} >> .env
 
       - name: NPM build
         run: npm run build

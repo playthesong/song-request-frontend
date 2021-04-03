@@ -16,6 +16,9 @@ const DELETE_LETTER = "letter/DELETE_LETTER";
 const DELETE_LETTER_SUCCESS = "letter/DELETE_LETTER_SUCCESS";
 const DELETE_LETTER_ERROR = "letter/DELETE_LETTER_ERROR";
 
+const CHANGE_STATUS = "letter/CHANGE_STATUS";
+const CHANGE_STATUS_ERROR = "letter/CHANGE_STATUS_ERROR";
+
 export const getLetterById = id => async dispatch => {
   dispatch({ type: GET_LETTER });
 
@@ -27,36 +30,47 @@ export const getLetterById = id => async dispatch => {
   }
 };
 
-export const createLetter = payload => async dispatch => {
+export const createLetter = (jwtToken, payload) => async dispatch => {
   dispatch({ type: CREATE_LETTER });
 
   try {
-    const letter = await lettersAPI.createLetter(payload);
+    const letter = await lettersAPI.createLetter(jwtToken, payload);
     dispatch({ type: CREATE_LETTER_SUCCESS, letter });
   } catch (error) {
     dispatch({ type: CREATE_LETTER_ERROR, error });
   }
 };
 
-export const updateLetter = (id, payload) => async dispatch => {
+export const updateLetter = (jwtToken, id, payload) => async dispatch => {
   dispatch({ type: UPDATE_LETTER });
 
   try {
-    const letter = await lettersAPI.updateLetter(id, payload);
+    const letter = await lettersAPI.updateLetter(jwtToken, id, payload);
     dispatch({ type: UPDATE_LETTER_SUCCESS, letter });
   } catch (error) {
     dispatch({ type: UPDATE_LETTER_ERROR, error });
   }
 };
 
-export const deleteLetter = id => async dispatch => {
+export const deleteLetter = (jwtToken, id) => async dispatch => {
   dispatch({ type: DELETE_LETTER });
 
   try {
-    await lettersAPI.deleteLetter(id);
+    await lettersAPI.deleteLetter(jwtToken, id);
     dispatch({ type: DELETE_LETTER_SUCCESS });
   } catch (error) {
     dispatch({ type: DELETE_LETTER_ERROR, error });
+  }
+};
+
+export const changeLetterStatus = (jwtToken, id, status) => async dispatch => {
+  dispatch({ type: CHANGE_STATUS });
+
+  try {
+    const payload = { requestStatus: status };
+    await lettersAPI.changeLetterStatus(jwtToken, id, payload);
+  } catch (error) {
+    dispatch({ type: CHANGE_STATUS_ERROR, error });
   }
 };
 
@@ -135,6 +149,18 @@ function letter(state = initialState, action) {
         error: null
       };
     case DELETE_LETTER_ERROR:
+      return {
+        data: null,
+        loading: false,
+        error: action.error
+      };
+    case CHANGE_STATUS:
+      return {
+        data: null,
+        loading: true,
+        error: null
+      };
+    case CHANGE_STATUS_ERROR:
       return {
         data: null,
         loading: false,

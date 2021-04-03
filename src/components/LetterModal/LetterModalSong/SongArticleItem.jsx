@@ -2,10 +2,16 @@ import React from "react";
 import styled, { css } from "styled-components";
 import parse from "html-react-parser";
 
+const ITEM_MAX_LENGTH = 30;
+
 const SongArticleItem = ({ articleName, item }) => {
   return (
     <SongArticleItemBlock articleName={articleName}>
-      {parse(item)}
+      {parse(
+        item.length > ITEM_MAX_LENGTH
+          ? `${item.slice(0, ITEM_MAX_LENGTH)}...`
+          : item
+      )}
     </SongArticleItemBlock>
   );
 };

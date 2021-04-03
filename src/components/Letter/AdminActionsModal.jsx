@@ -1,67 +1,57 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { IoIosCheckmarkCircleOutline } from "react-icons/io";
-import { useDispatch } from "react-redux";
-import { deleteLetter } from "../../../modules/letter";
-import { closeModal } from "../../../modules/letterModal";
 
-const LetterDeleteModal = ({
-  letter,
-  error,
-  jwtToken,
-  isOpened,
-  closeDeleteModal,
-  onUpdateLetters
+const AdminActionsModal = ({
+  isModalOpened,
+  message,
+  actionButtonName,
+  onAction,
+  onCancel
 }) => {
-  const dispatch = useDispatch();
-
-  const onDeleteLetter = async () => {
-    dispatch(deleteLetter(jwtToken, letter.id));
-    if (!error) {
-      dispatch(closeModal());
-      onUpdateLetters();
-    }
-  };
-
   return (
-    <DimmedBackground isOpened={isOpened}>
-      <LetterDeleteModalBlock>
+    <DimmedBackground
+      isModalOpened={isModalOpened}
+      onClick={event => event.stopPropagation()}
+    >
+      <AdminActionsModalBlock>
         <ConfirmMessageWrap>
           <ConfirmIcon />
-          <ConfirmMessage>정말 삭제 할까요?</ConfirmMessage>
+          <ConfirmMessage>{message}</ConfirmMessage>
         </ConfirmMessageWrap>
         <ButtonWrap>
-          <ConfirmButton onClick={onDeleteLetter}>삭제</ConfirmButton>
-          <CancelButton onClick={closeDeleteModal}>취소</CancelButton>
+          <ConfirmButton onClick={onAction}>{actionButtonName}</ConfirmButton>
+          <CancelButton onClick={onCancel}>취소</CancelButton>
         </ButtonWrap>
-      </LetterDeleteModalBlock>
+      </AdminActionsModalBlock>
     </DimmedBackground>
   );
 };
 
 const DimmedBackground = styled.div`
-  display: ${props => (props.isOpened ? "block" : "none")};
+  display: ${props => (props.isModalOpened ? "block" : "none")};
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.3);
-  z-index: 99;
+  z-index: 9;
 `;
 
-const LetterDeleteModalBlock = styled.div`
+const AdminActionsModalBlock = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 30%;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  width: 70%;
-  height: 30%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 45%;
   padding: 0rem 3rem;
   background-color: #fbfbfd;
   box-shadow: 1px 1px 15px 1px rgba(253, 253, 253, 0.3);
@@ -122,4 +112,4 @@ const CancelButton = styled.button`
   background: #51cf66;
 `;
 
-export default LetterDeleteModal;
+export default AdminActionsModal;

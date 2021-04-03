@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 const useMouseEnter = () => {
-  const [mouseEnter, setMouseEnter] = useState(false);
+  const [isMouseEnter, setMouseEnter] = useState(false);
 
   const onMouseEnter = () => {
     setMouseEnter(true);
@@ -11,7 +11,7 @@ const useMouseEnter = () => {
     setMouseEnter(false);
   };
 
-  return [mouseEnter, onMouseEnter, onMouseLeave];
+  return [isMouseEnter, onMouseEnter, onMouseLeave];
 };
 
 export default useMouseEnter;

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import LetterEditor from "../../components/LetterEditor/LetterEditor";
 import { FORM_ERROR_MESSAGE } from "../../constants/errorMessage";
 import { FORM } from "../../constants/form";
+import { LETTER_STATUS } from "../../constants/letterStatus";
 import { LETTER_MODAL } from "../../constants/types";
 import { createLetter } from "../../modules/letter";
 import {
@@ -16,7 +17,13 @@ import {
 import { changeModalType } from "../../modules/letterModal";
 import { getLetters } from "../../modules/letters";
 
-const LetterCreateContainer = ({ inActivateScroll, onCloseModal }) => {
+const LetterCreateContainer = ({
+  currentUser,
+  jwtToken,
+  inActivateScroll,
+  onCloseModal,
+  onUpdateLetters
+}) => {
   const { letterForm } = useSelector(state => state);
   const {
     title,
@@ -30,8 +37,6 @@ const LetterCreateContainer = ({ inActivateScroll, onCloseModal }) => {
     errorMessage
   } = letterForm;
   const dispatch = useDispatch();
-
-  console.log(errorMessage);
 
   const onChange = event => {
     const { name, value } = event.target;
@@ -92,10 +97,11 @@ const LetterCreateContainer = ({ inActivateScroll, onCloseModal }) => {
     const song = { title, artist, imageUrl };
     const newLetter = { song, songStory };
 
-    dispatch(createLetter(newLetter));
+    dispatch(createLetter(jwtToken, newLetter));
     dispatch(clearForm());
     dispatch(changeModalType(LETTER_MODAL.READ));
-    dispatch(getLetters());
+    dispatch(getLetters(LETTER_STATUS.WAITING));
+    onUpdateLetters();
   };
 
   useEffect(() => {
@@ -107,6 +113,8 @@ const LetterCreateContainer = ({ inActivateScroll, onCloseModal }) => {
   return (
     <LetterEditor
       letterForm={letterForm}
+      jwtToken={jwtToken}
+      currentUser={currentUser}
       onChange={onChange}
       onSubmit={onCreate}
       errorMessage={errorMessage}

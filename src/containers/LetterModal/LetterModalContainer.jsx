@@ -7,10 +7,10 @@ import { closeModal } from "../../modules/letterModal";
 import LetterCreateContainer from "../LetterEditor/LetterCreateContainer";
 import LetterEditContainer from "../LetterEditor/LetterEditContainer";
 
-const LetterModalContainer = () => {
+const LetterModalContainer = ({ onUpdateLetters }) => {
   const { modalType } = useSelector(state => state.letterModal);
   const { data: letter, loading, error } = useSelector(state => state.letter);
-  const { currentUser } = useSelector(state => state.auth);
+  const { currentUser, jwtToken } = useSelector(state => state.auth);
 
   const dispatch = useDispatch();
 
@@ -33,7 +33,7 @@ const LetterModalContainer = () => {
     return () => {
       activateScroll();
     };
-  });
+  }, [modalType]);
 
   if (modalType === LETTER_MODAL.READ) {
     return (
@@ -41,9 +41,11 @@ const LetterModalContainer = () => {
         letter={letter}
         loading={loading}
         error={error}
+        jwtToken={jwtToken}
         currentUser={currentUser}
         inActivateScroll={inActivateScroll}
         onCloseModal={onCloseModal}
+        onUpdateLetters={onUpdateLetters}
       />
     );
   }
@@ -53,8 +55,10 @@ const LetterModalContainer = () => {
       <LetterEditContainer
         letter={letter}
         currentUser={currentUser}
+        jwtToken={jwtToken}
         inActivateScroll={inActivateScroll}
         onCloseModal={onCloseModal}
+        onUpdateLetters={onUpdateLetters}
       />
     );
   }
@@ -63,8 +67,10 @@ const LetterModalContainer = () => {
     return (
       <LetterCreateContainer
         currentUser={currentUser}
+        jwtToken={jwtToken}
         inActivateScroll={inActivateScroll}
         onCloseModal={onCloseModal}
+        onUpdateLetters={onUpdateLetters}
       />
     );
   }

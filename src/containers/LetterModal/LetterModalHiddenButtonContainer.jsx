@@ -6,9 +6,13 @@ import { LETTER_MODAL } from "../../constants/types";
 import { toggleMenu, changeModalType } from "../../modules/letterModal";
 
 const LetterModalHiddenButtonContainer = ({
+  letter,
+  error,
   user,
+  jwtToken,
   currentUser,
-  onCloseModal
+  onCloseModal,
+  onUpdateLetters
 }) => {
   const { modalType, isMouseEnter, isMenuOpen } = useSelector(
     state => state.letterModal
@@ -33,10 +37,14 @@ const LetterModalHiddenButtonContainer = ({
         currentUser &&
         currentUser.id === user.id && (
           <LetterModalHiddenMenu
+            letter={letter}
+            error={error}
+            jwtToken={jwtToken}
             isMouseEnter={isMouseEnter}
             isMenuOpen={isMenuOpen}
             onToggle={onToggle}
             changeToEdit={changeToEdit}
+            onUpdateLetters={onUpdateLetters}
           />
         )}
     </>

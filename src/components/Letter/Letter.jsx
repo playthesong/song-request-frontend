@@ -2,28 +2,62 @@ import React from "react";
 import styled from "styled-components";
 import parse from "html-react-parser";
 import realpianoLogo from "../../assets/realpiano_logo_alt.png";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeModalType, openModal } from "../../modules/letterModal";
 import { getLetterById } from "../../modules/letter";
 import { LETTER_MODAL } from "../../constants/types";
+import GlobalErrorHandler from "../../components/Error/GlobalErrorHandler";
+import AdminHiddenButtons from "./AdminHiddenMenu";
+import useMouseEnter from "../../hooks/useMouseEnter";
+import { ROLE } from "../../constants/role";
 
 const TITLE_MAX_LENGTH = 30;
 const ARTIST_MAX_LENGTH = 10;
 const SONG_STORY_MAX_LENGTH = 100;
 
-const Letter = ({ id, user, song, songStory, createdDateTime }) => {
+const Letter = ({
+  id,
+  jwtToken,
+  currentUser,
+  user,
+  song,
+  songStory,
+  createdDateTime,
+  onUpdateLetters
+}) => {
+  const [isMouseEnter, onMouseEnter, onMouseLeave] = useMouseEnter();
+  const { error } = useSelector(state => state.letter);
   const dispatch = useDispatch();
+
   const onReadLetter = letterId => {
     dispatch(openModal());
     dispatch(changeModalType(LETTER_MODAL.READ));
     dispatch(getLetterById(letterId));
   };
+
+  if (error) {
+    return <GlobalErrorHandler error={error} />;
+  }
+
   const { name, avatarUrl } = user;
   const { title, artist, imageUrl } = song;
 
   return (
     <>
-      <LetterBlock onClick={() => onReadLetter(id)}>
+      <LetterBlock
+        onClick={() => onReadLetter(id)}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      >
+        {currentUser && currentUser.role === ROLE.ADMIN && (
+          <AdminHiddenButtons
+            letterId={id}
+            jwtToken={jwtToken}
+            currentUser={currentUser}
+            isMouseEnter={isMouseEnter}
+            onUpdateLetters={onUpdateLetters}
+          />
+        )}
         <SongBlock>
           <img
             src={imageUrl ? imageUrl : realpianoLogo}
@@ -76,6 +110,7 @@ const LetterBlock = styled.li`
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  position: relative;
   padding: 0.7rem;
   border: #ffdeeb;
   border-radius: 0.5rem;
@@ -114,7 +149,7 @@ const SongBlock = styled.div`
     flex-direction: column;
     justify-content: center;
     margin-right: auto;
-    margin-left: 2rem;
+    margin-left: 1.5rem;
 
     .song-about__title {
       max-width: 17rem;

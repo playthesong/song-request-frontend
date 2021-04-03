@@ -1,5 +1,4 @@
 import * as lettersAPI from "../api/letters";
-import { LETTER_STATUS } from "../constants/letterStatus";
 
 const GET_LETTERS = "letters/GET_LETTERS";
 const GET_LETTERS_SUCCESS = "letters/GET_LETTERS_SUCCESS";
@@ -12,13 +11,14 @@ export const getLetters = status => async dispatch => {
     const letters = await lettersAPI.getLetters(status);
     dispatch({ type: GET_LETTERS_SUCCESS, letters, status });
   } catch (error) {
+    console.log(error.response);
     dispatch({ type: GET_LETTERS_ERROR, error });
   }
 };
 
 const initialState = {
   data: null,
-  status: LETTER_STATUS.WAITING,
+  status: null,
   loading: false,
   error: null
 };

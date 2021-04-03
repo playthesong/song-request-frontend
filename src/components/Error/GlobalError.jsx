@@ -2,15 +2,19 @@ import React from "react";
 import { FcImport } from "react-icons/fc";
 import styled from "styled-components";
 
-const GlobalError = ({ errorMessage }) => {
+const GlobalError = ({ errorMessage, url, buttonName }) => {
   const messages = errorMessage.split(".");
 
   return (
     <GlobalErrorBlock>
       <ErrorIcon />
-      <ErrorMessage>{`${messages[0]}.`}</ErrorMessage>
-      <ErrorMessage>{`${messages[1]}.`}</ErrorMessage>
-      <MoveButton href="/">돌아가기</MoveButton>
+      <ErrorMessage>
+        {messages ? `${messages[0]}.` : "요청을 처리하지 못했습니다."}
+      </ErrorMessage>
+      <ErrorMessage>
+        {messages && messages[1] ? `${messages[1]}.` : null}
+      </ErrorMessage>
+      <MoveButton href={url}>{buttonName}</MoveButton>
     </GlobalErrorBlock>
   );
 };
@@ -29,6 +33,7 @@ const GlobalErrorBlock = styled.div`
 const ErrorIcon = styled(FcImport)`
   font-size: 4.1rem;
   margin-bottom: 2.1rem;
+  opacity: 0.5;
 `;
 
 const ErrorMessage = styled.p`
@@ -36,12 +41,12 @@ const ErrorMessage = styled.p`
   width: 100%;
   line-height: 2rem;
   font-size: 1.25rem;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.3);
 `;
 
 const MoveButton = styled.a`
   margin-top: 2.1rem;
-  background: #ffc078;
+  background: rgba(255, 192, 120, 0.8);
   padding: 0.7rem 1.5rem;
   border-radius: 0.3rem;
   color: #fff;

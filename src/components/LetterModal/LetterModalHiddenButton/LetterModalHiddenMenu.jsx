@@ -6,10 +6,14 @@ import LetterDeleteModal from "./LetterDeleteModal";
 import LetterDetailsHiddenMenuButton from "./LetterModalHiddenMenuButton";
 
 const LetterDetailsHiddenMenu = ({
+  letter,
+  error,
+  jwtToken,
   isMouseEnter,
   isMenuOpen,
   onToggle,
-  changeToEdit
+  changeToEdit,
+  onUpdateLetters
 }) => {
   const [isOpened, openDeleteModal, closeDeleteModal] = useModal();
 
@@ -25,8 +29,12 @@ const LetterDetailsHiddenMenu = ({
         )}
       </ButtonBlock>
       <LetterDeleteModal
+        letter={letter}
+        error={error}
+        jwtToken={jwtToken}
         isOpened={isOpened}
         closeDeleteModal={closeDeleteModal}
+        onUpdateLetters={onUpdateLetters}
       />
     </>
   );
