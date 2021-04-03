@@ -1,15 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import { MdKeyboardArrowDown } from "react-icons/md";
+import UserMenu from "./UserMenu";
+import useToggle from "../../hooks/useToggle";
 
 const UserProfile = ({ user }) => {
+  const { openMenu, toggleMenu } = useToggle();
   const { name, avatarUrl } = user;
 
   return (
-    <UserProfileBlock>
+    <UserProfileBlock onClick={toggleMenu}>
       <UserImage src={avatarUrl} alt="프로필 사진" />
       <Username>{name}</Username>
       <MenuIcon />
+      <UserMenu openMenu={openMenu} />
     </UserProfileBlock>
   );
 };
