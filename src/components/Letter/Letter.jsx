@@ -14,6 +14,7 @@ import { ROLE } from "../../constants/role";
 const TITLE_MAX_LENGTH = 30;
 const ARTIST_MAX_LENGTH = 10;
 const SONG_STORY_MAX_LENGTH = 100;
+const NAME_MAX_LENGTH = 14;
 
 const Letter = ({
   id,
@@ -94,7 +95,11 @@ const Letter = ({
               alt="USER PROFILE"
               className="user-about__avatar"
             />
-            <span className="user-about__name">{name}</span>
+            <span className="user-about__name">
+              {name.length > NAME_MAX_LENGTH
+                ? `${name.slice(0, NAME_MAX_LENGTH)} ...`
+                : name}
+            </span>
           </div>
         </UserBlock>
       </LetterBlock>
