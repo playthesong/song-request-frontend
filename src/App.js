@@ -17,6 +17,7 @@ import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
 import MyPage from "./pages/MyPage";
 import ErrorPage from "./pages/ErrorPage";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           <Route path="/mypage" component={MyPage} />
           <Route path="/auth/token" exact component={OAuth} />
           <Route path="/error" component={ErrorPage} />
+          <Route path="/policy" component={PrivacyPolicy} />
           <Redirect from="*" to="/" />
         </Switch>
         <Footer />
