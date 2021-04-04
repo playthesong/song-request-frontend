@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as letterAPI from "../api/letters";
 import { getLetters } from "../modules/letters";
 import { LETTER_STATUS } from "../constants/letterStatus";
+import ReactHelmet from "../common/ReactHelmet";
 
 const Letters = () => {
   const { data: letters, status, loading, error } = useSelector(
@@ -30,22 +31,25 @@ const Letters = () => {
   }, [dispatch, ignored]);
 
   return (
-    <MainTemplate>
-      <LettersButtonBlock>
-        <ListTitle status={status} />
-        <StatusButtons status={status} />
-        <ActionButtons currentUser={currentUser} />
-      </LettersButtonBlock>
-      <LetterList
-        letters={letters}
-        jwtToken={jwtToken}
-        currentUser={currentUser}
-        loading={loading}
-        error={error}
-        onUpdateLetters={onUpdateLetters}
-      />
-      <LetterModalContainer onUpdateLetters={onUpdateLetters} />
-    </MainTemplate>
+    <>
+      <ReactHelmet title={"신청곡 목록"} />
+      <MainTemplate>
+        <LettersButtonBlock>
+          <ListTitle status={status} />
+          <StatusButtons status={status} />
+          <ActionButtons currentUser={currentUser} />
+        </LettersButtonBlock>
+        <LetterList
+          letters={letters}
+          jwtToken={jwtToken}
+          currentUser={currentUser}
+          loading={loading}
+          error={error}
+          onUpdateLetters={onUpdateLetters}
+        />
+        <LetterModalContainer onUpdateLetters={onUpdateLetters} />
+      </MainTemplate>
+    </>
   );
 };
 

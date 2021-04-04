@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import ReactHelmet from "../common/ReactHelmet";
 import MainTemplate from "../components/Template/Main/MainTemplate";
 import useModal from "../hooks/useModal";
 import products from "../mockData/musicsheets";
@@ -32,6 +33,7 @@ const MusicSheets = () => {
 
   return (
     <>
+      <ReactHelmet title={"리얼피아노 악보집"} />
       <MainTemplate>
         <MusicSheetsBlock>
           {products.map(product => (
@@ -93,7 +95,7 @@ const DimmedBackground = styled.div`
   top: 0;
   left: 0;
   z-index: 999;
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.8);
   flex-direction: column;
   justify-content: center;
   align-items: center;
