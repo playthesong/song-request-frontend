@@ -21,7 +21,7 @@ const EmptyResultBlock = styled.div`
   align-items: center;
 
   @media ${({ theme }) => theme.device.mobile} {
-    top: 57%;
+    top: 65%;
   }
 `;
 
@@ -31,10 +31,11 @@ const Message = styled.p`
   font-size: 1.2rem;
   color: #232323;
   opacity: 0.5;
+  line-height: 1.7rem;
 
   @media ${({ theme }) => theme.device.mobile} {
     font-size: 1.1rem;
-    width: 77%;
+    width: 85%;
     line-height: 1.5rem;
   }
 `;

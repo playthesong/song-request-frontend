@@ -17,7 +17,7 @@ const LoadingBlock = styled.div`
   transform: translate(-50%, -50%);
 
   @media ${({ theme }) => theme.device.mobile} {
-    top: 53%;
+    top: 57%;
   }
 `;
 

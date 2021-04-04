@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 1.2rem;
     color: #495057;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     box-sizing: border-box;
   }
 

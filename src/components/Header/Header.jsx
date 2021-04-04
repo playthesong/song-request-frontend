@@ -5,12 +5,13 @@ import Navigation from "./Navigation";
 import LoginButton from "./LoginButton";
 import { useSelector } from "react-redux";
 import UserProfile from "./UserProfile";
+import { Redirect } from "react-router";
 
 const Header = () => {
   const { currentUser, error } = useSelector(({ auth }) => auth);
 
   if (error) {
-    return <div>ERROR!</div>;
+    return <Redirect to="/error" />;
   }
 
   return (

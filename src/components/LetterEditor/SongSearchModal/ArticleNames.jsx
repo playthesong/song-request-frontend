@@ -33,6 +33,12 @@ const ArticleName = styled.span`
     flex: 2;
     text-align: center;
   }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    &:nth-child(2) {
+      flex: 10;
+    }
+  }
 `;
 
 export default ArticleNames;

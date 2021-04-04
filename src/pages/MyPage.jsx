@@ -36,7 +36,7 @@ const MyPage = () => {
       {error && <GlobalErrorHandler error={error} />}
       {user && (
         <MyPageBlock>
-          <Title>My Page</Title>
+          <Title> </Title>
           <UserAvatarWrap>
             <UserImage src={user.avatarUrl} />
             <Name>{user.name}</Name>
