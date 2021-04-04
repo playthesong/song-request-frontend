@@ -4,6 +4,9 @@ import { login } from "../modules/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Redirect } from "react-router";
 import { AUTH } from "../constants/auth";
+import MainTemplate from "../components/Template/Main/MainTemplate";
+import Loading from "../components/Loading/Loading";
+import GlobalErrorHandler from "../components/Error/GlobalErrorHandler";
 
 const OAuth = ({ location: { search } }) => {
   const { key } = queryString.parse(search);
@@ -19,11 +22,19 @@ const OAuth = ({ location: { search } }) => {
   }, [key, dispatch]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return (
+      <MainTemplate>
+        <Loading position={50} />
+      </MainTemplate>
+    );
   }
 
   if (error) {
-    return <div>Error!</div>;
+    return (
+      <MainTemplate>
+        <GlobalErrorHandler error={error} />
+      </MainTemplate>
+    );
   }
 
   if (!currentUser || !jwtToken) {
