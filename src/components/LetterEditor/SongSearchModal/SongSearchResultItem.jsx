@@ -60,6 +60,10 @@ const SongDetails = styled.div`
   flex-direction: column;
   margin-top: 1rem;
   margin-left: 17.5%;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    margin-left: 16.5%;
+  }
 `;
 
 const SongTitle = styled.span`
