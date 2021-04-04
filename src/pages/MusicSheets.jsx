@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import ReactHelmet from "../common/ReactHelmet";
 import MainTemplate from "../components/Template/Main/MainTemplate";
 import useModal from "../hooks/useModal";
 import products from "../mockData/musicsheets";
@@ -32,6 +33,7 @@ const MusicSheets = () => {
 
   return (
     <>
+      <ReactHelmet title={"리얼피아노 악보집"} />
       <MainTemplate>
         <MusicSheetsBlock>
           {products.map(product => (

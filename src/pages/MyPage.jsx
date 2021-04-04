@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import ReactHelmet from "../common/ReactHelmet";
 import GlobalErrorHandler from "../components/Error/GlobalErrorHandler";
 import Loading from "../components/Loading/Loading";
 import MainTemplate from "../components/Template/Main/MainTemplate";
@@ -31,34 +32,37 @@ const MyPage = () => {
   };
 
   return (
-    <MainTemplate>
-      {loading && <Loading position={50} />}
-      {error && <GlobalErrorHandler error={error} />}
-      {user && (
-        <MyPageBlock>
-          <Title> </Title>
-          <UserAvatarWrap>
-            <UserImage src={user.avatarUrl} />
-            <Name>{user.name}</Name>
-            <Email>{user.email}</Email>
-          </UserAvatarWrap>
-          <UserDetailsWrap>
-            <UserDetails>
-              <DetailsValue>{user.createdDateTime}</DetailsValue>
-              <DetailsName>가입일</DetailsName>
-            </UserDetails>
-            <UserDetails>
-              <DetailsValue>{findUserRole(user.role)}</DetailsValue>
-              <DetailsName>등급</DetailsName>
-            </UserDetails>
-            <UserDetails>
-              <DetailsValue>{user.requestCount}</DetailsValue>
-              <DetailsName>신청곡 등록 수</DetailsName>
-            </UserDetails>
-          </UserDetailsWrap>
-        </MyPageBlock>
-      )}
-    </MainTemplate>
+    <>
+      <ReactHelmet title={"마이 페이지"} />
+      <MainTemplate>
+        {loading && <Loading position={50} />}
+        {error && <GlobalErrorHandler error={error} />}
+        {user && (
+          <MyPageBlock>
+            <Title> </Title>
+            <UserAvatarWrap>
+              <UserImage src={user.avatarUrl} />
+              <Name>{user.name}</Name>
+              <Email>{user.email}</Email>
+            </UserAvatarWrap>
+            <UserDetailsWrap>
+              <UserDetails>
+                <DetailsValue>{user.createdDateTime}</DetailsValue>
+                <DetailsName>가입일</DetailsName>
+              </UserDetails>
+              <UserDetails>
+                <DetailsValue>{findUserRole(user.role)}</DetailsValue>
+                <DetailsName>등급</DetailsName>
+              </UserDetails>
+              <UserDetails>
+                <DetailsValue>{user.requestCount}</DetailsValue>
+                <DetailsName>신청곡 등록 수</DetailsName>
+              </UserDetails>
+            </UserDetailsWrap>
+          </MyPageBlock>
+        )}
+      </MainTemplate>
+    </>
   );
 };
 
