@@ -44,12 +44,10 @@ const IconCommonStyles = css`
   border-radius: 50%;
   color: #fff;
   box-shadow: 7px 3px 16px 3px rgba(50, 50, 50, 0.2);
-  opacity: 0.5;
   transition: 0.2s;
 
   &:hover {
     padding: 0.6rem 0.6rem;
-    opacity: 1;
   }
 `;
 
