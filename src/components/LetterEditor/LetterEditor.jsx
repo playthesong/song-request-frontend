@@ -6,7 +6,6 @@ import LetterEditorSong from "./LetterEditorSong";
 import LetterEditorSongStory from "./LetterEditorSongStory";
 import LetterEditorUser from "./LetterEditorUser";
 import LetterModalHiddenButtonContainer from "../../containers/LetterModal/LetterModalHiddenButtonContainer";
-import LetterEditorSearchButton from "./LetterEditorSearchButton";
 import LetterModalButton from "../LetterModal/LetterModalButton/LetterModalButton";
 import { useSelector } from "react-redux";
 import { LETTER_MODAL } from "../../constants/types";
@@ -55,9 +54,9 @@ const LetterEditor = ({
               currentUser={currentUser}
               onCloseModal={onCloseModal}
             />
-            <LetterEditorSearchButton jwtToken={jwtToken} />
             <LetterModalForm>
               <LetterEditorSong
+                jwtToken={jwtToken}
                 title={title}
                 artist={artist}
                 imageUrl={imageUrl}
