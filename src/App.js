@@ -28,6 +28,7 @@ function App() {
         <Header />
         <Switch>
           <Route path="/" exact component={Letters} />
+          <Route path="/letters" exact component={Letters} />
           <Route path="/ranking" component={Ranking} />
           <Route path="/contents" exact component={Contents} />
           <Route path="/musicsheets" component={MusicSheets} />
