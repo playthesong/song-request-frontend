@@ -23,13 +23,11 @@ const LetterEditorSearchButton = ({ jwtToken }) => {
 };
 
 const StyledButton = styled.div`
+  align-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: absolute;
   width: 11rem;
-  top: 14%;
-  right: 15%;
 
   padding: 0.35rem 0rem;
   border-style: none;
