@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Navigation = () => {
   return (
     <NavigationBlock>
-      <NavigationItem to="/">신청곡</NavigationItem>
+      <NavigationItem to="/letters">신청곡</NavigationItem>
       <NavigationItem to="/ranking">신청곡 순위</NavigationItem>
       <NavigationItem to="/contents">신청곡 연주</NavigationItem>
       <NavigationItem to="/musicsheets">리얼피아노 악보집</NavigationItem>
