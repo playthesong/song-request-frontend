@@ -158,8 +158,9 @@ const PrivacyPolicy = () => {
 
 const PrivacyPolicyBlock = styled.div`
   margin: 7rem;
+  opacity: 0.7;
   * {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     line-height: 5rem;
   }
 
@@ -169,8 +170,8 @@ const PrivacyPolicyBlock = styled.div`
 
   h3 {
     font-weight: 700;
-    font-size: 2.5rem;
-    margin: 3rem;
+    font-size: 2.1rem;
+    margin: 3rem 0rem;
   }
 `;
 
