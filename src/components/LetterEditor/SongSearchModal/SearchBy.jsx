@@ -30,7 +30,7 @@ const APINameWrap = styled.div`
 `;
 
 const Prefix = styled.span`
-  font-size: 0.3rem;
+  font-size: 1rem;
   color: #adb5bd;
 `;
 

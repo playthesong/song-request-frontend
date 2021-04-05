@@ -77,6 +77,11 @@ const UserDeleteModalBlock = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    height: 60%;
+    width: 100%;
+  }
 `;
 
 const DeleteTitle = styled.h3`
