@@ -1,6 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet";
-import realpianoLogo from "../assets/realpiano_logo_white.jpg";
 
 const ReactHelmet = ({ title }) => {
   return (
@@ -20,13 +19,9 @@ const ReactHelmet = ({ title }) => {
       <meta
         name="image"
         property="og:image"
-        content="http://www.realpianolive.com"
-      />
-      <meta
-        name="url"
-        property="og:url"
         content="http://www.realpianolive.com/static/media/realpiano_logo_white.3ec599fb.jpg"
       />
+      <meta name="url" property="og:url" content="" />
     </Helmet>
   );
 };
