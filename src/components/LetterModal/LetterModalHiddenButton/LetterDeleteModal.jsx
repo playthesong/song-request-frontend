@@ -66,6 +66,10 @@ const LetterDeleteModalBlock = styled.div`
   background-color: #fbfbfd;
   box-shadow: 1px 1px 15px 1px rgba(253, 253, 253, 0.3);
   border-radius: 0.5rem;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 90%;
+  }
 `;
 
 const ConfirmMessageWrap = styled.div`
