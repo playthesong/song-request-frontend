@@ -17,8 +17,16 @@ const ReactHelmet = ({ title }) => {
         property="og:description"
         content="리얼피아노 유튜브 방송에 신청곡을 남겨주세요 :)"
       />
-      <meta name="image" property="og:image" content={realpianoLogo} />
-      <meta name="url" property="og:url" content="" />
+      <meta
+        name="image"
+        property="og:image"
+        content="http://www.realpianolive.com"
+      />
+      <meta
+        name="url"
+        property="og:url"
+        content="http://www.realpianolive.com/static/media/realpiano_logo_white.3ec599fb.jpg"
+      />
     </Helmet>
   );
 };
