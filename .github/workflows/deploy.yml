@@ -35,6 +35,7 @@ jobs:
           echo REACT_APP_API_LETTER=${{ secrets.REACT_APP_API_LETTER }} >> .env
           echo REACT_APP_API_SEARCH_SONG=${{ secrets.REACT_APP_API_SEARCH_SONG }} >> .env
           echo REACT_APP_API_MY_PAGE=${{ secrets.REACT_APP_API_MY_PAGE }} >> .env
+          echo REACT_APP_API_ACCOUNT_DELETE=${{ secrets.REACT_APP_API_ACCOUNT_DELETE }} >> .env
 
       - name: NPM build
         run: npm run build

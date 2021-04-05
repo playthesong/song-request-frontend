@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Copyright from "./Copyright";
 import LogoIcons from "./LogoIcons";
@@ -8,6 +9,7 @@ const Footer = () => {
     <FooterBlock>
       <FooterInner>
         <LogoIcons />
+        <PrivacyPolicy to="/policy">About Privacy Policy</PrivacyPolicy>
         <Copyright />
       </FooterInner>
     </FooterBlock>
@@ -34,6 +36,12 @@ const FooterInner = styled.div`
   width: 80%;
   display: flex;
   justify-content: center;
+`;
+
+const PrivacyPolicy = styled(Link)`
+  margin-top: 1.5rem;
+  margin-bottom: -0.5rem;
+  font-size: 1rem;
 `;
 
 export default Footer;

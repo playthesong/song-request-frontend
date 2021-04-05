@@ -5,13 +5,36 @@ import ReactHelmet from "../common/ReactHelmet";
 import GlobalErrorHandler from "../components/Error/GlobalErrorHandler";
 import Loading from "../components/Loading/Loading";
 import MainTemplate from "../components/Template/Main/MainTemplate";
+import UserDeleteModal from "../components/UserDeleteModal/UserDeleteModal";
 import { ROLE } from "../constants/role";
+import useModal from "../hooks/useModal";
 import { getMyPage } from "../modules/user";
 
 const MyPage = () => {
   const { jwtToken } = useSelector(state => state.auth);
   const { data: user, loading, error } = useSelector(state => state.user);
+  const [isOpened, openModal, closeModal] = useModal();
   const dispatch = useDispatch();
+
+  const inActivateScroll = () => {
+    document.body.style.overflow = "hidden";
+    document.body.scroll = "no";
+  };
+
+  const activateScroll = () => {
+    document.body.style.overflow = "scroll";
+    document.body.scroll = "yes";
+  };
+
+  const openDeleteModal = () => {
+    openModal();
+    inActivateScroll();
+  };
+
+  const closeDeleteModal = () => {
+    closeModal();
+    activateScroll();
+  };
 
   useEffect(() => {
     dispatch(getMyPage(jwtToken));
@@ -59,6 +82,15 @@ const MyPage = () => {
                 <DetailsName>신청곡 등록 수</DetailsName>
               </UserDetails>
             </UserDetailsWrap>
+            <UserDeleteButton onClick={openDeleteModal}>
+              탈퇴하기
+            </UserDeleteButton>
+            <UserDeleteModal
+              isOpened={isOpened}
+              jwtToken={jwtToken}
+              user={user}
+              closeDeleteModal={closeDeleteModal}
+            />
           </MyPageBlock>
         )}
       </MainTemplate>
@@ -150,6 +182,20 @@ const DetailsName = styled.span`
   @media ${({ theme }) => theme.device.mobile} {
     font-size: 1.1rem;
   }
+`;
+
+const UserDeleteButton = styled.button`
+  margin-top: 5rem;
+  padding: 0.7rem 2.1rem;
+  font-size: 1.35rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: #495057;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 0.3rem;
+  box-shadow: 3px 5px 35px rgba(0, 0, 0, 0.3);
 `;
 
 export default MyPage;

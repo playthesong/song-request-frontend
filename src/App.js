@@ -18,6 +18,7 @@ import theme from "./styles/theme";
 import MyPage from "./pages/MyPage";
 import ErrorPage from "./pages/ErrorPage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import ThankYouPage from "./pages/ThankYouPage";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
           <Route path="/auth/token" exact component={OAuth} />
           <Route path="/error" component={ErrorPage} />
           <Route path="/policy" component={PrivacyPolicy} />
+          <Route path="/thankyou" component={ThankYouPage} />
           <Redirect from="*" to="/" />
         </Switch>
         <Footer />
