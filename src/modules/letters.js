@@ -4,6 +4,9 @@ const GET_LETTERS = "letters/GET_LETTERS";
 const GET_LETTERS_SUCCESS = "letters/GET_LETTERS_SUCCESS";
 const GET_LETTERS_ERROR = "letters/GET_LETTERS_ERROR";
 
+const INITIALIZE_LETTERS = "letters/INITIALIZE_LETTERS";
+const INITIALIZE_LETTERS_ERROR = "letters/INITIALIZE_LETTERS_ERROR";
+
 export const getLetters = status => async dispatch => {
   dispatch({ type: GET_LETTERS, status });
 
@@ -13,6 +16,16 @@ export const getLetters = status => async dispatch => {
   } catch (error) {
     console.log(error.response);
     dispatch({ type: GET_LETTERS_ERROR, error });
+  }
+};
+
+export const initializeLetters = jwtToken => async dispatch => {
+  dispatch({ type: INITIALIZE_LETTERS });
+
+  try {
+    await lettersAPI.initializeLetters(jwtToken);
+  } catch (error) {
+    dispatch({ type: INITIALIZE_LETTERS_ERROR, error });
   }
 };
 
@@ -40,6 +53,20 @@ function letters(state = initialState, action) {
         error: null
       };
     case GET_LETTERS_ERROR:
+      return {
+        letters: null,
+        status: null,
+        loading: false,
+        error: action.error
+      };
+    case INITIALIZE_LETTERS:
+      return {
+        data: null,
+        status: null,
+        loading: true,
+        error: null
+      };
+    case INITIALIZE_LETTERS_ERROR:
       return {
         letters: null,
         status: null,

@@ -1,10 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router";
 import styled, { css } from "styled-components";
+import { initializeLetters } from "../../../api/letters";
 
-const LetterConfigurationButtons = () => {
+const LetterConfigurationButtons = ({ openModal }) => {
   return (
     <ButtonsBlock>
-      <InitializeButton>신청곡 초기화</InitializeButton>
+      <InitializeButton onClick={openModal}>신청곡 초기화</InitializeButton>
       <RequestConfigurationButton>신청곡 중지</RequestConfigurationButton>
     </ButtonsBlock>
   );
@@ -37,8 +39,8 @@ const ButtonStyles = css`
 const InitializeButton = styled.button`
   ${ButtonStyles}
 
-  background: #495057;
   cursor: pointer;
+  background: #495057;
 `;
 
 const RequestConfigurationButton = styled.button`
