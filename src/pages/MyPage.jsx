@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import styled from "styled-components";
 import ReactHelmet from "../common/ReactHelmet";
 import GlobalErrorHandler from "../components/Error/GlobalErrorHandler";
@@ -15,6 +16,7 @@ const MyPage = () => {
   const { data: user, loading, error } = useSelector(state => state.user);
   const [isOpened, openModal, closeModal] = useModal();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const inActivateScroll = () => {
     document.body.style.overflow = "hidden";
@@ -53,6 +55,10 @@ const MyPage = () => {
       return "리얼피아노 손님";
     }
   };
+
+  if (!jwtToken) {
+    history.push("/");
+  }
 
   return (
     <>
