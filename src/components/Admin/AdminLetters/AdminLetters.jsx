@@ -22,8 +22,9 @@ const AdminLetters = () => {
   return (
     <>
       <ReactHelmet title={"신청곡 관리"} />
-      {currentUser && currentUser.role === ROLE.ADMIN && (
-        <AdminMainTemplate>
+      <AdminMainTemplate>
+        {!currentUser && <GlobalErrorHandler error />}
+        {currentUser && currentUser.role === ROLE.ADMIN && (
           <AdminLettersBlock>
             <AdminPageTitle>신청곡 설정</AdminPageTitle>
             <LetterConfigurationButtons openModal={openModal} />
@@ -33,8 +34,8 @@ const AdminLetters = () => {
               closeModal={closeModal}
             />
           </AdminLettersBlock>
-        </AdminMainTemplate>
-      )}
+        )}
+      </AdminMainTemplate>
     </>
   );
 };

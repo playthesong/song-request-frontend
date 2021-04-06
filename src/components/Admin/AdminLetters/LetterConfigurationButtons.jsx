@@ -1,7 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router";
 import styled, { css } from "styled-components";
-import { initializeLetters } from "../../../api/letters";
 
 const LetterConfigurationButtons = ({ openModal }) => {
   return (

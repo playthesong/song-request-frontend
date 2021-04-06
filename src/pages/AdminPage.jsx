@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Redirect, Route } from "react-router";
+import { Route } from "react-router";
 import styled from "styled-components";
 import AdminLetters from "../components/Admin/AdminLetters/AdminLetters";
 import AdminNavigation from "../components/Admin/AdminNavigation";
@@ -12,7 +12,7 @@ import { ROLE } from "../constants/role";
 const AdminPage = () => {
   const { currentUser } = useSelector(state => state.auth);
 
-  if (currentUser && currentUser.role !== ROLE.ADMIN) {
+  if (!currentUser || (currentUser && currentUser.role !== ROLE.ADMIN)) {
     return (
       <MainTemplate>
         <GlobalErrorHandler error />
