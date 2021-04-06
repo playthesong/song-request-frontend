@@ -1,16 +1,21 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { AiOutlineMail, AiOutlineUser } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const AdminNavigation = () => {
   return (
     <AdminNavigationList>
-      <AdminNavigationItem>
-        <LetterIcon />
-      </AdminNavigationItem>
-      <AdminNavigationItem>
-        <UserIcon />
-      </AdminNavigationItem>
+      <Link to="/admin/users">
+        <AdminNavigationItem>
+          <UserIcon />
+        </AdminNavigationItem>
+      </Link>
+      <Link to="/admin/letters">
+        <AdminNavigationItem>
+          <LetterIcon />
+        </AdminNavigationItem>
+      </Link>
     </AdminNavigationList>
   );
 };
