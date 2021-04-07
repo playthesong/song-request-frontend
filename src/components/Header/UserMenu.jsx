@@ -79,6 +79,10 @@ const UserMenuButton = styled.li`
       color: #fff;
     }
   }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    padding: 1.4rem 1.5rem;
+  }
 `;
 
 const IconStyles = css`

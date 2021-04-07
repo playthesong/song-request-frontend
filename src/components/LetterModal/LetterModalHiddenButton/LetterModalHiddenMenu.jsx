@@ -66,6 +66,11 @@ const HiddenMenu = styled(MdMoreHoriz)`
   cursor: pointer;
   font-size: 2.1rem;
   color: gray;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 2.7rem;
+    top: 2%;
+  }
 `;
 
 export default LetterDetailsHiddenMenu;

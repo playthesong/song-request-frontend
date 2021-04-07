@@ -23,17 +23,17 @@ const Menu = styled.ul`
   border: 1px solid rgba(0, 0, 0, 0.05);
   border-radius: 0.35rem;
   position: absolute;
-  bottom: 77.7%;
+  top: 7%;
   right: 4.9%;
-  width: 5.5rem;
+  width: 6.5rem;
   box-shadow: 7px 3px 30px 1px rgba(3, 3, 3, 0.1);
   z-index: 9;
 
   .menu__item {
-    padding: 0.7rem 0.3rem;
+    padding: 0.9rem 0.5rem;
     display: flex;
+    justify-content: center;
     align-items: center;
-    box-sizing: border-box;
     cursor: pointer;
     background-color: #fbfbfd;
 
@@ -67,6 +67,24 @@ const Menu = styled.ul`
     line-height: 1.77rem;
     margin-left: 0.37rem;
     opacity: 0.7;
+  }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 7.1rem;
+    top: 8%;
+    .menu__item {
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0rem;
+    }
+
+    .menu__icon {
+      font-size: 2.1rem;
+    }
+
+    .menu__name {
+      font-size: 1.4rem;
+    }
   }
 `;
 

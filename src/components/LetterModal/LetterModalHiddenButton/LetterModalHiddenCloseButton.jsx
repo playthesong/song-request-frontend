@@ -37,6 +37,10 @@ const HiddenCloseButton = styled(IoMdArrowBack)`
   font-size: 2rem;
   font-weight: 600;
   color: gray;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 2.3rem;
+  }
 `;
 
 export default LetterModalHiddenCloseButton;
