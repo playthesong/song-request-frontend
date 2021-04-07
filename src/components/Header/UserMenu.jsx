@@ -81,7 +81,7 @@ const UserMenuButton = styled.li`
   }
 
   @media ${({ theme }) => theme.device.mobile} {
-    padding: 1.4rem 1.5rem;
+    padding: 1.4rem 1.2rem;
   }
 `;
 
