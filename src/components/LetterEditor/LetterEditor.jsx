@@ -12,6 +12,8 @@ import { LETTER_MODAL } from "../../constants/types";
 import FormError from "../Error/FormError";
 import GlobalError from "../Error/GlobalError";
 import { GLOBAL_ERROR_MESSAGE } from "../../constants/errorMessage";
+import SongSearchModal from "./SongSearchModal/SongSearchModal";
+import useModal from "../../hooks/useModal";
 
 const LetterEditor = ({
   letterForm,
@@ -26,6 +28,7 @@ const LetterEditor = ({
 }) => {
   const { modalType } = useSelector(state => state.letterModal);
   const { title, artist, imageUrl, songStory } = letterForm;
+  const [isSearchModalOpened, openSearchModal, closeSearchModal] = useModal();
 
   useEffect(() => {
     inActivateScroll();
@@ -61,6 +64,7 @@ const LetterEditor = ({
                 artist={artist}
                 imageUrl={imageUrl}
                 onChange={onChange}
+                openSearchModal={openSearchModal}
               />
               <LetterEditorSongStory
                 songStory={songStory}
@@ -72,6 +76,11 @@ const LetterEditor = ({
                 {buttonName}
               </LetterModalButton>
             </LetterModalForm>
+            <SongSearchModal
+              jwtToken={jwtToken}
+              isOpened={isSearchModalOpened}
+              onCloseModal={closeSearchModal}
+            />
           </>
         )}
       </LetterModalTemplate>

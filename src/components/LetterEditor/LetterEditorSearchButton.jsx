@@ -1,23 +1,14 @@
 import React from "react";
 import styled from "styled-components";
 import { BiSearch } from "react-icons/bi";
-import useModal from "../../hooks/useModal";
-import SongSearchModal from "./SongSearchModal/SongSearchModal";
 
-const LetterEditorSearchButton = ({ jwtToken }) => {
-  const [isOpened, onOpenModal, onCloseModal] = useModal();
-
+const LetterEditorSearchButton = ({ openSearchModal }) => {
   return (
     <>
-      <StyledButton onClick={onOpenModal}>
+      <StyledButton onClick={openSearchModal}>
         <SearchIcon />
         신청곡 검색
       </StyledButton>
-      <SongSearchModal
-        jwtToken={jwtToken}
-        isOpened={isOpened}
-        onCloseModal={onCloseModal}
-      />
     </>
   );
 };
