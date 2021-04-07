@@ -92,6 +92,11 @@ const SelectButton = styled(HiCheck)`
   margin-right: 2%;
   cursor: pointer;
   transition: 0.25s;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    margin-top: 0.3rem;
+    font-size: 3rem;
+  }
 `;
 
 export default SongSearchResultItem;
