@@ -3,6 +3,7 @@ import { authClient, client } from "./client";
 
 const LETTERS_STATUS_API = process.env.REACT_APP_API_LETTERS_STATUS;
 const LETTER_API = process.env.REACT_APP_API_LETTER;
+const INITIALIZE_LETTERS_API = process.env.REACT_APP_API_INITIALIZE_LETTERS;
 
 export const getLetters = async status => {
   const params = {
@@ -68,7 +69,7 @@ export const changeLetterStatus = async (jwtToken, id, payload) => {
 };
 
 export const initializeLetters = async jwtToken => {
-  await authClient.delete(LETTER_API, {
+  await authClient.delete(INITIALIZE_LETTERS_API, {
     headers: {
       Authorization: AUTH.BEARER + jwtToken
     }
