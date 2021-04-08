@@ -38,7 +38,7 @@ const OAuth = ({ location: { search } }) => {
   }
 
   if (!currentUser || !jwtToken) {
-    return null;
+    return <MainTemplate></MainTemplate>;
   }
 
   localStorage.setItem(AUTH.JWT_TOKEN, jwtToken);

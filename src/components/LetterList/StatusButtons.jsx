@@ -3,20 +3,21 @@ import { useDispatch } from "react-redux";
 import styled, { css } from "styled-components";
 import { LETTER_STATUS, LIST_TITLE } from "../../constants/letterStatus";
 import { getLetters } from "../../modules/letters";
+import { DIRECTION } from "../../modules/pagination";
 
 const StatusButtons = ({ status }) => {
   const dispatch = useDispatch();
 
   const getWaitingLetters = () => {
-    dispatch(getLetters(LETTER_STATUS.WAITING));
+    dispatch(getLetters(LETTER_STATUS.WAITING, DIRECTION.ASC));
   };
 
   const getPendingLetters = () => {
-    dispatch(getLetters(LETTER_STATUS.PENDING));
+    dispatch(getLetters(LETTER_STATUS.PENDING, DIRECTION.DESC));
   };
 
   const getDoneLetters = () => {
-    dispatch(getLetters(LETTER_STATUS.DONE));
+    dispatch(getLetters(LETTER_STATUS.DONE, DIRECTION.DESC));
   };
 
   return (

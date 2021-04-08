@@ -1,11 +1,13 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { CgProfile, CgLogOut } from "react-icons/cg";
+import { RiAdminLine } from "react-icons/ri";
 import { useDispatch } from "react-redux";
 import { logout } from "../../modules/auth";
 import { Link } from "react-router-dom";
+import { ROLE } from "../../constants/role";
 
-const UserMenu = ({ openMenu }) => {
+const UserMenu = ({ openMenu, user }) => {
   const dispatch = useDispatch();
 
   const onLogout = () => {
@@ -14,6 +16,14 @@ const UserMenu = ({ openMenu }) => {
 
   return (
     <UserMenuBlock openMenu={openMenu}>
+      {user.role === ROLE.ADMIN && (
+        <Link to="/admin/letters">
+          <UserMenuButton>
+            <AdminIcon />
+            Admin
+          </UserMenuButton>
+        </Link>
+      )}
       <Link to="/mypage">
         <UserMenuButton>
           <ProfileIcon />
@@ -69,6 +79,10 @@ const UserMenuButton = styled.li`
       color: #fff;
     }
   }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    padding: 1.4rem 1.2rem;
+  }
 `;
 
 const IconStyles = css`
@@ -77,6 +91,10 @@ const IconStyles = css`
   vertical-align: middle;
   font-size: 1.4rem;
   color: rgba(0, 0, 0, 0.35);
+`;
+
+const AdminIcon = styled(RiAdminLine)`
+  ${IconStyles}
 `;
 
 const ProfileIcon = styled(CgProfile)`

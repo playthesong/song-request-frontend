@@ -7,13 +7,19 @@ import SongImage from "../LetterModal/LetterModalSong/SongImage";
 import SongInput from "../LetterModal/LetterModalSong/SongInput";
 import LetterEditorSearchButton from "./LetterEditorSearchButton";
 
-const LetterEditorSong = ({ jwtToken, title, artist, imageUrl, onChange }) => {
+const LetterEditorSong = ({
+  title,
+  artist,
+  imageUrl,
+  onChange,
+  openSearchModal
+}) => {
   return (
     <LetterModalSong>
       <input type="hidden" name="imageUrl" value={imageUrl} />
       <SongImage imageUrl={imageUrl ? imageUrl : undefined} />
       <SongAbout>
-        <LetterEditorSearchButton jwtToken={jwtToken} />
+        <LetterEditorSearchButton openSearchModal={openSearchModal} />
         <SongArticle>
           <SongArticleName articleName={"TITLE"} />
           <SongInput

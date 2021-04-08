@@ -6,6 +6,7 @@ const SET_ERROR_TITLE = "letterForm/SET_ERROR_TITLE";
 const SET_ERROR_ARTIST = "letterForm/SET_ERROR_ARTIST";
 const SET_ERROR_IMAGE_URL = "letterForm/SET_ERROR_IMAGE_URL";
 const SET_ERROR_SONG_STORY = "letterForm/SET_ERROR_SONG_STORY";
+const CLEAR_ALL_ERROR = "letterForm/CLEAR_ALL_ERROR";
 
 export const initializeForm = letter => ({ type: INITIALIZE_FORM, letter });
 export const updateForm = (name, value) => ({ type: UPDATE_FORM, name, value });
@@ -30,6 +31,7 @@ export const setErrorSongStory = (valid, message) => ({
   valid,
   message
 });
+export const clearAllError = () => ({ type: CLEAR_ALL_ERROR });
 
 const initialState = {
   title: "",
@@ -91,6 +93,15 @@ function letterForm(state = initialState, action) {
         ...state,
         songStoryError: action.valid,
         errorMessage: action.message
+      };
+    case CLEAR_ALL_ERROR:
+      return {
+        ...state,
+        titleError: false,
+        artistError: false,
+        imageUrlError: false,
+        songStoryError: false,
+        errorMessage: null
       };
     default:
       return state;

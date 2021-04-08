@@ -52,6 +52,7 @@ const Form = styled.form`
 
   @media ${({ theme }) => theme.device.mobile} {
     width: 98%;
+    height: 2.7rem;
   }
 `;
 
@@ -69,6 +70,10 @@ const SearchLabel = styled.span`
   color: white;
   font-weight: 600;
   box-shadow: 1px 0px 3px 1px rgba(0, 0, 0, 0.1);
+
+  @media ${({ theme }) => theme.device.mobile} {
+    height: 2.8rem;
+  }
 `;
 
 const SearchInput = styled.input`
@@ -119,6 +124,10 @@ const SearchInputWrap = styled.div`
       margin-left: 3.8rem;
     }
   }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    height: 2.5rem;
+  }
 `;
 
 const SearchButton = styled.button`
@@ -133,11 +142,20 @@ const SearchButton = styled.button`
   border-radius: 0rem 0.5rem 0.5rem 0rem;
   flex: 1;
   box-shadow: 1px 0px 3px 1px rgba(0, 0, 0, 0.1);
+
+  @media ${({ theme }) => theme.device.mobile} {
+    height: 3rem;
+  }
 `;
 
 const SearchIcon = styled(BiSearch)`
   color: #fff;
   font-size: 1.4rem;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 2rem;
+    font-size: 1.6rem;
+  }
 `;
 
 export default SearchForm;

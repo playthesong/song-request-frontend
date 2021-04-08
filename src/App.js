@@ -19,6 +19,7 @@ import MyPage from "./pages/MyPage";
 import ErrorPage from "./pages/ErrorPage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ThankYouPage from "./pages/ThankYouPage";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/error" component={ErrorPage} />
           <Route path="/policy" component={PrivacyPolicy} />
           <Route path="/thankyou" component={ThankYouPage} />
+          <Route path="/admin" component={AdminPage} />
           <Redirect from="*" to="/" />
         </Switch>
         <Footer />

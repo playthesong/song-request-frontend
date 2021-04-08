@@ -11,23 +11,23 @@ import * as letterAPI from "../api/letters";
 import { getLetters } from "../modules/letters";
 import { LETTER_STATUS } from "../constants/letterStatus";
 import ReactHelmet from "../common/ReactHelmet";
+import { DIRECTION } from "../modules/pagination";
 
 const Letters = () => {
-  const { data: letters, status, loading, error } = useSelector(
+  const { data: letters, status, readyToLetter, loading, error } = useSelector(
     state => state.letters
   );
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
-
   const { currentUser, jwtToken } = useSelector(state => state.auth);
   const dispatch = useDispatch();
 
   const onUpdateLetters = async () => {
-    await letterAPI.getLetters(LETTER_STATUS.WAITING);
+    await letterAPI.getLetters(LETTER_STATUS.WAITING, DIRECTION.ASC);
     forceUpdate();
   };
 
   useEffect(() => {
-    dispatch(getLetters(LETTER_STATUS.WAITING));
+    dispatch(getLetters(LETTER_STATUS.WAITING, DIRECTION.ASC));
   }, [dispatch, ignored]);
 
   return (
@@ -37,7 +37,10 @@ const Letters = () => {
         <LettersButtonBlock>
           <ListTitle status={status} />
           <StatusButtons status={status} />
-          <ActionButtons currentUser={currentUser} />
+          <ActionButtons
+            currentUser={currentUser}
+            readyToLetter={readyToLetter}
+          />
         </LettersButtonBlock>
         <LetterList
           letters={letters}

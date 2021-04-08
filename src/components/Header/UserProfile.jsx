@@ -13,7 +13,7 @@ const UserProfile = ({ user }) => {
       <UserImage src={avatarUrl} alt="프로필 사진" />
       <Username>{name}</Username>
       <MenuIcon />
-      <UserMenu openMenu={openMenu} />
+      <UserMenu openMenu={openMenu} user={user} />
     </UserProfileBlock>
   );
 };

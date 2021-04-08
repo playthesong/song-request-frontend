@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import SongSearchResultItem from "./SongSearchResultItem";
-import { updateForm } from "../../../modules/letterForm";
+import { clearAllError, updateForm } from "../../../modules/letterForm";
 import Loading from "../../Loading/Loading";
 import EmptyResult from "../../EmptyResult/EmptyResult";
 import GlobalErrorHandler from "../../Error/GlobalErrorHandler";
@@ -15,6 +15,7 @@ const SongSearchResult = ({ onCloseModal, clearSong }) => {
     for (const property in song) {
       dispatch(updateForm(property, song[property]));
     }
+    dispatch(clearAllError());
     clearSong();
   };
 

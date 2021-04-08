@@ -17,6 +17,7 @@ import {
 } from "../../modules/letterForm";
 import { changeModalType } from "../../modules/letterModal";
 import { getLetters } from "../../modules/letters";
+import { DIRECTION } from "../../modules/pagination";
 
 const LetterEditContainer = ({
   letter,
@@ -107,7 +108,7 @@ const LetterEditContainer = ({
     );
     dispatch(clearForm());
     dispatch(changeModalType(LETTER_MODAL.READ));
-    dispatch(getLetters(LETTER_STATUS.WAITING));
+    dispatch(getLetters(LETTER_STATUS.WAITING, DIRECTION.ASC));
     onUpdateLetters();
   };
 
