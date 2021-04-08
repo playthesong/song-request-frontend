@@ -15,7 +15,7 @@ const StatusBoard = ({ readyToLetter }) => {
 const StatusBoardBlock = styled.div`
   margin-top: 3rem;
   font-size: 1.5rem;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.35);
 `;
 
 export default StatusBoard;
