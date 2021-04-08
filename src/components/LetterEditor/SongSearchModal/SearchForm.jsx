@@ -72,7 +72,7 @@ const SearchLabel = styled.span`
   box-shadow: 1px 0px 3px 1px rgba(0, 0, 0, 0.1);
 
   @media ${({ theme }) => theme.device.mobile} {
-    height: 2.7rem;
+    height: 2.8rem;
   }
 `;
 
@@ -126,7 +126,7 @@ const SearchInputWrap = styled.div`
   }
 
   @media ${({ theme }) => theme.device.mobile} {
-    height: 2.7rem;
+    height: 2.5rem;
   }
 `;
 

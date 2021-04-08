@@ -11,6 +11,7 @@ const AdminMainTemplateBlock = styled.div`
   min-height: calc(100vh - 27rem);
 
   @media ${({ theme }) => theme.device.mobile} {
+    width: 100vw;
     height: 100%;
     margin: 10rem 0rem 0rem 0rem;
   }

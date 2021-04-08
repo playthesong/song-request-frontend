@@ -59,7 +59,6 @@ export const changeReadyToLetter = (jwtToken, payload) => async dispatch => {
       jwtToken,
       payload
     );
-    console.log(readyToLetter);
     dispatch({ type: CHANGE_READY_TO_LETTER_SUCCESS, readyToLetter });
   } catch (error) {
     dispatch({ type: CHANGE_READY_TO_LETTER_ERROR, error });
