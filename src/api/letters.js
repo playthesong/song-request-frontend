@@ -5,10 +5,11 @@ const LETTERS_STATUS_API = process.env.REACT_APP_API_LETTERS_STATUS;
 const LETTER_API = process.env.REACT_APP_API_LETTER;
 const INITIALIZE_LETTERS_API = process.env.REACT_APP_API_INITIALIZE_LETTERS;
 
-export const getLetters = async status => {
+export const getLetters = async (status, direction) => {
   const params = {
     page: 1,
-    size: 20
+    size: 20,
+    direction: direction
   };
 
   const { data: response } = await client.get(LETTERS_STATUS_API + status, {

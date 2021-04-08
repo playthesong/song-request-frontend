@@ -7,11 +7,11 @@ const GET_LETTERS_ERROR = "letters/GET_LETTERS_ERROR";
 const INITIALIZE_LETTERS = "letters/INITIALIZE_LETTERS";
 const INITIALIZE_LETTERS_ERROR = "letters/INITIALIZE_LETTERS_ERROR";
 
-export const getLetters = status => async dispatch => {
+export const getLetters = (status, direction) => async dispatch => {
   dispatch({ type: GET_LETTERS, status });
 
   try {
-    const letters = await lettersAPI.getLetters(status);
+    const letters = await lettersAPI.getLetters(status, direction);
     dispatch({ type: GET_LETTERS_SUCCESS, letters, status });
   } catch (error) {
     console.log(error.response);

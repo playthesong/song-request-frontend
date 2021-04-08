@@ -11,6 +11,7 @@ import * as letterAPI from "../api/letters";
 import { getLetters } from "../modules/letters";
 import { LETTER_STATUS } from "../constants/letterStatus";
 import ReactHelmet from "../common/ReactHelmet";
+import { DIRECTION } from "../modules/pagination";
 
 const Letters = () => {
   const { data: letters, status, loading, error } = useSelector(
@@ -22,12 +23,12 @@ const Letters = () => {
   const dispatch = useDispatch();
 
   const onUpdateLetters = async () => {
-    await letterAPI.getLetters(LETTER_STATUS.WAITING);
+    await letterAPI.getLetters(LETTER_STATUS.WAITING, DIRECTION.ASC);
     forceUpdate();
   };
 
   useEffect(() => {
-    dispatch(getLetters(LETTER_STATUS.WAITING));
+    dispatch(getLetters(LETTER_STATUS.WAITING, DIRECTION.ASC));
   }, [dispatch, ignored]);
 
   return (
