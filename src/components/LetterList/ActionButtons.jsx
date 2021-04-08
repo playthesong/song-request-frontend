@@ -103,7 +103,7 @@ const StopNotice = styled.div`
   justify-content: center;
   align-items: center;
   box-shadow: 5px 3px 15px 0px rgba(0, 0, 0, 0.3);
-  z-index: -9;
+  z-index: 9;
 `;
 
 const StopNoticeIcon = styled(BiTime)`
