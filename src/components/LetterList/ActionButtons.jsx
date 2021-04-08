@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { changeModalType, openModal } from "../../modules/letterModal";
 import { LETTER_MODAL } from "../../constants/types";
 
-const ActionButtons = ({ currentUser }) => {
+const ActionButtons = ({ currentUser, data }) => {
   const dispatch = useDispatch();
   const openCreateModal = () => {
     dispatch(openModal());
@@ -14,7 +14,7 @@ const ActionButtons = ({ currentUser }) => {
 
   return (
     <ActionsButtonsBlock>
-      {currentUser && (
+      {data && data.readyToLetter && currentUser && (
         <CreateButton onClick={openCreateModal}>
           <CreateButtonIcon />
           <CreateButtonText>신청곡 등록</CreateButtonText>

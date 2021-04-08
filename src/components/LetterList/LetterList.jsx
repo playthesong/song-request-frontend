@@ -6,7 +6,7 @@ import Loading from "../Loading/Loading";
 import EmptyResult from "../EmptyResult/EmptyResult";
 
 const LetterList = ({
-  letters,
+  data,
   jwtToken,
   currentUser,
   loading,
@@ -17,14 +17,14 @@ const LetterList = ({
     <LetterListBlock>
       {loading && <Loading position={50} />}
       {error && <GlobalErrorHandler error={error} />}
-      {letters && letters.length === 0 && (
+      {data && data.letters.length === 0 && (
         <EmptyResult
           message={"리얼피아노는 신청곡과 여러분의 이야기를 기다립니다."}
           opacity={0.3}
         />
       )}
-      {letters &&
-        letters.map(letter => (
+      {data &&
+        data.letters.map(letter => (
           <Letter
             key={letter.id}
             id={letter.id}

@@ -16,9 +16,9 @@ export const getLetters = async (status, direction) => {
     params
   });
   const {
-    data: { letters }
+    data: { letters, readyToLetter }
   } = response;
-  return letters;
+  return { letters, readyToLetter };
 };
 
 export const getLetterById = async id => {
