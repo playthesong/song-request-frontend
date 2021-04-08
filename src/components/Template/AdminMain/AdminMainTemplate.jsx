@@ -6,13 +6,12 @@ const AdminMainTemplate = ({ children }) => {
 };
 
 const AdminMainTemplateBlock = styled.div`
-  margin: 5rem 10rem 0rem 10rem;
+  margin: 5rem 0rem 0rem 0rem;
   width: 100%;
   min-height: calc(100vh - 27rem);
 
   @media ${({ theme }) => theme.device.mobile} {
     width: 100vw;
-    height: 100%;
     margin: 10rem 0rem 0rem 0rem;
   }
 `;
