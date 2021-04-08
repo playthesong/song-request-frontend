@@ -17,7 +17,7 @@ const UserMenu = ({ openMenu, user }) => {
   return (
     <UserMenuBlock openMenu={openMenu}>
       {user.role === ROLE.ADMIN && (
-        <Link to="/admin">
+        <Link to="/admin/letters">
           <UserMenuButton>
             <AdminIcon />
             Admin

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import ReactHelmet from "../../../common/ReactHelmet";
@@ -10,11 +10,17 @@ import useModal from "../../../hooks/useModal";
 import ConfirmModal from "./ConfirmModal";
 import GlobalErrorHandler from "../../Error/GlobalErrorHandler";
 import StatusBoard from "./StatusBoard";
+import { getReadyToLetter } from "../../../modules/letters";
 
 const AdminLetters = () => {
   const { currentUser, jwtToken } = useSelector(state => state.auth);
   const { readyToLetter, error } = useSelector(state => state.letters);
   const [isOpened, openModal, closeModal] = useModal();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getReadyToLetter(jwtToken));
+  }, [dispatch, jwtToken]);
 
   if (error) {
     return <GlobalErrorHandler error={error} />;

@@ -7,6 +7,10 @@ const GET_LETTERS_ERROR = "letters/GET_LETTERS_ERROR";
 const INITIALIZE_LETTERS = "letters/INITIALIZE_LETTERS";
 const INITIALIZE_LETTERS_ERROR = "letters/INITIALIZE_LETTERS_ERROR";
 
+const GET_READY_TO_LETTER = "letters/GET_READY_TO_LETTER";
+const GET_READY_TO_LETTER_SUCCESS = "letters/GET_READY_TO_LETTER_SUCCESS";
+const GET_READY_TO_LETTER_ERROR = "letters/GET_READY_TO_LETTER_ERROR";
+
 const CHANGE_READY_TO_LETTER = "letters/CHANGE_READY_TO_LETTER";
 const CHANGE_READY_TO_LETTER_SUCCESS = "letters/CHANGE_READY_TO_LETTER_SUCCESS";
 const CHANGE_READY_TO_LETTER_ERROR = "letters/CHANGE_READY_TO_LETTER_ERROR";
@@ -33,6 +37,17 @@ export const initializeLetters = jwtToken => async dispatch => {
     await lettersAPI.initializeLetters(jwtToken);
   } catch (error) {
     dispatch({ type: INITIALIZE_LETTERS_ERROR, error });
+  }
+};
+
+export const getReadyToLetter = jwtToken => async dispatch => {
+  dispatch({ type: GET_READY_TO_LETTER });
+
+  try {
+    const readyToLetter = await lettersAPI.getReadyToLetter(jwtToken);
+    dispatch({ type: GET_READY_TO_LETTER_SUCCESS, readyToLetter });
+  } catch (error) {
+    dispatch({ type: GET_READY_TO_LETTER_ERROR, error });
   }
 };
 
@@ -94,6 +109,30 @@ function letters(state = initialState, action) {
         error: null
       };
     case INITIALIZE_LETTERS_ERROR:
+      return {
+        ...state,
+        data: null,
+        status: null,
+        loading: false,
+        error: action.error
+      };
+    case GET_READY_TO_LETTER:
+      return {
+        ...state,
+        data: null,
+        status: null,
+        loading: true,
+        error: null
+      };
+    case GET_READY_TO_LETTER_SUCCESS:
+      return {
+        data: null,
+        status: null,
+        readyToLetter: action.readyToLetter,
+        loading: false,
+        error: null
+      };
+    case GET_READY_TO_LETTER_ERROR:
       return {
         ...state,
         data: null,
