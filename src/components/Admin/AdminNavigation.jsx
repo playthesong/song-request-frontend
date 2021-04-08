@@ -32,6 +32,7 @@ const AdminNavigationList = styled.ul`
   background: #1e2528;
 
   @media ${({ theme }) => theme.device.mobile} {
+    padding-top: 5rem;
     height: 100vh;
   }
 `;

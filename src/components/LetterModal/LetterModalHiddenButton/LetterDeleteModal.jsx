@@ -27,7 +27,6 @@ const LetterDeleteModal = ({
     <DimmedBackground isOpened={isOpened}>
       <LetterDeleteModalBlock>
         <ConfirmMessageWrap>
-          <ConfirmIcon />
           <ConfirmMessage>정말 삭제 할까요?</ConfirmMessage>
         </ConfirmMessageWrap>
         <ButtonWrap>
@@ -84,7 +83,7 @@ const ConfirmMessageWrap = styled.div`
 
 const ConfirmIcon = styled(IoIosCheckmarkCircleOutline)`
   font-size: 2.3rem;
-  color: #20c997;
+  color: #495057;
 `;
 
 const ConfirmMessage = styled.p`
@@ -118,12 +117,12 @@ const ButtonStyles = css`
 
 const ConfirmButton = styled.button`
   ${ButtonStyles}
-  background: #e8590c;
+  background: #f06595;
 `;
 
 const CancelButton = styled.button`
   ${ButtonStyles}
-  background: #51cf66;
+  background: #495057;
 `;
 
 export default LetterDeleteModal;

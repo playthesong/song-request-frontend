@@ -16,7 +16,6 @@ const AdminActionsModal = ({
     >
       <AdminActionsModalBlock>
         <ConfirmMessageWrap>
-          <ConfirmIcon />
           <ConfirmMessage>{message}</ConfirmMessage>
         </ConfirmMessageWrap>
         <ButtonWrap>
@@ -104,12 +103,12 @@ const ButtonStyles = css`
 
 const ConfirmButton = styled.button`
   ${ButtonStyles}
-  background: #e8590c;
+  background: #f06595;
 `;
 
 const CancelButton = styled.button`
   ${ButtonStyles}
-  background: #51cf66;
+  background: #495057;
 `;
 
 export default AdminActionsModal;
