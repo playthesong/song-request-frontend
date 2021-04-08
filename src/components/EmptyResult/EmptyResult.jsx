@@ -19,6 +19,7 @@ const EmptyResultBlock = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: -9;
 
   @media ${({ theme }) => theme.device.mobile} {
     top: 65%;

@@ -34,7 +34,7 @@ const AdminLetters = () => {
         {!currentUser && <GlobalErrorHandler error />}
         {currentUser && currentUser.role === ROLE.ADMIN && (
           <AdminLettersBlock>
-            <BackdropImage></BackdropImage>
+            <BackdropImage src={realpianoLogo} />
             <AdminPageTitle>신청곡 설정</AdminPageTitle>
             <StatusBoard readyToLetter={readyToLetter} />
             <LetterConfigurationButtons
@@ -60,16 +60,22 @@ const AdminLettersBlock = styled.div`
   align-items: center;
   height: 100%;
   margin-top: 5rem;
+  position: relative;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    margin-top: 0rem;
+  }
 `;
 
-const BackdropImage = styled.div`
-  background-image: url(${realpianoLogo});
-  background-repeat: no-repeat;
-  background-position: 50% 35%;
-  background-size: 10rem 10rem;
+const BackdropImage = styled.img`
+  max-width: 10rem;
   width: 100%;
-  height: inherit;
+  max-height: 10rem;
+  height: 100%;
   position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   opacity: 0.1;
   z-index: -9;
 `;

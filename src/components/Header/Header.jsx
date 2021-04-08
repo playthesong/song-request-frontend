@@ -34,7 +34,7 @@ const HeaderBlock = styled.div`
   width: 100%;
   position: fixed;
   background-color: #ffffff;
-  box-shadow: 0px 15px 35px 5px #f1f1f1;
+  box-shadow: 0px 10px 35px 5px #f1f1f1;
   z-index: 99;
 `;
 

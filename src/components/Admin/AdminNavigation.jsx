@@ -27,11 +27,12 @@ const AdminNavigationList = styled.ul`
   width: 100%;
   height: calc(100vh - 8rem);
   margin-bottom: -6rem;
-  box-shadow: 5px 0px 30px 1px rgba(200, 200, 200, 0.5);
+  box-shadow: 5px -5px 30px 1px rgba(0, 0, 0, 0.5);
   padding-top: 3.5rem;
   background: #1e2528;
 
   @media ${({ theme }) => theme.device.mobile} {
+    padding-top: 5rem;
     height: 100vh;
   }
 `;
