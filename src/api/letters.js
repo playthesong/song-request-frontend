@@ -4,6 +4,7 @@ import { authClient, client } from "./client";
 const LETTERS_STATUS_API = process.env.REACT_APP_API_LETTERS_STATUS;
 const LETTER_API = process.env.REACT_APP_API_LETTER;
 const INITIALIZE_LETTERS_API = process.env.REACT_APP_API_INITIALIZE_LETTERS;
+const CHANGE_READY_API = process.env.REACT_APP_API_CHANGE_READY_TO_LETTER;
 
 export const getLetters = async (status, direction) => {
   const params = {
@@ -75,4 +76,14 @@ export const initializeLetters = async jwtToken => {
       Authorization: AUTH.BEARER + jwtToken
     }
   });
+};
+
+export const changeReadyToLetter = async (jwtToken, payload) => {
+  const { data: response } = await authClient.post(CHANGE_READY_API, payload, {
+    headers: {
+      Authorization: AUTH.BEARER + jwtToken
+    }
+  });
+  const { data: readyToLetter } = response;
+  return readyToLetter;
 };

@@ -7,12 +7,19 @@ const GET_LETTERS_ERROR = "letters/GET_LETTERS_ERROR";
 const INITIALIZE_LETTERS = "letters/INITIALIZE_LETTERS";
 const INITIALIZE_LETTERS_ERROR = "letters/INITIALIZE_LETTERS_ERROR";
 
+const CHANGE_READY_TO_LETTER = "letters/CHANGE_READY_TO_LETTER";
+const CHANGE_READY_TO_LETTER_SUCCESS = "letters/CHANGE_READY_TO_LETTER_SUCCESS";
+const CHANGE_READY_TO_LETTER_ERROR = "letters/CHANGE_READY_TO_LETTER_ERROR";
+
 export const getLetters = (status, direction) => async dispatch => {
   dispatch({ type: GET_LETTERS, status });
 
   try {
-    const letters = await lettersAPI.getLetters(status, direction);
-    dispatch({ type: GET_LETTERS_SUCCESS, letters, status });
+    const { letters, readyToLetter } = await lettersAPI.getLetters(
+      status,
+      direction
+    );
+    dispatch({ type: GET_LETTERS_SUCCESS, letters, status, readyToLetter });
   } catch (error) {
     console.log(error.response);
     dispatch({ type: GET_LETTERS_ERROR, error });
@@ -29,9 +36,25 @@ export const initializeLetters = jwtToken => async dispatch => {
   }
 };
 
+export const changeReadyToLetter = (jwtToken, payload) => async dispatch => {
+  dispatch({ type: CHANGE_READY_TO_LETTER });
+
+  try {
+    const readyToLetter = await lettersAPI.changeReadyToLetter(
+      jwtToken,
+      payload
+    );
+    console.log(readyToLetter);
+    dispatch({ type: CHANGE_READY_TO_LETTER_SUCCESS, readyToLetter });
+  } catch (error) {
+    dispatch({ type: CHANGE_READY_TO_LETTER_ERROR, error });
+  }
+};
+
 const initialState = {
   data: null,
   status: null,
+  readyToLetter: true,
   loading: false,
   error: null
 };
@@ -40,6 +63,7 @@ function letters(state = initialState, action) {
   switch (action.type) {
     case GET_LETTERS:
       return {
+        ...state,
         data: null,
         status: action.status,
         loading: true,
@@ -49,18 +73,21 @@ function letters(state = initialState, action) {
       return {
         data: action.letters,
         status: action.status,
+        readyToLetter: action.readyToLetter,
         loading: false,
         error: null
       };
     case GET_LETTERS_ERROR:
       return {
-        letters: null,
+        ...state,
+        data: null,
         status: null,
         loading: false,
         error: action.error
       };
     case INITIALIZE_LETTERS:
       return {
+        ...state,
         data: null,
         status: null,
         loading: true,
@@ -68,7 +95,32 @@ function letters(state = initialState, action) {
       };
     case INITIALIZE_LETTERS_ERROR:
       return {
-        letters: null,
+        ...state,
+        data: null,
+        status: null,
+        loading: false,
+        error: action.error
+      };
+    case CHANGE_READY_TO_LETTER:
+      return {
+        ...state,
+        data: null,
+        status: null,
+        loading: true,
+        error: null
+      };
+    case CHANGE_READY_TO_LETTER_SUCCESS:
+      return {
+        data: null,
+        status: null,
+        readyToLetter: action.readyToLetter,
+        loading: false,
+        error: null
+      };
+    case CHANGE_READY_TO_LETTER_ERROR:
+      return {
+        ...state,
+        data: null,
         status: null,
         loading: false,
         error: action.error

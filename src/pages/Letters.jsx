@@ -14,7 +14,9 @@ import ReactHelmet from "../common/ReactHelmet";
 import { DIRECTION } from "../modules/pagination";
 
 const Letters = () => {
-  const { data, status, loading, error } = useSelector(state => state.letters);
+  const { data: letters, status, readyToLetter, loading, error } = useSelector(
+    state => state.letters
+  );
   const [ignored, forceUpdate] = useReducer(x => x + 1, 0);
   const { currentUser, jwtToken } = useSelector(state => state.auth);
   const dispatch = useDispatch();
@@ -35,10 +37,13 @@ const Letters = () => {
         <LettersButtonBlock>
           <ListTitle status={status} />
           <StatusButtons status={status} />
-          <ActionButtons currentUser={currentUser} data={data} />
+          <ActionButtons
+            currentUser={currentUser}
+            readyToLetter={readyToLetter}
+          />
         </LettersButtonBlock>
         <LetterList
-          data={data}
+          letters={letters}
           jwtToken={jwtToken}
           currentUser={currentUser}
           loading={loading}

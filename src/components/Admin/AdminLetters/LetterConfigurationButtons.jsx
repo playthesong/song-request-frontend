@@ -1,11 +1,23 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import styled, { css } from "styled-components";
+import { changeReadyToLetter } from "../../../modules/letters";
 
-const LetterConfigurationButtons = ({ openModal }) => {
+const LetterConfigurationButtons = ({ jwtToken, readyToLetter, openModal }) => {
+  const dispatch = useDispatch();
+  const onChangeReadyToLetter = () => {
+    dispatch(changeReadyToLetter(jwtToken, { readyToLetter: !readyToLetter }));
+  };
+
   return (
     <ButtonsBlock>
       <InitializeButton onClick={openModal}>신청곡 초기화</InitializeButton>
-      <RequestConfigurationButton>신청곡 중지</RequestConfigurationButton>
+      <RequestConfigurationButton
+        onClick={onChangeReadyToLetter}
+        readyToLetter={readyToLetter}
+      >
+        {readyToLetter ? "신청곡 중지" : "신청곡 시작"}
+      </RequestConfigurationButton>
     </ButtonsBlock>
   );
 };
@@ -24,6 +36,7 @@ const ButtonStyles = css`
   box-shadow: 7px 0px 35px 1px rgba(0, 0, 0, 0.2);
   font-size: 1.2rem;
   font-weight: 600;
+  cursor: pointer;
 
   &:first-child {
     margin-left: 0rem;
@@ -37,14 +50,13 @@ const ButtonStyles = css`
 const InitializeButton = styled.button`
   ${ButtonStyles}
 
-  cursor: pointer;
   background: #495057;
 `;
 
 const RequestConfigurationButton = styled.button`
   ${ButtonStyles}
 
-  background: #ffa8a8;
+  background: ${props => (props.readyToLetter ? "#ffa8a8" : "#51cf66")};
 `;
 
 export default LetterConfigurationButtons;

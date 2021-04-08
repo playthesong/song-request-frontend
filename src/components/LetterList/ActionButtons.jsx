@@ -1,11 +1,12 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { FiSend } from "react-icons/fi";
+import { BiTime } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { changeModalType, openModal } from "../../modules/letterModal";
 import { LETTER_MODAL } from "../../constants/types";
 
-const ActionButtons = ({ currentUser, data }) => {
+const ActionButtons = ({ currentUser, readyToLetter }) => {
   const dispatch = useDispatch();
   const openCreateModal = () => {
     dispatch(openModal());
@@ -14,7 +15,13 @@ const ActionButtons = ({ currentUser, data }) => {
 
   return (
     <ActionsButtonsBlock>
-      {data && data.readyToLetter && currentUser && (
+      {!readyToLetter && (
+        <StopNotice>
+          <StopNoticeIcon />
+          <StopNoticeMessage>신청곡 중단 중</StopNoticeMessage>
+        </StopNotice>
+      )}
+      {readyToLetter && currentUser && (
         <CreateButton onClick={openCreateModal}>
           <CreateButtonIcon />
           <CreateButtonText>신청곡 등록</CreateButtonText>
@@ -42,7 +49,7 @@ const ActionsButtonsBlock = styled.div`
   }
 `;
 
-const CreateButton = styled.button`
+const ButtonStyles = css`
   box-sizing: border-box;
   border: none;
   background-color: #fff;
@@ -51,12 +58,16 @@ const CreateButton = styled.button`
   height: 3rem;
   padding: 0.5rem 0.7rem;
   display: inline-block;
-  cursor: pointer;
   box-shadow: 0px 1px 15px 0px rgba(5, 5, 5, 0.1);
   outline: none;
   transition: 0.1s;
   color: rgb(255, 255, 255, 1);
   font-weight: 600;
+`;
+
+const CreateButton = styled.button`
+  ${ButtonStyles}
+  cursor: pointer;
   background: #ffa8a8;
 
   &:hover {
@@ -82,6 +93,28 @@ const CreateButtonText = styled.span`
   @media ${({ theme }) => theme.device.mobile} {
     font-size: 1rem;
   }
+`;
+
+const StopNotice = styled.div`
+  ${ButtonStyles}
+  background: #faa2c1;
+  border-radius: 0.45rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 5px 3px 15px 0px rgba(0, 0, 0, 0.3);
+`;
+
+const StopNoticeIcon = styled(BiTime)`
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 700;
+`;
+
+const StopNoticeMessage = styled.p`
+  font-weight: 700;
+  margin-top: 0.3rem;
+  margin-left: 0.3rem;
 `;
 
 export default ActionButtons;

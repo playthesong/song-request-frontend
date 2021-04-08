@@ -1,5 +1,5 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
 import ReactHelmet from "../../../common/ReactHelmet";
 import { ROLE } from "../../../constants/role";
@@ -9,10 +9,11 @@ import LetterConfigurationButtons from "./LetterConfigurationButtons";
 import useModal from "../../../hooks/useModal";
 import ConfirmModal from "./ConfirmModal";
 import GlobalErrorHandler from "../../Error/GlobalErrorHandler";
+import StatusBoard from "./StatusBoard";
 
 const AdminLetters = () => {
   const { currentUser, jwtToken } = useSelector(state => state.auth);
-  const { error } = useSelector(state => state.letters);
+  const { readyToLetter, error } = useSelector(state => state.letters);
   const [isOpened, openModal, closeModal] = useModal();
 
   if (error) {
@@ -27,7 +28,12 @@ const AdminLetters = () => {
         {currentUser && currentUser.role === ROLE.ADMIN && (
           <AdminLettersBlock>
             <AdminPageTitle>신청곡 설정</AdminPageTitle>
-            <LetterConfigurationButtons openModal={openModal} />
+            <StatusBoard readyToLetter={readyToLetter} />
+            <LetterConfigurationButtons
+              jwtToken={jwtToken}
+              readyToLetter={readyToLetter}
+              openModal={openModal}
+            />
             <ConfirmModal
               jwtToken={jwtToken}
               isOpened={isOpened}
