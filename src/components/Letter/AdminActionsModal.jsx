@@ -16,6 +16,7 @@ const AdminActionsModal = ({
     >
       <AdminActionsModalBlock>
         <ConfirmMessageWrap>
+          <ConfirmIcon />
           <ConfirmMessage>{message}</ConfirmMessage>
         </ConfirmMessageWrap>
         <ButtonWrap>
@@ -69,7 +70,7 @@ const ConfirmMessageWrap = styled.div`
 
 const ConfirmIcon = styled(IoIosCheckmarkCircleOutline)`
   font-size: 2.3rem;
-  color: #20c997;
+  color: #faa2c1;
 `;
 
 const ConfirmMessage = styled.p`

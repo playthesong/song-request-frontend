@@ -37,7 +37,7 @@ const SongSearchResult = ({ onCloseModal, clearSong }) => {
         ))}
       {!songs && !loading && !error && (
         <EmptyResult
-          message={`신청하고 싶은 곡을 검색 해주세요! 아티스트, 제목을 모두 입력 해주셔야 합니다 :)`}
+          message={`신청하고 싶은 곡을 검색 해주세요! 아티스트, 제목을 모두 입력 해주시면 더욱 정확한 검색이 가능 합니다 :)`}
           opacity={0.3}
         />
       )}
