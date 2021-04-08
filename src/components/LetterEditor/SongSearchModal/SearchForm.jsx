@@ -144,7 +144,8 @@ const SearchButton = styled.button`
   box-shadow: 1px 0px 3px 1px rgba(0, 0, 0, 0.1);
 
   @media ${({ theme }) => theme.device.mobile} {
-    height: 3rem;
+    right: 0.5rem;
+    height: 2.8rem;
   }
 `;
 

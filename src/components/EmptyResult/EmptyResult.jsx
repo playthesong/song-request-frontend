@@ -22,7 +22,7 @@ const EmptyResultBlock = styled.div`
   z-index: -9;
 
   @media ${({ theme }) => theme.device.mobile} {
-    top: 65%;
+    top: 55%;
   }
 `;
 
@@ -32,7 +32,7 @@ const Message = styled.p`
   font-size: 1.2rem;
   color: #232323;
   opacity: 0.5;
-  line-height: 1.7rem;
+  line-height: 2.1rem;
 
   @media ${({ theme }) => theme.device.mobile} {
     font-size: 1.1rem;

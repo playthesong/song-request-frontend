@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import styled, { css } from "styled-components";
+import { IoIosCheckmarkCircleOutline } from "react-icons/io";
 import { initializeLetters } from "../../../modules/letters";
 
 const ConfirmModal = ({ jwtToken, isOpened, closeModal }) => {
@@ -14,7 +15,10 @@ const ConfirmModal = ({ jwtToken, isOpened, closeModal }) => {
   return (
     <DimmedBackground isOpened={isOpened}>
       <ConfirmModalBlock>
-        <Title>정말 초기화 할까요?</Title>
+        <ConfirmMessageWrap>
+          <ConfirmIcon />
+          <Title>정말 초기화 할까요?</Title>
+        </ConfirmMessageWrap>
         <Buttons>
           <ConfirmButton onClick={onInitialize}>초기화</ConfirmButton>
           <CancelButton onClick={closeModal}>취소</CancelButton>
@@ -55,27 +59,48 @@ const ConfirmModalBlock = styled.div`
   border-radius: 0.5rem;
 `;
 
+const ConfirmMessageWrap = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  width: 70%;
+  padding-bottom: 0.7rem;
+`;
+
+const ConfirmIcon = styled(IoIosCheckmarkCircleOutline)`
+  font-size: 1.9rem;
+  color: #faa2c1;
+`;
+
 const Title = styled.h3`
-  font-size: 1.6rem;
+  font-size: 1.5rem;
+  margin-top: 0.3rem;
+  margin-left: 0.3rem;
 `;
 
 const Buttons = styled.div``;
 
 const ButtonStyles = css`
   padding: 0.5rem 1.7rem;
-  margin: 2rem 0.6rem 1rem 0.6rem;
+  margin: 1.5rem 0.6rem 1rem 0.6rem;
   outline: none;
   border: none;
   cursor: pointer;
   border-radius: 0.3rem;
   box-shadow: 3px 5px 35px rgba(0, 0, 0, 0.3);
   color: #fff;
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const ConfirmButton = styled.button`
   ${ButtonStyles}
 
-  background: #e64980;
+  background: #f06595;
 `;
 
 const CancelButton = styled.button`
