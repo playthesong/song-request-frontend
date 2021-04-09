@@ -34,7 +34,8 @@ const LetterModalTemplateBlock = styled.div`
 
   @media ${({ theme }) => theme.device.mobile} {
     width: 100%;
-    padding: 3.5rem 2.5rem;
+    padding: 3.5rem 3rem;
+    top: 35%;
   }
 `;
 
