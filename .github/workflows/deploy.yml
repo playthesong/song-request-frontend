@@ -68,6 +68,6 @@ jobs:
             --application-name songrequest-frontend \
             --deployment-group-name songrequest-frontend-group \
             --deployment-config-name CodeDeployDefault.OneAtATime \
-            --s3-location bucket=${{ secrets.AWS_S3_BUCKET_NAME }}, bundleType=zip, key=songrequest.zip
+            --s3-location bucket=${{ secrets.AWS_S3_BUCKET_NAME }},bundleType=zip,key=songrequest.zip
 
             echo "SUCCESS";
