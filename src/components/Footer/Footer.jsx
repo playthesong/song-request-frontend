@@ -9,8 +9,8 @@ const Footer = () => {
     <FooterBlock>
       <FooterInner>
         <LogoIcons />
-        <PrivacyPolicy to="/policy">About Privacy Policy</PrivacyPolicy>
         <Copyright />
+        <PrivacyPolicy to="/policy">About Privacy Policy</PrivacyPolicy>
       </FooterInner>
     </FooterBlock>
   );
@@ -21,7 +21,7 @@ const FooterBlock = styled.div`
   justify-content: center;
   box-sizing: border-box;
   width: 100%;
-  height: 19rem;
+  height: 11rem;
   margin-top: 6rem;
   background-color: #1e2429;
   font-weight: 500;
@@ -40,7 +40,6 @@ const FooterInner = styled.div`
 
 const PrivacyPolicy = styled(Link)`
   margin-top: 1.5rem;
-  margin-bottom: -0.5rem;
   font-size: 1rem;
 `;
 
