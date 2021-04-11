@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
-import realpiano_logo_alt from "../../../assets/realpiano_logo_alt.png";
+import altImage from "../../../assets/alt.png";
 
 const SongImage = ({ imageUrl }) => {
   if (!imageUrl) {
-    imageUrl = realpiano_logo_alt;
+    imageUrl = altImage;
   }
 
   return <StyledSongImage src={imageUrl} />;

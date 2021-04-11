@@ -1,14 +1,14 @@
 import React from "react";
 import MainTemplate from "../components/Template/Main/MainTemplate";
-import realpianoLogo from "../assets/realpiano_logo_alt.png";
+import altImage from "../assets/alt.png";
 import styled from "styled-components";
 
 const ThankYouPage = () => {
   return (
     <MainTemplate>
       <ThankYouPageBlock>
-        <Logo src={realpianoLogo} />
-        <Message>그동안 리얼피아노 신청곡을 이용 해주셔서 감사합니다.</Message>
+        <Logo src={altImage} />
+        <Message>그동안 Play The Song을 이용 해주셔서 감사합니다.</Message>
         <Message>다시 만나뵙게 될 수 있길 기대합니다 :)</Message>
       </ThankYouPageBlock>
     </MainTemplate>

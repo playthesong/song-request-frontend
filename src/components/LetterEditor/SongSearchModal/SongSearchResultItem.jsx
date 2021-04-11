@@ -2,7 +2,7 @@ import React from "react";
 import parse from "html-react-parser";
 import styled from "styled-components";
 import { HiCheck } from "react-icons/hi";
-import realpianoLogo from "../../../assets/realpiano_logo_alt.png";
+import altImage from "../../../assets/alt.png";
 
 const TITLE_MAX_LENGTH = 30;
 
@@ -11,7 +11,7 @@ const SongSearchResultItem = ({ song, mapSongToForm, onCloseModal }) => {
 
   return (
     <Song>
-      <SongImage src={imageUrl ? imageUrl : realpianoLogo} />
+      <SongImage src={imageUrl ? imageUrl : altImage} />
       <SongDetails>
         <SongTitle>
           {parse(

@@ -9,7 +9,7 @@ const ReactHelmet = ({ title }) => {
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap"
         rel="stylesheet"
       />
-      <title>{`리얼피아노 라이브 | ${title}`}</title>
+      <title>{`Play The Song | ${title}`}</title>
       <meta name="title" property="og:title" content="RealPiano Live 신청곡" />
       <meta
         name="description"

@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import realpianoLogo from "../../assets/realpiano_logo_alt.png";
+import alt from "../../assets/empty.png";
 
 const EmptyResult = ({ message, opacity }) => {
   return (
     <EmptyResultBlock>
-      <Logo src={realpianoLogo} opacity={opacity} />
+      <Logo src={alt} opacity={opacity} />
       <Message>{message}</Message>
     </EmptyResultBlock>
   );
@@ -26,6 +26,17 @@ const EmptyResultBlock = styled.div`
   }
 `;
 
+const Logo = styled.img`
+  max-width: 4.1rem;
+  max-height: 4.1rem;
+  opacity: ${props => props.opacity};
+
+  @media ${({ theme }) => theme.device.mobile} {
+    max-width: 3.7rem;
+    max-height: 3.7rem;
+  }
+`;
+
 const Message = styled.p`
   width: 100%;
   text-align: center;
@@ -33,20 +44,12 @@ const Message = styled.p`
   color: #232323;
   opacity: 0.5;
   line-height: 2.1rem;
+  margin-top: 1.5rem;
 
   @media ${({ theme }) => theme.device.mobile} {
     font-size: 1.1rem;
     width: 85%;
     line-height: 1.5rem;
-  }
-`;
-
-const Logo = styled.img`
-  max-width: 15rem;
-  opacity: ${props => props.opacity};
-
-  @media ${({ theme }) => theme.device.mobile} {
-    max-width: 11rem;
   }
 `;
 

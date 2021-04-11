@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import realpianoLogo from "../../assets/realpiano_logo_white.jpg";
+import loadingImage from "../../assets/loading.png";
 
 const Loading = ({ position }) => {
   return (
     <LoadingBlock position={position}>
-      <LoadingImg src={realpianoLogo} />
+      <LoadingImg src={loadingImage} />
     </LoadingBlock>
   );
 };

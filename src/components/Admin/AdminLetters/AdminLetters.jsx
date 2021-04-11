@@ -11,7 +11,7 @@ import ConfirmModal from "./ConfirmModal";
 import GlobalErrorHandler from "../../Error/GlobalErrorHandler";
 import StatusBoard from "./StatusBoard";
 import { getReadyToLetter } from "../../../modules/letters";
-import realpianoLogo from "../../../assets/realpiano_logo_alt.png";
+import emptyImage from "../../../assets/empty.png";
 
 const AdminLetters = () => {
   const { currentUser, jwtToken } = useSelector(state => state.auth);
@@ -34,7 +34,7 @@ const AdminLetters = () => {
         {!currentUser && <GlobalErrorHandler error />}
         {currentUser && currentUser.role === ROLE.ADMIN && (
           <AdminLettersBlock>
-            <BackdropImage src={realpianoLogo} />
+            <BackdropImage src={emptyImage} />
             <AdminPageTitle>신청곡 설정</AdminPageTitle>
             <StatusBoard readyToLetter={readyToLetter} />
             <LetterConfigurationButtons
