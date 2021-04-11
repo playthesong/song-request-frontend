@@ -9,7 +9,7 @@ const StatusButtons = ({ status }) => {
   const dispatch = useDispatch();
 
   const getWaitingLetters = () => {
-    dispatch(getLetters(LETTER_STATUS.WAITING, DIRECTION.ASC));
+    dispatch(getLetters(LETTER_STATUS.WAITING, DIRECTION.DESC));
   };
 
   const getPendingLetters = () => {

@@ -44,15 +44,15 @@ const MyPage = () => {
 
   const findUserRole = role => {
     if (role === ROLE.ADMIN) {
-      return "리얼피아노 운영자";
+      return "ADMIN";
     }
 
     if (role === ROLE.MEMBER) {
-      return "리얼피아노 회원";
+      return "MEMBER";
     }
 
     if (role === ROLE.GUEST) {
-      return "리얼피아노 손님";
+      return "GUEST";
     }
   };
 

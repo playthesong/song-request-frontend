@@ -108,7 +108,7 @@ const LetterEditContainer = ({
     );
     dispatch(clearForm());
     dispatch(changeModalType(LETTER_MODAL.READ));
-    dispatch(getLetters(LETTER_STATUS.WAITING, DIRECTION.ASC));
+    dispatch(getLetters(LETTER_STATUS.WAITING, DIRECTION.DESC));
     onUpdateLetters();
   };
 
