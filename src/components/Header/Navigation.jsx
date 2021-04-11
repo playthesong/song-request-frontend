@@ -8,7 +8,7 @@ const Navigation = () => {
       <NavigationItem to="/letters">신청곡</NavigationItem>
       <NavigationItem to="/ranking">신청곡 순위</NavigationItem>
       <NavigationItem to="/contents">금주의 추천곡</NavigationItem>
-      <NavigationItem to="/musicsheets">인디 Picks</NavigationItem>
+      <NavigationItem to="/indie">인디 Picks</NavigationItem>
     </NavigationBlock>
   );
 };

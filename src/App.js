@@ -12,7 +12,7 @@ import ReactHelmet from "./common/ReactHelmet";
 import OAuth from "./pages/OAuth";
 import Ranking from "./pages/Ranking";
 import Contents from "./pages/Contents";
-import MusicSheets from "./pages/MusicSheets";
+import IndiePicks from "./pages/IndiePicks";
 import { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
 import MyPage from "./pages/MyPage";
@@ -33,7 +33,7 @@ function App() {
           <Route path="/letters" exact component={Letters} />
           <Route path="/ranking" component={Ranking} />
           <Route path="/contents" exact component={Contents} />
-          <Route path="/musicsheets" component={MusicSheets} />
+          <Route path="/indie" component={IndiePicks} />
           <Route path="/mypage" component={MyPage} />
           <Route path="/auth/token" exact component={OAuth} />
           <Route path="/error" component={ErrorPage} />
