@@ -37,6 +37,7 @@ jobs:
           echo REACT_APP_API_ACCOUNT_DELETE=${{ secrets.REACT_APP_API_ACCOUNT_DELETE }} >> .env
           echo REACT_APP_API_INITIALIZE_LETTERS=${{ secrets.REACT_APP_API_INITIALIZE_LETTERS }} >> .env
           echo REACT_APP_API_READY_TO_LETTER=${{ secrets.REACT_APP_API_READY_TO_LETTER }} >> .env
+
       - name: NPM build
         run: npm run build
 
@@ -48,4 +49,4 @@ jobs:
           aws s3 cp \
             --recursive \
             --region ap-northeast-2 \
-            build s3://${{ secrets.S3_BUCKET_NAME }}
+            build s3://www.playthesong.live
