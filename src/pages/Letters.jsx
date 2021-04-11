@@ -22,12 +22,12 @@ const Letters = () => {
   const dispatch = useDispatch();
 
   const onUpdateLetters = async () => {
-    await letterAPI.getLetters(LETTER_STATUS.WAITING, DIRECTION.ASC);
+    await letterAPI.getLetters(LETTER_STATUS.WAITING, DIRECTION.DESC);
     forceUpdate();
   };
 
   useEffect(() => {
-    dispatch(getLetters(LETTER_STATUS.WAITING, DIRECTION.ASC));
+    dispatch(getLetters(LETTER_STATUS.WAITING, DIRECTION.DESC));
   }, [dispatch, ignored]);
 
   return (
