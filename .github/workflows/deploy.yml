@@ -19,7 +19,6 @@ jobs:
           restore-keys: |
             ${{ runner.OS }}-build-
             ${{ runner.OS }}-
-
       - name: Install dependencies
         run: npm install
 
@@ -38,13 +37,8 @@ jobs:
           echo REACT_APP_API_ACCOUNT_DELETE=${{ secrets.REACT_APP_API_ACCOUNT_DELETE }} >> .env
           echo REACT_APP_API_INITIALIZE_LETTERS=${{ secrets.REACT_APP_API_INITIALIZE_LETTERS }} >> .env
           echo REACT_APP_API_READY_TO_LETTER=${{ secrets.REACT_APP_API_READY_TO_LETTER }} >> .env
-
       - name: NPM build
         run: npm run build
-
-      - name: Zip build file and deploy scripts
-        run: |
-          zip -r songrequest.zip ./build/* ./appspec.yml ./after-install.sh ./before-install.sh
 
       - name: S3 deployment
         env:
@@ -52,22 +46,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
         run: |
           aws s3 cp \
+            --recursive \
             --region ap-northeast-2 \
-            songrequest.zip s3://${{ secrets.AWS_S3_BUCKET_NAME }}
-
-      - name: Configure aws credential
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_DEPLOY_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.AWS_DEPLOY_SECRET_KEY }}
-          aws-region: ap-northeast-2
-
-      - name: Deploy ec2
-        run: |
-          aws deploy create-deployment \
-            --application-name songrequest-frontend \
-            --deployment-group-name songrequest-frontend-group \
-            --deployment-config-name CodeDeployDefault.OneAtATime \
-            --s3-location bucket=${{ secrets.AWS_S3_BUCKET_NAME }},bundleType=zip,key=songrequest.zip
-
-            echo "SUCCESS";
+            build s3://${{ secrets.S3_BUCKET_NAME }}

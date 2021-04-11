@@ -5,14 +5,14 @@ import SongArticle from "../LetterModal/LetterModalSong/SongArticle";
 import SongArticleItem from "../LetterModal/LetterModalSong/SongArticleItem";
 import SongArticleName from "../LetterModal/LetterModalSong/SongArticleName";
 import SongImage from "../LetterModal/LetterModalSong/SongImage";
-import realpianoLogo from "../../assets/realpiano_logo_alt.png";
+import altImage from "../../assets/alt.png";
 
 const LetterDetailsSong = ({ song }) => {
   const { title, artist, imageUrl } = song;
 
   return (
     <LetterModalSong>
-      <SongImage imageUrl={imageUrl ? imageUrl : realpianoLogo} />
+      <SongImage imageUrl={imageUrl ? imageUrl : altImage} />
       <SongAbout>
         <SongArticle>
           <SongArticleName articleName={"TITLE"} />

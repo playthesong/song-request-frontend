@@ -19,7 +19,7 @@ const LetterList = ({
       {error && <GlobalErrorHandler error={error} />}
       {letters && letters.length === 0 && (
         <EmptyResult
-          message={"리얼피아노는 신청곡과 여러분의 이야기를 기다립니다."}
+          message={"여러분의 신청곡과 이야기를 기다립니다."}
           opacity={0.3}
         />
       )}

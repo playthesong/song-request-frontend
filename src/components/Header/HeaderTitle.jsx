@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import realpiano_logo from "../../assets/realpiano_logo_white.jpg";
+import logoImage from "../../assets/logo.png";
 
 const HeaderTitle = () => {
   return (
     <StyledLink to="/">
       <HeaderTitleBlock>
-        <img src={realpiano_logo} alt="REALPIANO" className="logo" />
-        <h2 className="title">REALPIANO</h2>
+        <img src={logoImage} alt="REALPIANO" className="logo" />
+        <h2 className="title">Play The Song</h2>
       </HeaderTitleBlock>
     </StyledLink>
   );
@@ -29,17 +29,18 @@ const HeaderTitleBlock = styled.div`
   cursor: pointer;
 
   .logo {
-    max-width: 2.5rem;
-    max-height: 2.5rem;
+    max-width: 3rem;
+    max-height: 3rem;
     width: auto;
     height: auto;
+    opacity: 0.8;
   }
 
   .title {
     font-size: 1.8rem;
     font-weight: 500;
-    margin-left: 5px;
-    margin-top: 10px;
+    margin-left: 7px;
+    margin-top: 4.5px;
   }
 `;
 

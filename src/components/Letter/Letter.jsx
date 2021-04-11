@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import parse from "html-react-parser";
-import realpianoLogo from "../../assets/realpiano_logo_alt.png";
+import altImage from "../../assets/alt.png";
 import { useDispatch, useSelector } from "react-redux";
 import { changeModalType, openModal } from "../../modules/letterModal";
 import { getLetterById } from "../../modules/letter";
@@ -61,7 +61,7 @@ const Letter = ({
         )}
         <SongBlock>
           <img
-            src={imageUrl ? imageUrl : realpianoLogo}
+            src={imageUrl ? imageUrl : altImage}
             alt="ALBUM COVER"
             className="album-image"
           />

@@ -9,19 +9,23 @@ const ReactHelmet = ({ title }) => {
         href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500&display=swap"
         rel="stylesheet"
       />
-      <title>{`리얼피아노 라이브 | ${title}`}</title>
-      <meta name="title" property="og:title" content="RealPiano Live 신청곡" />
+      <title>{`Play The Song | ${title}`}</title>
+      <meta
+        name="title"
+        property="og:title"
+        content="Play The Song : 음악 방송 신청곡"
+      />
       <meta
         name="description"
         property="og:description"
-        content="리얼피아노 유튜브 방송에 신청곡을 남겨주세요 :)"
+        content="유튜브 라이브 음악 방송에 신청곡을 남겨주세요 :)"
       />
+      <meta name="image" property="og:image" content="" />
       <meta
-        name="image"
-        property="og:image"
-        content="http://www.realpianolive.com/static/media/realpiano_logo_white.3ec599fb.jpg"
+        name="url"
+        property="og:url"
+        content="http://www.playthesong.live"
       />
-      <meta name="url" property="og:url" content="" />
     </Helmet>
   );
 };
