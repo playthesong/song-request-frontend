@@ -6,7 +6,7 @@ import ReactHelmet from "../common/ReactHelmet";
 const Contents = () => {
   return (
     <>
-      <ReactHelmet title={"유튜브 연주 영상"} />
+      <ReactHelmet title={"금주의 추천곡"} />
       <MainTemplate>
         <EmptyResult
           message={"아직 준비 중입니다 :) 조금만 기다려주세요!"}
