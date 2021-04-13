@@ -7,7 +7,7 @@ import altImage from "../../assets/alt.png";
 const TITLE_MAX_LENGTH = 25;
 
 const Song = ({ song, ranking }) => {
-  const { id, title, artist, imageUrl, requestCount } = song;
+  const { title, artist, imageUrl, requestCount } = song;
   return (
     <SongBlock>
       <RankingNumber>{ranking}</RankingNumber>
@@ -39,22 +39,32 @@ const SongBlock = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 30rem;
-  width: 100%;
-  padding: 2.1rem 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+
+  padding: 3rem 1rem;
+  width: 60rem;
+
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
 
   &:last-child {
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  @media ${({ theme }) => theme.device.mobile} {
+    max-width: 30rem;
+    padding: 2.1rem 1rem;
   }
 `;
 
 const RankingNumber = styled.span`
   flex: 1;
   font-size: 1.5rem;
-  margin: 0rem 0.8rem 0rem 0.5rem;
+  margin: 0rem 0.3rem 0rem 1.5rem;
   color: rgba(0, 0, 0, 0.45);
-  font-weight: 600;
+  font-weight: 500;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    margin: 0rem 0.8rem 0rem 0.5rem;
+  }
 `;
 
 const SongDetailsWrap = styled.div`
@@ -64,27 +74,44 @@ const SongDetailsWrap = styled.div`
 `;
 
 const AlbumImage = styled.img`
-  width: 5.5rem;
-  height: 5.5rem;
+  width: 7rem;
+  height: 7rem;
   box-shadow: 3px 2px 10px 1px rgba(0, 0, 0, 0.15);
+
+  @media ${({ theme }) => theme.device.mobile} {
+    width: 5.5rem;
+    height: 5.5rem;
+  }
 `;
 
 const SongDetails = styled.div`
   display: flex;
   flex-direction: column;
-  margin-left: 1.5rem;
+  margin-left: 2.1rem;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    margin-left: 1.5rem;
+  }
 `;
 
 const Title = styled.span`
-  font-size: 1.25rem;
+  font-size: 1.4rem;
   color: rgba(0, 0, 0, 0.8);
   font-weight: 500;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1.25rem;
+  }
 `;
 
 const Artist = styled.span`
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   margin-top: 0.8rem;
   color: rgba(0, 0, 0, 0.5);
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1.1rem;
+  }
 `;
 
 const RequestCountWrap = styled.div`
@@ -100,14 +127,22 @@ const RequestCountInner = styled.div`
 `;
 
 const LikeIcon = styled(IoIosHeart)`
-  font-size: 1.7rem;
+  font-size: 2.1rem;
   color: #ffdeeb;
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1.7rem;
+  }
 `;
 
 const RequestCount = styled.span`
-  font-size: 1.1rem;
+  font-size: 1.25rem;
   margin-top: 0.7rem;
   color: rgba(0, 0, 0, 0.5);
+
+  @media ${({ theme }) => theme.device.mobile} {
+    font-size: 1.1rem;
+  }
 `;
 
 export default Song;
