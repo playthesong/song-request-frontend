@@ -40,6 +40,7 @@ const HiddenCloseButton = styled(IoMdArrowBack)`
 
   @media ${({ theme }) => theme.device.mobile} {
     font-size: 2.3rem;
+    left: 2.5%;
   }
 `;
 

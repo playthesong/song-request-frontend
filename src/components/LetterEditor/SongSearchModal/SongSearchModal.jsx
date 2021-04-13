@@ -47,7 +47,7 @@ const SongSearchModalBlock = styled.div`
   @media ${({ theme }) => theme.device.mobile} {
     width: 100%;
     padding: 3rem 1rem 5rem 1rem;
-    top: 0%;
+    top: -10%;
   }
 `;
 
