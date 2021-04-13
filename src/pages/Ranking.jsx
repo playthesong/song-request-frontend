@@ -1,6 +1,7 @@
 import React from "react";
+import styled from "styled-components";
 import ReactHelmet from "../common/ReactHelmet";
-import EmptyResult from "../components/EmptyResult/EmptyResult";
+import Song from "../components/Ranking/Song";
 import MainTemplate from "../components/Template/Main/MainTemplate";
 
 const Ranking = () => {
@@ -8,10 +9,14 @@ const Ranking = () => {
     <>
       <ReactHelmet title={"신청곡 랭킹"} />
       <MainTemplate>
-        <EmptyResult message={"아직 준비 중입니다 :)"} opacity={0.3} />
+        <RankingBlock>
+          <Song />
+        </RankingBlock>
       </MainTemplate>
     </>
   );
 };
+
+const RankingBlock = styled.ul``;
 
 export default Ranking;
