@@ -24,7 +24,7 @@ export const getSongRanking = async () => {
   const { data: response } = await client.get(RANKING_API, {
     params: {
       page: 1,
-      size: 30,
+      size: 20,
       direction: "DESC"
     }
   });
