@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { IoIosHeart } from "react-icons/io";
 import altImage from "../../assets/alt.png";
 
-const TITLE_MAX_LENGTH = 25;
+const TITLE_MAX_LENGTH = 35;
 
 const Song = ({ song, ranking }) => {
   const { title, artist, imageUrl, requestCount } = song;

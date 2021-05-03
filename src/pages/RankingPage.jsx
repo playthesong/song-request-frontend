@@ -5,7 +5,7 @@ import GlobalErrorHandler from "../components/Error/GlobalErrorHandler";
 import Loading from "../components/Loading/Loading";
 import Ranking from "../components/Ranking/Ranking";
 import MainTemplate from "../components/Template/Main/MainTemplate";
-import { getSongRanking } from "../modules/song";
+import { getSongRanking, initializeSong } from "../modules/song";
 
 const RankingPage = () => {
   const { data: songs, loading, error } = useSelector(state => state.song);
@@ -13,6 +13,10 @@ const RankingPage = () => {
 
   useEffect(() => {
     dispatch(getSongRanking());
+
+    return () => {
+      dispatch(initializeSong());
+    };
   }, [dispatch]);
 
   return (
