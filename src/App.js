@@ -10,7 +10,7 @@ import Letters from "./pages/Letters";
 import Footer from "./components/Footer/Footer";
 import ReactHelmet from "./common/ReactHelmet";
 import OAuth from "./pages/OAuth";
-import Ranking from "./pages/Ranking";
+import RankingPage from "./pages/RankingPage";
 import Contents from "./pages/Contents";
 import IndiePicks from "./pages/IndiePicks";
 import { ThemeProvider } from "styled-components";
@@ -31,7 +31,7 @@ function App() {
         <Switch>
           <Route path="/" exact component={Letters} />
           <Route path="/letters" exact component={Letters} />
-          <Route path="/ranking" component={Ranking} />
+          <Route path="/ranking" component={RankingPage} />
           <Route path="/contents" exact component={Contents} />
           <Route path="/indie" component={IndiePicks} />
           <Route path="/mypage" component={MyPage} />

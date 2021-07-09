@@ -7,8 +7,7 @@ const Navigation = () => {
     <NavigationBlock>
       <NavigationItem to="/letters">신청곡</NavigationItem>
       <NavigationItem to="/ranking">신청곡 순위</NavigationItem>
-      <NavigationItem to="/contents">금주의 추천곡</NavigationItem>
-      <NavigationItem to="/indie">인디 Picks</NavigationItem>
+      <NavigationItem to="/contents">금주의 추천 앨범</NavigationItem>
     </NavigationBlock>
   );
 };
@@ -21,7 +20,7 @@ const NavigationBlock = styled.div`
   @media ${({ theme }) => theme.device.mobile} {
     order: 3;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
   }
 `;
 
