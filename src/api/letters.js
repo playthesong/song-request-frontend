@@ -11,7 +11,7 @@ export const getLetters = async (status, direction) => {
     page: 1,
     size: 20,
     direction: direction,
-    dayAgo: 30
+    dayAgo: 90
   };
 
   const { data: response } = await client.get(LETTERS_STATUS_API + status, {
